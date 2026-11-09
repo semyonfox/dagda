@@ -64,7 +64,7 @@ jobs:
           if not run_go:
               with open(os.environ["GITHUB_STEP_SUMMARY"], "a", encoding="utf-8") as summary:
                   summary.write("Skipped Go setup, tests, vet and build: only documentation changed.\n")
-      - uses: actions/setup-go@v5
+      - uses: actions/setup-go@v7
         if: steps.select.outcome != 'success' || steps.select.outputs.go != 'false'
         with:
           go-version-file: engine/go.mod
