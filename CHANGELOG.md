@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 0.2.0 (2026-11-09)
 
 First Dagda release. Prebuilt `dagda` binaries for Linux, macOS and Windows
 on amd64 and arm64, checked against `checksums.txt`. Go users can run

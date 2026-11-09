@@ -82,7 +82,7 @@ for updated model prices, which `DAGDA_OFFLINE=1` turns off.
 
 ![summary report](docs/media/summary.png)
 
-`dagda daily --group-by agent,model --since 2026-10-25`:
+`dagda daily --group-by agent,model --since 2026-11-07`:
 
 ![daily report grouped by agent and model](docs/media/daily.png)
 
