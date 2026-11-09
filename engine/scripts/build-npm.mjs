@@ -8,9 +8,9 @@
 //
 // Layout produced under engine/dist/npm:
 //
-//   tokentelemetry/                      launcher, depends on the six below
-//   @tokentelemetry/engine-linux-x64/    one prebuilt binary each
-//   @tokentelemetry/engine-darwin-arm64/
+//   dagda/                              launcher, depends on the six below
+//   @dagda/engine-linux-x64/            one prebuilt binary each
+//   @dagda/engine-darwin-arm64/
 //   ...
 //
 // npm resolves exactly one binary package per machine via the `os`/`cpu`
@@ -25,8 +25,8 @@ const here = dirname(fileURLToPath(import.meta.url));
 const engineDir = resolve(here, "..");
 const distDir = join(engineDir, "dist", "npm");
 
-const VERSION = process.env.TT_VERSION ?? "0.1.0";
-const SCOPE = "@tokentelemetry";
+const VERSION = process.env.DAGDA_VERSION ?? "0.1.0";
+const SCOPE = "@dagda";
 
 const TARGETS = [
   { goos: "linux", goarch: "amd64", os: "linux", cpu: "x64" },
@@ -42,7 +42,7 @@ const common = {
   license: "MIT",
   repository: {
     type: "git",
-    url: "git+https://github.com/semyonfox/tokentelemetry.git",
+    url: "git+https://github.com/semyonfox/dagda.git",
   },
 };
 
@@ -58,7 +58,7 @@ function build() {
     const binDir = join(pkgDir, "bin");
     mkdirSync(binDir, { recursive: true });
 
-    const exe = t.os === "win32" ? "tokentelemetry.exe" : "tokentelemetry";
+    const exe = t.os === "win32" ? "dagda.exe" : "dagda";
     const outPath = join(binDir, exe);
 
     process.stderr.write(`building ${t.goos}/${t.goarch} … `);
@@ -71,10 +71,10 @@ function build() {
         // anyone debugs from a published artifact, and it roughly halves the
         // download every user pays for.
         "-ldflags",
-        `-s -w -X github.com/semyonfox/tokentelemetry/engine/internal/cli.Version=${VERSION}`,
+        `-s -w -X github.com/semyonfox/dagda/engine/internal/cli.Version=${VERSION}`,
         "-o",
         outPath,
-        "./cmd/tokentelemetry",
+        "./cmd/dagda",
       ],
       {
         cwd: engineDir,
@@ -96,7 +96,7 @@ function build() {
         {
           name: pkgName,
           ...common,
-          description: `tokentelemetry engine binary for ${t.os}-${t.cpu}`,
+          description: `dagda engine binary for ${t.os}-${t.cpu}`,
           // npm and bun skip an optional dependency whose os/cpu do not match,
           // so only the matching binary is ever downloaded.
           os: [t.os],
@@ -113,23 +113,22 @@ function build() {
 
   // Launcher package.
   const launcherSrc = join(engineDir, "npm", "launcher");
-  const launcherDir = join(distDir, "tokentelemetry");
+  const launcherDir = join(distDir, "dagda");
   mkdirSync(launcherDir, { recursive: true });
   cpSync(join(launcherSrc, "bin"), join(launcherDir, "bin"), { recursive: true });
-  chmodSync(join(launcherDir, "bin", "tokentelemetry.js"), 0o755);
+  chmodSync(join(launcherDir, "bin", "dagda.js"), 0o755);
 
   writeFileSync(
     join(launcherDir, "package.json"),
     JSON.stringify(
       {
-        name: "tokentelemetry",
+        name: "dagda",
         ...common,
         description:
           "Local token and cost telemetry for AI coding agents. Reads logs already on disk and checks for pricing updates daily unless offline.",
         keywords: ["ai", "agents", "claude", "codex", "tokens", "cost", "observability", "ccusage"],
         bin: {
-          tokentelemetry: "bin/tokentelemetry.js",
-          tt: "bin/tokentelemetry.js",
+          dagda: "bin/dagda.js",
         },
         files: ["bin", "README.md"],
         optionalDependencies,
@@ -149,7 +148,7 @@ function build() {
   }
 
   process.stderr.write(`\nwrote ${distDir}\n`);
-  process.stderr.write(`  tokentelemetry@${VERSION} + ${TARGETS.length} binary packages\n`);
+  process.stderr.write(`  dagda@${VERSION} + ${TARGETS.length} binary packages\n`);
 }
 
 build();

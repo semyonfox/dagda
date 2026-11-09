@@ -13,9 +13,9 @@ import (
 
 	_ "modernc.org/sqlite"
 
-	"github.com/semyonfox/tokentelemetry/engine/internal/cost"
-	"github.com/semyonfox/tokentelemetry/engine/internal/model"
-	"github.com/semyonfox/tokentelemetry/engine/internal/pricing"
+	"github.com/semyonfox/dagda/engine/internal/cost"
+	"github.com/semyonfox/dagda/engine/internal/model"
+	"github.com/semyonfox/dagda/engine/internal/pricing"
 )
 
 func TestAntigravityMapsExactUsageAndNanosecondTimestamp(t *testing.T) {
@@ -578,7 +578,7 @@ func TestAntigravityDiscoversAllConversationRoots(t *testing.T) {
 	home := t.TempDir()
 	t.Setenv("HOME", home)
 	t.Setenv("USERPROFILE", home)
-	t.Setenv("TT_ANTIGRAVITY_DIR", "")
+	t.Setenv("DAGDA_ANTIGRAVITY_DIR", "")
 	roots := []string{
 		filepath.Join(home, ".gemini", "antigravity", "conversations"),
 		filepath.Join(home, ".gemini", "antigravity-cli", "conversations"),

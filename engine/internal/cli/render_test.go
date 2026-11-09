@@ -5,8 +5,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/semyonfox/tokentelemetry/engine/internal/pricing"
-	"github.com/semyonfox/tokentelemetry/engine/internal/report"
+	"github.com/semyonfox/dagda/engine/internal/pricing"
+	"github.com/semyonfox/dagda/engine/internal/report"
 )
 
 // Every line of a table must be the same width and every column must start at

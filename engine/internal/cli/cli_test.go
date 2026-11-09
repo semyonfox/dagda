@@ -3,7 +3,7 @@ package cli
 import (
 	"testing"
 
-	"github.com/semyonfox/tokentelemetry/engine/internal/report"
+	"github.com/semyonfox/dagda/engine/internal/report"
 )
 
 func TestDefaultDimensions(t *testing.T) {

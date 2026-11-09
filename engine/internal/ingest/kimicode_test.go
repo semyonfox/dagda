@@ -4,7 +4,7 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/semyonfox/tokentelemetry/engine/internal/model"
+	"github.com/semyonfox/dagda/engine/internal/model"
 )
 
 func TestKimiCodeCorrelatesUsageWithActualRequestModel(t *testing.T) {

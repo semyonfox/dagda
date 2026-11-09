@@ -12,7 +12,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/semyonfox/tokentelemetry/engine/internal/model"
+	"github.com/semyonfox/dagda/engine/internal/model"
 )
 
 // codexPlanFiles bounds how many recent rollouts are read for a snapshot: the

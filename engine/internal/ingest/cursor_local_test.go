@@ -8,7 +8,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/semyonfox/tokentelemetry/engine/internal/model"
+	"github.com/semyonfox/dagda/engine/internal/model"
 )
 
 const cursorLocalSchema = `CREATE TABLE cursorDiskKV(key TEXT PRIMARY KEY,value BLOB);`
@@ -56,8 +56,8 @@ func TestCursorLocalDiscoveryAndCSVReplacement(t *testing.T) {
 	for _, name := range []string{"HOME", "USERPROFILE", "XDG_CONFIG_HOME", "APPDATA"} {
 		t.Setenv(name, t.TempDir())
 	}
-	t.Setenv("TT_CURSOR_DB", "")
-	t.Setenv("TT_CURSOR_CSV", "")
+	t.Setenv("DAGDA_CURSOR_DB", "")
+	t.Setenv("DAGDA_CURSOR_CSV", "")
 	config, err := os.UserConfigDir()
 	if err != nil {
 		t.Fatal(err)
@@ -80,13 +80,13 @@ func TestCursorLocalDiscoveryAndCSVReplacement(t *testing.T) {
 	}
 	csv := filepath.Join(t.TempDir(), "usage.csv")
 	writeFile(t, csv, "Date,Model,Input (w/ Cache Write),Input (w/o Cache Write),Cache Read,Output Tokens,Total Tokens", "2026-09-01T12:00:00Z,example,0,100,0,10,110")
-	t.Setenv("TT_CURSOR_CSV", csv)
+	t.Setenv("DAGDA_CURSOR_CSV", csv)
 	got = scan(t, NewCursor())
 	if len(got) != 1 || got[0].Usage.Total() != 110 || got[0].Usage.Unclassified != 0 {
 		t.Fatalf("CSV must replace native history, not add to it: %+v", got)
 	}
 	// A mistyped configured export must not silently switch accounting source.
-	t.Setenv("TT_CURSOR_CSV", filepath.Join(t.TempDir(), "missing.csv"))
+	t.Setenv("DAGDA_CURSOR_CSV", filepath.Join(t.TempDir(), "missing.csv"))
 	if err := NewCursor().Scan(context.Background(), func(model.Turn) { t.Error("unexpected fallback") }); err == nil {
 		t.Fatal("missing configured export was not reported")
 	}

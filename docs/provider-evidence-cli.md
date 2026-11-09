@@ -30,7 +30,7 @@ do not read credentials or call provider APIs. Tests construct synthetic stores.
   `subagents/*/wire.jsonl`; `KIMI_SHARE_DIR` is supported.
 - Accounting: `input_other`, `output`, `input_cache_read`, and
   `input_cache_creation` are already disjoint and map directly to
-  TokenTelemetry's four buckets. Timestamps accept the native fractional Unix
+  Dagda's four buckets. Timestamps accept the native fractional Unix
   seconds as well as older string and integer forms.
 - Limits: the wire protocol normally does not identify the historical request
   model. The reader uses a model only when the same event records it; otherwise
@@ -73,9 +73,4 @@ do not read credentials or call provider APIs. Tests construct synthetic stores.
   aggregate's timestamp is the session end (or start) and per-call/day/model
   detail cannot be reconstructed. All Vibe aggregates remain unpriced because the final model configuration cannot
   establish historical model switches. Recorded `session_cost` is not mapped
-  because TokenTelemetry does not yet have a recorded-charge field.
-
-The implementation also compared these contracts with CodeBurn 0.9.24 at
-`4cf18855939512605826cf6b0a47b6486b0c8619`. That parser was treated as
-secondary evidence: its guessed model fallbacks, per-message allocation of Vibe
-session totals, and character-derived estimates were not ported.
+  because Dagda does not yet have a recorded-charge field.

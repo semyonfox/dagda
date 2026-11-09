@@ -4,8 +4,8 @@ import (
 	"slices"
 	"strings"
 
-	"github.com/semyonfox/tokentelemetry/engine/internal/cost"
-	"github.com/semyonfox/tokentelemetry/engine/internal/model"
+	"github.com/semyonfox/dagda/engine/internal/cost"
+	"github.com/semyonfox/dagda/engine/internal/model"
 )
 
 // Dimension is something usage can be grouped by. Grouping is composable:

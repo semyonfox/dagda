@@ -9,7 +9,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/semyonfox/tokentelemetry/engine/internal/model"
+	"github.com/semyonfox/dagda/engine/internal/model"
 )
 
 func writeGrokSession(t *testing.T, root, group, sessionID, cwd, kind, parentID, usage string) string {

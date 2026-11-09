@@ -1,10 +1,8 @@
 # Provider implementation inventory
 
-All 42 adapters registered by [CodeBurn at 4cf1885](https://github.com/getagentseal/codeburn/blob/4cf18855939512605826cf6b0a47b6486b0c8619/src/providers/index.ts) have been assessed. TokenTelemetry now registers 41 readers/importers, including its original six and Amp, which CodeBurn did not register. Crush and Grokbot remain source-limited because their audited local stores cannot supply measured usage history. They appear in `tokentelemetry agents` with that explanation, not as functioning token readers.
+Dagda registers 41 readers and importers. Crush and Grokbot remain source-limited because their audited local stores cannot supply measured usage history. They appear in `dagda agents` with that explanation, not as functioning token readers.
 
 Coverage is deliberately narrower than a vendor-wide claim. Copilot reads measured CLI and supported VS Code records, Cursor's automatic local counters are incomplete with CSV as an optional replacement, and Kiro supplies credits. These are adapter counts, not independent vendors or guarantees for every product version. Synthetic tests cover the formats described below; no personal logs were used.
-
-Graph work remains deferred. The [comparison and porting plan](provider-port-plan.md#deferred-terminal-options) records handmade bars, asciigraph, Bubble Tea, NTCharts, PTerm and tview for later consideration. No graph dependency or interactive UI was added.
 
 ## Complete list
 
@@ -59,16 +57,16 @@ Use these numbers or identifiers to prioritize deeper coverage. Entries marked *
 ## Running and importing
 
 ```sh
-tokentelemetry agents
-tokentelemetry agents --json
-tokentelemetry daily --agent copilot,cline-cli,qwen --plain
-tokentelemetry model --agent kilo-code --json
+dagda agents
+dagda agents --json
+dagda daily --agent copilot,cline-cli,qwen --plain
+dagda model --agent kilo-code --json
 
-TT_CURSOR_CSV=/path/to/usage.csv tokentelemetry daily --agent cursor --plain
-tokentelemetry daily --agent cursor-agent --plain
-TT_CURSOR_AGENT_DIR=/path/to/results tokentelemetry daily --agent cursor-agent --plain
-TT_ANTIGRAVITY_DIR=/path/to/captures tokentelemetry daily --agent antigravity --plain
-TT_VERCEL_REPORT=/path/to/report.json tokentelemetry daily --agent vercel-gateway --plain
+DAGDA_CURSOR_CSV=/path/to/usage.csv dagda daily --agent cursor --plain
+dagda daily --agent cursor-agent --plain
+DAGDA_CURSOR_AGENT_DIR=/path/to/results dagda daily --agent cursor-agent --plain
+DAGDA_ANTIGRAVITY_DIR=/path/to/captures dagda daily --agent antigravity --plain
+DAGDA_VERCEL_REPORT=/path/to/report.json dagda daily --agent vercel-gateway --plain
 ```
 
 Replace Cursor CSV and Vercel report snapshots when refreshing them. Do not append overlapping exports. Cursor Agent and Vercel Gateway require explicit `--agent` selection because they can overlap Cursor billing exports or native agent logs. The CLI rejects selecting both `cursor` and `cursor-agent` in one report because the exports do not share native request identities. Selecting Vercel Gateway with overlapping native sources can still double count.

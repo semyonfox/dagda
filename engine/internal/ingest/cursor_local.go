@@ -8,7 +8,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/semyonfox/tokentelemetry/engine/internal/model"
+	"github.com/semyonfox/dagda/engine/internal/model"
 )
 
 func scanCursorDB(ctx context.Context, path string, emit func(model.Turn)) error {

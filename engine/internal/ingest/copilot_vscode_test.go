@@ -7,7 +7,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/semyonfox/tokentelemetry/engine/internal/model"
+	"github.com/semyonfox/dagda/engine/internal/model"
 )
 
 func collectCopilotVSCode(t *testing.T, roots ...string) ([]model.Turn, bool, error) {

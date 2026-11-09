@@ -35,7 +35,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/semyonfox/tokentelemetry/engine/internal/pricing"
+	"github.com/semyonfox/dagda/engine/internal/pricing"
 )
 
 const modelsDevURL = "https://models.dev/api.json"
@@ -252,7 +252,7 @@ func fetch(src string) ([]byte, error) {
 	if err != nil {
 		return nil, err
 	}
-	req.Header.Set("User-Agent", "tokentelemetry-pricing-sync")
+	req.Header.Set("User-Agent", "dagda-pricing-sync")
 	client := &http.Client{Timeout: 60 * time.Second}
 	resp, err := client.Do(req)
 	if err != nil {

@@ -7,7 +7,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/semyonfox/tokentelemetry/engine/internal/report"
+	"github.com/semyonfox/dagda/engine/internal/report"
 )
 
 func TestCursorCSVThroughCLI(t *testing.T) {
@@ -18,11 +18,11 @@ func TestCursorCSVThroughCLI(t *testing.T) {
 	t.Setenv("LOCALAPPDATA", root)
 	t.Setenv("APPDATA", root)
 	t.Setenv("T3CODE_HOME", root)
-	t.Setenv("TT_OFFLINE", "1")
-	t.Setenv("TT_PRICING_FILE", filepath.Join(root, "missing-pricing.json"))
-	t.Setenv("TT_PLANS_FILE", filepath.Join(root, "missing-plans.json"))
+	t.Setenv("DAGDA_OFFLINE", "1")
+	t.Setenv("DAGDA_PRICING_FILE", filepath.Join(root, "missing-pricing.json"))
+	t.Setenv("DAGDA_PLANS_FILE", filepath.Join(root, "missing-plans.json"))
 	path := filepath.Join(root, "usage.csv")
-	t.Setenv("TT_CURSOR_CSV", path)
+	t.Setenv("DAGDA_CURSOR_CSV", path)
 	header := "Date,Model,Input (w/ Cache Write),Input (w/o Cache Write),Cache Read,Output Tokens,Total Tokens,Cost\n"
 	// Identical rows can be separate requests. CSV Cost is a recorded charge,
 	// not a model rate, so it cannot price an otherwise unknown model.
@@ -84,7 +84,7 @@ func runCapturedCLI(t *testing.T, args ...string) (int, string, string) {
 	origOut, origErr := os.Stdout, os.Stderr
 	os.Stdout, os.Stderr = stdout, stderr
 	defer func() { os.Stdout, os.Stderr = origOut, origErr }()
-	code := Main(append([]string{"tokentelemetry"}, args...))
+	code := Main(append([]string{"dagda"}, args...))
 	out, err := os.ReadFile(stdout.Name())
 	if err != nil {
 		t.Fatal(err)

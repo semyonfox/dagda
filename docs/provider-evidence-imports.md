@@ -7,7 +7,7 @@ install hooks, read credentials, or request account data over the network.
 
 This local-store follow-up was checked on 20 September 2026.
 
-With `TT_CURSOR_AGENT_DIR` unset, `--agent cursor-agent` discovers the SDK's
+With `DAGDA_CURSOR_AGENT_DIR` unset, `--agent cursor-agent` discovers the SDK's
 default SQLite stores at
 `~/.cursor/projects/*/sdk-agent-store/<workspace-md5>/index.db`. It reads only
 terminal `runs` joined to `agents`, using `run_id`, `agent_id`, `status`,
@@ -32,14 +32,14 @@ reasoning relationship, then emits one aggregate per run.
 The persisted `model` is the run's selected model, while the aggregate can
 include subagent calls on other models. It is retained for display, but every
 native SDK aggregate is excluded from price calculation for that attribution
-reason. Local stores contain no billed cost. TokenTelemetry does not call the
+reason. Local stores contain no billed cost. Dagda does not call the
 authenticated SDK usage endpoint, read credentials, or query Cursor's backend.
 This store belongs to SDK applications; it is not evidence that historical
 `cursor-agent` CLI sessions use the same database. A configured
 `JsonlLocalAgentStore` can live at an arbitrary application path and cannot be
 discovered safely.
 
-Setting `TT_CURSOR_AGENT_DIR` overrides automatic discovery and retains the
+Setting `DAGDA_CURSOR_AGENT_DIR` overrides automatic discovery and retains the
 older importer for caller-saved native SDK `RunResult` JSON files. Bare results
 without time or conversation identity stay undated. The importer never invents
 either value from the filename.
@@ -85,8 +85,8 @@ identical rows; independent identical events without IDs cannot be distinguished
 
 [AWS's current desktop documentation](https://docs.aws.amazon.com/quick/latest/userguide/desktop-security.html)
 describes cloud-backed conversation storage and does not publish the old local
-metrics contract. This reader is explicitly legacy/observed-schema support,
-based on CodeBurn's adapter, not a guarantee of current Quick cloud coverage.
+metrics contract. This reader is explicitly legacy observed-schema support,
+not a guarantee of current Quick cloud coverage.
 
 ## Antigravity
 
@@ -97,7 +97,7 @@ bounded at 64 MiB and protobuf parsing retains only the direct usage, model,
 response identity and timestamp field paths. Numeric private model IDs remain
 explicitly unpriced. Copied native response IDs deduplicate across stores.
 
-Set `TT_ANTIGRAVITY_DIR` to replace native discovery with a directory of saved
+Set `DAGDA_ANTIGRAVITY_DIR` to replace native discovery with a directory of saved
 `stream-json` captures
 (`.jsonl` or `.ndjson`). The [headless output contract](https://www.antigravity.google/docs/cli/headless/)
 defines one `result` per user turn, but its usage counters are cumulative over
@@ -116,14 +116,14 @@ not scanned together because they may contain the same calls.
 
 ## Vercel AI Gateway
 
-Set `TT_VERCEL_REPORT` to one saved `/v1/report` JSON response and select
+Set `DAGDA_VERCEL_REPORT` to one saved `/v1/report` JSON response and select
 `--agent vercel-gateway`. Replace the file for a refreshed snapshot. There is no
 automatic credential discovery or live request. Gateway totals may overlap
 native agent logs, so this reader requires explicit selection.
 
 The [current API contract](https://vercel.com/docs/ai-gateway/observability-and-spend/custom-reporting)
 allows **one grouping dimension**. `group_by=model` does not return daily model
-rows, despite CodeBurn assuming both fields. Accept model, day, or hour grouping;
+rows. Accept model, day, or hour grouping;
 reject unsupported/mixed dimensions and repeated buckets. Model grouping stays
 undated; day grouping has an unknown model. Cache inclusion is not documented
 well enough to price the raw input count, so it remains unclassified. Charged

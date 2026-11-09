@@ -8,7 +8,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/semyonfox/tokentelemetry/engine/internal/ingest"
+	"github.com/semyonfox/dagda/engine/internal/ingest"
 )
 
 func cmdAgents(args []string) int {
@@ -26,7 +26,7 @@ func cmdAgents(args []string) int {
 	}
 	for _, name := range names {
 		if !ingest.KnownAgent(name) {
-			return commandError("agents", fmt.Errorf("unknown agent %q; use `tt agents` to list supported identifiers", name))
+			return commandError("agents", fmt.Errorf("unknown agent %q; use `dagda agents` to list supported identifiers", name))
 		}
 	}
 	rows := filterAgents(ingest.Catalog(), names, *installed)
@@ -34,7 +34,7 @@ func cmdAgents(args []string) int {
 		enc := json.NewEncoder(os.Stdout)
 		enc.SetIndent("", "  ")
 		if err := enc.Encode(rows); err != nil {
-			fmt.Fprintf(os.Stderr, "tokentelemetry: %v\n", err)
+			fmt.Fprintf(os.Stderr, "dagda: %v\n", err)
 			return 1
 		}
 		return 0

@@ -5,7 +5,7 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/semyonfox/tokentelemetry/engine/internal/model"
+	"github.com/semyonfox/dagda/engine/internal/model"
 )
 
 func TestAntigravityStreamResultsDoNotAddStepsOrCopiedExports(t *testing.T) {
@@ -56,7 +56,7 @@ func TestAntigravityExplicitStreamDirectoryReplacesNativeDiscovery(t *testing.T)
 	}))
 	streamRoot := t.TempDir()
 	writeFile(t, filepath.Join(streamRoot, "capture.jsonl"), `{"event":"result","result":{"conversation_id":"stream","num_turns":1,"usage":{"input_tokens":5,"output_tokens":2}}}`)
-	t.Setenv("TT_ANTIGRAVITY_DIR", streamRoot)
+	t.Setenv("DAGDA_ANTIGRAVITY_DIR", streamRoot)
 
 	scanner := NewAntigravity()
 	if roots := scanner.Roots(); len(roots) != 1 || roots[0] != streamRoot {
@@ -79,7 +79,7 @@ func TestAntigravityInvalidExplicitStreamDirectoryDoesNotFallBackToNative(t *tes
 	writeAntigravityDB(t, nativeRoot, "native", antigravityTestBlob(antigravityTestRecord{
 		model: "Gemini 3.6 Flash", responseID: "native", seconds: 1_800_000_101, input: 100, output: 10,
 	}))
-	t.Setenv("TT_ANTIGRAVITY_DIR", filepath.Join(home, "missing"))
+	t.Setenv("DAGDA_ANTIGRAVITY_DIR", filepath.Join(home, "missing"))
 
 	scanner := NewAntigravity()
 	if len(scanner.Roots()) != 0 {

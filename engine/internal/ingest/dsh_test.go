@@ -9,7 +9,7 @@ import (
 	"testing"
 
 	"github.com/klauspost/compress/zstd"
-	"github.com/semyonfox/tokentelemetry/engine/internal/model"
+	"github.com/semyonfox/dagda/engine/internal/model"
 )
 
 func dshHeader(version int, id string) string {

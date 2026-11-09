@@ -8,7 +8,7 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/semyonfox/tokentelemetry/engine/internal/model"
+	"github.com/semyonfox/dagda/engine/internal/model"
 )
 
 // parserFiles is this package's own code, embedded so the scan cache can key

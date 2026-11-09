@@ -10,9 +10,9 @@ import (
 	"time"
 	"unicode"
 
-	"github.com/semyonfox/tokentelemetry/engine/internal/model"
-	"github.com/semyonfox/tokentelemetry/engine/internal/plans"
-	"github.com/semyonfox/tokentelemetry/engine/internal/report"
+	"github.com/semyonfox/dagda/engine/internal/model"
+	"github.com/semyonfox/dagda/engine/internal/plans"
+	"github.com/semyonfox/dagda/engine/internal/report"
 )
 
 // planCharges prorates the configured subscriptions over the window actually on

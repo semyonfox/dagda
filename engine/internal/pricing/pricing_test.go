@@ -218,11 +218,11 @@ func TestNormalize(t *testing.T) {
 // rates rather than a reseller's. This is the regression guard for the
 // alphabetical-provider bug.
 func TestEmbeddedDatasetIsFirstParty(t *testing.T) {
-	t.Setenv("TT_OFFLINE", "1")
+	t.Setenv("DAGDA_OFFLINE", "1")
 	t.Setenv("XDG_CACHE_HOME", t.TempDir())
 	t.Setenv("LOCALAPPDATA", t.TempDir())
 	t.Setenv("HOME", t.TempDir())
-	t.Setenv("TT_PRICING_FILE", filepath.Join(t.TempDir(), "missing.json"))
+	t.Setenv("DAGDA_PRICING_FILE", filepath.Join(t.TempDir(), "missing.json"))
 	tbl, err := Load()
 	if err != nil {
 		t.Fatalf("Load: %v", err)
@@ -271,7 +271,7 @@ func TestUserOverrideBeatsProviderKeyedRate(t *testing.T) {
 	if err := os.WriteFile(path, []byte(body), 0o644); err != nil {
 		t.Fatal(err)
 	}
-	t.Setenv("TT_PRICING_FILE", path)
+	t.Setenv("DAGDA_PRICING_FILE", path)
 
 	tbl := &Table{
 		Models:     map[string]*Model{"m1": {ID: "m1", Rates: []Rate{{From: MustParseDate("2026-01-01"), In: 1, Out: 1}}}},

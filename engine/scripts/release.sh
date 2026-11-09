@@ -14,7 +14,7 @@ version=${tag#v}
 
 root=$(cd "$(dirname "$0")/../.." && pwd)
 out=$root/dist/release
-module=github.com/semyonfox/tokentelemetry/engine
+module=github.com/semyonfox/dagda/engine
 targets="linux/amd64 linux/arm64 darwin/amd64 darwin/arm64 windows/amd64 windows/arm64"
 
 rm -rf "$out"
@@ -23,7 +23,7 @@ mkdir -p "$out"
 for target in $targets; do
 	goos=${target%/*}
 	goarch=${target#*/}
-	name=tokentelemetry_${goos}_${goarch}
+	name=dagda_${goos}_${goarch}
 	stage=$out/$name
 	exe=
 	[[ $goos == windows ]] && exe=.exe
@@ -32,7 +32,7 @@ for target in $targets; do
 	# pure Go sqlite means no cgo, so one toolchain builds every target
 	(cd "$root/engine" && CGO_ENABLED=0 GOOS=$goos GOARCH=$goarch go build -trimpath \
 		-ldflags "-s -w -X $module/internal/cli.Version=$version" \
-		-o "$stage/" ./cmd/tokentelemetry ./cmd/tt)
+		-o "$stage/" ./cmd/dagda)
 	cp "$root/LICENSE" "$root/README.md" "$stage/"
 	if [[ $goos == windows ]]; then
 		(cd "$out" && zip -qrX "$name.zip" "$name")
@@ -42,7 +42,7 @@ for target in $targets; do
 	rm -rf "$stage"
 done
 
-(cd "$out" && sha256sum tokentelemetry_* > checksums.txt)
+(cd "$out" && sha256sum dagda_* > checksums.txt)
 ls -l "$out"
 
 [[ $publish == --publish ]] || exit 0
@@ -54,5 +54,5 @@ fi
 # release notes come from the matching CHANGELOG section
 notes=$(awk -v h="## $version" '$0 == h || index($0, h " ") == 1 {on=1; next} /^## / && on {exit} on' "$root/CHANGELOG.md")
 [[ -n $notes ]] || { echo "CHANGELOG.md has no '## $version' section" >&2; exit 1; }
-gh release create "$tag" "$out"/tokentelemetry_* "$out/checksums.txt" \
-	--title "TokenTelemetry $version" --notes "$notes" --verify-tag
+gh release create "$tag" "$out"/dagda_* "$out/checksums.txt" \
+	--title "Dagda $version" --notes "$notes" --verify-tag

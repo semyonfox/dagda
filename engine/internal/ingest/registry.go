@@ -5,7 +5,7 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/semyonfox/tokentelemetry/engine/internal/model"
+	"github.com/semyonfox/dagda/engine/internal/model"
 )
 
 // ProviderInfo describes coverage separately from whether a local source exists.
@@ -51,7 +51,7 @@ func sourceLimitedProvider(agent model.Agent, coverage string) providerEntry {
 }
 
 func importedAntigravity(Scanner) providerStatus {
-	if os.Getenv("TT_ANTIGRAVITY_DIR") != "" {
+	if os.Getenv("DAGDA_ANTIGRAVITY_DIR") != "" {
 		return providerImport
 	}
 	return providerLocal
@@ -89,9 +89,9 @@ var providers = []providerEntry{
 	scannerProvider(model.Agent("mux"), NewMux, "Assistant step aggregates and separately billed tool models", providerLocal),
 	scannerProvider(model.Agent("zerostack"), NewZerostack, "Session totals using final protocol; historical model attribution unavailable", providerLocal),
 	scannerProvider(model.Agent("quickdesk"), NewQuickdesk, "Legacy local EMF metrics; unpriced; no current cloud history", providerLocal),
-	{agent: model.AgentAntigravity, newScanner: func() Scanner { return NewAntigravity() }, coverage: "Native CLI/IDE SQLite invocation counters; optional TT_ANTIGRAVITY_DIR stream-json replacement", status: providerLocal, statusFor: importedAntigravity},
-	scannerProvider(model.Agent("vercel-gateway"), NewVercelGateway, "TT_VERCEL_REPORT: single report snapshot; unpriced; may overlap native logs", providerImport),
-	{agent: model.Agent("cursor-agent"), newScanner: func() Scanner { return NewCursorAgent() }, coverage: "Automatic local SDK store discovery; optional TT_CURSOR_AGENT_DIR saved results; no historical CLI reconstruction", status: providerLocal, statusFor: importedCursorAgent},
+	{agent: model.AgentAntigravity, newScanner: func() Scanner { return NewAntigravity() }, coverage: "Native CLI/IDE SQLite invocation counters; optional DAGDA_ANTIGRAVITY_DIR stream-json replacement", status: providerLocal, statusFor: importedAntigravity},
+	scannerProvider(model.Agent("vercel-gateway"), NewVercelGateway, "DAGDA_VERCEL_REPORT: single report snapshot; unpriced; may overlap native logs", providerImport),
+	{agent: model.Agent("cursor-agent"), newScanner: func() Scanner { return NewCursorAgent() }, coverage: "Automatic local SDK store discovery; optional DAGDA_CURSOR_AGENT_DIR saved results; no historical CLI reconstruction", status: providerLocal, statusFor: importedCursorAgent},
 	scannerProvider(model.AgentQwen, NewQwen, "", providerLocal),
 	scannerProvider(model.Agent("kimi"), NewKimi, "", providerLocal),
 	scannerProvider(model.Agent("kimicode"), NewKimiCode, "", providerLocal),
@@ -106,7 +106,7 @@ var providers = []providerEntry{
 	scannerProvider(model.Agent("droid"), NewDroid, "Session totals; historical model attribution unavailable", providerLocal),
 	scannerProvider(model.Agent("ibm-bob"), NewIBMBob, "Observed IDE task metrics; unpriced", providerLocal),
 	scannerProvider(model.Agent("kiro"), NewKiro, "CLI credits only; no tokens, USD conversion, or IDE history", providerCredits),
-	{agent: model.AgentCursor, newScanner: func() Scanner { return NewCursor() }, coverage: "Automatic IDE SQLite discovery; best-effort counters, gaps disclosed; TT_CURSOR_CSV replaces local history", status: providerLocal, statusFor: importedCursor},
+	{agent: model.AgentCursor, newScanner: func() Scanner { return NewCursor() }, coverage: "Automatic IDE SQLite discovery; best-effort counters, gaps disclosed; DAGDA_CURSOR_CSV replaces local history", status: providerLocal, statusFor: importedCursor},
 	scannerProvider(model.AgentGrok, NewGrok, "", providerLocal),
 	scannerProvider(model.Agent("codewhale"), NewCodeWhale, "Measured session total only; unclassified and unpriced", providerLocal),
 	scannerProvider(model.Agent("codebuff"), NewCodebuff, "Native generation usage or credits; cumulative runState history excluded", providerLocal),

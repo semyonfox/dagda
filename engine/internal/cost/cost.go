@@ -14,8 +14,8 @@
 package cost
 
 import (
-	"github.com/semyonfox/tokentelemetry/engine/internal/model"
-	"github.com/semyonfox/tokentelemetry/engine/internal/pricing"
+	"github.com/semyonfox/dagda/engine/internal/model"
+	"github.com/semyonfox/dagda/engine/internal/pricing"
 )
 
 // Billing describes how a turn was actually paid for. It annotates the cost,

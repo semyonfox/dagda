@@ -15,7 +15,7 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/semyonfox/tokentelemetry/engine/internal/model"
+	"github.com/semyonfox/dagda/engine/internal/model"
 )
 
 // Grok reads the durable per-turn ledger written by Grok Build 1.0.14 and

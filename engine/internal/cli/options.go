@@ -7,8 +7,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/semyonfox/tokentelemetry/engine/internal/ingest"
-	"github.com/semyonfox/tokentelemetry/engine/internal/report"
+	"github.com/semyonfox/dagda/engine/internal/ingest"
+	"github.com/semyonfox/dagda/engine/internal/report"
 )
 
 type reportOptions struct {
@@ -66,7 +66,7 @@ func parseReportOptions(cmd string, args []string) (reportOptions, error) {
 	var cursorIDE, cursorSDK bool
 	for _, agent := range agents {
 		if !ingest.KnownAgent(agent) {
-			return opts, fmt.Errorf("unknown agent %q; use `tt agents` to list supported identifiers", agent)
+			return opts, fmt.Errorf("unknown agent %q; use `dagda agents` to list supported identifiers", agent)
 		}
 		if reason := ingest.SourceLimitation(agent); reason != "" {
 			return opts, fmt.Errorf("%s: %s", agent, reason)

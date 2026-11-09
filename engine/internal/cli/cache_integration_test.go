@@ -8,7 +8,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/semyonfox/tokentelemetry/engine/internal/report"
+	"github.com/semyonfox/dagda/engine/internal/report"
 )
 
 func TestCLICacheMatchesFreshReportsAndInvalidatesChangedHistory(t *testing.T) {
@@ -18,9 +18,9 @@ func TestCLICacheMatchesFreshReportsAndInvalidatesChangedHistory(t *testing.T) {
 	}
 	t.Setenv("CLAUDE_CONFIG_DIRS", "")
 	t.Setenv("CLAUDE_CONFIG_DIR", root)
-	t.Setenv("TT_OFFLINE", "1")
-	t.Setenv("TT_PRICING_FILE", filepath.Join(root, "missing-pricing.json"))
-	t.Setenv("TT_PLANS_FILE", filepath.Join(root, "missing-plans.json"))
+	t.Setenv("DAGDA_OFFLINE", "1")
+	t.Setenv("DAGDA_PRICING_FILE", filepath.Join(root, "missing-pricing.json"))
+	t.Setenv("DAGDA_PLANS_FILE", filepath.Join(root, "missing-plans.json"))
 	project := filepath.Join(root, "projects", "fixture")
 	if err := os.MkdirAll(project, 0700); err != nil {
 		t.Fatal(err)

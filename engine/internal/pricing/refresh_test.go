@@ -42,12 +42,12 @@ func TestLoadAutomaticallyRefreshesPrices(t *testing.T) {
 			t.Setenv("XDG_CACHE_HOME", dir)
 			t.Setenv("LOCALAPPDATA", dir)
 			t.Setenv("HOME", dir)
-			t.Setenv("TT_OFFLINE", "")
+			t.Setenv("DAGDA_OFFLINE", "")
 			if tc.offline {
-				t.Setenv("TT_OFFLINE", "1")
+				t.Setenv("DAGDA_OFFLINE", "1")
 			}
 			overridePath := filepath.Join(dir, "override.json")
-			t.Setenv("TT_PRICING_FILE", overridePath)
+			t.Setenv("DAGDA_PRICING_FILE", overridePath)
 			if tc.override {
 				if err := os.WriteFile(overridePath, []byte(`{"models":{"fixture-model":{"rates":[{"from":"2099-01-01","out":99}]}}}`), 0600); err != nil {
 					t.Fatal(err)
@@ -134,7 +134,7 @@ func TestCachedDataFallback(t *testing.T) {
 	if f, err := datasetAt(bundled, path); err != nil || f.Updated.String() != "2026-09-02" || f.Models["x"].Rates[0].In != 2 {
 		t.Fatal("newer cache ignored")
 	}
-	t.Setenv("TT_OFFLINE", "1")
+	t.Setenv("DAGDA_OFFLINE", "1")
 	Refresh()
 	if _, err := os.Stat(path + ".checked"); !os.IsNotExist(err) {
 		t.Fatal("offline refresh attempted a check")

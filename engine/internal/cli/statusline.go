@@ -11,8 +11,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/semyonfox/tokentelemetry/engine/internal/ingest"
-	"github.com/semyonfox/tokentelemetry/engine/internal/model"
+	"github.com/semyonfox/dagda/engine/internal/ingest"
+	"github.com/semyonfox/dagda/engine/internal/model"
 )
 
 // statuslineRefresh is how stale an unchanged snapshot may get before it is
@@ -50,7 +50,7 @@ func cmdStatusline(args []string) int {
 	}
 	if err != nil {
 		// the snapshot could not be saved but the line is still worth showing
-		fmt.Fprintf(os.Stderr, "tokentelemetry: warning: %v\n", err)
+		fmt.Fprintf(os.Stderr, "dagda: warning: %v\n", err)
 	}
 	if line := formatStatusline(windows, now); line != "" {
 		fmt.Println(line)

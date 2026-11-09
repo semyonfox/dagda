@@ -1,4 +1,4 @@
-// Package cli implements the TokenTelemetry command line.
+// Package cli implements the Dagda command line.
 package cli
 
 import (
@@ -74,15 +74,15 @@ func Main(args []string) int {
 		if len(rest) != 0 {
 			return commandError("version", fmt.Errorf("version accepts no arguments"))
 		}
-		fmt.Printf("tokentelemetry %s\n", version())
+		fmt.Printf("dagda %s\n", version())
 		return 0
 	}
 	return commandError("", fmt.Errorf("unknown command %q", name))
 }
 
 func commandError(command string, err error) int {
-	fmt.Fprintf(os.Stderr, "tokentelemetry: %v\n", err)
-	hint := "tt help"
+	fmt.Fprintf(os.Stderr, "dagda: %v\n", err)
+	hint := "dagda help"
 	if command != "" && command != "help" {
 		hint += " " + command
 	}

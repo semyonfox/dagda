@@ -10,7 +10,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/semyonfox/tokentelemetry/engine/internal/model"
+	"github.com/semyonfox/dagda/engine/internal/model"
 )
 
 const cursorSDKTestSchema = `
@@ -140,7 +140,7 @@ func TestCursorSDKDefaultDiscoveryAndSavedResultOverride(t *testing.T) {
 	home := t.TempDir()
 	t.Setenv("HOME", home)
 	t.Setenv("USERPROFILE", home)
-	t.Setenv("TT_CURSOR_AGENT_DIR", "")
+	t.Setenv("DAGDA_CURSOR_AGENT_DIR", "")
 	projects := filepath.Join(home, ".cursor", "projects")
 	if err := os.MkdirAll(filepath.Join(projects, "ordinary-cursor-project"), 0o755); err != nil {
 		t.Fatal(err)
@@ -162,7 +162,7 @@ func TestCursorSDKDefaultDiscoveryAndSavedResultOverride(t *testing.T) {
 
 	explicit := t.TempDir()
 	writeFile(t, filepath.Join(explicit, "saved.json"), `{"id":"saved-run","agentId":"saved-agent","status":"finished","createdAt":1,"model":{"id":"m"},"usage":{"inputTokens":2,"outputTokens":3,"cacheReadTokens":4,"cacheWriteTokens":5,"totalTokens":14}}`)
-	t.Setenv("TT_CURSOR_AGENT_DIR", explicit)
+	t.Setenv("DAGDA_CURSOR_AGENT_DIR", explicit)
 	saved := NewCursorAgent()
 	if roots := saved.Roots(); !slices.Equal(roots, []string{explicit}) {
 		t.Fatalf("explicit roots=%q", roots)

@@ -18,7 +18,7 @@ import (
 	"time"
 	"unicode"
 
-	"github.com/semyonfox/tokentelemetry/engine/internal/model"
+	"github.com/semyonfox/dagda/engine/internal/model"
 )
 
 const (
@@ -92,7 +92,7 @@ func sameCacheInputs(a, b []string) bool {
 
 func cacheNamespace(scanner Scanner) string {
 	h := sha256.New()
-	io.WriteString(h, "tokentelemetry-scan-cache-v1\n")
+	io.WriteString(h, "dagda-scan-cache-v1\n")
 	io.WriteString(h, runtime.Version()+"\n")
 	io.WriteString(h, fmt.Sprintf("%T\n", scanner))
 	io.WriteString(h, string(scanner.Agent())+"\n")

@@ -9,10 +9,10 @@ import (
 	"path/filepath"
 	"time"
 
-	"github.com/semyonfox/tokentelemetry/engine/internal/ingest"
-	"github.com/semyonfox/tokentelemetry/engine/internal/pricing"
-	"github.com/semyonfox/tokentelemetry/engine/internal/projectmeta"
-	"github.com/semyonfox/tokentelemetry/engine/internal/report"
+	"github.com/semyonfox/dagda/engine/internal/ingest"
+	"github.com/semyonfox/dagda/engine/internal/pricing"
+	"github.com/semyonfox/dagda/engine/internal/projectmeta"
+	"github.com/semyonfox/dagda/engine/internal/report"
 )
 
 func cmdReport(cmd string, args []string) int {
@@ -31,7 +31,7 @@ func cmdReport(cmd string, args []string) int {
 	tbl, err := pricing.Load()
 	if err != nil {
 		progress.Stop()
-		fmt.Fprintf(os.Stderr, "tokentelemetry: %v\n", err)
+		fmt.Fprintf(os.Stderr, "dagda: %v\n", err)
 		return 1
 	}
 
@@ -41,20 +41,20 @@ func cmdReport(cmd string, args []string) int {
 	scanners := ingest.Available(agents...)
 	if len(scanners) == 0 {
 		progress.Stop()
-		fmt.Fprintln(os.Stderr, "tokentelemetry: no agent logs found on this machine (try `tt agents --installed`)")
+		fmt.Fprintln(os.Stderr, "dagda: no agent logs found on this machine (try `dagda agents --installed`)")
 		return 1
 	}
 	progress.Update(fmt.Sprintf("Scanning logs from %d agents...", len(scanners)))
 	cacheDir := ""
 	if !opts.noCache {
 		if dir, err := os.UserCacheDir(); err == nil {
-			cacheDir = filepath.Join(dir, "tokentelemetry", "scans")
+			cacheDir = filepath.Join(dir, "dagda", "scans")
 		}
 	}
 	res, err := ingest.RunCached(ctx, scanners, cacheDir)
 	if err != nil {
 		progress.Stop()
-		fmt.Fprintf(os.Stderr, "tokentelemetry: %v\n", err)
+		fmt.Fprintf(os.Stderr, "dagda: %v\n", err)
 		return 1
 	}
 	lineage, lineageErr := projectmeta.LoadT3ProjectLineage(ctx)
@@ -77,20 +77,20 @@ func cmdReport(cmd string, args []string) int {
 	}
 	progress.Stop()
 	if lineageErr != nil {
-		fmt.Fprintf(os.Stderr, "tokentelemetry: warning: %v\n", lineageErr)
+		fmt.Fprintf(os.Stderr, "dagda: warning: %v\n", lineageErr)
 	}
 	for _, e := range res.Errors {
-		fmt.Fprintf(os.Stderr, "tokentelemetry: warning: %v\n", e)
+		fmt.Fprintf(os.Stderr, "dagda: warning: %v\n", e)
 	}
 	if opts.verbose && cacheDir != "" {
-		fmt.Fprintf(os.Stderr, "tokentelemetry: scan cache: %d hit(s), %d miss(es)\n", res.CacheHits, res.CacheMisses)
+		fmt.Fprintf(os.Stderr, "dagda: scan cache: %d hit(s), %d miss(es)\n", res.CacheHits, res.CacheMisses)
 	}
 
 	if opts.asJSON {
 		enc := json.NewEncoder(os.Stdout)
 		enc.SetIndent("", "  ")
 		if err := enc.Encode(view(cmd, rep)); err != nil {
-			fmt.Fprintf(os.Stderr, "tokentelemetry: %v\n", err)
+			fmt.Fprintf(os.Stderr, "dagda: %v\n", err)
 			return 1
 		}
 		return 0

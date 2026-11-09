@@ -7,7 +7,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/semyonfox/tokentelemetry/engine/internal/model"
+	"github.com/semyonfox/dagda/engine/internal/model"
 )
 
 func structuredLine(owner, turn, response, ts string, u codexUsage) string {

@@ -19,7 +19,7 @@ import (
 
 	_ "modernc.org/sqlite" // pure-Go driver: keeps CGO_ENABLED=0 cross-compiles working
 
-	"github.com/semyonfox/tokentelemetry/engine/internal/model"
+	"github.com/semyonfox/dagda/engine/internal/model"
 )
 
 // Antigravity reads per-invocation counters from local conversation databases.
@@ -43,7 +43,7 @@ const (
 )
 
 func NewAntigravity() *Antigravity {
-	if configured := os.Getenv("TT_ANTIGRAVITY_DIR"); configured != "" {
+	if configured := os.Getenv("DAGDA_ANTIGRAVITY_DIR"); configured != "" {
 		return &Antigravity{streamRoot: existingDir(configured)}
 	}
 	home := homeDir()

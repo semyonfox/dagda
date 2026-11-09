@@ -10,7 +10,7 @@ import (
 	"runtime"
 	"strconv"
 
-	"github.com/semyonfox/tokentelemetry/engine/internal/model"
+	"github.com/semyonfox/dagda/engine/internal/model"
 )
 
 type OpenDesign struct{ root string }

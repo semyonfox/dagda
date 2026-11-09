@@ -7,7 +7,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/semyonfox/tokentelemetry/engine/internal/ingest"
+	"github.com/semyonfox/dagda/engine/internal/ingest"
 )
 
 func TestFocusedCommandHelp(t *testing.T) {
@@ -16,14 +16,14 @@ func TestFocusedCommandHelp(t *testing.T) {
 		want, absent string
 	}{
 		{[]string{"help"}, "REPORTS", "--subagents"},
-		{[]string{"help", "summary"}, "last 30 local calendar days", "tt price MODEL"},
+		{[]string{"help", "summary"}, "last 30 local calendar days", "dagda price MODEL"},
 		{[]string{"daily", "--help"}, "Includes all available history", "last 30 local calendar days"},
-		{[]string{"help", "sessions"}, "tt session [flags]", "tt agents [NAME"},
+		{[]string{"help", "sessions"}, "dagda session [flags]", "dagda agents [NAME"},
 		{[]string{"agents", "--help"}, "--installed", "--group-by"},
-		{[]string{"providers", "-h"}, "tt providers [NAME", "--since"},
-		{[]string{"price", "--help"}, "tt price MODEL", "--agent"},
-		{[]string{"price", "fixture-model", "-h"}, "tt price MODEL", "no rate on file"},
-		{[]string{"help", "version"}, "tt --version", "--all-time"},
+		{[]string{"providers", "-h"}, "dagda providers [NAME", "--since"},
+		{[]string{"price", "--help"}, "dagda price MODEL", "--agent"},
+		{[]string{"price", "fixture-model", "-h"}, "dagda price MODEL", "no rate on file"},
+		{[]string{"help", "version"}, "dagda --version", "--all-time"},
 	} {
 		code, out, err := runCapturedCLI(t, tc.args...)
 		if code != 0 || err != "" || !strings.Contains(out, tc.want) || strings.Contains(out, tc.absent) {
@@ -53,7 +53,7 @@ func TestCommandValidationBeforeLookupOrScan(t *testing.T) {
 		{[]string{"daily", "--from", "2026-01-01"}, "flag provided but not defined"},
 	} {
 		code, out, err := runCapturedCLI(t, tc.args...)
-		if code != 2 || out != "" || !strings.Contains(err, tc.want) || !strings.Contains(err, "Run `tt help") {
+		if code != 2 || out != "" || !strings.Contains(err, tc.want) || !strings.Contains(err, "Run `dagda help") {
 			t.Fatalf("%v: exit=%d stdout=%q stderr=%q", tc.args, code, out, err)
 		}
 	}

@@ -8,16 +8,16 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/semyonfox/tokentelemetry/engine/internal/ingest"
-	"github.com/semyonfox/tokentelemetry/engine/internal/pricing"
-	"github.com/semyonfox/tokentelemetry/engine/internal/report"
+	"github.com/semyonfox/dagda/engine/internal/ingest"
+	"github.com/semyonfox/dagda/engine/internal/pricing"
+	"github.com/semyonfox/dagda/engine/internal/report"
 )
 
 func TestSummaryFromSyntheticTranscripts(t *testing.T) {
 	root := t.TempDir()
 	t.Setenv("CLAUDE_CONFIG_DIRS", "")
 	t.Setenv("CLAUDE_CONFIG_DIR", root)
-	t.Setenv("TT_PLANS_FILE", filepath.Join(root, "missing.json"))
+	t.Setenv("DAGDA_PLANS_FILE", filepath.Join(root, "missing.json"))
 	t.Setenv("COLUMNS", "80")
 	dir := filepath.Join(root, "projects", "example")
 	if err := os.MkdirAll(dir, 0700); err != nil {

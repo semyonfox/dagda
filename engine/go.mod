@@ -1,4 +1,4 @@
-module github.com/semyonfox/tokentelemetry/engine
+module github.com/semyonfox/dagda/engine
 
 go 1.26
 

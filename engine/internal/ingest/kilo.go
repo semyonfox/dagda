@@ -12,7 +12,7 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/semyonfox/tokentelemetry/engine/internal/model"
+	"github.com/semyonfox/dagda/engine/internal/model"
 )
 
 // Kilo reads Kilo Code's SQLite databases. Current Kilo builds store complete

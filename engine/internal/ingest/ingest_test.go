@@ -9,7 +9,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/semyonfox/tokentelemetry/engine/internal/model"
+	"github.com/semyonfox/dagda/engine/internal/model"
 )
 
 func writeFile(t *testing.T, path string, lines ...string) {

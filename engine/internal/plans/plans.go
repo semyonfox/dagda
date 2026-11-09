@@ -7,7 +7,7 @@
 // never says the plan costs $120 a month. Both numbers matter, and the ratio
 // between them is arguably the most useful figure the tool can produce.
 //
-// Config lives at ~/.tokentelemetry/plans.json:
+// Config lives at ~/.dagda/plans.json:
 //
 //	{
 //	  "subscriptions": [
@@ -56,13 +56,13 @@ type Charge struct {
 // Load reads the plans file. A missing or malformed file yields an empty
 // config, because a real-spend line is a bonus and must never break a report.
 func Load() Config {
-	path := os.Getenv("TT_PLANS_FILE")
+	path := os.Getenv("DAGDA_PLANS_FILE")
 	if path == "" {
 		home, err := os.UserHomeDir()
 		if err != nil {
 			return Config{}
 		}
-		path = filepath.Join(home, ".tokentelemetry", "plans.json")
+		path = filepath.Join(home, ".dagda", "plans.json")
 	}
 	raw, err := os.ReadFile(path)
 	if err != nil {

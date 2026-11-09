@@ -4,7 +4,7 @@ import (
 	"cmp"
 	"encoding/json"
 
-	"github.com/semyonfox/tokentelemetry/engine/internal/model"
+	"github.com/semyonfox/dagda/engine/internal/model"
 )
 
 // identityKey encodes components without delimiter collisions.

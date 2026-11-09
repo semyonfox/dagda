@@ -12,7 +12,7 @@ import (
 	"sort"
 
 	"github.com/klauspost/compress/zstd"
-	"github.com/semyonfox/tokentelemetry/engine/internal/model"
+	"github.com/semyonfox/dagda/engine/internal/model"
 )
 
 const zedMaxThreadBytes = 64 << 20

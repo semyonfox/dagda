@@ -1,12 +1,12 @@
-# TokenTelemetry CLI reference
+# Dagda CLI reference
 
 The Go engine is the primary application. For installation, project origins and
 accuracy limits, see the [project README](../README.md).
 
 ## Commands
 
-The command list is flat. `summary` is the default report, and `tt` is the
-short command name used below.
+The command list is flat. `summary` is the default report, and the command is
+`dagda`.
 
 ```
 summary                 overview with terminal charts; default is the last 30 days
@@ -19,13 +19,13 @@ price MODEL [MODEL ...] effective-dated API list rates
 version                 build version
 ```
 
-Use `tt help COMMAND` or `tt COMMAND --help` for a command's flags, defaults
+Use `dagda help COMMAND` or `dagda COMMAND --help` for a command's flags, defaults
 and examples. `sessions`, `models`, `projects` and `providers` are aliases for
 `session`, `model`, `project` and `agents`; existing commands keep working.
 
 `agents` accepts identifiers as well as flags. Flags may appear before or after
-names: `tt agents --installed` lists detected sources, and
-`tt agents cursor copilot --json` filters the catalog. Unknown names and flags
+names: `dagda agents --installed` lists detected sources, and
+`dagda agents cursor copilot --json` filters the catalog. Unknown names and flags
 are errors.
 
 `summary` defaults to the last 30 local calendar days, including today. An explicit
@@ -34,22 +34,24 @@ includes all available history, including undated records. It works on every
 report command and cannot be combined with date bounds. Other report commands
 already default to all available history. Usage logs stay local.
 
-Report flags can be used without a command name: `tt -a` is an all-time
-summary, and `tt --plain` is a summary without charts.
+Report flags can be used without a command name: `dagda -a` is an all-time
+summary, and `dagda --plain` is a summary without charts.
 
 See the [complete 42-adapter inventory](../docs/provider-inventory.md) for local
 readers, explicit imports, credits-only sources and unsupported source limits.
 `agents --json` includes coverage status and whether explicit selection is required.
 
-## Short command
+## Command name and data paths
 
-`tt` accepts every command and flag supported by `tokentelemetry`, including
-`tt -a`, `tt daily` and `tt model --json`. Both use the same configuration and
-cache directories. The product name remains TokenTelemetry.
+Dagda ships one executable, `dagda`. If you want something shorter, add a
+shell alias.
 
-`make build` from the repository root builds both executables. To install both
-with Go, run `go install ./cmd/tokentelemetry ./cmd/tt` from `engine/`.
-The generated npm launcher package also exposes both command names.
+Configuration lives in `~/.dagda`, caches in a `dagda` directory under the
+user cache directory, and environment variables use the `DAGDA_` prefix.
+
+`make build` from the repository root builds `dist/dagda`. To install with Go,
+run `go install ./cmd/dagda` from `engine/`. The generated npm launcher package
+exposes the same command.
 
 ## Filters and output
 
@@ -92,18 +94,18 @@ separate rather than being guessed together. JSON project rows retain their
 recorded CWDs in `project_paths`.
 
 ```sh
-./dist/tt -a
-./dist/tt summary --all-time --agent claude,codex
-./dist/tt summary --since 2026-08-01 --until 2026-08-31 --json
-./dist/tt daily --group-by agent,model
-./dist/tt session --project tokentelemetry --limit 10
+./dist/dagda -a
+./dist/dagda summary --all-time --agent claude,codex
+./dist/dagda summary --since 2026-08-01 --until 2026-08-31 --json
+./dist/dagda daily --group-by agent,model
+./dist/dagda session --project dagda --limit 10
 ```
 
 ## Scan cache
 
 Reports cache parsed usage under the operating system's user cache directory,
-in `tokentelemetry/scans`. On Linux this is normally
-`~/.cache/tokentelemetry/scans`, or `$XDG_CACHE_HOME/tokentelemetry/scans`.
+in `dagda/scans`. On Linux this is normally
+`~/.cache/dagda/scans`, or `$XDG_CACHE_HOME/dagda/scans`.
 
 Caching currently covers Claude Code, Codex, Amp, Antigravity, Cursor IDE/SDK,
 OpenCode, Hermes and Gemini. Other providers continue to read their sources.
@@ -129,19 +131,19 @@ that preserves both file size and modification time.
 Cursor's IDE database is discovered automatically on Linux, macOS and Windows:
 
 ```sh
-./dist/tt daily --agent cursor --plain
+./dist/dagda daily --agent cursor --plain
 ```
 
 Only recorded token counters are included. Cursor often leaves those counters
 empty, so the reader reports missing usage and cannot recover a complete history.
 Its local input counters have no cache breakdown and stay unclassified and
-unpriced. `TT_CURSOR_DB` can point to a database in a custom data directory.
+unpriced. `DAGDA_CURSOR_DB` can point to a database in a custom data directory.
 
-For fuller history, `TT_CURSOR_CSV` optionally selects a usage export containing
+For fuller history, `DAGDA_CURSOR_CSV` optionally selects a usage export containing
 the request date, model, input, output, cache and total token columns:
 
 ```sh
-TT_CURSOR_CSV=/path/to/usage.csv ./dist/tt daily --agent cursor --plain
+DAGDA_CURSOR_CSV=/path/to/usage.csv ./dist/dagda daily --agent cursor --plain
 ```
 
 The CSV replaces local database history entirely, preventing overlap. Replace
@@ -153,13 +155,13 @@ rows within one export remain separate requests. See the
 Local Cursor SDK stores are discovered under `~/.cursor/projects/` when selected:
 
 ```sh
-./dist/tt daily --agent cursor-agent --plain
+./dist/dagda daily --agent cursor-agent --plain
 ```
 
 This reads SDK runs, not ordinary Cursor CLI transcripts. Terminal runs provide
 measured token buckets; their model selection cannot establish the historical
 model for every subagent call, so these aggregates stay unpriced. Saved SDK
-results remain available through `TT_CURSOR_AGENT_DIR`.
+results remain available through `DAGDA_CURSOR_AGENT_DIR`.
 
 The SDK source requires explicit selection, and the CLI rejects selecting both `cursor`
 and `cursor-agent` in one report because the sources can overlap without shared
@@ -167,7 +169,7 @@ request IDs. Neither importer fetches account data automatically.
 
 ## Plan costs
 
-Optionally configure `~/.tokentelemetry/plans.json`:
+Optionally configure `~/.dagda/plans.json`:
 
 ```json
 {
@@ -196,16 +198,16 @@ estimate from token counts, and an agent that has reported none shows nothing.
   `~/.claude/settings.json`:
 
   ```json
-  { "statusLine": { "type": "command", "command": "tt statusline" } }
+  { "statusLine": { "type": "command", "command": "dagda statusline" } }
   ```
 
-  `tt statusline` records the windows under the user cache directory and prints
+  `dagda statusline` records the windows under the user cache directory and prints
   them on one line, so it can be the status line itself. To keep an existing
   status line script, give it the same input afterwards:
 
   ```sh
   input=$(cat)
-  printf '%s' "$input" | tt statusline >/dev/null
+  printf '%s' "$input" | dagda statusline >/dev/null
   printf '%s' "$input" | ~/.claude/my-statusline.sh
   ```
 
@@ -230,8 +232,8 @@ go run ./cmd/pricing-sync
 ```
 
 Pricing sync fetches current data over the network.
-Override rates using `~/.tokentelemetry/pricing.json` in the same schema, or set
-`TT_PRICING_FILE` to an override file.
+Override rates using `~/.dagda/pricing.json` in the same schema, or set
+`DAGDA_PRICING_FILE` to an override file.
 
 The same file can map an agent's opaque model id to a released model for both
 display and list-rate accounting. For example, Z.ai revealed Ox Alpha as
@@ -263,7 +265,7 @@ reporting and pricing packages.
 
 ## GitHub Copilot
 
-GitHub Copilot needs no TokenTelemetry-specific setup. The reader checks
+GitHub Copilot needs no Dagda-specific setup. The reader checks
 the default `~/.copilot/session-store.db` (or an already-configured
 `COPILOT_HOME`) for its schema-gated observed `assistant_usage_events` table.
 This is a local implementation detail, not a documented Copilot reporting API,
@@ -296,16 +298,16 @@ its total tokens and reports that split as uncertain.
 
 ### Optional Copilot file exports
 
-TokenTelemetry also reads Copilot CLI's existing OpenTelemetry JSON-lines file
+Dagda also reads Copilot CLI's existing OpenTelemetry JSON-lines file
 when `COPILOT_OTEL_FILE_EXPORTER_PATH` is set. Native scanning remains the
 default. To opt into Copilot's local exporter, use the same environment for
-Copilot and TokenTelemetry:
+Copilot and Dagda:
 
 ```sh
 mkdir -p "$HOME/.copilot"
 export COPILOT_OTEL_FILE_EXPORTER_PATH="$HOME/.copilot/otel.jsonl"
 copilot
-tt summary --agent copilot
+dagda summary --agent copilot
 ```
 
 The scanner reads completed model-call spans with recorded token counts and a
@@ -313,7 +315,7 @@ conversation ID. It ignores metric rollups and message content. If a conversatio
 already has native usage, the native records win for that entire conversation;
 the two sources have no shared per-request identity, so mixing partial records
 could double-count calls. Exported spans fill conversations with no native
-usage. TokenTelemetry never enables the exporter itself.
+usage. Dagda never enables the exporter itself.
 
 The file path and span fields follow the
 [Copilot CLI OpenTelemetry reference](https://docs.github.com/en/copilot/reference/copilot-cli-reference/cli-command-reference#opentelemetry-monitoring).
@@ -365,7 +367,7 @@ them. Antigravity project attribution is not currently available. Its metadata
 has no endpoint or credential-mode field, so the subscription billing label is
 a normal-route default rather than invoice attribution.
 
-Setting `TT_ANTIGRAVITY_DIR` selects saved stream-json captures instead of the
+Setting `DAGDA_ANTIGRAVITY_DIR` selects saved stream-json captures instead of the
 native databases. Cumulative snapshots count once per conversation; malformed,
 conflicting or unfinished captures produce warnings. The two sources are never
 combined automatically.
@@ -420,6 +422,6 @@ rotated and incomplete logs, and independently calculated daily costs.
 Models and prices update automatically when you run a report or `price`.
 The CLI checks the dataset published by daily CI at most once per day, with a
 three-second timeout and a cached or bundled fallback. No manual sync is needed.
-Set `TT_OFFLINE=1` to skip network checks. Your pricing overrides still take priority.
+Set `DAGDA_OFFLINE=1` to skip network checks. Your pricing overrides still take priority.
 Updates preserve recorded rate history; newly observed changes take effect on
 the sync date. Paid-to-zero changes are retained at their previous rates for review.

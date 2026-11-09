@@ -6,12 +6,12 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/semyonfox/tokentelemetry/engine/internal/model"
-	"github.com/semyonfox/tokentelemetry/engine/internal/report"
+	"github.com/semyonfox/dagda/engine/internal/model"
+	"github.com/semyonfox/dagda/engine/internal/report"
 )
 
 func TestOverviewLimitsDoNotHideTotalsOrUnpricedUsage(t *testing.T) {
-	t.Setenv("TT_PLANS_FILE", t.TempDir()+"/missing.json")
+	t.Setenv("DAGDA_PLANS_FILE", t.TempDir()+"/missing.json")
 	t.Setenv("COLUMNS", "80")
 	rep := &report.Report{
 		MatchedTurns: 3,
@@ -50,7 +50,7 @@ func TestOverviewLimitsDoNotHideTotalsOrUnpricedUsage(t *testing.T) {
 }
 
 func TestOverviewPlainNarrowAndZeroCost(t *testing.T) {
-	t.Setenv("TT_PLANS_FILE", t.TempDir()+"/missing.json")
+	t.Setenv("DAGDA_PLANS_FILE", t.TempDir()+"/missing.json")
 	rep := &report.Report{MatchedTurns: 1, ByModel: []report.Bucket{{Key: "free\nmodel\x1b", Unpriced: 1}}}
 	for _, tc := range []struct {
 		columns string
@@ -74,7 +74,7 @@ func TestReportRejectsInvalidArgumentsBeforeScanning(t *testing.T) {
 }
 
 func TestOverviewDisclosesApproximateAccounting(t *testing.T) {
-	t.Setenv("TT_PLANS_FILE", t.TempDir()+"/missing.json")
+	t.Setenv("DAGDA_PLANS_FILE", t.TempDir()+"/missing.json")
 	rep := &report.Report{MatchedTurns: 2, Totals: report.Totals{Turns: 2, AggregateRecords: 1, AggregateTokens: 100, HeuristicRecords: 1}}
 	var out bytes.Buffer
 	renderOverview(&out, rep, 0, false, false, false, nil)
@@ -86,7 +86,7 @@ func TestOverviewDisclosesApproximateAccounting(t *testing.T) {
 }
 
 func TestOverviewStacksDailyCostByAgent(t *testing.T) {
-	t.Setenv("TT_PLANS_FILE", t.TempDir()+"/missing.json")
+	t.Setenv("DAGDA_PLANS_FILE", t.TempDir()+"/missing.json")
 	t.Setenv("COLUMNS", "100")
 	t.Setenv("TERM", "xterm-256color")
 	grey, orange := ansi256(245), ansi256(208)

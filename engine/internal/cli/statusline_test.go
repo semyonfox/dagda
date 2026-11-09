@@ -6,8 +6,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/semyonfox/tokentelemetry/engine/internal/ingest"
-	"github.com/semyonfox/tokentelemetry/engine/internal/model"
+	"github.com/semyonfox/dagda/engine/internal/ingest"
+	"github.com/semyonfox/dagda/engine/internal/model"
 )
 
 // the example values from the Claude Code status line docs

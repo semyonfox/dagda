@@ -6,7 +6,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/semyonfox/tokentelemetry/engine/internal/model"
+	"github.com/semyonfox/dagda/engine/internal/model"
 )
 
 func TestRenderPlanWindowsDropsExpiredAndShowsAge(t *testing.T) {

@@ -3,7 +3,7 @@ package ingest
 import (
 	"context"
 
-	"github.com/semyonfox/tokentelemetry/engine/internal/model"
+	"github.com/semyonfox/dagda/engine/internal/model"
 )
 
 const rooCodeExtensionID = "rooveterinaryinc.roo-cline"

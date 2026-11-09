@@ -6,9 +6,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/semyonfox/tokentelemetry/engine/internal/model"
-	"github.com/semyonfox/tokentelemetry/engine/internal/pricing"
-	"github.com/semyonfox/tokentelemetry/engine/internal/report"
+	"github.com/semyonfox/dagda/engine/internal/model"
+	"github.com/semyonfox/dagda/engine/internal/pricing"
+	"github.com/semyonfox/dagda/engine/internal/report"
 )
 
 func TestHermesCodexRuntimeOverlapRequiresPersistedMatchingThread(t *testing.T) {

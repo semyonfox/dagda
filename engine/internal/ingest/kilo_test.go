@@ -11,7 +11,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/semyonfox/tokentelemetry/engine/internal/model"
+	"github.com/semyonfox/dagda/engine/internal/model"
 )
 
 func openKiloFixture(t *testing.T, path string, current, legacy bool) *sql.DB {

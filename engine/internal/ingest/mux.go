@@ -11,7 +11,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/semyonfox/tokentelemetry/engine/internal/model"
+	"github.com/semyonfox/dagda/engine/internal/model"
 )
 
 // Mux reads native assistant totals, including separately billed tool models.

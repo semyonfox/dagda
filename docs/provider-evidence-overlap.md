@@ -24,7 +24,7 @@ The reader queries only those three binding fields from the shared plugin-state 
 
 `appServer.homeScope: "agent"` keeps the native Codex store isolated per OpenClaw agent by default. The documented [`"user"` scope](https://github.com/openclaw/openclaw/blob/a5fa4fee550363a7a3ef2f8494a4c27a1428d31f/docs/plugins/codex-harness/config-fields.md#L28-L36) explicitly shares `$CODEX_HOME` or `~/.codex`, which is the ordinary combined-scan overlap. The identity rule also handles another configured Codex home if both ledgers are deliberately scanned.
 
-The window marker describes the persisted session window, not the runtime identity of every historical message. A window that switched harnesses may therefore contain older embedded calls mixed with its current Codex mirror. TokenTelemetry does not split that history using timestamps, models or token similarity. Excluded OpenClaw records retain their original per-message usage in `excluded_overlaps` so this limitation remains visible and auditable.
+The window marker describes the persisted session window, not the runtime identity of every historical message. A window that switched harnesses may therefore contain older embedded calls mixed with its current Codex mirror. Dagda does not split that history using timestamps, models or token similarity. Excluded OpenClaw records retain their original per-message usage in `excluded_overlaps` so this limitation remains visible and auditable.
 
 ## Direct Codex API integrations
 

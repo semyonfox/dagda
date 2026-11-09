@@ -4,7 +4,7 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/semyonfox/tokentelemetry/engine/internal/model"
+	"github.com/semyonfox/dagda/engine/internal/model"
 )
 
 func TestIncompleteUsageKeepsModelAndTokensButExcludesCost(t *testing.T) {

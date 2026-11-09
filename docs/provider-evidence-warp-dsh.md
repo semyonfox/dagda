@@ -12,12 +12,8 @@ and `last_modified_at`. In `conversation_data`, the measured accounting lives
 at `conversation_usage_metadata.token_usage`. Each entry identifies a model
 and records `warp_tokens` and `byok_tokens`.
 
-The audit also checked CodeBurn commit
-[`4cf18855939512605826cf6b0a47b6486b0c8619`](https://github.com/getagentseal/codeburn/tree/4cf18855939512605826cf6b0a47b6486b0c8619).
-Its [`warp.ts`](https://github.com/getagentseal/codeburn/blob/4cf18855939512605826cf6b0a47b6486b0c8619/src/providers/warp.ts)
-confirms the database paths, JSON fields, and the lack of a reliable
-input/output split. That implementation estimates exchange shares from prompt
-length. TokenTelemetry deliberately does not carry that estimate across.
+The stored data has no reliable input and output split. Dagda does not
+estimate one from prompt length.
 
 Contract:
 
@@ -41,7 +37,7 @@ The reader does not inspect prompts, commands, blocks, or transcript text.
 The primary audit used DeepSeek Harness commit
 [`c291e7961a515f6d7af9304e7fd1d257929aef26`](https://github.com/deepseek-ai/deepseek-harness/tree/c291e7961a515f6d7af9304e7fd1d257929aef26).
 
-The relevant upstream contracts are:
+The relevant source contracts are:
 
 - [`session-persistence-jsonl/src/zstd.ts`](https://github.com/deepseek-ai/deepseek-harness/blob/c291e7961a515f6d7af9304e7fd1d257929aef26/packages/session/session-persistence-jsonl/src/zstd.ts)
   defines the concatenated independent-frame container and treats an
@@ -52,10 +48,6 @@ The relevant upstream contracts are:
 - [The TokenUsage contract](https://github.com/deepseek-ai/deepseek-harness/blob/c291e7961a515f6d7af9304e7fd1d257929aef26/docs/subsystems/llm-streaming.md#tokenusage)
   states that input, cache-read, and cache-write counts are disjoint. Reasoning
   is already included in output and must not be added to totals again.
-
-CodeBurn's pinned [`dsh.ts`](https://github.com/getagentseal/codeburn/blob/4cf18855939512605826cf6b0a47b6486b0c8619/src/providers/dsh.ts)
-was used as a second implementation of version selection, inherited-history
-cuts, model precedence, and retry settlement.
 
 Contract:
 

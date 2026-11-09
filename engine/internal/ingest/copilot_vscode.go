@@ -15,7 +15,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/semyonfox/tokentelemetry/engine/internal/model"
+	"github.com/semyonfox/dagda/engine/internal/model"
 )
 
 // scanCopilotVSCode reads the local ChatSessionStore written by VS Code. roots
@@ -224,7 +224,7 @@ func copilotVSCodeAddSessionFile(paths map[string]copilotVSCodeSessionPath, path
 const copilotVSCodeMaxSettingsBytes = 1 << 20
 
 // copilotVSCodeUseLogSessionStorage observes VS Code's own local preference;
-// it is not a TokenTelemetry setting. The default is the append-only log.
+// it is not a Dagda setting. The default is the append-only log.
 func copilotVSCodeUseLogSessionStorage(root string) bool {
 	dir := filepath.Clean(root)
 	if info, err := os.Stat(dir); err == nil && !info.IsDir() {

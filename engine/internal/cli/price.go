@@ -9,7 +9,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/semyonfox/tokentelemetry/engine/internal/pricing"
+	"github.com/semyonfox/dagda/engine/internal/pricing"
 )
 
 func cmdPrice(args []string) int {
@@ -25,11 +25,11 @@ func cmdPrice(args []string) int {
 		return commandError("price", err)
 	}
 	if len(models) == 0 {
-		return commandError("price", fmt.Errorf("price needs a model id, e.g. `tt price gpt-5.6-luna`"))
+		return commandError("price", fmt.Errorf("price needs a model id, e.g. `dagda price gpt-5.6-luna`"))
 	}
 	tbl, err := pricing.Load()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "tokentelemetry: %v\n", err)
+		fmt.Fprintf(os.Stderr, "dagda: %v\n", err)
 		return 1
 	}
 	th := theme{on: colorEnabled(*noColor)}

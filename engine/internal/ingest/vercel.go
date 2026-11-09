@@ -8,14 +8,14 @@ import (
 	"strings"
 	"time"
 
-	"github.com/semyonfox/tokentelemetry/engine/internal/model"
+	"github.com/semyonfox/dagda/engine/internal/model"
 )
 
 // VercelGateway reads one explicitly selected /v1/report snapshot. Gateway
 // activity overlaps agent logs, so it is excluded unless --agent selects it.
 type VercelGateway struct{ path string }
 
-func NewVercelGateway() *VercelGateway    { return &VercelGateway{path: os.Getenv("TT_VERCEL_REPORT")} }
+func NewVercelGateway() *VercelGateway    { return &VercelGateway{path: os.Getenv("DAGDA_VERCEL_REPORT")} }
 func (*VercelGateway) Agent() model.Agent { return model.Agent("vercel-gateway") }
 func (*VercelGateway) ExplicitOnly() bool { return true }
 func (v *VercelGateway) Roots() []string {

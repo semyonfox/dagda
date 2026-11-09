@@ -10,20 +10,20 @@ import (
 	"time"
 )
 
-const publishedPrices = "https://raw.githubusercontent.com/semyonfox/tokentelemetry/main/engine/internal/pricing/data/pricing.json"
+const publishedPrices = "https://raw.githubusercontent.com/semyonfox/dagda/main/engine/internal/pricing/data/pricing.json"
 
 func cachePath() string {
 	dir, err := os.UserCacheDir()
 	if err != nil {
 		return ""
 	}
-	return filepath.Join(dir, "tokentelemetry", "pricing.json")
+	return filepath.Join(dir, "dagda", "pricing.json")
 }
 
 // Refresh checks once per day. Failure never prevents a local report.
-// TT_OFFLINE=1 disables the check while retaining cached prices.
+// DAGDA_OFFLINE=1 disables the check while retaining cached prices.
 func Refresh() {
-	if os.Getenv("TT_OFFLINE") == "1" {
+	if os.Getenv("DAGDA_OFFLINE") == "1" {
 		return
 	}
 	refresh(cachePath(), publishedPrices, &http.Client{Timeout: 3 * time.Second})

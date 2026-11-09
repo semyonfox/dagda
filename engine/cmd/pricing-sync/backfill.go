@@ -8,7 +8,7 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/semyonfox/tokentelemetry/engine/internal/pricing"
+	"github.com/semyonfox/dagda/engine/internal/pricing"
 )
 
 // legacyFile is the schema-1 dataset the Python implementation shipped: a flat

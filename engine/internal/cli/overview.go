@@ -9,7 +9,7 @@ import (
 	"time"
 	"unicode"
 
-	"github.com/semyonfox/tokentelemetry/engine/internal/report"
+	"github.com/semyonfox/dagda/engine/internal/report"
 )
 
 // renderOverview uses the same aggregates as detailed reports. The limit caps
@@ -21,7 +21,7 @@ func renderOverview(w io.Writer, rep *report.Report, limit int, color, verbose, 
 		noMatch(w, th)
 		return
 	}
-	section(w, th, "TokenTelemetry · "+rep.WindowFrom+" to "+rep.WindowTo)
+	section(w, th, "Dagda · "+rep.WindowFrom+" to "+rep.WindowTo)
 	summary(w, th, rep, 0, verbose, agents)
 	renderPlanWindows(w, th, rep.PlanWindows, time.Now())
 	// Bars need 64 cells; on anything narrower than 72 the charts drop them

@@ -5,8 +5,8 @@ import (
 	"io"
 	"time"
 
-	"github.com/semyonfox/tokentelemetry/engine/internal/ingest"
-	"github.com/semyonfox/tokentelemetry/engine/internal/model"
+	"github.com/semyonfox/dagda/engine/internal/ingest"
+	"github.com/semyonfox/dagda/engine/internal/model"
 )
 
 // renderPlanWindows shows each agent's own subscription windows under the

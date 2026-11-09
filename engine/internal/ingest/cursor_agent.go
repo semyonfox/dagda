@@ -11,11 +11,11 @@ import (
 	"path/filepath"
 	"time"
 
-	"github.com/semyonfox/tokentelemetry/engine/internal/model"
+	"github.com/semyonfox/dagda/engine/internal/model"
 )
 
 // CursorAgent reads the Cursor SDK's native local store. An explicit
-// TT_CURSOR_AGENT_DIR retains support for caller-saved SDK RunResult objects.
+// DAGDA_CURSOR_AGENT_DIR retains support for caller-saved SDK RunResult objects.
 // Legacy CLI transcripts do not expose this accounting contract and are not
 // estimated.
 type CursorAgent struct {
@@ -24,7 +24,7 @@ type CursorAgent struct {
 }
 
 func NewCursorAgent() *CursorAgent {
-	if root := os.Getenv("TT_CURSOR_AGENT_DIR"); root != "" {
+	if root := os.Getenv("DAGDA_CURSOR_AGENT_DIR"); root != "" {
 		return &CursorAgent{root: root}
 	}
 	if home := homeDir(); home != "" {

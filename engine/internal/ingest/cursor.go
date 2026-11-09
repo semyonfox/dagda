@@ -11,7 +11,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/semyonfox/tokentelemetry/engine/internal/model"
+	"github.com/semyonfox/dagda/engine/internal/model"
 )
 
 // Cursor discovers the IDE database automatically. A configured CSV replaces
@@ -19,10 +19,10 @@ import (
 type Cursor struct{ path, dbPath string }
 
 func NewCursor() *Cursor {
-	if p := os.Getenv("TT_CURSOR_CSV"); p != "" {
+	if p := os.Getenv("DAGDA_CURSOR_CSV"); p != "" {
 		return &Cursor{path: p}
 	}
-	p := os.Getenv("TT_CURSOR_DB")
+	p := os.Getenv("DAGDA_CURSOR_DB")
 	if p == "" {
 		if config, err := os.UserConfigDir(); err == nil {
 			p = filepath.Join(config, "Cursor", "User", "globalStorage", "state.vscdb")

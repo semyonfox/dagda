@@ -10,7 +10,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/semyonfox/tokentelemetry/engine/internal/model"
+	"github.com/semyonfox/dagda/engine/internal/model"
 )
 
 func TestCopilotDiscoversExplicitExporterWithoutNativeStores(t *testing.T) {

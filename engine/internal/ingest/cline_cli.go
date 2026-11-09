@@ -8,7 +8,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/semyonfox/tokentelemetry/engine/internal/model"
+	"github.com/semyonfox/dagda/engine/internal/model"
 )
 
 // ClineCLI scans Cline's version 1 SDK/CLI session store.
@@ -21,7 +21,7 @@ import (
 // The manifest identifies the session and its default route. Assistant
 // messages carry per-call metrics and may override the model and provider.
 // SDK inputTokens is the whole prompt, including cache reads and writes, so it
-// is reduced to TokenTelemetry's disjoint uncached-input bucket here.
+// is reduced to Dagda's disjoint uncached-input bucket here.
 type ClineCLI struct {
 	root string
 }

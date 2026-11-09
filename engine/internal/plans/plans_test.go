@@ -95,7 +95,7 @@ func TestSubscriptionDateBounds(t *testing.T) {
 
 // Absent or malformed config yields no real-spend line — never a guess.
 func TestMissingConfigIsEmpty(t *testing.T) {
-	t.Setenv("TT_PLANS_FILE", filepath.Join(t.TempDir(), "nope.json"))
+	t.Setenv("DAGDA_PLANS_FILE", filepath.Join(t.TempDir(), "nope.json"))
 	if !Load().Empty() {
 		t.Error("missing plans file produced subscriptions")
 	}
@@ -104,7 +104,7 @@ func TestMissingConfigIsEmpty(t *testing.T) {
 	if err := os.WriteFile(bad, []byte("{not json"), 0o644); err != nil {
 		t.Fatal(err)
 	}
-	t.Setenv("TT_PLANS_FILE", bad)
+	t.Setenv("DAGDA_PLANS_FILE", bad)
 	if !Load().Empty() {
 		t.Error("malformed plans file produced subscriptions")
 	}
@@ -117,7 +117,7 @@ func TestZeroFeeEntriesDropped(t *testing.T) {
 	if err := os.WriteFile(path, []byte(body), 0o644); err != nil {
 		t.Fatal(err)
 	}
-	t.Setenv("TT_PLANS_FILE", path)
+	t.Setenv("DAGDA_PLANS_FILE", path)
 	c := Load()
 	if len(c.Subscriptions) != 1 || c.Subscriptions[0].Agent != "claude" {
 		t.Errorf("subscriptions = %+v, want only the claude entry", c.Subscriptions)

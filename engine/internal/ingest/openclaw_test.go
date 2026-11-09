@@ -7,9 +7,9 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/semyonfox/tokentelemetry/engine/internal/model"
-	"github.com/semyonfox/tokentelemetry/engine/internal/pricing"
-	"github.com/semyonfox/tokentelemetry/engine/internal/report"
+	"github.com/semyonfox/dagda/engine/internal/model"
+	"github.com/semyonfox/dagda/engine/internal/pricing"
+	"github.com/semyonfox/dagda/engine/internal/report"
 )
 
 func TestOpenClawDedupsCurrentSQLiteAndJSONLByNativeEntryID(t *testing.T) {

@@ -13,7 +13,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/semyonfox/tokentelemetry/engine/internal/model"
+	"github.com/semyonfox/dagda/engine/internal/model"
 )
 
 // Codebuff reads completed UI messages. Credits are Codebuff's native meter;

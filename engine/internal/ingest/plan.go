@@ -12,7 +12,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/semyonfox/tokentelemetry/engine/internal/model"
+	"github.com/semyonfox/dagda/engine/internal/model"
 )
 
 // PlanReporter is implemented by scanners whose agent records its own
@@ -116,7 +116,7 @@ func DefaultPlanDir() (string, error) {
 	if err != nil {
 		return "", err
 	}
-	return filepath.Join(dir, "tokentelemetry", "plan"), nil
+	return filepath.Join(dir, "dagda", "plan"), nil
 }
 
 // PlanSnapshotPath is the snapshot file for one agent.

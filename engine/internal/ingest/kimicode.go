@@ -10,7 +10,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/semyonfox/tokentelemetry/engine/internal/model"
+	"github.com/semyonfox/dagda/engine/internal/model"
 )
 
 // KimiCode reads the request/usage event pairs written by the Kimi Code CLI.

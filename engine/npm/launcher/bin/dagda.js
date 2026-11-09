@@ -5,7 +5,7 @@
 // platform as an optional dependency, marked with `os`/`cpu` so the installer
 // downloads only the one that matches; this file finds it and hands the
 // process over. It is the same pattern esbuild, biome and swc use, and it is
-// what makes `npx tokentelemetry` and `bunx tokentelemetry` work without a
+// what makes `npx dagda` and `bunx dagda` work without a
 // compiler, a postinstall download, or a Python runtime.
 //
 // Handing over via execve on POSIX (rather than spawning a child) means signals,
@@ -16,12 +16,12 @@
 const { platform, arch } = process;
 
 const PACKAGES = {
-  "darwin arm64": "@tokentelemetry/engine-darwin-arm64",
-  "darwin x64": "@tokentelemetry/engine-darwin-x64",
-  "linux arm64": "@tokentelemetry/engine-linux-arm64",
-  "linux x64": "@tokentelemetry/engine-linux-x64",
-  "win32 arm64": "@tokentelemetry/engine-win32-arm64",
-  "win32 x64": "@tokentelemetry/engine-win32-x64",
+  "darwin arm64": "@dagda/engine-darwin-arm64",
+  "darwin x64": "@dagda/engine-darwin-x64",
+  "linux arm64": "@dagda/engine-linux-arm64",
+  "linux x64": "@dagda/engine-linux-x64",
+  "win32 arm64": "@dagda/engine-win32-arm64",
+  "win32 x64": "@dagda/engine-win32-x64",
 };
 
 function binaryPath() {
@@ -29,17 +29,17 @@ function binaryPath() {
   const pkg = PACKAGES[key];
   if (!pkg) {
     throw new Error(
-      `tokentelemetry does not ship a prebuilt binary for ${key}.\n` +
+      `dagda does not ship a prebuilt binary for ${key}.\n` +
         `Build from source instead:\n` +
-        `  go install github.com/semyonfox/tokentelemetry/engine/cmd/tokentelemetry@latest`
+        `  go install github.com/semyonfox/dagda/engine/cmd/dagda@latest`
     );
   }
-  const exe = platform === "win32" ? "tokentelemetry.exe" : "tokentelemetry";
+  const exe = platform === "win32" ? "dagda.exe" : "dagda";
   try {
     return require.resolve(`${pkg}/bin/${exe}`);
   } catch {
     throw new Error(
-      `tokentelemetry's binary package ${pkg} is missing.\n` +
+      `dagda's binary package ${pkg} is missing.\n` +
         `This usually means the install ran with --no-optional or --omit=optional.\n` +
         `Reinstall without that flag, or run:\n` +
         `  npm install ${pkg}`
@@ -64,7 +64,7 @@ if (platform === "win32") {
   const { spawnSync } = require("child_process");
   const r = spawnSync(bin, args, { stdio: "inherit", windowsHide: true });
   if (r.error) {
-    console.error(`tokentelemetry: ${r.error.message}`);
+    console.error(`dagda: ${r.error.message}`);
     process.exit(1);
   }
   process.exit(r.status === null ? 1 : r.status);
@@ -81,7 +81,7 @@ if (platform === "win32") {
     try {
       execve(bin, [bin, ...args], process.env);
     } catch (err) {
-      console.error(`tokentelemetry: ${err.message}`);
+      console.error(`dagda: ${err.message}`);
       process.exit(1);
     }
   } else {
@@ -95,7 +95,7 @@ if (platform === "win32") {
     };
     child.on("error", (err) => {
       removeHandlers();
-      console.error(`tokentelemetry: ${err.message}`);
+      console.error(`dagda: ${err.message}`);
       process.exit(1);
     });
     child.on("exit", (code, signal) => {

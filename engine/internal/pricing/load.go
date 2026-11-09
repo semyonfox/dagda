@@ -83,18 +83,18 @@ func load() (*Table, error) {
 	return tbl, nil
 }
 
-// applyOverride merges ~/.tokentelemetry/pricing.json over the embedded table,
+// applyOverride merges ~/.dagda/pricing.json over the embedded table,
 // so a user can correct a rate we got wrong (or price an internal model we have
 // never heard of) without waiting for a release. Failures are silent by design:
 // a malformed override must degrade to shipped prices, not break the tool.
 func applyOverride(tbl *Table) {
-	path := os.Getenv("TT_PRICING_FILE")
+	path := os.Getenv("DAGDA_PRICING_FILE")
 	if path == "" {
 		home, err := os.UserHomeDir()
 		if err != nil {
 			return
 		}
-		path = filepath.Join(home, ".tokentelemetry", "pricing.json")
+		path = filepath.Join(home, ".dagda", "pricing.json")
 	}
 	raw, err := os.ReadFile(path)
 	if err != nil {

@@ -40,11 +40,10 @@ stable export formats; diagnostics remain visible when they change.
 The IDE reader automatically discovers `Cursor/User/globalStorage/state.vscdb`
 under the platform's user configuration directory: `~/.config` on Linux,
 `~/Library/Application Support` on macOS, and `%APPDATA%` on Windows.
-`TT_CURSOR_DB` overrides the file path. It opens SQLite read-only, including
+`DAGDA_CURSOR_DB` overrides the file path. It opens SQLite read-only, including
 committed WAL updates, and projects accounting fields from `cursorDiskKV`
 `bubbleId:<conversation>:<bubble>` rows. It never queries authentication storage
-or reads message bodies. The observed field layout is also implemented in
-[CodeBurn's reader](https://github.com/getagentseal/codeburn/blob/4cf18855939512605826cf6b0a47b6486b0c8619/src/providers/cursor.ts).
+or reads message bodies. The field layout is observed, not documented by Cursor.
 
 Cursor support explicitly calls `tokenCount` best-effort: the client fetches
 counts from the backend after streaming, but timing failures can leave them
@@ -65,7 +64,7 @@ character estimates, conversation context gauges, a current session model, or
 file modification times. This provides automatic local coverage where Cursor
 recorded counters, not complete historical usage on every Cursor version.
 
-Configuring `TT_CURSOR_CSV` replaces the local database source entirely. A bad
+Configuring `DAGDA_CURSOR_CSV` replaces the local database source entirely. A bad
 configured CSV reports an error instead of silently falling back to a different
 source. The CLI rejects combining `cursor` and `cursor-agent`, which cannot be
 reconciled through shared request identities.
@@ -81,13 +80,13 @@ therefore requires the observed request export headers exactly: `Date`,
 ignored. The current and historical header variants are independently listed
 by [tokmesh](https://docs.rs/tokmesh-core/latest/src/tokmesh_core/sessions/cursor.rs.html#7-10).
 
-`TT_CURSOR_CSV` names one replacement snapshot. Users should overwrite that
+`DAGDA_CURSOR_CSV` names one replacement snapshot. Users should overwrite that
 file with each full export, never append or combine overlapping date windows.
 Rows retain their ordinal so identical legitimate requests preserve
 multiplicity. The four token columns are accepted only when their sum equals
 `Total Tokens`; otherwise only the total is retained as `Unclassified` and the
 row is unpriced. The export's `Cost`, `Included`, and `Free` values are not
-substituted into list-value accounting because TokenTelemetry has no recorded
+substituted into list-value accounting because Dagda has no recorded
 charge field. In particular, `Included` is not interpreted as zero value.
 
 ## Grok Build
@@ -114,7 +113,7 @@ aggregate. `usageIsIncomplete` is also unpriced because the producer states
 that subagent tokens may be missing. A row without `endedAt` remains measured
 but undated and unpriced; a malformed non-empty timestamp is rejected. The
 server-reported `costUsdTicks` is not substituted into list-value accounting
-until TokenTelemetry has a separate recorded-charge field.
+until Dagda has a separate recorded-charge field.
 
 Forks copy `usage.json` before adding child turns, then restamp the child session
 ID ([persistence source](https://github.com/xai-org/grok-build/blob/4247f661689354b831191f11eeeac8424993fe3d/crates/codegen/xai-grok-shell/src/session/persistence.rs)).
@@ -128,8 +127,7 @@ diagnostic. Nested ambiguity propagates upward so an ancestor aggregate cannot
 reintroduce the same child usage.
 
 Pre-`usage.json` sessions retain a conservative `updates.jsonl` fallback based
-on the observed CodeBurn provider at
-[`4cf1885`](https://github.com/getagentseal/codeburn/blob/4cf18855939512605826cf6b0a47b6486b0c8619/src/providers/grok.ts).
+on the observed legacy format.
 Repeated completion updates for one prompt are last-write-wins. The fallback
 does not infer historical request models from `summary.current_model_id`, does
 not assign session-level metadata or file-modification times to individual
@@ -142,17 +140,14 @@ The official [Settings and notifications](https://docs.x.ai/grok-bot/settings-an
 page exposes weekly and on-demand usage through the app or Cursor account, but
 does not document a local per-turn token export. The Electron client's observed
 `sand-client-persistence` mirror contains message text but no token counts,
-charge, or real model id. CodeBurn's
-[`grokbot.ts`](https://github.com/getagentseal/codeburn/blob/4cf18855939512605826cf6b0a47b6486b0c8619/src/providers/grokbot.ts)
-uses character estimates and a synthetic model. TokenTelemetry emits no usage
+charge, or real model id. Dagda emits no usage
 for this source. The provider catalog lists the limitation, and selecting
 `--agent grokbot` explains it before scanning.
 
 ## CodeWhale
 
 CodeWhale's session JSON schema is not publicly documented. The reader follows
-the reverse-engineered local contract in CodeBurn
-[`codewhale.ts`](https://github.com/getagentseal/codeburn/blob/4cf18855939512605826cf6b0a47b6486b0c8619/src/providers/codewhale.ts):
+the observed local contract:
 `~/.codewhale/sessions/*.json` and legacy `~/.deepseek/sessions/*.json` carry a
 native session id, timestamps, model, workspace, and only one `total_tokens`
 counter. Migrated copies deduplicate by native session id. The total is kept as

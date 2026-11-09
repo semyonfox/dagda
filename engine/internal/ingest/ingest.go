@@ -22,7 +22,7 @@ import (
 	"sort"
 	"sync"
 
-	"github.com/semyonfox/tokentelemetry/engine/internal/model"
+	"github.com/semyonfox/dagda/engine/internal/model"
 )
 
 // Scanner reads one agent's logs.

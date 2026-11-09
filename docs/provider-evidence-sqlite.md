@@ -61,8 +61,7 @@ not treated as a project path without a stable upstream contract.
 
 ZCode's runtime is not published as source. The official `zai-org/feedback`
 issue 564 confirms the current `~/.zcode/cli/db/db.sqlite` location and
-`model_usage` table. The remaining column contract follows the observed 0.14.8 schema in
-[CodeBurn's ZCode adapter](https://github.com/getagentseal/codeburn/blob/4cf18855939512605826cf6b0a47b6486b0c8619/src/providers/zcode.ts).
+`model_usage` table. The remaining column contract follows the observed 0.14.8 schema.
 Tests use synthetic databases, not an installed client's personal logs. The reader requires all
 of those columns and returns an unsupported-schema error on drift.
 
@@ -76,4 +75,4 @@ Crush's [session type](https://github.com/charmbracelet/crush/blob/main/internal
 
 ## Kilo Code
 
-The current Kilo SQLite reader uses per-message model/provider and token buckets, with modern `session_message` rows masking frozen legacy `message` rows of the same ID. The [comparison's Kilo analysis](provider-port-plan.md) records the primary Kilo source and schema references. Native request IDs preserve older unmigrated history without counting migrated messages twice.
+The current Kilo SQLite reader uses per-message model/provider and token buckets, with modern `session_message` rows masking frozen legacy `message` rows of the same ID. Native request IDs preserve older unmigrated history without counting migrated messages twice.

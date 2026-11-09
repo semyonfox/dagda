@@ -54,9 +54,8 @@ session-local ordering. It does not add inherited usage to a parent session.
 Factory's [settings documentation](https://docs.factory.ai/droid-cli/settings)
 defines the `~/.factory` state root and model setting, but it does not publish
 the persisted session token schema. The local `.settings.json` discovery and
-`tokenUsage` shape therefore follow CodeBurn's
-[`droid.ts` at `4cf1885`](https://github.com/getagentseal/codeburn/blob/4cf18855939512605826cf6b0a47b6486b0c8619/src/providers/droid.ts)
-as a compatibility fallback.
+`tokenUsage` shape therefore follow the observed format as a compatibility
+fallback.
 
 Droid stores session totals, so the reader emits one aggregate instead of
 spreading the total over messages. The recorded final model is retained, but
@@ -71,9 +70,7 @@ confirms that task history is local and subject to retention. IBM's community
 [history-export thread](https://community.ibm.com/community/user/discussion/history-export)
 documents the `IBM Bob`/`Bob-IDE` `globalStorage/ibm.bob-code/tasks` locations
 and `ui_messages.json`. The persisted counter shape is not a provider-owned
-public contract; compatibility follows the classic Cline task format also used
-by CodeBurn's
-[`ibm-bob.ts` at `4cf1885`](https://github.com/getagentseal/codeburn/blob/4cf18855939512605826cf6b0a47b6486b0c8619/src/providers/ibm-bob.ts).
+public contract. Compatibility follows the classic Cline task format.
 
 Bob task metadata preserves only task-level configured model state. Measured
 counters are retained, but every record is explicitly unpriced because a task

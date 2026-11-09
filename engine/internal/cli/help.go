@@ -43,11 +43,10 @@ func findCommand(name string) (commandSpec, bool) {
 
 func printHelp(name string) {
 	if name == "" {
-		fmt.Print(`TokenTelemetry - local usage and cost reports for AI coding agents
+		fmt.Print(`Dagda - local usage and cost reports for AI coding agents
 
 USAGE
-  tt [command] [flags]
-  tokentelemetry [command] [flags]
+  dagda [command] [flags]
 
 REPORTS
 `)
@@ -81,26 +80,26 @@ COMMON REPORT FLAGS
   --plain             omit summary charts and the startup spinner
 
 EXAMPLES
-  tt -a
-  tt daily --agent claude,codex --since 2026-09-01
-  tt agents --installed
-  tt agents cursor
-  tt help summary
+  dagda -a
+  dagda daily --agent claude,codex --since 2026-09-01
+  dagda agents --installed
+  dagda agents cursor
+  dagda help summary
 
 Aliases: sessions, models, projects, providers.
-Run tt help COMMAND for all flags, date defaults and examples.
+Run dagda help COMMAND for all flags, date defaults and examples.
 `)
 		return
 	}
 	command, _ := findCommand(name)
-	fmt.Printf("TokenTelemetry %s - %s\n\n", name, command.description)
+	fmt.Printf("Dagda %s - %s\n\n", name, command.description)
 	if command.report {
-		fmt.Printf("USAGE\n  tt %s [flags]\n", name)
+		fmt.Printf("USAGE\n  dagda %s [flags]\n", name)
 		if len(command.aliases) > 0 {
 			fmt.Printf("  Aliases: %s\n", strings.Join(command.aliases, ", "))
 		}
 		if name == "summary" {
-			fmt.Print("\nDefaults to the last 30 local calendar days. Use -a for all history.\nFlags without a command, such as tt -a, run summary.\n")
+			fmt.Print("\nDefaults to the last 30 local calendar days. Use -a for all history.\nFlags without a command, such as dagda -a, run summary.\n")
 		} else {
 			fmt.Print("\nIncludes all available history unless date filters are supplied.\n")
 		}
@@ -116,20 +115,20 @@ Run tt help COMMAND for all flags, date defaults and examples.
 		if name == "summary" {
 			fmt.Print("\nSummary JSON includes all rows regardless of the chart limit.\n")
 		}
-		fmt.Printf("\nEXAMPLE\n  tt %s --all-time --agent claude,codex\n", name)
+		fmt.Printf("\nEXAMPLE\n  dagda %s --all-time --agent claude,codex\n", name)
 		return
 	}
 	switch name {
 	case "statusline":
 		fmt.Print(`USAGE
-  tt statusline
+  dagda statusline
 
 Reads the JSON Claude Code passes to a status line command on stdin, records
 the subscription windows in it (rate_limits.five_hour and seven_day) under the
 user cache directory, and prints them on one line, so it can be the status
 line itself. In ~/.claude/settings.json:
 
-  { "statusLine": { "type": "command", "command": "tt statusline" } }
+  { "statusLine": { "type": "command", "command": "dagda statusline" } }
 
 Windows appear only for Claude Pro and Max subscribers and only after the
 first response in a session. The summary shows the latest recorded windows
@@ -140,8 +139,8 @@ FLAGS
 `)
 	case "agents":
 		fmt.Print(`USAGE
-  tt agents [NAME ...] [flags]
-  tt providers [NAME ...] [flags]
+  dagda agents [NAME ...] [flags]
+  dagda providers [NAME ...] [flags]
 
 Shows the full catalog by default. Names are case-insensitive identifiers.
 This checks source paths without scanning usage. A detected path does not prove
@@ -153,13 +152,13 @@ FLAGS
   --help, -h          show this help
 
 EXAMPLES
-  tt agents --installed
-  tt agents cursor copilot
-  tt providers --json kimi kimicode
+  dagda agents --installed
+  dagda agents cursor copilot
+  dagda providers --json kimi kimicode
 `)
 	case "price":
 		fmt.Print(`USAGE
-  tt price MODEL [MODEL ...] [flags]
+  dagda price MODEL [MODEL ...] [flags]
 
 Shows API list rates per million tokens and their effective dates.
 This looks up pricing without scanning usage logs.
@@ -169,10 +168,10 @@ FLAGS
   --help, -h          show this help
 
 EXAMPLE
-  tt price gpt-5.6-luna --no-color
+  dagda price gpt-5.6-luna --no-color
 `)
 	case "version":
-		fmt.Print("USAGE\n  tt version\n  tt --version\n  tt -v\n")
+		fmt.Print("USAGE\n  dagda version\n  dagda --version\n  dagda -v\n")
 	}
 }
 
@@ -182,7 +181,7 @@ FILTERS
   --since DATE        include usage on or after DATE (YYYY-MM-DD)
   --until DATE        include usage on or before DATE
                       date bounds cannot be combined with --all-time
-  --agent NAME        repeatable or comma-separated; use tt agents for names
+  --agent NAME        repeatable or comma-separated; use dagda agents for names
   --model NAME        repeatable or comma-separated model filter
   --project NAME      repeatable full path or trailing folder name
   --subagents MODE    include (default), only, or exclude

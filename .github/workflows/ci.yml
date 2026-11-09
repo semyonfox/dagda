@@ -73,5 +73,5 @@ jobs:
         if: steps.select.outcome != 'success' || steps.select.outputs.go != 'false'
       - run: go vet ./...
         if: steps.select.outcome != 'success' || steps.select.outputs.go != 'false'
-      - run: go build ./cmd/tokentelemetry ./cmd/tt
+      - run: go build ./cmd/dagda
         if: steps.select.outcome != 'success' || steps.select.outputs.go != 'false'
