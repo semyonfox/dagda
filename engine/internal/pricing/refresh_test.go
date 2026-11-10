@@ -180,3 +180,38 @@ func TestRefreshKeepsNewerDataAtRequestedPath(t *testing.T) {
 		t.Fatal("refresh replaced a newer dataset at the requested path")
 	}
 }
+
+func TestRefreshRechecksAfterSixHoursWithETag(t *testing.T) {
+	var tags []string
+	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		tags = append(tags, r.Header.Get("If-None-Match"))
+		if r.Header.Get("If-None-Match") == `"v1"` {
+			w.WriteHeader(http.StatusNotModified)
+			return
+		}
+		w.Header().Set("ETag", `"v1"`)
+		_, _ = w.Write(dataJSON)
+	}))
+	defer server.Close()
+	path := filepath.Join(t.TempDir(), "prices.json")
+	age := func(d time.Duration) {
+		old := time.Now().Add(-d)
+		if err := os.Chtimes(path+".checked", old, old); err != nil {
+			t.Fatal(err)
+		}
+	}
+
+	refresh(path, server.URL, server.Client())
+	age(5 * time.Hour)
+	refresh(path, server.URL, server.Client())
+	age(7 * time.Hour)
+	refresh(path, server.URL, server.Client())
+
+	if len(tags) != 2 || tags[0] != "" || tags[1] != `"v1"` {
+		t.Fatalf("requests sent If-None-Match %q, want an unconditional first check and one conditional recheck after 7h", tags)
+	}
+	raw, err := os.ReadFile(path)
+	if err != nil || !validDataset(raw) {
+		t.Fatalf("a 304 lost the cached prices: %v", err)
+	}
+}

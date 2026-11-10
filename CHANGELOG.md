@@ -1,5 +1,28 @@
 # Changelog
 
+## Unreleased
+
+- Price Claude Mythos 5.1 and 5.2 and Mythos 5.2 fast mode, which models.dev
+  does not list, from a small hand-checked file of vendor list rates. An
+  upstream first-party rate replaces a hand-checked one, scheduled rates
+  included, when it appears.
+- Stop billing cached tokens as free when the chosen reseller leaves out its
+  cache-read price but another reseller quoting the same list price publishes
+  one. A newly published cache-read price corrects the existing rate instead
+  of starting a new dated one, so earlier usage is repriced too.
+- Price dated Claude snapshot ids such as `claude-sonnet-4-20250514` at their
+  undated model's rate when only resellers list the snapshot.
+- Show `unpriced` instead of `$0.00` for a row with no rate at all.
+  `dagda price` marks an announced future rate as `scheduled`, not `current`.
+- Date rate changes when the vendor made them. Anthropic's launches and the
+  Claude Sonnet 5.5 cache-read cut on 7 October 2026 now carry the dates in
+  Anthropic's release notes instead of the day the sync first saw them.
+- Drop a price that changes and changes back within three days as reseller
+  noise, and keep one rate per day when a model is re-quoted the same day.
+- Check for new prices every six hours instead of daily, with a conditional
+  request so an unchanged price file is not downloaded again. The published
+  prices refresh every six hours too.
+
 ## 0.2.0 (2026-11-09)
 
 First Dagda release. Prebuilt `dagda` binaries for Linux, macOS and Windows

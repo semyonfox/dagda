@@ -24,6 +24,7 @@
 package main
 
 import (
+	_ "embed"
 	"encoding/json"
 	"flag"
 	"fmt"
@@ -31,6 +32,7 @@ import (
 	"net/http"
 	"os"
 	"path/filepath"
+	"regexp"
 	"sort"
 	"strings"
 	"time"
@@ -203,9 +205,7 @@ func main() {
 	if len(next.Models) == 0 {
 		fatal("transformed dataset is empty; refusing to overwrite the dataset")
 	}
-
-	prev := readExisting(*out)
-	changes := merge(prev, next, effective)
+	changes := sync(readExisting(*out), next, effective)
 
 	report(changes)
 	if *dryRun {
@@ -217,6 +217,48 @@ func main() {
 	}
 	fmt.Printf("\nWrote %s — %d models, %d provider-keyed, %d aliases (effective %s)\n",
 		*out, len(next.Models), len(next.ByProvider), len(next.Aliases), effective)
+}
+
+// sync folds the previous dataset and firstparty.json into next, the dataset
+// just built from models.dev, and returns the changes worth reporting.
+func sync(prev, next *dataset, effective pricing.Date) []change {
+	upstreamFirstParty := map[string]bool{}
+	for id, m := range next.Models {
+		if !m.FirstParty {
+			continue
+		}
+		upstreamFirstParty[id] = true
+		// the sync only ever dates a rate today, so a later one came from
+		// firstparty.json and stops applying once the vendor publishes upstream
+		if pm, ok := prevModel(prev, id); ok {
+			kept := make([]pricing.Rate, 0, len(pm.Rates))
+			for _, r := range pm.Rates {
+				if !r.From.After(effective) {
+					kept = append(kept, r)
+				}
+			}
+			pm.Rates = kept
+		}
+	}
+
+	changes := merge(prev, next, effective)
+	handChecked := applyFirstParty(next, upstreamFirstParty)
+	// those rates come from firstparty.json, so upstream differing is not news
+	kept := changes[:0]
+	for _, c := range changes {
+		if !handChecked[c.model] {
+			kept = append(kept, c)
+		}
+	}
+	return kept
+}
+
+func prevModel(prev *dataset, id string) (*pricing.Model, bool) {
+	if prev == nil {
+		return nil, false
+	}
+	m, ok := prev.Models[id]
+	return m, ok && m != nil
 }
 
 // runBackfill works purely on the committed dataset plus an old snapshot; it
@@ -270,6 +312,22 @@ type candidate struct {
 	tier, rank int
 	provider   string
 	rate       pricing.Rate
+	// hasCacheRead separates a published cache-read price from a missing one,
+	// which toRate otherwise stores as a zero that bills cached tokens as free
+	hasCacheRead bool
+}
+
+// beats breaks ties between equally ranked providers quoting the same list
+// price in favour of the one that also publishes a cache-read price. Every
+// reseller shares one rank, so without this the alphabetically first one wins
+// even when it leaves the field out. A different list price is a different
+// reseller's markup, not missing data, so that tie stays as it was.
+func (c candidate) beats(cur candidate) bool {
+	if c.tier != cur.tier || c.rank != cur.rank {
+		return better(c.tier, c.rank, cur.tier, cur.rank)
+	}
+	samePrice := c.rate.In == cur.rate.In && c.rate.Out == cur.rate.Out
+	return samePrice && c.hasCacheRead && !cur.hasCacheRead
 }
 
 func build(providers map[string]mdProvider, effective pricing.Date) *dataset {
@@ -319,8 +377,9 @@ func build(providers map[string]mdProvider, effective pricing.Date) *dataset {
 			ds.ByProvider[key] = &pricing.Model{ID: id, Rates: []pricing.Rate{rate}}
 
 			tier, rank := rankOf(provID)
-			if cur, seen := best[id]; !seen || better(tier, rank, cur.tier, cur.rank) {
-				best[id] = candidate{tier: tier, rank: rank, provider: provID, rate: rate}
+			cand := candidate{tier: tier, rank: rank, provider: provID, rate: rate, hasCacheRead: m.Cost.CacheRead != nil}
+			if cur, seen := best[id]; !seen || cand.beats(cur) {
+				best[id] = cand
 			}
 		}
 	}
@@ -441,6 +500,19 @@ func buildAliases(ds *dataset) {
 		}
 		add(id+"-latest", id)
 	}
+	// Claude Code logs dated snapshot ids, which Anthropic stops listing once
+	// the model retires, leaving only resellers that often omit cache prices.
+	// The snapshot is the same model as its undated id, so use that when the
+	// snapshot itself has no first-party rate.
+	for _, id := range ids {
+		m := datedClaude.FindStringSubmatch(id)
+		if m == nil || ds.Models[id].FirstParty {
+			continue
+		}
+		if _, ok := ds.Models[m[1]]; ok {
+			ds.Aliases[id] = m[1]
+		}
+	}
 	// Hand-curated equivalences that no rule derives.
 	for from, to := range map[string]string{
 		"claude-3.5-sonnet": "claude-3-5-sonnet",
@@ -454,6 +526,73 @@ func buildAliases(ds *dataset) {
 			add(from, to)
 		}
 	}
+}
+
+var datedClaude = regexp.MustCompile(`^(claude-[a-z0-9.-]+)-20[0-9]{6}$`)
+
+//go:embed firstparty.json
+var firstPartyJSON []byte
+
+type firstPartyFile struct {
+	Models map[string]*pricing.Model `json:"models"`
+	Dates  map[string][]pricing.Date `json:"dates"`
+}
+
+// applyFirstParty adds hand-checked vendor rates for models models.dev does
+// not publish. They replace any reseller rate, but never an upstream
+// first-party one, which is refreshed daily where this file is not.
+func applyFirstParty(ds *dataset, upstreamFirstParty map[string]bool) map[string]bool {
+	applied := map[string]bool{}
+	var f firstPartyFile
+	if err := json.Unmarshal(firstPartyJSON, &f); err != nil {
+		fatal("firstparty.json: %v", err)
+	}
+	for id, m := range f.Models {
+		if upstreamFirstParty[id] {
+			fmt.Fprintf(os.Stderr, "models.dev now publishes %s first-party; remove it from firstparty.json\n", id)
+			continue
+		}
+		m.ID = id
+		m.FirstParty = true
+		ds.Models[id] = m
+		delete(ds.Aliases, id)
+		applied[id] = true
+	}
+	for id, dates := range f.Dates {
+		m, ok := ds.Models[id]
+		if !ok || len(m.Rates) == 0 {
+			fmt.Fprintf(os.Stderr, "firstparty.json dates %s: no such model, skipped\n", id)
+			continue
+		}
+		series := []*pricing.Model{m}
+		if vendor, ok := ds.ByProvider[providerLookupKey(m.Rates[0].Source, id)]; ok {
+			series = append(series, vendor)
+		}
+		for _, s := range series {
+			if err := redate(s, dates); err != nil {
+				fatal("firstparty.json dates %s: %v", id, err)
+			}
+		}
+	}
+	return applied
+}
+
+// redate gives a model's first rates the vendor's announced dates, in order.
+// Rates beyond the known dates keep the date the sync first saw them.
+func redate(m *pricing.Model, dates []pricing.Date) error {
+	if len(dates) > len(m.Rates) {
+		return fmt.Errorf("%d dates for %d rates", len(dates), len(m.Rates))
+	}
+	for i, d := range dates {
+		if i > 0 && !d.After(dates[i-1]) {
+			return fmt.Errorf("dates out of order at %s", d)
+		}
+		if i+1 < len(m.Rates) && i+1 >= len(dates) && !m.Rates[i+1].From.After(d) {
+			return fmt.Errorf("%s is not before the next rate, from %s", d, m.Rates[i+1].From)
+		}
+		m.Rates[i].From = d
+	}
+	return nil
 }
 
 // --- merge ------------------------------------------------------------------
@@ -490,6 +629,10 @@ func merge(prev, next *dataset, effective pricing.Date) []change {
 	}
 	next.Schedules = prev.Schedules
 	for alias, target := range prev.Aliases {
+		// an id that now has its own first-party rate must not stay shadowed
+		if m, ok := next.Models[alias]; ok && m.FirstParty {
+			continue
+		}
 		if _, ok := next.Aliases[alias]; !ok {
 			if next.Aliases == nil {
 				next.Aliases = map[string]string{}
@@ -523,7 +666,51 @@ func merge(prev, next *dataset, effective pricing.Date) []change {
 		next.ByProvider = make(map[string]*pricing.Model)
 	}
 	mergeProviderRates(prev.ByProvider, next.ByProvider, effective)
+	for _, models := range []map[string]*pricing.Model{next.Models, next.ByProvider} {
+		for _, m := range models {
+			collapseSameDay(m)
+			dropBlips(m)
+		}
+	}
 	return changes
+}
+
+// collapseSameDay keeps one rate per day, the last one seen, which is the one
+// a lookup already uses. Syncing several times a day would otherwise stack
+// every intraday re-quote under the same date.
+func collapseSameDay(m *pricing.Model) {
+	out := make([]pricing.Rate, 0, len(m.Rates))
+	for _, r := range m.Rates {
+		if n := len(out); n > 0 && out[n-1].From == r.From {
+			out[n-1] = r
+			continue
+		}
+		out = append(out, r)
+	}
+	m.Rates = out
+}
+
+// blipDays is the longest a price can change and change back before the pair
+// is treated as noise. Resellers round and re-quote day to day, and a vendor
+// has never moved a list price for so short a time.
+const blipDays = 3
+
+// dropBlips removes a rate that is undone within blipDays, along with the rate
+// that undid it, so the earlier rate runs on unbroken.
+func dropBlips(m *pricing.Model) {
+	for i := 1; i+1 < len(m.Rates); {
+		before, blip, after := m.Rates[i-1], m.Rates[i], m.Rates[i+1]
+		if sameRate(before, after) && daysBetween(blip.From, after.From) <= blipDays {
+			m.Rates = append(m.Rates[:i:i], m.Rates[i+2:]...)
+			continue
+		}
+		i++
+	}
+}
+
+func daysBetween(a, b pricing.Date) int {
+	day := func(d pricing.Date) time.Time { return time.Date(d.Y, time.Month(d.M), d.D, 0, 0, 0, 0, time.UTC) }
+	return int(day(b).Sub(day(a)).Hours() / 24)
 }
 
 func mergeProviderRates(prev, next map[string]*pricing.Model, effective pricing.Date) {
@@ -554,6 +741,19 @@ func mergeRates(prev, next *pricing.Model, effective pricing.Date) bool {
 	if sameRate(latest, fresh) {
 		next.Rates = prev.Rates
 		return false
+	}
+	// a cache-read price appearing where none was published is a correction,
+	// not a price change, so it reprices the backlog rather than starting a
+	// new dated rate that leaves earlier cached tokens free
+	if latest.CacheRead == 0 && fresh.CacheRead > 0 {
+		filled := latest
+		filled.CacheRead = fresh.CacheRead
+		filled.Source = fresh.Source
+		if sameRate(filled, fresh) {
+			next.Rates = append([]pricing.Rate{}, prev.Rates...)
+			next.Rates[len(next.Rates)-1] = filled
+			return true
+		}
 	}
 	fresh.From = effective
 	next.Rates = append(append([]pricing.Rate{}, prev.Rates...), fresh)

@@ -249,7 +249,13 @@ func TestEmbeddedDatasetIsFirstParty(t *testing.T) {
 			t.Errorf("%s = %s/%v/%v/%v, want %v", query, id, r, confidence, priced, want)
 		}
 	}
-	for _, id := range []string{"gpt-5.6-luna", "gpt-5.6-terra", "claude-opus-5"} {
+	// the newest model of each vendor that supported agents run. v0.2.0
+	// shipped the day Claude Fable 5.2 launched without a rate for it
+	for _, id := range []string{
+		"gpt-5.6-luna", "gpt-5.6-terra", "gpt-6.1-sol", "gpt-6-astra",
+		"claude-opus-5", "claude-opus-5-5", "claude-fable-5-2", "claude-mythos-5-2", "claude-mythos-5-2-fast", "claude-sonnet-5-5", "claude-haiku-5-5",
+		"gemini-4-carbon", "gemini-4-argon", "gemini-3.8-flash", "grok-4.7",
+	} {
 		m, ok := tbl.Models[id]
 		if !ok {
 			t.Errorf("%s missing from the shipped dataset", id)

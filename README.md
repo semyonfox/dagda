@@ -73,8 +73,9 @@ same four token buckets: fresh input, output, cache reads and cache writes. The
 engine removes duplicates, applies effective-dated list prices and builds the
 report.
 
-Your usage never leaves the machine. The only network request is a daily check
-for updated model prices, which `DAGDA_OFFLINE=1` turns off.
+Your usage never leaves the machine. The only network request is a check for
+updated model prices at most every six hours, which `DAGDA_OFFLINE=1` turns
+off.
 
 ## Screens
 
