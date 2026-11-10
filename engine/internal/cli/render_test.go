@@ -285,3 +285,20 @@ func TestUnpricedModelRowIsNotShownAsFree(t *testing.T) {
 		}
 	}
 }
+
+func TestAllUnpricedTotalIsNotShownAsFree(t *testing.T) {
+	rep := &report.Report{ByModel: []report.Bucket{
+		{Key: "zeta-a", Turns: 1, Unpriced: 1},
+		{Key: "zeta-b", Turns: 2, Unpriced: 2},
+	}}
+	var out bytes.Buffer
+	render(&out, "model", rep, 0, false, false, true, nil)
+	for _, line := range strings.Split(out.String(), "\n") {
+		if strings.Contains(line, "Total") && !strings.Contains(line, "Total cost") && (strings.Contains(line, "$0.00") || !strings.Contains(line, "unpriced")) {
+			t.Fatalf("total = %q, want unpriced", line)
+		}
+	}
+	if !strings.Contains(out.String(), "Total") {
+		t.Fatalf("no total row:\n%s", out.String())
+	}
+}

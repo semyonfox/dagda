@@ -2,10 +2,10 @@
 
 ## Unreleased
 
-- Price Claude Mythos 5.1 and 5.2, Mythos 5.2 fast mode and Gemini 4 Carbon,
-  which models.dev does not list, from a small hand-checked file of vendor list
-  rates. Gemini 4 Carbon carries Google's announced rise on 1 December 2026.
-  An upstream first-party rate replaces a hand-checked one when it appears.
+- Price Claude Mythos 5.1 and 5.2 and Mythos 5.2 fast mode, which models.dev
+  does not list, from a small hand-checked file of vendor list rates. An
+  upstream first-party rate replaces a hand-checked one, scheduled rates
+  included, when it appears.
 - Stop billing cached tokens as free when the chosen reseller leaves out its
   cache-read price but another reseller quoting the same list price publishes
   one. A newly published cache-read price corrects the existing rate instead

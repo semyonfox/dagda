@@ -121,7 +121,7 @@ func TestFirstPartyFileFillsGapsOnly(t *testing.T) {
 	upstream := &pricing.Model{ID: "claude-mythos-5-1", FirstParty: true, Rates: []pricing.Rate{{In: 9, Out: 45, Source: "anthropic"}}}
 	ds := &dataset{
 		Models:  map[string]*pricing.Model{"claude-mythos-5-2": reseller, "claude-mythos-5-1": upstream},
-		Aliases: map[string]string{"gemini-4-carbon": "something-else"},
+		Aliases: map[string]string{"claude-mythos-5-2-fast": "something-else"},
 	}
 	applyFirstParty(ds, map[string]bool{"claude-mythos-5-1": true})
 
@@ -131,11 +131,8 @@ func TestFirstPartyFileFillsGapsOnly(t *testing.T) {
 	if ds.Models["claude-mythos-5-1"] != upstream {
 		t.Error("hand-checked rate replaced an upstream first-party one")
 	}
-	if _, ok := ds.Aliases["gemini-4-carbon"]; ok {
+	if _, ok := ds.Aliases["claude-mythos-5-2-fast"]; ok {
 		t.Error("an alias still shadows a hand-checked model")
-	}
-	if rates := ds.Models["gemini-4-carbon"].Rates; len(rates) != 2 || rates[1].From != pricing.MustParseDate("2026-12-01") || rates[1].In != 4 {
-		t.Errorf("gemini-4-carbon lost its announced 1 December rise: %+v", rates)
 	}
 }
 
@@ -234,5 +231,41 @@ func TestSameDayRequotesKeepTheLast(t *testing.T) {
 	collapseSameDay(m)
 	if got, want := strings.Join(fromDates(m), " "), "2026-11-08@0.038 2026-11-10@0.029"; got != want {
 		t.Fatalf("rates = %s, want %s", got, want)
+	}
+}
+
+// once Google publishes Carbon itself, its rate wins outright, including over
+// the 1 December rise firstparty.json had scheduled
+func TestUpstreamFirstPartyDropsScheduledOverlayRate(t *testing.T) {
+	prev := &dataset{Models: map[string]*pricing.Model{"gemini-4-carbon": {ID: "gemini-4-carbon", FirstParty: true, Rates: []pricing.Rate{
+		{From: pricing.MustParseDate("2026-11-10"), In: 2, Out: 10, Source: "google"},
+		{From: pricing.MustParseDate("2026-12-01"), In: 4, Out: 20, Source: "google"},
+	}}}}
+	for _, tc := range []struct {
+		in, out float64
+		want    string
+	}{
+		{3, 15, "2026-11-10@2 2026-11-11@3"},
+		{4, 20, "2026-11-10@2 2026-11-11@4"},
+	} {
+		p := &dataset{Models: map[string]*pricing.Model{}}
+		for id, m := range prev.Models {
+			p.Models[id] = &pricing.Model{ID: m.ID, FirstParty: true, Rates: append([]pricing.Rate{}, m.Rates...)}
+		}
+		next := &dataset{Models: map[string]*pricing.Model{"gemini-4-carbon": {ID: "gemini-4-carbon", FirstParty: true, Rates: []pricing.Rate{{In: tc.in, Out: tc.out, Source: "google"}}}}, Aliases: map[string]string{}}
+		sync(p, next, pricing.MustParseDate("2026-11-11"))
+		if got := strings.Join(fromDates(next.Models["gemini-4-carbon"]), " "); got != tc.want {
+			t.Errorf("upstream $%v: rates = %s, want %s", tc.in, got, tc.want)
+		}
+	}
+}
+
+func TestSavedAliasYieldsToNewFirstPartyRate(t *testing.T) {
+	id := "claude-sonnet-4-20250514"
+	prev := &dataset{Models: map[string]*pricing.Model{}, Aliases: map[string]string{id: "claude-sonnet-4"}}
+	next := &dataset{Models: map[string]*pricing.Model{id: {ID: id, FirstParty: true, Rates: []pricing.Rate{{In: 3, Out: 15}}}}, Aliases: map[string]string{}}
+	merge(prev, next, pricing.MustParseDate("2026-11-11"))
+	if got, ok := next.Aliases[id]; ok {
+		t.Fatalf("first-party %s still aliased to %s", id, got)
 	}
 }

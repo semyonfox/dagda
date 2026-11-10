@@ -127,6 +127,8 @@ func render(w io.Writer, cmd string, rep *report.Report, limit int, color, verbo
 		for _, r := range rows {
 			tot.Usage.Add(r.Usage)
 			tot.Cost += r.Cost
+			tot.Turns += r.Turns
+			tot.Unpriced += r.Unpriced
 		}
 		cells := []cell{styled("Total", th.strong)}
 		for i := 0; i < nDims; i++ {
@@ -136,6 +138,7 @@ func render(w io.Writer, cmd string, rep *report.Report, limit int, color, verbo
 			cells = append(cells, plain(""))
 		}
 		cells = append(cells, numbers(th, tot.Usage, tot.Cost, fmtNum, th.strong)...)
+		markUnpriced(th, cells, tot)
 		t.addRuled(cells...)
 	}
 	t.render(w)
@@ -189,10 +192,7 @@ func emitGroup(t *table, th theme, b report.Bucket, topLabel string, depth, nDim
 		costStyle = func(s string) string { return th.strong(th.money(s)) }
 	}
 	cells = append(cells, numbers(th, b.Usage, b.Cost, fmtNum, costStyle)...)
-	if b.Turns > 0 && b.Unpriced == b.Turns {
-		// no rate for anything on this row, so $0.00 would read as free
-		cells[len(cells)-1] = styled("unpriced", th.warn)
-	}
+	markUnpriced(th, cells, b)
 	if spaced {
 		t.addGroup(cells...)
 	} else {
@@ -201,6 +201,14 @@ func emitGroup(t *table, th theme, b report.Bucket, topLabel string, depth, nDim
 
 	for _, sub := range b.Breakdown {
 		emitGroup(t, th, sub, "", depth+1, nDims, showModels, fmtNum, false)
+	}
+}
+
+// markUnpriced replaces the cost cell of a row with no rate for any of its
+// turns, where $0.00 would read as free.
+func markUnpriced(th theme, cells []cell, b report.Bucket) {
+	if b.Turns > 0 && b.Unpriced == b.Turns {
+		cells[len(cells)-1] = styled("unpriced", th.warn)
 	}
 }
 

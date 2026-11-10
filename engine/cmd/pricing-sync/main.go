@@ -205,24 +205,7 @@ func main() {
 	if len(next.Models) == 0 {
 		fatal("transformed dataset is empty; refusing to overwrite the dataset")
 	}
-	upstreamFirstParty := map[string]bool{}
-	for id, m := range next.Models {
-		if m.FirstParty {
-			upstreamFirstParty[id] = true
-		}
-	}
-
-	prev := readExisting(*out)
-	changes := merge(prev, next, effective)
-	handChecked := applyFirstParty(next, upstreamFirstParty)
-	// those rates come from firstparty.json, so upstream differing is not news
-	kept := changes[:0]
-	for _, c := range changes {
-		if !handChecked[c.model] {
-			kept = append(kept, c)
-		}
-	}
-	changes = kept
+	changes := sync(readExisting(*out), next, effective)
 
 	report(changes)
 	if *dryRun {
@@ -234,6 +217,48 @@ func main() {
 	}
 	fmt.Printf("\nWrote %s — %d models, %d provider-keyed, %d aliases (effective %s)\n",
 		*out, len(next.Models), len(next.ByProvider), len(next.Aliases), effective)
+}
+
+// sync folds the previous dataset and firstparty.json into next, the dataset
+// just built from models.dev, and returns the changes worth reporting.
+func sync(prev, next *dataset, effective pricing.Date) []change {
+	upstreamFirstParty := map[string]bool{}
+	for id, m := range next.Models {
+		if !m.FirstParty {
+			continue
+		}
+		upstreamFirstParty[id] = true
+		// the sync only ever dates a rate today, so a later one came from
+		// firstparty.json and stops applying once the vendor publishes upstream
+		if pm, ok := prevModel(prev, id); ok {
+			kept := make([]pricing.Rate, 0, len(pm.Rates))
+			for _, r := range pm.Rates {
+				if !r.From.After(effective) {
+					kept = append(kept, r)
+				}
+			}
+			pm.Rates = kept
+		}
+	}
+
+	changes := merge(prev, next, effective)
+	handChecked := applyFirstParty(next, upstreamFirstParty)
+	// those rates come from firstparty.json, so upstream differing is not news
+	kept := changes[:0]
+	for _, c := range changes {
+		if !handChecked[c.model] {
+			kept = append(kept, c)
+		}
+	}
+	return kept
+}
+
+func prevModel(prev *dataset, id string) (*pricing.Model, bool) {
+	if prev == nil {
+		return nil, false
+	}
+	m, ok := prev.Models[id]
+	return m, ok && m != nil
 }
 
 // runBackfill works purely on the committed dataset plus an old snapshot; it
@@ -604,6 +629,10 @@ func merge(prev, next *dataset, effective pricing.Date) []change {
 	}
 	next.Schedules = prev.Schedules
 	for alias, target := range prev.Aliases {
+		// an id that now has its own first-party rate must not stay shadowed
+		if m, ok := next.Models[alias]; ok && m.FirstParty {
+			continue
+		}
 		if _, ok := next.Aliases[alias]; !ok {
 			if next.Aliases == nil {
 				next.Aliases = map[string]string{}

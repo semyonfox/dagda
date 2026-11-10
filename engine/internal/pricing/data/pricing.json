@@ -13466,17 +13466,35 @@
           "cache_read": 0.1,
           "cache_write": 2,
           "source": "google"
-        },
-        {
-          "from": "2026-12-01",
-          "in": 4,
-          "out": 20,
-          "cache_read": 0.2,
-          "cache_write": 4,
-          "source": "google"
         }
       ],
       "first_party": true
+    },
+    "gemini-4-carbon@eu": {
+      "id": "gemini-4-carbon@eu",
+      "rates": [
+        {
+          "from": "2026-11-10",
+          "in": 4,
+          "out": 20,
+          "cache_read": 0.2,
+          "cache_write": 0.375,
+          "source": "edenai"
+        }
+      ]
+    },
+    "gemini-4-carbon@us": {
+      "id": "gemini-4-carbon@us",
+      "rates": [
+        {
+          "from": "2026-11-10",
+          "in": 4,
+          "out": 20,
+          "cache_read": 0.2,
+          "cache_write": 0.375,
+          "source": "edenai"
+        }
+      ]
     },
     "gemini-deep-research": {
       "id": "gemini-deep-research",
@@ -14212,10 +14230,10 @@
         },
         {
           "from": "2026-11-10",
-          "in": 0.029,
-          "out": 0.088,
-          "cache_read": 0.015,
-          "cache_write": 0.029,
+          "in": 0.032,
+          "out": 0.097,
+          "cache_read": 0.016,
+          "cache_write": 0.032,
           "source": "nano-gpt"
         }
       ]
@@ -36867,6 +36885,14 @@
           "out": 16.332,
           "cache_read": 0.32664,
           "cache_write": 3.2664,
+          "source": "hyper"
+        },
+        {
+          "from": "2026-11-10",
+          "in": 2.2,
+          "out": 11,
+          "cache_read": 0.22,
+          "cache_write": 2.2,
           "source": "hyper"
         }
       ]
@@ -71374,6 +71400,19 @@
         }
       ]
     },
+    "cloudflare-ai-gateway\u0000muse-ember-1.0": {
+      "id": "muse-ember-1.0",
+      "rates": [
+        {
+          "from": "2026-11-10",
+          "in": 0.1,
+          "out": 0.5,
+          "cache_read": 0.004,
+          "cache_write": 0.1,
+          "source": "cloudflare-ai-gateway"
+        }
+      ]
+    },
     "cloudflare-ai-gateway\u0000muse-spark-1.1": {
       "id": "muse-spark-1.1",
       "rates": [
@@ -82166,6 +82205,45 @@
         }
       ]
     },
+    "edenai\u0000gemini-4-carbon": {
+      "id": "gemini-4-carbon",
+      "rates": [
+        {
+          "from": "2026-11-10",
+          "in": 4,
+          "out": 20,
+          "cache_read": 0.2,
+          "cache_write": 0.375,
+          "source": "edenai"
+        }
+      ]
+    },
+    "edenai\u0000gemini-4-carbon@eu": {
+      "id": "gemini-4-carbon@eu",
+      "rates": [
+        {
+          "from": "2026-11-10",
+          "in": 4,
+          "out": 20,
+          "cache_read": 0.2,
+          "cache_write": 0.375,
+          "source": "edenai"
+        }
+      ]
+    },
+    "edenai\u0000gemini-4-carbon@us": {
+      "id": "gemini-4-carbon@us",
+      "rates": [
+        {
+          "from": "2026-11-10",
+          "in": 4,
+          "out": 20,
+          "cache_read": 0.2,
+          "cache_write": 0.375,
+          "source": "edenai"
+        }
+      ]
+    },
     "edenai\u0000gemini-flash": {
       "id": "gemini-flash",
       "rates": [
@@ -91641,6 +91719,19 @@
         }
       ]
     },
+    "google\u0000gemini-4-carbon": {
+      "id": "gemini-4-carbon",
+      "rates": [
+        {
+          "from": "2026-11-10",
+          "in": 2,
+          "out": 10,
+          "cache_read": 0.1,
+          "cache_write": 2,
+          "source": "google"
+        }
+      ]
+    },
     "google\u0000gemini-embedding-001": {
       "id": "gemini-embedding-001",
       "rates": [
@@ -92391,6 +92482,19 @@
       "rates": [
         {
           "from": "2026-10-14",
+          "in": 2,
+          "out": 10,
+          "cache_read": 0.1,
+          "cache_write": 2,
+          "source": "google-vertex"
+        }
+      ]
+    },
+    "google-vertex\u0000gemini-4-carbon": {
+      "id": "gemini-4-carbon",
+      "rates": [
+        {
+          "from": "2026-11-10",
           "in": 2,
           "out": 10,
           "cache_read": 0.1,
@@ -96901,6 +97005,14 @@
           "cache_read": 0.32664,
           "cache_write": 3.2664,
           "source": "hyper"
+        },
+        {
+          "from": "2026-11-10",
+          "in": 2.2,
+          "out": 11,
+          "cache_read": 0.22,
+          "cache_write": 2.2,
+          "source": "hyper"
         }
       ]
     },
@@ -98554,7 +98666,7 @@
           "from": "2026-11-10",
           "in": 1.4,
           "out": 4.4,
-          "cache_read": 0.21,
+          "cache_read": 0.26,
           "cache_write": 0,
           "source": "inceptron"
         }
@@ -105401,6 +105513,19 @@
         }
       ]
     },
+    "kilo\u0000gemini-4-carbon": {
+      "id": "gemini-4-carbon",
+      "rates": [
+        {
+          "from": "2026-11-10",
+          "in": 4,
+          "out": 20,
+          "cache_read": 0.2,
+          "cache_write": 0.375,
+          "source": "kilo"
+        }
+      ]
+    },
     "kilo\u0000gemini-flash": {
       "id": "gemini-flash",
       "rates": [
@@ -105627,10 +105752,10 @@
         },
         {
           "from": "2026-11-10",
-          "in": 0.034,
-          "out": 0.103,
-          "cache_read": 0.017,
-          "cache_write": 0.034,
+          "in": 0.036,
+          "out": 0.108,
+          "cache_read": 0.018,
+          "cache_write": 0.036,
           "source": "kilo"
         }
       ]
@@ -109748,6 +109873,14 @@
           "in": 0.1,
           "out": 0.28,
           "cache_read": 0.05,
+          "cache_write": 0.1,
+          "source": "kilo"
+        },
+        {
+          "from": "2026-11-10",
+          "in": 0.1,
+          "out": 0.28,
+          "cache_read": 0.003,
           "cache_write": 0.1,
           "source": "kilo"
         }
@@ -123687,6 +123820,19 @@
         }
       ]
     },
+    "merge-gateway\u0000gemini-4-carbon": {
+      "id": "gemini-4-carbon",
+      "rates": [
+        {
+          "from": "2026-11-10",
+          "in": 2,
+          "out": 10,
+          "cache_read": 0.1,
+          "cache_write": 2,
+          "source": "merge-gateway"
+        }
+      ]
+    },
     "merge-gateway\u0000gemini-embedding-001": {
       "id": "gemini-embedding-001",
       "rates": [
@@ -132849,10 +132995,10 @@
         },
         {
           "from": "2026-11-10",
-          "in": 0.029,
-          "out": 0.088,
-          "cache_read": 0.015,
-          "cache_write": 0.029,
+          "in": 0.032,
+          "out": 0.097,
+          "cache_read": 0.016,
+          "cache_write": 0.032,
           "source": "nano-gpt"
         }
       ]
@@ -133075,10 +133221,10 @@
         },
         {
           "from": "2026-11-10",
-          "in": 0.029,
-          "out": 0.088,
-          "cache_read": 0.015,
-          "cache_write": 0.029,
+          "in": 0.032,
+          "out": 0.097,
+          "cache_read": 0.016,
+          "cache_write": 0.032,
           "source": "nano-gpt"
         }
       ]
@@ -136327,6 +136473,14 @@
           "out": 2.501,
           "cache_read": 0.042,
           "cache_write": 0.834,
+          "source": "nano-gpt"
+        },
+        {
+          "from": "2026-11-10",
+          "in": 0.7506,
+          "out": 2.2509,
+          "cache_read": 0.0378,
+          "cache_write": 0.7506,
           "source": "nano-gpt"
         }
       ]
@@ -206467,7 +206621,6 @@
     "deepseek-v4-1-flash": "deepseek-v4.1-flash",
     "deepseek-v4-1-flash-0910-uncensored": "deepseek-v4.1-flash-0910-uncensored",
     "deepseek-v4-1-flash-0910-uncensored:thinking": "deepseek-v4.1-flash-0910-uncensored:thinking",
-    "deepseek-v4-1-flash-1017": "deepseek-v4.1-flash-1017",
     "deepseek-v4-1-flash-1017-abliterated": "deepseek-v4.1-flash-1017-abliterated",
     "deepseek-v4-1-flash-1017-fast": "deepseek-v4.1-flash-1017-fast",
     "deepseek-v4-1-flash-1017-heretic": "deepseek-v4.1-flash-1017-heretic",
@@ -207100,6 +207253,8 @@
     "gemini-4-argon@eu-latest": "gemini-4-argon@eu",
     "gemini-4-argon@us-latest": "gemini-4-argon@us",
     "gemini-4-carbon-latest": "gemini-4-carbon",
+    "gemini-4-carbon@eu-latest": "gemini-4-carbon@eu",
+    "gemini-4-carbon@us-latest": "gemini-4-carbon@us",
     "gemini-deep-research-latest": "gemini-deep-research",
     "gemini-embedding-001-latest": "gemini-embedding-001",
     "gemini-embedding-2-latest": "gemini-embedding-2",
