@@ -14,6 +14,14 @@
   undated model's rate when only resellers list the snapshot.
 - Show `unpriced` instead of `$0.00` for a row with no rate at all.
   `dagda price` marks an announced future rate as `scheduled`, not `current`.
+- Date rate changes when the vendor made them. Anthropic's launches and the
+  Claude Sonnet 5.5 cache-read cut on 7 October 2026 now carry the dates in
+  Anthropic's release notes instead of the day the sync first saw them.
+- Drop a price that changes and changes back within three days as reseller
+  noise, and keep one rate per day when a model is re-quoted the same day.
+- Check for new prices every six hours instead of daily, with a conditional
+  request so an unchanged price file is not downloaded again. The published
+  prices refresh every six hours too.
 
 ## 0.2.0 (2026-11-09)
 

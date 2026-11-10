@@ -35,7 +35,7 @@ var (
 	loadErr error
 )
 
-// Load checks for updated prices once per day, then loads the cached or bundled
+// Load checks for updated prices every few hours, then loads the cached or bundled
 // dataset and applies the user's overrides once per process.
 func Load() (*Table, error) {
 	once.Do(func() {

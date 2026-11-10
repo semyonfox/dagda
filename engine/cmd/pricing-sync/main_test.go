@@ -1,6 +1,8 @@
 package main
 
 import (
+	"fmt"
+	"strings"
 	"testing"
 
 	"github.com/semyonfox/dagda/engine/internal/pricing"
@@ -145,5 +147,92 @@ func TestNewlyPublishedCacheReadRepricesBacklog(t *testing.T) {
 	rates := next.Models["m"].Rates
 	if len(rates) != 1 || rates[0].From != first || rates[0].CacheRead != 0.02 || rates[0].Source != "helicone" {
 		t.Fatalf("rates = %+v, want the July rate with a 0.02 cache read from helicone", rates)
+	}
+}
+
+func rateOn(day string, in float64) pricing.Rate {
+	return pricing.Rate{From: pricing.MustParseDate(day), In: in, Out: in * 5}
+}
+
+func fromDates(m *pricing.Model) []string {
+	var out []string
+	for _, r := range m.Rates {
+		out = append(out, fmt.Sprintf("%s@%v", r.From, r.In))
+	}
+	return out
+}
+
+// the fastrouter claude-sonnet-4 quote went 3 -> 2.989 -> 3 over one day
+func TestReversedQuoteIsDroppedAsNoise(t *testing.T) {
+	m := &pricing.Model{Rates: []pricing.Rate{
+		rateOn("2026-07-14", 3), rateOn("2026-10-16", 2.989), rateOn("2026-10-17", 3),
+		rateOn("2026-10-20", 2), rateOn("2026-10-30", 3),
+	}}
+	dropBlips(m)
+	got := strings.Join(fromDates(m), " ")
+	want := "2026-07-14@3 2026-10-20@2 2026-10-30@3"
+	if got != want {
+		t.Fatalf("rates = %s, want %s (a ten-day cut is a real price)", got, want)
+	}
+}
+
+func TestDropBlipsLeavesPreviousHistoryIntact(t *testing.T) {
+	prevRates := []pricing.Rate{rateOn("2026-07-14", 3), rateOn("2026-10-16", 2.989), rateOn("2026-10-17", 3)}
+	m := &pricing.Model{Rates: prevRates}
+	dropBlips(m)
+	if len(prevRates) != 3 || prevRates[1].In != 2.989 {
+		t.Fatalf("dropBlips rewrote the slice it was handed: %+v", prevRates)
+	}
+}
+
+// Anthropic's release notes put the Sonnet 5.5 launch on 28 September and its
+// cache-read cut on 7 October. The sync saw each a day later.
+func TestVendorDatesReplaceObservedOnes(t *testing.T) {
+	m := &pricing.Model{Rates: []pricing.Rate{rateOn("2026-09-29", 2), rateOn("2026-10-08", 2), rateOn("2026-12-02", 1)}}
+	if err := redate(m, []pricing.Date{pricing.MustParseDate("2026-09-28"), pricing.MustParseDate("2026-10-07")}); err != nil {
+		t.Fatal(err)
+	}
+	if got, want := strings.Join(fromDates(m), " "), "2026-09-28@2 2026-10-07@2 2026-12-02@1"; got != want {
+		t.Fatalf("rates = %s, want %s", got, want)
+	}
+	late := &pricing.Model{Rates: []pricing.Rate{rateOn("2026-09-29", 2), rateOn("2026-10-08", 2)}}
+	if err := redate(late, []pricing.Date{pricing.MustParseDate("2026-10-09")}); err == nil {
+		t.Fatal("a vendor date after the next rate was accepted")
+	}
+}
+
+func TestFirstPartyDatesCoverVendorSeries(t *testing.T) {
+	sonnet := func() *pricing.Model {
+		return &pricing.Model{ID: "claude-sonnet-5-5", FirstParty: true, Rates: []pricing.Rate{
+			{From: pricing.MustParseDate("2026-09-29"), In: 2, Out: 10, CacheRead: 0.2, Source: "anthropic"},
+			{From: pricing.MustParseDate("2026-10-08"), In: 2, Out: 10, CacheRead: 0.1, Source: "anthropic"},
+		}}
+	}
+	ds := &dataset{Models: map[string]*pricing.Model{}, ByProvider: map[string]*pricing.Model{}, Aliases: map[string]string{}}
+	for id, dates := range map[string][]string{
+		"claude-opus-5": {"2026-08-01"}, "claude-fable-5-1": {"2026-09-07"}, "claude-opus-5-5": {"2026-09-23"},
+		"claude-haiku-5-5": {"2026-10-08"}, "claude-fable-5-2": {"2026-11-10"},
+	} {
+		ds.Models[id] = &pricing.Model{ID: id, Rates: []pricing.Rate{{From: pricing.MustParseDate(dates[0]), In: 1, Out: 1, Source: "anthropic"}}}
+	}
+	ds.Models["claude-sonnet-5-5"] = sonnet()
+	ds.ByProvider["anthropic\x00claude-sonnet-5-5"] = sonnet()
+	applyFirstParty(ds, map[string]bool{})
+
+	for _, m := range []*pricing.Model{ds.Models["claude-sonnet-5-5"], ds.ByProvider["anthropic\x00claude-sonnet-5-5"]} {
+		if got, want := strings.Join(fromDates(m), " "), "2026-09-28@2 2026-10-07@2"; got != want {
+			t.Errorf("sonnet 5.5 = %s, want %s", got, want)
+		}
+	}
+	if got := ds.Models["claude-fable-5-2"].Rates[0].From; got != pricing.MustParseDate("2026-11-09") {
+		t.Errorf("fable 5.2 from %s, want its 9 November launch", got)
+	}
+}
+
+func TestSameDayRequotesKeepTheLast(t *testing.T) {
+	m := &pricing.Model{Rates: []pricing.Rate{rateOn("2026-11-08", 0.038), rateOn("2026-11-10", 0.066), rateOn("2026-11-10", 0.013), rateOn("2026-11-10", 0.029)}}
+	collapseSameDay(m)
+	if got, want := strings.Join(fromDates(m), " "), "2026-11-08@0.038 2026-11-10@0.029"; got != want {
+		t.Fatalf("rates = %s, want %s", got, want)
 	}
 }

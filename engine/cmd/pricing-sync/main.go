@@ -214,7 +214,15 @@ func main() {
 
 	prev := readExisting(*out)
 	changes := merge(prev, next, effective)
-	applyFirstParty(next, upstreamFirstParty)
+	handChecked := applyFirstParty(next, upstreamFirstParty)
+	// those rates come from firstparty.json, so upstream differing is not news
+	kept := changes[:0]
+	for _, c := range changes {
+		if !handChecked[c.model] {
+			kept = append(kept, c)
+		}
+	}
+	changes = kept
 
 	report(changes)
 	if *dryRun {
@@ -502,12 +510,14 @@ var firstPartyJSON []byte
 
 type firstPartyFile struct {
 	Models map[string]*pricing.Model `json:"models"`
+	Dates  map[string][]pricing.Date `json:"dates"`
 }
 
 // applyFirstParty adds hand-checked vendor rates for models models.dev does
 // not publish. They replace any reseller rate, but never an upstream
 // first-party one, which is refreshed daily where this file is not.
-func applyFirstParty(ds *dataset, upstreamFirstParty map[string]bool) {
+func applyFirstParty(ds *dataset, upstreamFirstParty map[string]bool) map[string]bool {
+	applied := map[string]bool{}
 	var f firstPartyFile
 	if err := json.Unmarshal(firstPartyJSON, &f); err != nil {
 		fatal("firstparty.json: %v", err)
@@ -521,7 +531,43 @@ func applyFirstParty(ds *dataset, upstreamFirstParty map[string]bool) {
 		m.FirstParty = true
 		ds.Models[id] = m
 		delete(ds.Aliases, id)
+		applied[id] = true
 	}
+	for id, dates := range f.Dates {
+		m, ok := ds.Models[id]
+		if !ok || len(m.Rates) == 0 {
+			fmt.Fprintf(os.Stderr, "firstparty.json dates %s: no such model, skipped\n", id)
+			continue
+		}
+		series := []*pricing.Model{m}
+		if vendor, ok := ds.ByProvider[providerLookupKey(m.Rates[0].Source, id)]; ok {
+			series = append(series, vendor)
+		}
+		for _, s := range series {
+			if err := redate(s, dates); err != nil {
+				fatal("firstparty.json dates %s: %v", id, err)
+			}
+		}
+	}
+	return applied
+}
+
+// redate gives a model's first rates the vendor's announced dates, in order.
+// Rates beyond the known dates keep the date the sync first saw them.
+func redate(m *pricing.Model, dates []pricing.Date) error {
+	if len(dates) > len(m.Rates) {
+		return fmt.Errorf("%d dates for %d rates", len(dates), len(m.Rates))
+	}
+	for i, d := range dates {
+		if i > 0 && !d.After(dates[i-1]) {
+			return fmt.Errorf("dates out of order at %s", d)
+		}
+		if i+1 < len(m.Rates) && i+1 >= len(dates) && !m.Rates[i+1].From.After(d) {
+			return fmt.Errorf("%s is not before the next rate, from %s", d, m.Rates[i+1].From)
+		}
+		m.Rates[i].From = d
+	}
+	return nil
 }
 
 // --- merge ------------------------------------------------------------------
@@ -591,7 +637,51 @@ func merge(prev, next *dataset, effective pricing.Date) []change {
 		next.ByProvider = make(map[string]*pricing.Model)
 	}
 	mergeProviderRates(prev.ByProvider, next.ByProvider, effective)
+	for _, models := range []map[string]*pricing.Model{next.Models, next.ByProvider} {
+		for _, m := range models {
+			collapseSameDay(m)
+			dropBlips(m)
+		}
+	}
 	return changes
+}
+
+// collapseSameDay keeps one rate per day, the last one seen, which is the one
+// a lookup already uses. Syncing several times a day would otherwise stack
+// every intraday re-quote under the same date.
+func collapseSameDay(m *pricing.Model) {
+	out := make([]pricing.Rate, 0, len(m.Rates))
+	for _, r := range m.Rates {
+		if n := len(out); n > 0 && out[n-1].From == r.From {
+			out[n-1] = r
+			continue
+		}
+		out = append(out, r)
+	}
+	m.Rates = out
+}
+
+// blipDays is the longest a price can change and change back before the pair
+// is treated as noise. Resellers round and re-quote day to day, and a vendor
+// has never moved a list price for so short a time.
+const blipDays = 3
+
+// dropBlips removes a rate that is undone within blipDays, along with the rate
+// that undid it, so the earlier rate runs on unbroken.
+func dropBlips(m *pricing.Model) {
+	for i := 1; i+1 < len(m.Rates); {
+		before, blip, after := m.Rates[i-1], m.Rates[i], m.Rates[i+1]
+		if sameRate(before, after) && daysBetween(blip.From, after.From) <= blipDays {
+			m.Rates = append(m.Rates[:i:i], m.Rates[i+2:]...)
+			continue
+		}
+		i++
+	}
+}
+
+func daysBetween(a, b pricing.Date) int {
+	day := func(d pricing.Date) time.Time { return time.Date(d.Y, time.Month(d.M), d.D, 0, 0, 0, 0, time.UTC) }
+	return int(day(b).Sub(day(a)).Hours() / 24)
 }
 
 func mergeProviderRates(prev, next map[string]*pricing.Model, effective pricing.Date) {

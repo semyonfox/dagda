@@ -20,7 +20,13 @@ func cachePath() string {
 	return filepath.Join(dir, "dagda", "pricing.json")
 }
 
-// Refresh checks once per day. Failure never prevents a local report.
+// checkEvery is how long a check, failed or not, holds off the next one. The
+// published file is conditional-GET'd, so a check that finds nothing new
+// costs one round trip and no download.
+const checkEvery = 6 * time.Hour
+
+// Refresh checks for new prices every few hours. Failure never prevents a
+// local report.
 // DAGDA_OFFLINE=1 disables the check while retaining cached prices.
 func Refresh() {
 	if os.Getenv("DAGDA_OFFLINE") == "1" {
@@ -33,7 +39,7 @@ func refresh(path, url string, client *http.Client) {
 	if path == "" {
 		return
 	}
-	if info, err := os.Stat(path + ".checked"); err == nil && time.Since(info.ModTime()) < 24*time.Hour {
+	if info, err := os.Stat(path + ".checked"); err == nil && time.Since(info.ModTime()) < checkEvery {
 		return
 	}
 	if os.MkdirAll(filepath.Dir(path), 0700) != nil {
@@ -41,7 +47,17 @@ func refresh(path, url string, client *http.Client) {
 	}
 	// Throttle failed checks too, so an offline machine does not wait every run.
 	_ = os.WriteFile(path+".checked", nil, 0600)
-	resp, err := client.Get(url)
+	req, err := http.NewRequest(http.MethodGet, url, nil)
+	if err != nil {
+		return
+	}
+	// the tag only means something while the file it describes is still there
+	if _, err := os.Stat(path); err == nil {
+		if tag, err := os.ReadFile(path + ".etag"); err == nil && len(tag) > 0 {
+			req.Header.Set("If-None-Match", string(tag))
+		}
+	}
+	resp, err := client.Do(req)
 	if err != nil {
 		return
 	}
@@ -65,8 +81,12 @@ func refresh(path, url string, client *http.Client) {
 	defer os.Remove(f.Name())
 	_, err = f.Write(raw)
 	closeErr := f.Close()
-	if err == nil && closeErr == nil {
-		_ = os.Rename(f.Name(), path)
+	if err == nil && closeErr == nil && os.Rename(f.Name(), path) == nil {
+		if tag := resp.Header.Get("ETag"); tag != "" {
+			_ = os.WriteFile(path+".etag", []byte(tag), 0600)
+		} else {
+			_ = os.Remove(path + ".etag")
+		}
 	}
 }
 
