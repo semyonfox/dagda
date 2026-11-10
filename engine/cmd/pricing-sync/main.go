@@ -24,6 +24,7 @@
 package main
 
 import (
+	_ "embed"
 	"encoding/json"
 	"flag"
 	"fmt"
@@ -31,6 +32,7 @@ import (
 	"net/http"
 	"os"
 	"path/filepath"
+	"regexp"
 	"sort"
 	"strings"
 	"time"
@@ -203,9 +205,16 @@ func main() {
 	if len(next.Models) == 0 {
 		fatal("transformed dataset is empty; refusing to overwrite the dataset")
 	}
+	upstreamFirstParty := map[string]bool{}
+	for id, m := range next.Models {
+		if m.FirstParty {
+			upstreamFirstParty[id] = true
+		}
+	}
 
 	prev := readExisting(*out)
 	changes := merge(prev, next, effective)
+	applyFirstParty(next, upstreamFirstParty)
 
 	report(changes)
 	if *dryRun {
@@ -270,6 +279,22 @@ type candidate struct {
 	tier, rank int
 	provider   string
 	rate       pricing.Rate
+	// hasCacheRead separates a published cache-read price from a missing one,
+	// which toRate otherwise stores as a zero that bills cached tokens as free
+	hasCacheRead bool
+}
+
+// beats breaks ties between equally ranked providers quoting the same list
+// price in favour of the one that also publishes a cache-read price. Every
+// reseller shares one rank, so without this the alphabetically first one wins
+// even when it leaves the field out. A different list price is a different
+// reseller's markup, not missing data, so that tie stays as it was.
+func (c candidate) beats(cur candidate) bool {
+	if c.tier != cur.tier || c.rank != cur.rank {
+		return better(c.tier, c.rank, cur.tier, cur.rank)
+	}
+	samePrice := c.rate.In == cur.rate.In && c.rate.Out == cur.rate.Out
+	return samePrice && c.hasCacheRead && !cur.hasCacheRead
 }
 
 func build(providers map[string]mdProvider, effective pricing.Date) *dataset {
@@ -319,8 +344,9 @@ func build(providers map[string]mdProvider, effective pricing.Date) *dataset {
 			ds.ByProvider[key] = &pricing.Model{ID: id, Rates: []pricing.Rate{rate}}
 
 			tier, rank := rankOf(provID)
-			if cur, seen := best[id]; !seen || better(tier, rank, cur.tier, cur.rank) {
-				best[id] = candidate{tier: tier, rank: rank, provider: provID, rate: rate}
+			cand := candidate{tier: tier, rank: rank, provider: provID, rate: rate, hasCacheRead: m.Cost.CacheRead != nil}
+			if cur, seen := best[id]; !seen || cand.beats(cur) {
+				best[id] = cand
 			}
 		}
 	}
@@ -441,6 +467,19 @@ func buildAliases(ds *dataset) {
 		}
 		add(id+"-latest", id)
 	}
+	// Claude Code logs dated snapshot ids, which Anthropic stops listing once
+	// the model retires, leaving only resellers that often omit cache prices.
+	// The snapshot is the same model as its undated id, so use that when the
+	// snapshot itself has no first-party rate.
+	for _, id := range ids {
+		m := datedClaude.FindStringSubmatch(id)
+		if m == nil || ds.Models[id].FirstParty {
+			continue
+		}
+		if _, ok := ds.Models[m[1]]; ok {
+			ds.Aliases[id] = m[1]
+		}
+	}
 	// Hand-curated equivalences that no rule derives.
 	for from, to := range map[string]string{
 		"claude-3.5-sonnet": "claude-3-5-sonnet",
@@ -453,6 +492,35 @@ func buildAliases(ds *dataset) {
 		if _, ok := ds.Models[to]; ok {
 			add(from, to)
 		}
+	}
+}
+
+var datedClaude = regexp.MustCompile(`^(claude-[a-z0-9.-]+)-20[0-9]{6}$`)
+
+//go:embed firstparty.json
+var firstPartyJSON []byte
+
+type firstPartyFile struct {
+	Models map[string]*pricing.Model `json:"models"`
+}
+
+// applyFirstParty adds hand-checked vendor rates for models models.dev does
+// not publish. They replace any reseller rate, but never an upstream
+// first-party one, which is refreshed daily where this file is not.
+func applyFirstParty(ds *dataset, upstreamFirstParty map[string]bool) {
+	var f firstPartyFile
+	if err := json.Unmarshal(firstPartyJSON, &f); err != nil {
+		fatal("firstparty.json: %v", err)
+	}
+	for id, m := range f.Models {
+		if upstreamFirstParty[id] {
+			fmt.Fprintf(os.Stderr, "models.dev now publishes %s first-party; remove it from firstparty.json\n", id)
+			continue
+		}
+		m.ID = id
+		m.FirstParty = true
+		ds.Models[id] = m
+		delete(ds.Aliases, id)
 	}
 }
 
@@ -554,6 +622,19 @@ func mergeRates(prev, next *pricing.Model, effective pricing.Date) bool {
 	if sameRate(latest, fresh) {
 		next.Rates = prev.Rates
 		return false
+	}
+	// a cache-read price appearing where none was published is a correction,
+	// not a price change, so it reprices the backlog rather than starting a
+	// new dated rate that leaves earlier cached tokens free
+	if latest.CacheRead == 0 && fresh.CacheRead > 0 {
+		filled := latest
+		filled.CacheRead = fresh.CacheRead
+		filled.Source = fresh.Source
+		if sameRate(filled, fresh) {
+			next.Rates = append([]pricing.Rate{}, prev.Rates...)
+			next.Rates[len(next.Rates)-1] = filled
+			return true
+		}
 	}
 	fresh.From = effective
 	next.Rates = append(append([]pricing.Rate{}, prev.Rates...), fresh)

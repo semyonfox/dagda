@@ -8,6 +8,7 @@ import (
 	"os"
 	"strconv"
 	"strings"
+	"time"
 
 	"github.com/semyonfox/dagda/engine/internal/pricing"
 )
@@ -103,10 +104,21 @@ func renderPrice(w io.Writer, th theme, tbl *pricing.Table, query string) bool {
 		column{title: "CACHE W", align: alignRight},
 		column{title: "", align: alignLeft},
 	)
+	// a vendor can announce a price change ahead of time, so the newest rate
+	// is not necessarily the one in force today
+	today := pricing.DateOf(time.Now())
+	current := 0
+	for i, r := range m.Rates {
+		if !r.From.After(today) {
+			current = i
+		}
+	}
 	for i, r := range m.Rates {
 		marker := ""
-		if i == len(m.Rates)-1 {
+		if i == current {
 			marker = "current"
+		} else if i > current {
+			marker = "scheduled"
 		} else if change := describeChange(m.Rates[i], m.Rates[i+1]); change != "" {
 			marker = change
 		}

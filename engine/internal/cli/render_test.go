@@ -236,3 +236,52 @@ func TestTableFitsTerminalWidth(t *testing.T) {
 		}
 	}
 }
+
+func TestRenderPriceMarksAnnouncedRateAsScheduled(t *testing.T) {
+	tbl := &pricing.Table{Models: map[string]*pricing.Model{
+		"m": {ID: "m", FirstParty: true, Rates: []pricing.Rate{
+			{From: pricing.MustParseDate("2026-01-01"), In: 2, Out: 10},
+			{From: pricing.MustParseDate("2999-01-01"), In: 4, Out: 20},
+		}},
+	}}
+	var buf bytes.Buffer
+	renderPrice(&buf, theme{on: false}, tbl, "m")
+	lines := strings.Split(buf.String(), "\n")
+	var now, later string
+	for _, l := range lines {
+		if strings.Contains(l, "2026-01-01") {
+			now = l
+		}
+		if strings.Contains(l, "2999-01-01") {
+			later = l
+		}
+	}
+	if !strings.Contains(now, "current") || !strings.Contains(later, "scheduled") || strings.Contains(later, "current") {
+		t.Errorf("rate markers wrong:\n%s", buf.String())
+	}
+}
+
+func TestUnpricedModelRowIsNotShownAsFree(t *testing.T) {
+	rep := &report.Report{ByModel: []report.Bucket{
+		{Key: "claude-opus-5-5", Turns: 1, Cost: 0.8},
+		{Key: "claude-zeta-9", Turns: 2, Unpriced: 2},
+		{Key: "mixed", Turns: 2, Unpriced: 1, Cost: 0.4},
+	}}
+	var out bytes.Buffer
+	render(&out, "model", rep, 0, false, false, true, nil)
+	if !strings.Contains(out.String(), "claude-zeta-9") {
+		t.Fatalf("model rows not rendered:\n%s", out.String())
+	}
+	for _, line := range strings.Split(out.String(), "\n") {
+		switch {
+		case strings.Contains(line, "claude-zeta-9"):
+			if !strings.Contains(line, "unpriced") || strings.Contains(line, "$0.00") {
+				t.Errorf("unpriced row = %q", line)
+			}
+		case strings.Contains(line, "mixed"), strings.Contains(line, "claude-opus-5-5"):
+			if strings.Contains(line, "unpriced") {
+				t.Errorf("priced row marked unpriced: %q", line)
+			}
+		}
+	}
+}

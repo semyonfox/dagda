@@ -189,6 +189,10 @@ func emitGroup(t *table, th theme, b report.Bucket, topLabel string, depth, nDim
 		costStyle = func(s string) string { return th.strong(th.money(s)) }
 	}
 	cells = append(cells, numbers(th, b.Usage, b.Cost, fmtNum, costStyle)...)
+	if b.Turns > 0 && b.Unpriced == b.Turns {
+		// no rate for anything on this row, so $0.00 would read as free
+		cells[len(cells)-1] = styled("unpriced", th.warn)
+	}
 	if spaced {
 		t.addGroup(cells...)
 	} else {

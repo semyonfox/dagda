@@ -80,3 +80,70 @@ func TestSyncKeepsSupplementalRatesAndLocalModelAliases(t *testing.T) {
 		t.Fatalf("supplemental price history changed: %+v", r)
 	}
 }
+
+func ptr(v float64) *float64 { return &v }
+
+// grok-code-fast-1 was billed with free cache reads because the alphabetically
+// first reseller left the field out while others published $0.02.
+func TestResellerWithCachePriceWinsTie(t *testing.T) {
+	providers := map[string]mdProvider{
+		"abacus":   {Models: map[string]mdModel{"grok-code-fast-1": {Cost: &mdCost{Input: ptr(0.2), Output: ptr(1.5)}}}},
+		"helicone": {Models: map[string]mdModel{"grok-code-fast-1": {Cost: &mdCost{Input: ptr(0.2), Output: ptr(1.5), CacheRead: ptr(0.02)}}}},
+	}
+	r := build(providers, pricing.MustParseDate("2026-11-10")).Models["grok-code-fast-1"].Rates[0]
+	if r.Source != "helicone" || r.CacheRead != 0.02 {
+		t.Fatalf("picked %s with cache read %v, want helicone at 0.02", r.Source, r.CacheRead)
+	}
+}
+
+func TestDatedClaudeSnapshotUsesFirstPartyBase(t *testing.T) {
+	providers := map[string]mdProvider{
+		"anthropic": {Models: map[string]mdModel{
+			"claude-sonnet-4":           {Cost: &mdCost{Input: ptr(3), Output: ptr(15), CacheRead: ptr(0.3)}},
+			"claude-haiku-4-5":          {Cost: &mdCost{Input: ptr(1), Output: ptr(5), CacheRead: ptr(0.1)}},
+			"claude-haiku-4-5-20251001": {Cost: &mdCost{Input: ptr(1), Output: ptr(5), CacheRead: ptr(0.1)}},
+		}},
+		"abacus": {Models: map[string]mdModel{"claude-sonnet-4-20250514": {Cost: &mdCost{Input: ptr(3), Output: ptr(15)}}}},
+	}
+	ds := build(providers, pricing.MustParseDate("2026-11-10"))
+	if got := ds.Aliases["claude-sonnet-4-20250514"]; got != "claude-sonnet-4" {
+		t.Fatalf("reseller-only snapshot aliased to %q, want claude-sonnet-4", got)
+	}
+	if got, ok := ds.Aliases["claude-haiku-4-5-20251001"]; ok {
+		t.Fatalf("first-party snapshot aliased to %q", got)
+	}
+}
+
+func TestFirstPartyFileFillsGapsOnly(t *testing.T) {
+	reseller := &pricing.Model{ID: "claude-mythos-5-2", Rates: []pricing.Rate{{In: 1, Out: 1, Source: "reseller"}}}
+	upstream := &pricing.Model{ID: "claude-mythos-5-1", FirstParty: true, Rates: []pricing.Rate{{In: 9, Out: 45, Source: "anthropic"}}}
+	ds := &dataset{
+		Models:  map[string]*pricing.Model{"claude-mythos-5-2": reseller, "claude-mythos-5-1": upstream},
+		Aliases: map[string]string{"gemini-4-carbon": "something-else"},
+	}
+	applyFirstParty(ds, map[string]bool{"claude-mythos-5-1": true})
+
+	if r := ds.Models["claude-mythos-5-2"].Rates[0]; r.In != 8 || r.Out != 40 || r.CacheRead != 0.2 || r.CacheWrite != 10 || r.CacheWrite1h != 16 {
+		t.Errorf("mythos 5.2 = %+v, want the Anthropic list rate 8/40, 0.20 read, 10 and 16 writes", r)
+	}
+	if ds.Models["claude-mythos-5-1"] != upstream {
+		t.Error("hand-checked rate replaced an upstream first-party one")
+	}
+	if _, ok := ds.Aliases["gemini-4-carbon"]; ok {
+		t.Error("an alias still shadows a hand-checked model")
+	}
+	if rates := ds.Models["gemini-4-carbon"].Rates; len(rates) != 2 || rates[1].From != pricing.MustParseDate("2026-12-01") || rates[1].In != 4 {
+		t.Errorf("gemini-4-carbon lost its announced 1 December rise: %+v", rates)
+	}
+}
+
+func TestNewlyPublishedCacheReadRepricesBacklog(t *testing.T) {
+	first := pricing.MustParseDate("2026-07-14")
+	prev := &dataset{Models: map[string]*pricing.Model{"m": {ID: "m", Rates: []pricing.Rate{{From: first, In: 0.2, Out: 1.5, CacheWrite: 0.2, Source: "abacus"}}}}}
+	next := &dataset{Models: map[string]*pricing.Model{"m": {ID: "m", Rates: []pricing.Rate{{In: 0.2, Out: 1.5, CacheRead: 0.02, CacheWrite: 0.2, Source: "helicone"}}}}}
+	merge(prev, next, pricing.MustParseDate("2026-11-10"))
+	rates := next.Models["m"].Rates
+	if len(rates) != 1 || rates[0].From != first || rates[0].CacheRead != 0.02 || rates[0].Source != "helicone" {
+		t.Fatalf("rates = %+v, want the July rate with a 0.02 cache read from helicone", rates)
+	}
+}

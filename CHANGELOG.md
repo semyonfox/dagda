@@ -1,5 +1,20 @@
 # Changelog
 
+## Unreleased
+
+- Price Claude Mythos 5.1 and 5.2, Mythos 5.2 fast mode and Gemini 4 Carbon,
+  which models.dev does not list, from a small hand-checked file of vendor list
+  rates. Gemini 4 Carbon carries Google's announced rise on 1 December 2026.
+  An upstream first-party rate replaces a hand-checked one when it appears.
+- Stop billing cached tokens as free when the chosen reseller leaves out its
+  cache-read price but another reseller quoting the same list price publishes
+  one. A newly published cache-read price corrects the existing rate instead
+  of starting a new dated one, so earlier usage is repriced too.
+- Price dated Claude snapshot ids such as `claude-sonnet-4-20250514` at their
+  undated model's rate when only resellers list the snapshot.
+- Show `unpriced` instead of `$0.00` for a row with no rate at all.
+  `dagda price` marks an announced future rate as `scheduled`, not `current`.
+
 ## 0.2.0 (2026-11-09)
 
 First Dagda release. Prebuilt `dagda` binaries for Linux, macOS and Windows
