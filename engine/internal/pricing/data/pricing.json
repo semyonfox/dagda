@@ -8778,6 +8778,14 @@
           "cache_read": 0.07,
           "cache_write": 0.7,
           "source": "nano-gpt"
+        },
+        {
+          "from": "2026-11-11",
+          "in": 0.95124,
+          "out": 1.79607,
+          "cache_read": 0.17925,
+          "cache_write": 0.95124,
+          "source": "nano-gpt"
         }
       ]
     },
@@ -11317,6 +11325,19 @@
           "out": 1.13,
           "cache_read": 0.028,
           "cache_write": 0.28,
+          "source": "kilo"
+        }
+      ]
+    },
+    "ernie-5.5-flash-preview:free": {
+      "id": "ernie-5.5-flash-preview:free",
+      "rates": [
+        {
+          "from": "2026-11-11",
+          "in": 0,
+          "out": 0,
+          "cache_read": 0,
+          "cache_write": 0,
           "source": "kilo"
         }
       ]
@@ -14320,10 +14341,10 @@
         },
         {
           "from": "2026-11-11",
-          "in": 0.01,
-          "out": 0.03,
-          "cache_read": 0.005,
-          "cache_write": 0.01,
+          "in": 0.011,
+          "out": 0.034,
+          "cache_read": 0.006,
+          "cache_write": 0.011,
           "source": "nano-gpt"
         }
       ]
@@ -42586,6 +42607,14 @@
           "tier_cache_read": 0.05,
           "tier_cache_write": 0.5,
           "source": "vercel"
+        },
+        {
+          "from": "2026-11-11",
+          "in": 0.25,
+          "out": 2,
+          "cache_read": 0,
+          "cache_write": 0.25,
+          "source": "kilo"
         }
       ]
     },
@@ -42641,6 +42670,14 @@
           "tier_cache_read": 0.05,
           "tier_cache_write": 0.5,
           "source": "vercel"
+        },
+        {
+          "from": "2026-11-11",
+          "in": 0.25,
+          "out": 2,
+          "cache_read": 0.05,
+          "cache_write": 0.25,
+          "source": "requesty"
         }
       ]
     },
@@ -98999,6 +99036,14 @@
           "cache_read": 0.03,
           "cache_write": 0,
           "source": "inceptron"
+        },
+        {
+          "from": "2026-11-11",
+          "in": 0.175,
+          "out": 0.5,
+          "cache_read": 0.03,
+          "cache_write": 0,
+          "source": "inceptron"
         }
       ]
     },
@@ -105189,6 +105234,19 @@
         }
       ]
     },
+    "kilo\u0000ernie-5.5-flash-preview:free": {
+      "id": "ernie-5.5-flash-preview:free",
+      "rates": [
+        {
+          "from": "2026-11-11",
+          "in": 0,
+          "out": 0,
+          "cache_read": 0,
+          "cache_write": 0,
+          "source": "kilo"
+        }
+      ]
+    },
     "kilo\u0000ernie-light-dt-1.0-intl": {
       "id": "ernie-light-dt-1.0-intl",
       "rates": [
@@ -108993,6 +109051,14 @@
           "cache_read": 0.18,
           "cache_write": 0.1824,
           "source": "kilo"
+        },
+        {
+          "from": "2026-11-11",
+          "in": 0.1824,
+          "out": 11.0055,
+          "cache_read": 0.18,
+          "cache_write": 0.1824,
+          "source": "kilo"
         }
       ]
     },
@@ -110074,6 +110140,14 @@
           "cache_read": 0.003,
           "cache_write": 0.1,
           "source": "kilo"
+        },
+        {
+          "from": "2026-11-11",
+          "in": 0.1,
+          "out": 0.28,
+          "cache_read": 0.0028,
+          "cache_write": 0.1,
+          "source": "kilo"
         }
       ]
     },
@@ -110241,6 +110315,14 @@
           "out": 1.2,
           "cache_read": 0.06,
           "cache_write": 0.3,
+          "source": "kilo"
+        },
+        {
+          "from": "2026-11-11",
+          "in": 0.27,
+          "out": 1.08,
+          "cache_read": 0.027,
+          "cache_write": 0.27,
           "source": "kilo"
         }
       ]
@@ -131408,6 +131490,14 @@
           "cache_read": 0.07,
           "cache_write": 0.7,
           "source": "nano-gpt"
+        },
+        {
+          "from": "2026-11-11",
+          "in": 0.86979,
+          "out": 1.77565,
+          "cache_read": 0.08873,
+          "cache_write": 0.86979,
+          "source": "nano-gpt"
         }
       ]
     },
@@ -131675,6 +131765,14 @@
           "out": 1.4,
           "cache_read": 0.07,
           "cache_write": 0.7,
+          "source": "nano-gpt"
+        },
+        {
+          "from": "2026-11-11",
+          "in": 0.95124,
+          "out": 1.79607,
+          "cache_read": 0.17925,
+          "cache_write": 0.95124,
           "source": "nano-gpt"
         }
       ]
@@ -132405,6 +132503,19 @@
           "out": 3,
           "cache_read": 0.75,
           "cache_write": 0.75,
+          "source": "nano-gpt"
+        }
+      ]
+    },
+    "nano-gpt\u0000ernie-light-dt-1.0-intl": {
+      "id": "ernie-light-dt-1.0-intl",
+      "rates": [
+        {
+          "from": "2026-11-11",
+          "in": 1.3,
+          "out": 4.5,
+          "cache_read": 0.13,
+          "cache_write": 1.3,
           "source": "nano-gpt"
         }
       ]
@@ -133342,10 +133453,10 @@
         },
         {
           "from": "2026-11-11",
-          "in": 0.01,
-          "out": 0.03,
-          "cache_read": 0.005,
-          "cache_write": 0.01,
+          "in": 0.011,
+          "out": 0.034,
+          "cache_read": 0.006,
+          "cache_write": 0.011,
           "source": "nano-gpt"
         }
       ]
@@ -133576,10 +133687,10 @@
         },
         {
           "from": "2026-11-11",
-          "in": 0.01,
-          "out": 0.03,
-          "cache_read": 0.005,
-          "cache_write": 0.01,
+          "in": 0.011,
+          "out": 0.034,
+          "cache_read": 0.006,
+          "cache_write": 0.011,
           "source": "nano-gpt"
         }
       ]
@@ -139122,6 +139233,19 @@
           "out": 0.5,
           "cache_read": 0.25,
           "cache_write": 0.5,
+          "source": "nano-gpt"
+        }
+      ]
+    },
+    "nano-gpt\u0000muse-ember": {
+      "id": "muse-ember",
+      "rates": [
+        {
+          "from": "2026-11-11",
+          "in": 0.1,
+          "out": 0.5,
+          "cache_read": 0.004,
+          "cache_write": 0.1,
           "source": "nano-gpt"
         }
       ]
@@ -158743,6 +158867,19 @@
         }
       ]
     },
+    "openrouter\u0000ernie-5.5-flash-preview:free": {
+      "id": "ernie-5.5-flash-preview:free",
+      "rates": [
+        {
+          "from": "2026-11-11",
+          "in": 0,
+          "out": 0,
+          "cache_read": 0,
+          "cache_write": 0,
+          "source": "openrouter"
+        }
+      ]
+    },
     "openrouter\u0000ernie-light-dt-1.0-intl": {
       "id": "ernie-light-dt-1.0-intl",
       "rates": [
@@ -163095,6 +163232,14 @@
           "cache_read": 0.18,
           "cache_write": 0.1824,
           "source": "openrouter"
+        },
+        {
+          "from": "2026-11-11",
+          "in": 0.1824,
+          "out": 11.0055,
+          "cache_read": 0.18,
+          "cache_write": 0.1824,
+          "source": "openrouter"
         }
       ]
     },
@@ -164577,6 +164722,14 @@
           "out": 1.2,
           "cache_read": 0.06,
           "cache_write": 0.3,
+          "source": "openrouter"
+        },
+        {
+          "from": "2026-11-11",
+          "in": 0.27,
+          "out": 1.08,
+          "cache_read": 0.027,
+          "cache_write": 0.27,
           "source": "openrouter"
         }
       ]
@@ -199392,6 +199545,14 @@
           "cache_read": 0.059,
           "cache_write": 0.06,
           "source": "vercel"
+        },
+        {
+          "from": "2026-11-11",
+          "in": 0.06,
+          "out": 2.2,
+          "cache_read": 0.059,
+          "cache_write": 0.06,
+          "source": "vercel"
         }
       ]
     },
@@ -207413,14 +207574,17 @@
     "ernie-5-1": "ernie-5.1",
     "ernie-5-1:thinking": "ernie-5.1:thinking",
     "ernie-5-5-flash-preview": "ernie-5.5-flash-preview",
+    "ernie-5-5-flash-preview:free": "ernie-5.5-flash-preview:free",
     "ernie-5.0-thinking-preview-latest": "ernie-5.0-thinking-preview",
     "ernie-5.1-latest": "ernie-5.1",
     "ernie-5.1:thinking-latest": "ernie-5.1:thinking",
     "ernie-5.5-flash-preview-latest": "ernie-5.5-flash-preview",
+    "ernie-5.5-flash-preview:free-latest": "ernie-5.5-flash-preview:free",
     "ernie-5p0-thinking-preview": "ernie-5.0-thinking-preview",
     "ernie-5p1": "ernie-5.1",
     "ernie-5p1:thinking": "ernie-5.1:thinking",
     "ernie-5p5-flash-preview": "ernie-5.5-flash-preview",
+    "ernie-5p5-flash-preview:free": "ernie-5.5-flash-preview:free",
     "ernie-light-dt-1-0-intl": "ernie-light-dt-1.0-intl",
     "ernie-light-dt-1.0-intl-latest": "ernie-light-dt-1.0-intl",
     "ernie-light-dt-1p0-intl": "ernie-light-dt-1.0-intl",
