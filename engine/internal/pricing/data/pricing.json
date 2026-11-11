@@ -21,7 +21,7 @@
     }
   },
   "schema": 2,
-  "updated": "2026-11-10",
+  "updated": "2026-11-11",
   "sources": [
     "https://models.dev/api.json"
   ],
@@ -6953,6 +6953,14 @@
           "cache_read": 0.020958,
           "cache_write": 0.65868,
           "source": "nano-gpt"
+        },
+        {
+          "from": "2026-11-11",
+          "in": 0.66,
+          "out": 4.0139,
+          "cache_read": 0.105,
+          "cache_write": 0.66,
+          "source": "nano-gpt"
         }
       ]
     },
@@ -8454,6 +8462,14 @@
           "cache_read": 0.0028,
           "cache_write": 0.14,
           "source": "nano-gpt"
+        },
+        {
+          "from": "2026-11-11",
+          "in": 0.14,
+          "out": 0.28,
+          "cache_read": 0.028,
+          "cache_write": 0.14,
+          "source": "nano-gpt"
         }
       ]
     },
@@ -8641,6 +8657,14 @@
           "out": 1.97604,
           "cache_read": 0.020958,
           "cache_write": 0.65868,
+          "source": "nano-gpt"
+        },
+        {
+          "from": "2026-11-11",
+          "in": 0.66,
+          "out": 4.0139,
+          "cache_read": 0.105,
+          "cache_write": 0.66,
           "source": "nano-gpt"
         }
       ]
@@ -8970,6 +8994,14 @@
           "cache_read": 0.00825,
           "cache_write": 0.33,
           "source": "nano-gpt"
+        },
+        {
+          "from": "2026-11-11",
+          "in": 0.33,
+          "out": 1.32,
+          "cache_read": 0.011,
+          "cache_write": 0.33,
+          "source": "nano-gpt"
         }
       ]
     },
@@ -8981,6 +9013,14 @@
           "in": 0.33,
           "out": 1.32,
           "cache_read": 0.00825,
+          "cache_write": 0.33,
+          "source": "nano-gpt"
+        },
+        {
+          "from": "2026-11-11",
+          "in": 0.33,
+          "out": 1.32,
+          "cache_read": 0.011,
           "cache_write": 0.33,
           "source": "nano-gpt"
         }
@@ -14276,6 +14316,14 @@
           "out": 0.037,
           "cache_read": 0.006,
           "cache_write": 0.012,
+          "source": "nano-gpt"
+        },
+        {
+          "from": "2026-11-11",
+          "in": 0.01,
+          "out": 0.03,
+          "cache_read": 0.005,
+          "cache_write": 0.01,
           "source": "nano-gpt"
         }
       ]
@@ -25103,6 +25151,14 @@
           "cache_read": 0.0656,
           "cache_write": 0.3895,
           "source": "nano-gpt"
+        },
+        {
+          "from": "2026-11-11",
+          "in": 0.88,
+          "out": 4.13,
+          "cache_read": 0.231,
+          "cache_write": 0.88,
+          "source": "nano-gpt"
         }
       ]
     },
@@ -28587,6 +28643,19 @@
           "cache_read": 0,
           "cache_write": 0.17,
           "source": "amazon-bedrock"
+        }
+      ]
+    },
+    "midm-k-3.0-pro": {
+      "id": "midm-k-3.0-pro",
+      "rates": [
+        {
+          "from": "2026-11-11",
+          "in": 0.2,
+          "out": 0.8,
+          "cache_read": 0.04,
+          "cache_write": 0.2,
+          "source": "kilo"
         }
       ]
     },
@@ -70554,6 +70623,20 @@
         }
       ]
     },
+    "cloudflare-ai-gateway\u0000claude-fable-5.2": {
+      "id": "claude-fable-5.2",
+      "rates": [
+        {
+          "from": "2026-11-11",
+          "in": 8,
+          "out": 40,
+          "cache_read": 0.2,
+          "cache_write": 10,
+          "cache_write_1h": 16,
+          "source": "cloudflare-ai-gateway"
+        }
+      ]
+    },
     "cloudflare-ai-gateway\u0000claude-haiku-4.5": {
       "id": "claude-haiku-4.5",
       "rates": [
@@ -70957,6 +71040,14 @@
           "in": 0.1,
           "out": 0.4,
           "cache_read": 0.025,
+          "cache_write": 0.1,
+          "source": "cloudflare-ai-gateway"
+        },
+        {
+          "from": "2026-11-11",
+          "in": 0.1,
+          "out": 0.4,
+          "cache_read": 0.03,
           "cache_write": 0.1,
           "source": "cloudflare-ai-gateway"
         }
@@ -84409,14 +84500,6 @@
           "cache_read": 0.015,
           "cache_write": 0.15,
           "source": "edenai"
-        },
-        {
-          "from": "2026-11-10",
-          "in": 0.075,
-          "out": 0.3,
-          "cache_read": 0.0075,
-          "cache_write": 0.075,
-          "source": "edenai"
         }
       ]
     },
@@ -90032,6 +90115,20 @@
         }
       ]
     },
+    "github-copilot\u0000claude-fable-5.2": {
+      "id": "claude-fable-5.2",
+      "rates": [
+        {
+          "from": "2026-11-11",
+          "in": 8,
+          "out": 40,
+          "cache_read": 0.2,
+          "cache_write": 10,
+          "cache_write_1h": 16,
+          "source": "github-copilot"
+        }
+      ]
+    },
     "github-copilot\u0000claude-haiku-4.5": {
       "id": "claude-haiku-4.5",
       "rates": [
@@ -90311,6 +90408,19 @@
       "rates": [
         {
           "from": "2026-10-14",
+          "in": 2,
+          "out": 10,
+          "cache_read": 0.1,
+          "cache_write": 2,
+          "source": "github-copilot"
+        }
+      ]
+    },
+    "github-copilot\u0000gemini-4-carbon": {
+      "id": "gemini-4-carbon",
+      "rates": [
+        {
+          "from": "2026-11-11",
           "in": 2,
           "out": 10,
           "cache_read": 0.1,
@@ -98998,6 +99108,14 @@
           "cache_read": 0.2092,
           "cache_write": 0,
           "source": "inceptron"
+        },
+        {
+          "from": "2026-11-11",
+          "in": 0.7995,
+          "out": 3.75,
+          "cache_read": 0.156,
+          "cache_write": 0,
+          "source": "inceptron"
         }
       ]
     },
@@ -105825,6 +105943,14 @@
           "cache_read": 0.005,
           "cache_write": 0.011,
           "source": "kilo"
+        },
+        {
+          "from": "2026-11-11",
+          "in": 0.011,
+          "out": 0.034,
+          "cache_read": 0.006,
+          "cache_write": 0.011,
+          "source": "kilo"
         }
       ]
     },
@@ -108279,14 +108405,6 @@
           "cache_read": 0.033,
           "cache_write": 0.132,
           "source": "kilo"
-        },
-        {
-          "from": "2026-11-10",
-          "in": 0.0825,
-          "out": 0.33,
-          "cache_read": 0.020625,
-          "cache_write": 0.0825,
-          "source": "kilo"
         }
       ]
     },
@@ -108349,14 +108467,6 @@
           "out": 2.501,
           "cache_read": 0.042,
           "cache_write": 0.834,
-          "source": "kilo"
-        },
-        {
-          "from": "2026-11-10",
-          "in": 0.7506,
-          "out": 2.2509,
-          "cache_read": 0.0378,
-          "cache_write": 0.7506,
           "source": "kilo"
         }
       ]
@@ -109775,6 +109885,19 @@
         }
       ]
     },
+    "kilo\u0000midm-k-3.0-pro": {
+      "id": "midm-k-3.0-pro",
+      "rates": [
+        {
+          "from": "2026-11-11",
+          "in": 0.2,
+          "out": 0.8,
+          "cache_read": 0.04,
+          "cache_write": 0.2,
+          "source": "kilo"
+        }
+      ]
+    },
     "kilo\u0000mimo-v2.5": {
       "id": "mimo-v2.5",
       "rates": [
@@ -110568,6 +110691,19 @@
           "out": 1.9,
           "cache_read": 0,
           "cache_write": 0.9,
+          "source": "kilo"
+        }
+      ]
+    },
+    "kilo\u0000motif-3": {
+      "id": "motif-3",
+      "rates": [
+        {
+          "from": "2026-11-11",
+          "in": 0.3,
+          "out": 1.2,
+          "cache_read": 0.06,
+          "cache_write": 0.3,
           "source": "kilo"
         }
       ]
@@ -123378,6 +123514,14 @@
           "cache_read": 0.007,
           "cache_write": 0.035,
           "source": "merge-gateway"
+        },
+        {
+          "from": "2026-11-11",
+          "in": 0.13,
+          "out": 0.26,
+          "cache_read": 0.028,
+          "cache_write": 0.13,
+          "source": "merge-gateway"
         }
       ]
     },
@@ -130719,6 +130863,14 @@
           "cache_read": 0.020958,
           "cache_write": 0.65868,
           "source": "nano-gpt"
+        },
+        {
+          "from": "2026-11-11",
+          "in": 0.66,
+          "out": 4.0139,
+          "cache_read": 0.105,
+          "cache_write": 0.66,
+          "source": "nano-gpt"
         }
       ]
     },
@@ -131227,6 +131379,14 @@
           "cache_read": 0.0028,
           "cache_write": 0.14,
           "source": "nano-gpt"
+        },
+        {
+          "from": "2026-11-11",
+          "in": 0.14,
+          "out": 0.28,
+          "cache_read": 0.028,
+          "cache_write": 0.14,
+          "source": "nano-gpt"
         }
       ]
     },
@@ -131357,6 +131517,14 @@
           "cache_read": 0.020958,
           "cache_write": 0.65868,
           "source": "nano-gpt"
+        },
+        {
+          "from": "2026-11-11",
+          "in": 0.66,
+          "out": 4.1267,
+          "cache_read": 0.0921,
+          "cache_write": 0.66,
+          "source": "nano-gpt"
         }
       ]
     },
@@ -131465,6 +131633,14 @@
           "out": 1.97604,
           "cache_read": 0.020958,
           "cache_write": 0.65868,
+          "source": "nano-gpt"
+        },
+        {
+          "from": "2026-11-11",
+          "in": 0.66,
+          "out": 4.0139,
+          "cache_read": 0.105,
+          "cache_write": 0.66,
           "source": "nano-gpt"
         }
       ]
@@ -131743,6 +131919,14 @@
           "cache_read": 0.00825,
           "cache_write": 0.33,
           "source": "nano-gpt"
+        },
+        {
+          "from": "2026-11-11",
+          "in": 0.33,
+          "out": 1.32,
+          "cache_read": 0.011,
+          "cache_write": 0.33,
+          "source": "nano-gpt"
         }
       ]
     },
@@ -131754,6 +131938,14 @@
           "in": 0.33,
           "out": 1.32,
           "cache_read": 0.00825,
+          "cache_write": 0.33,
+          "source": "nano-gpt"
+        },
+        {
+          "from": "2026-11-11",
+          "in": 0.33,
+          "out": 1.32,
+          "cache_read": 0.011,
           "cache_write": 0.33,
           "source": "nano-gpt"
         }
@@ -132853,6 +133045,19 @@
         }
       ]
     },
+    "nano-gpt\u0000gemini-4-carbon": {
+      "id": "gemini-4-carbon",
+      "rates": [
+        {
+          "from": "2026-11-11",
+          "in": 2,
+          "out": 10,
+          "cache_read": 0.1,
+          "cache_write": 2,
+          "source": "nano-gpt"
+        }
+      ]
+    },
     "nano-gpt\u0000gemini-exp-1206": {
       "id": "gemini-exp-1206",
       "rates": [
@@ -133134,6 +133339,14 @@
           "cache_read": 0.006,
           "cache_write": 0.012,
           "source": "nano-gpt"
+        },
+        {
+          "from": "2026-11-11",
+          "in": 0.01,
+          "out": 0.03,
+          "cache_read": 0.005,
+          "cache_write": 0.01,
+          "source": "nano-gpt"
         }
       ]
     },
@@ -133359,6 +133572,14 @@
           "out": 0.037,
           "cache_read": 0.006,
           "cache_write": 0.012,
+          "source": "nano-gpt"
+        },
+        {
+          "from": "2026-11-11",
+          "in": 0.01,
+          "out": 0.03,
+          "cache_read": 0.005,
+          "cache_write": 0.01,
           "source": "nano-gpt"
         }
       ]
@@ -134830,14 +135051,6 @@
           "cache_read": 0.078,
           "cache_write": 0.42,
           "source": "nano-gpt"
-        },
-        {
-          "from": "2026-11-10",
-          "in": 0.189,
-          "out": 0.594,
-          "cache_read": 0.0351,
-          "cache_write": 0.189,
-          "source": "nano-gpt"
         }
       ]
     },
@@ -134906,14 +135119,6 @@
           "out": 1.32,
           "cache_read": 0.078,
           "cache_write": 0.42,
-          "source": "nano-gpt"
-        },
-        {
-          "from": "2026-11-10",
-          "in": 0.189,
-          "out": 0.594,
-          "cache_read": 0.0351,
-          "cache_write": 0.189,
           "source": "nano-gpt"
         }
       ]
@@ -136050,6 +136255,14 @@
           "cache_read": 0.018,
           "cache_write": 0.02,
           "source": "nano-gpt"
+        },
+        {
+          "from": "2026-11-11",
+          "in": 0.018,
+          "out": 0.09,
+          "cache_read": 0.009,
+          "cache_write": 0.018,
+          "source": "nano-gpt"
         }
       ]
     },
@@ -136624,14 +136837,6 @@
           "cache_read": 0.042,
           "cache_write": 0.834,
           "source": "nano-gpt"
-        },
-        {
-          "from": "2026-11-10",
-          "in": 0.7506,
-          "out": 2.2509,
-          "cache_read": 0.0378,
-          "cache_write": 0.7506,
-          "source": "nano-gpt"
         }
       ]
     },
@@ -137132,6 +137337,14 @@
           "cache_read": 0.0656,
           "cache_write": 0.3895,
           "source": "nano-gpt"
+        },
+        {
+          "from": "2026-11-11",
+          "in": 0.39,
+          "out": 1.8,
+          "cache_read": 0.039,
+          "cache_write": 0.39,
+          "source": "nano-gpt"
         }
       ]
     },
@@ -137176,6 +137389,14 @@
           "out": 1.64,
           "cache_read": 0.0656,
           "cache_write": 0.3895,
+          "source": "nano-gpt"
+        },
+        {
+          "from": "2026-11-11",
+          "in": 0.88,
+          "out": 4.13,
+          "cache_read": 0.231,
+          "cache_write": 0.88,
           "source": "nano-gpt"
         }
       ]
@@ -149158,6 +149379,20 @@
         }
       ]
     },
+    "ofox\u0000claude-fable-5.2": {
+      "id": "claude-fable-5.2",
+      "rates": [
+        {
+          "from": "2026-11-11",
+          "in": 8,
+          "out": 40,
+          "cache_read": 0.2,
+          "cache_write": 10,
+          "cache_write_1h": 16,
+          "source": "ofox"
+        }
+      ]
+    },
     "ofox\u0000claude-haiku-4.5": {
       "id": "claude-haiku-4.5",
       "rates": [
@@ -157967,6 +158202,14 @@
           "cache_read": 0.074081,
           "cache_write": 0.888966,
           "source": "openrouter"
+        },
+        {
+          "from": "2026-11-11",
+          "in": 0.95526,
+          "out": 1.91052,
+          "cache_read": 0.079605,
+          "cache_write": 0.95526,
+          "source": "openrouter"
         }
       ]
     },
@@ -158368,6 +158611,14 @@
           "out": 1.2,
           "cache_read": 0.006,
           "cache_write": 0.3,
+          "source": "openrouter"
+        },
+        {
+          "from": "2026-11-11",
+          "in": 0.051,
+          "out": 0.567,
+          "cache_read": 0.018,
+          "cache_write": 0.051,
           "source": "openrouter"
         }
       ]
@@ -159848,6 +160099,14 @@
           "out": 4.4,
           "cache_read": 0.26,
           "cache_write": 1.4,
+          "source": "openrouter"
+        },
+        {
+          "from": "2026-11-11",
+          "in": 1.33,
+          "out": 4.18,
+          "cache_read": 0.247,
+          "cache_write": 1.33,
           "source": "openrouter"
         }
       ]
@@ -162296,14 +162555,6 @@
           "cache_read": 0.033,
           "cache_write": 0.132,
           "source": "openrouter"
-        },
-        {
-          "from": "2026-11-10",
-          "in": 0.0825,
-          "out": 0.33,
-          "cache_read": 0.020625,
-          "cache_write": 0.0825,
-          "source": "openrouter"
         }
       ]
     },
@@ -162342,14 +162593,6 @@
           "out": 2.501,
           "cache_read": 0.042,
           "cache_write": 0.834,
-          "source": "openrouter"
-        },
-        {
-          "from": "2026-11-10",
-          "in": 0.7506,
-          "out": 2.2509,
-          "cache_read": 0.0378,
-          "cache_write": 0.7506,
           "source": "openrouter"
         }
       ]
@@ -164086,6 +164329,19 @@
         }
       ]
     },
+    "openrouter\u0000midm-k-3.0-pro": {
+      "id": "midm-k-3.0-pro",
+      "rates": [
+        {
+          "from": "2026-11-11",
+          "in": 0.2,
+          "out": 0.8,
+          "cache_read": 0.04,
+          "cache_write": 0.2,
+          "source": "openrouter"
+        }
+      ]
+    },
     "openrouter\u0000mimo-v2.5": {
       "id": "mimo-v2.5",
       "rates": [
@@ -164400,14 +164656,6 @@
           "out": 0.6,
           "cache_read": 0.015,
           "cache_write": 0.15,
-          "source": "openrouter"
-        },
-        {
-          "from": "2026-11-10",
-          "in": 0.075,
-          "out": 0.3,
-          "cache_read": 0.0075,
-          "cache_write": 0.075,
           "source": "openrouter"
         }
       ]
@@ -164755,6 +165003,19 @@
           "out": 1.9,
           "cache_read": 0,
           "cache_write": 0.9,
+          "source": "openrouter"
+        }
+      ]
+    },
+    "openrouter\u0000motif-3": {
+      "id": "motif-3",
+      "rates": [
+        {
+          "from": "2026-11-11",
+          "in": 0.3,
+          "out": 1.2,
+          "cache_read": 0.06,
+          "cache_write": 0.3,
           "source": "openrouter"
         }
       ]
@@ -175103,6 +175364,20 @@
         }
       ]
     },
+    "prime\u0000claude-fable-5.2": {
+      "id": "claude-fable-5.2",
+      "rates": [
+        {
+          "from": "2026-11-11",
+          "in": 8,
+          "out": 40,
+          "cache_read": 0,
+          "cache_write": 10,
+          "cache_write_1h": 16,
+          "source": "prime"
+        }
+      ]
+    },
     "prime\u0000claude-opus-4.6": {
       "id": "claude-opus-4.6",
       "rates": [
@@ -175443,6 +175718,19 @@
       "rates": [
         {
           "from": "2026-10-15",
+          "in": 2,
+          "out": 10,
+          "cache_read": 0,
+          "cache_write": 2,
+          "source": "prime"
+        }
+      ]
+    },
+    "prime\u0000gemini-4-carbon": {
+      "id": "gemini-4-carbon",
+      "rates": [
+        {
+          "from": "2026-11-11",
           "in": 2,
           "out": 10,
           "cache_read": 0,
@@ -198945,6 +199233,19 @@
         }
       ]
     },
+    "vercel\u0000qwen3.6-35b-a3b": {
+      "id": "qwen3.6-35b-a3b",
+      "rates": [
+        {
+          "from": "2026-11-11",
+          "in": 0.375,
+          "out": 2.25,
+          "cache_read": 0,
+          "cache_write": 0.375,
+          "source": "vercel"
+        }
+      ]
+    },
     "vercel\u0000qwen3.6-plus": {
       "id": "qwen3.6-plus",
       "rates": [
@@ -209147,6 +209448,9 @@
     "metapllama3-3-70b-instruct-v1": "meta.llama3-3-70b-instruct-v1",
     "metapllama4-maverick-17b-instruct-v1": "meta.llama4-maverick-17b-instruct-v1",
     "metapllama4-scout-17b-instruct-v1": "meta.llama4-scout-17b-instruct-v1",
+    "midm-k-3-0-pro": "midm-k-3.0-pro",
+    "midm-k-3.0-pro-latest": "midm-k-3.0-pro",
+    "midm-k-3p0-pro": "midm-k-3.0-pro",
     "mimo-v2-5-free": "mimo-v2.5-free",
     "mimo-v2-5-latest": "mimo-v2-5",
     "mimo-v2-5-pro-crof": "mimo-v2.5-pro-crof",
