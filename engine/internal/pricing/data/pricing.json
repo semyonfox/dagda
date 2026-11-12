@@ -2549,6 +2549,20 @@
         }
       ]
     },
+    "chatgpt-image": {
+      "id": "chatgpt-image",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 5,
+          "out": 10,
+          "cache_read": 1.25,
+          "cache_write": 5,
+          "source": "openai"
+        }
+      ],
+      "first_party": true
+    },
     "claude-3-5-haiku": {
       "id": "claude-3-5-haiku",
       "rates": [
@@ -5716,7 +5730,7 @@
           "from": "2026-11-04",
           "in": 1.8,
           "out": 1.8,
-          "cache_read": 0,
+          "cache_read": 0.9,
           "cache_write": 1.8,
           "source": "nano-gpt"
         }
@@ -6978,8 +6992,8 @@
         {
           "from": "2026-11-12",
           "in": 0.66,
-          "out": 4.0139,
-          "cache_read": 0.105,
+          "out": 2.5,
+          "cache_read": 0.04,
           "cache_write": 0.66,
           "source": "nano-gpt"
         }
@@ -8003,6 +8017,14 @@
           "cache_read": 0.0216,
           "cache_write": 0.2088,
           "source": "nano-gpt"
+        },
+        {
+          "from": "2026-11-12",
+          "in": 0.286,
+          "out": 0.418,
+          "cache_read": 0.143,
+          "cache_write": 0.286,
+          "source": "nano-gpt"
         }
       ]
     },
@@ -8032,6 +8054,14 @@
           "cache_read": 0.00371429,
           "cache_write": 0.15714286,
           "source": "kenari"
+        },
+        {
+          "from": "2026-11-12",
+          "in": 0.3,
+          "out": 1.2,
+          "cache_read": 0.006,
+          "cache_write": 0.3,
+          "source": "frogbot"
         }
       ]
     },
@@ -8691,8 +8721,8 @@
         {
           "from": "2026-11-12",
           "in": 0.66,
-          "out": 4.0139,
-          "cache_read": 0.105,
+          "out": 2.5,
+          "cache_read": 0.04,
           "cache_write": 0.66,
           "source": "nano-gpt"
         }
@@ -8708,6 +8738,32 @@
           "cache_read": 0.44,
           "cache_write": 1.75,
           "source": "requesty"
+        }
+      ]
+    },
+    "deepseek-v4-pro-20260423": {
+      "id": "deepseek-v4-pro-20260423",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 0.86979,
+          "out": 1.77565,
+          "cache_read": 0.0796,
+          "cache_write": 0.86979,
+          "source": "nano-gpt"
+        }
+      ]
+    },
+    "deepseek-v4-pro-20260423:thinking": {
+      "id": "deepseek-v4-pro-20260423:thinking",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 0.95124,
+          "out": 1.79607,
+          "cache_read": 0.0796,
+          "cache_write": 0.95124,
+          "source": "nano-gpt"
         }
       ]
     },
@@ -9419,6 +9475,14 @@
           "out": 0.4,
           "cache_read": 0.004,
           "cache_write": 0.022,
+          "source": "nano-gpt"
+        },
+        {
+          "from": "2026-11-12",
+          "in": 0.0387,
+          "out": 0.4,
+          "cache_read": 0.0089,
+          "cache_write": 0.0387,
           "source": "nano-gpt"
         }
       ]
@@ -10346,6 +10410,14 @@
           "cache_read": 0.0731,
           "cache_write": 0.25,
           "source": "nano-gpt"
+        },
+        {
+          "from": "2026-11-12",
+          "in": 0.25,
+          "out": 2,
+          "cache_read": 0.125,
+          "cache_write": 0.25,
+          "source": "nano-gpt"
         }
       ]
     },
@@ -10396,6 +10468,14 @@
           "in": 0.1,
           "out": 0.4845,
           "cache_read": 0.02465,
+          "cache_write": 0.1,
+          "source": "nano-gpt"
+        },
+        {
+          "from": "2026-11-12",
+          "in": 0.1,
+          "out": 0.4845,
+          "cache_read": 0.05,
           "cache_write": 0.1,
           "source": "nano-gpt"
         }
@@ -11726,7 +11806,7 @@
           "from": "2026-11-04",
           "in": 0.799,
           "out": 0.799,
-          "cache_read": 0,
+          "cache_read": 0.3995,
           "cache_write": 0.799,
           "source": "nano-gpt"
         }
@@ -12207,6 +12287,14 @@
           "tier_out": 15,
           "tier_cache_write": 2.5,
           "source": "google"
+        },
+        {
+          "from": "2026-11-12",
+          "in": 1.25,
+          "out": 10,
+          "cache_read": 0,
+          "cache_write": 1.25,
+          "source": "google"
         }
       ],
       "first_party": true
@@ -12276,6 +12364,14 @@
           "cache_read": 0.01,
           "cache_write": 0.1,
           "source": "nano-gpt"
+        },
+        {
+          "from": "2026-11-12",
+          "in": 0.1,
+          "out": 0.4,
+          "cache_read": 0,
+          "cache_write": 0.1,
+          "source": "302ai"
         }
       ]
     },
@@ -12401,6 +12497,14 @@
           "cache_read": 0.03,
           "cache_write": 0.3,
           "source": "nano-gpt"
+        },
+        {
+          "from": "2026-11-12",
+          "in": 0.3,
+          "out": 2.5,
+          "cache_read": 0,
+          "cache_write": 0.3,
+          "source": "302ai"
         }
       ]
     },
@@ -12737,6 +12841,14 @@
           "cache_read": 0.03428571,
           "cache_write": 0.01714286,
           "source": "kenari"
+        },
+        {
+          "from": "2026-11-12",
+          "in": 1.5,
+          "out": 7.5,
+          "cache_read": 0.15,
+          "cache_write": 1.5,
+          "source": "frogbot"
         }
       ]
     },
@@ -13628,6 +13740,20 @@
         }
       ]
     },
+    "gemini-4-hydrogen": {
+      "id": "gemini-4-hydrogen",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 1.5,
+          "out": 7.5,
+          "cache_read": 0.075,
+          "cache_write": 1.5,
+          "source": "google"
+        }
+      ],
+      "first_party": true
+    },
     "gemini-deep-research": {
       "id": "gemini-deep-research",
       "rates": [
@@ -13776,9 +13902,16 @@
           "cache_read": 0,
           "cache_write": 1.5,
           "source": "google"
+        },
+        {
+          "from": "2026-11-12",
+          "in": 1.5,
+          "out": 9,
+          "cache_read": 0,
+          "cache_write": 1.5,
+          "source": "vercel"
         }
-      ],
-      "first_party": true
+      ]
     },
     "gemini-pro": {
       "id": "gemini-pro",
@@ -14115,7 +14248,8 @@
           "cache_write": 0.07,
           "source": "deepinfra"
         }
-      ]
+      ],
+      "first_party": true
     },
     "gemma-4-26b-a4b-it-chimerax": {
       "id": "gemma-4-26b-a4b-it-chimerax",
@@ -14378,10 +14512,10 @@
         },
         {
           "from": "2026-11-12",
-          "in": 0.01,
-          "out": 0.031,
-          "cache_read": 0.005,
-          "cache_write": 0.01,
+          "in": 0.023,
+          "out": 0.068,
+          "cache_read": 0.011,
+          "cache_write": 0.023,
           "source": "nano-gpt"
         }
       ]
@@ -14469,7 +14603,7 @@
           "from": "2026-10-25",
           "in": 0.306,
           "out": 0.306,
-          "cache_read": 0,
+          "cache_read": 0.153,
           "cache_write": 0.306,
           "source": "nano-gpt"
         }
@@ -14482,7 +14616,7 @@
           "from": "2026-10-25",
           "in": 0.306,
           "out": 0.306,
-          "cache_read": 0,
+          "cache_read": 0.153,
           "cache_write": 0.306,
           "source": "nano-gpt"
         }
@@ -14495,7 +14629,7 @@
           "from": "2026-10-25",
           "in": 0.306,
           "out": 0.306,
-          "cache_read": 0,
+          "cache_read": 0.153,
           "cache_write": 0.306,
           "source": "nano-gpt"
         }
@@ -14542,7 +14676,7 @@
           "from": "2026-10-25",
           "in": 0.306,
           "out": 0.306,
-          "cache_read": 0,
+          "cache_read": 0.153,
           "cache_write": 0.306,
           "source": "nano-gpt"
         }
@@ -14568,7 +14702,7 @@
           "from": "2026-10-25",
           "in": 0.306,
           "out": 0.306,
-          "cache_read": 0,
+          "cache_read": 0.153,
           "cache_write": 0.306,
           "source": "nano-gpt"
         }
@@ -14594,7 +14728,7 @@
           "from": "2026-10-25",
           "in": 0.306,
           "out": 0.306,
-          "cache_read": 0,
+          "cache_read": 0.153,
           "cache_write": 0.306,
           "source": "nano-gpt"
         }
@@ -14607,7 +14741,7 @@
           "from": "2026-10-25",
           "in": 0.306,
           "out": 0.306,
-          "cache_read": 0,
+          "cache_read": 0.153,
           "cache_write": 0.306,
           "source": "nano-gpt"
         }
@@ -14620,7 +14754,7 @@
           "from": "2026-10-25",
           "in": 0.306,
           "out": 0.306,
-          "cache_read": 0,
+          "cache_read": 0.153,
           "cache_write": 0.306,
           "source": "nano-gpt"
         }
@@ -14798,7 +14932,7 @@
           "from": "2026-10-25",
           "in": 0.306,
           "out": 0.306,
-          "cache_read": 0,
+          "cache_read": 0.153,
           "cache_write": 0.306,
           "source": "nano-gpt"
         }
@@ -14811,7 +14945,7 @@
           "from": "2026-10-25",
           "in": 0.306,
           "out": 0.306,
-          "cache_read": 0,
+          "cache_read": 0.153,
           "cache_write": 0.306,
           "source": "nano-gpt"
         }
@@ -14858,7 +14992,7 @@
           "from": "2026-10-25",
           "in": 0.306,
           "out": 0.306,
-          "cache_read": 0,
+          "cache_read": 0.153,
           "cache_write": 0.306,
           "source": "nano-gpt"
         }
@@ -14884,7 +15018,7 @@
           "from": "2026-10-25",
           "in": 0.306,
           "out": 0.306,
-          "cache_read": 0,
+          "cache_read": 0.153,
           "cache_write": 0.306,
           "source": "nano-gpt"
         }
@@ -14897,7 +15031,7 @@
           "from": "2026-10-25",
           "in": 0.306,
           "out": 0.306,
-          "cache_read": 0,
+          "cache_read": 0.153,
           "cache_write": 0.306,
           "source": "nano-gpt"
         }
@@ -16661,6 +16795,14 @@
           "out": 2.5,
           "cache_read": 0.18,
           "cache_write": 0.7,
+          "source": "nano-gpt"
+        },
+        {
+          "from": "2026-11-12",
+          "in": 0.7614,
+          "out": 2.7204,
+          "cache_read": 0.1964,
+          "cache_write": 0.7614,
           "source": "nano-gpt"
         }
       ]
@@ -19452,6 +19594,14 @@
           "cache_read": 0.02,
           "cache_write": 0.25714286,
           "source": "kenari"
+        },
+        {
+          "from": "2026-11-12",
+          "in": 0.2,
+          "out": 1.2,
+          "cache_read": 0.02,
+          "cache_write": 0.25,
+          "source": "frogbot"
         }
       ]
     },
@@ -19473,6 +19623,14 @@
           "cache_read": 1.18857143,
           "cache_write": 3.71428571,
           "source": "kenari"
+        },
+        {
+          "from": "2026-11-12",
+          "in": 5,
+          "out": 30,
+          "cache_read": 0.5,
+          "cache_write": 6.25,
+          "source": "frogbot"
         }
       ]
     },
@@ -19494,6 +19652,14 @@
           "cache_read": 0,
           "cache_write": 2.4,
           "source": "kenari"
+        },
+        {
+          "from": "2026-11-12",
+          "in": 2,
+          "out": 12,
+          "cache_read": 0.2,
+          "cache_write": 2.5,
+          "source": "frogbot"
         }
       ]
     },
@@ -20784,6 +20950,14 @@
           "tier_cache_read": 0.2,
           "tier_cache_write": 5,
           "source": "neon"
+        },
+        {
+          "from": "2026-11-12",
+          "in": 2,
+          "out": 10,
+          "cache_read": 0.1,
+          "cache_write": 2.5,
+          "source": "frogbot"
         }
       ]
     },
@@ -21303,8 +21477,17 @@
           "cache_read": 1.25,
           "cache_write": 5,
           "source": "vercel"
+        },
+        {
+          "from": "2026-11-12",
+          "in": 5,
+          "out": 10,
+          "cache_read": 1.25,
+          "cache_write": 5,
+          "source": "openai"
         }
-      ]
+      ],
+      "first_party": true
     },
     "gpt-image-2": {
       "id": "gpt-image-2",
@@ -21873,7 +22056,7 @@
           "from": "2026-10-25",
           "in": 0.3,
           "out": 0.3,
-          "cache_read": 0,
+          "cache_read": 0.15,
           "cache_write": 0.3,
           "source": "nano-gpt"
         }
@@ -22281,6 +22464,14 @@
           "cache_read": 0.34285714,
           "cache_write": 2.28571429,
           "source": "kenari"
+        },
+        {
+          "from": "2026-11-12",
+          "in": 2,
+          "out": 6,
+          "cache_read": 0.3,
+          "cache_write": 2,
+          "source": "frogbot"
         }
       ]
     },
@@ -22788,6 +22979,14 @@
           "tier_cache_read": 0.4,
           "tier_cache_write": 2.5,
           "source": "xai"
+        },
+        {
+          "from": "2026-11-12",
+          "in": 1.25,
+          "out": 2.5,
+          "cache_read": 0.2,
+          "cache_write": 1.25,
+          "source": "google-vertex"
         }
       ],
       "first_party": true
@@ -25040,6 +25239,14 @@
           "cache_read": 0.07,
           "cache_write": 0.375,
           "source": "nano-gpt"
+        },
+        {
+          "from": "2026-11-12",
+          "in": 0.6265,
+          "out": 3.2187,
+          "cache_read": 0.1053,
+          "cache_write": 0.6265,
+          "source": "nano-gpt"
         }
       ]
     },
@@ -25216,6 +25423,14 @@
           "out": 4.13,
           "cache_read": 0.231,
           "cache_write": 0.88,
+          "source": "nano-gpt"
+        },
+        {
+          "from": "2026-11-12",
+          "in": 0.5,
+          "out": 2.6,
+          "cache_read": 0.125,
+          "cache_write": 0.5,
           "source": "nano-gpt"
         }
       ]
@@ -29029,6 +29244,14 @@
           "cache_read": 0.004,
           "cache_write": 0,
           "source": "nano-gpt"
+        },
+        {
+          "from": "2026-11-12",
+          "in": 0.5051,
+          "out": 0.9999,
+          "cache_read": 0.0042,
+          "cache_write": 0,
+          "source": "nano-gpt"
         }
       ]
     },
@@ -29648,6 +29871,14 @@
           "cache_read": 0.06,
           "cache_write": 0.6,
           "source": "nano-gpt"
+        },
+        {
+          "from": "2026-11-12",
+          "in": 0.6,
+          "out": 2.4,
+          "cache_read": 0.3,
+          "cache_write": 0.6,
+          "source": "nano-gpt"
         }
       ]
     },
@@ -29886,6 +30117,14 @@
           "out": 0.96,
           "cache_read": 0.05,
           "cache_write": 0.23,
+          "source": "nano-gpt"
+        },
+        {
+          "from": "2026-11-12",
+          "in": 0.2719,
+          "out": 1.0676,
+          "cache_read": 0.0544,
+          "cache_write": 0.2719,
           "source": "nano-gpt"
         }
       ]
@@ -32112,9 +32351,9 @@
           "from": "2026-10-16",
           "in": 0.3,
           "out": 2.5,
-          "cache_read": 0,
+          "cache_read": 0.15,
           "cache_write": 0.3,
-          "source": "kilo"
+          "source": "nano-gpt"
         }
       ]
     },
@@ -32125,9 +32364,9 @@
           "from": "2026-10-16",
           "in": 0.3,
           "out": 2.5,
-          "cache_read": 0,
+          "cache_read": 0.15,
           "cache_write": 0.3,
-          "source": "kilo"
+          "source": "nano-gpt"
         }
       ]
     },
@@ -37145,6 +37384,14 @@
           "cache_read": 0.1785,
           "cache_write": 0.36,
           "source": "nano-gpt"
+        },
+        {
+          "from": "2026-11-12",
+          "in": 0.36,
+          "out": 0.4,
+          "cache_read": 0.18,
+          "cache_write": 0.36,
+          "source": "nano-gpt"
         }
       ]
     },
@@ -37795,7 +38042,7 @@
           "from": "2026-10-25",
           "in": 0.3,
           "out": 0.6,
-          "cache_read": 0,
+          "cache_read": 0.15,
           "cache_write": 0.3,
           "source": "nano-gpt"
         }
@@ -38166,7 +38413,7 @@
           "from": "2026-11-04",
           "in": 0.7,
           "out": 0.7,
-          "cache_read": 0,
+          "cache_read": 0.35,
           "cache_write": 0.7,
           "source": "nano-gpt"
         }
@@ -40166,6 +40413,14 @@
           "cache_read": 0.103788,
           "cache_write": 0.26,
           "source": "nano-gpt"
+        },
+        {
+          "from": "2026-11-12",
+          "in": 0.26,
+          "out": 2.08,
+          "cache_read": 0.13,
+          "cache_write": 0.26,
+          "source": "nano-gpt"
         }
       ]
     },
@@ -40190,7 +40445,7 @@
           "from": "2026-10-25",
           "in": 0.306,
           "out": 0.306,
-          "cache_read": 0,
+          "cache_read": 0.153,
           "cache_write": 0.306,
           "source": "nano-gpt"
         }
@@ -40484,6 +40739,14 @@
           "out": 2.34,
           "cache_read": 0.3,
           "cache_write": 0.39,
+          "source": "nano-gpt"
+        },
+        {
+          "from": "2026-11-12",
+          "in": 0.495,
+          "out": 3.3,
+          "cache_read": 0.242,
+          "cache_write": 0.495,
           "source": "nano-gpt"
         }
       ]
@@ -43777,7 +44040,7 @@
           "from": "2026-10-25",
           "in": 0.03,
           "out": 0.1,
-          "cache_read": 0,
+          "cache_read": 0.015,
           "cache_write": 0.03,
           "source": "nano-gpt"
         }
@@ -43790,7 +44053,7 @@
           "from": "2026-10-25",
           "in": 0.1,
           "out": 0.2,
-          "cache_read": 0,
+          "cache_read": 0.05,
           "cache_write": 0.1,
           "source": "nano-gpt"
         }
@@ -45130,7 +45393,7 @@
           "from": "2026-11-04",
           "in": 0.3,
           "out": 0.3,
-          "cache_read": 0,
+          "cache_read": 0.15,
           "cache_write": 0.3,
           "source": "nano-gpt"
         }
@@ -66775,6 +67038,14 @@
           "cache_read": 1.25,
           "cache_write": 5,
           "source": "azure"
+        },
+        {
+          "from": "2026-11-12",
+          "in": 5,
+          "out": 10,
+          "cache_read": 1.25,
+          "cache_write": 5,
+          "source": "azure"
         }
       ]
     },
@@ -68219,6 +68490,14 @@
           "from": "2026-09-29",
           "in": 5,
           "out": 32,
+          "cache_read": 1.25,
+          "cache_write": 5,
+          "source": "azure-cognitive-services"
+        },
+        {
+          "from": "2026-11-12",
+          "in": 5,
+          "out": 10,
           "cache_read": 1.25,
           "cache_write": 5,
           "source": "azure-cognitive-services"
@@ -69860,6 +70139,32 @@
         }
       ]
     },
+    "chutes\u0000deepseek-v4-pro-0813": {
+      "id": "deepseek-v4-pro-0813",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 0.85,
+          "out": 2.65,
+          "cache_read": 0.15,
+          "cache_write": 0.85,
+          "source": "chutes"
+        }
+      ]
+    },
+    "chutes\u0000deepseek-v4.1-flash-1017": {
+      "id": "deepseek-v4.1-flash-1017",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 0.3,
+          "out": 1.2,
+          "cache_read": 0.03,
+          "cache_write": 0.3,
+          "source": "chutes"
+        }
+      ]
+    },
     "chutes\u0000gemma-4-31b-turbo-tee": {
       "id": "gemma-4-31b-turbo-tee",
       "rates": [
@@ -69910,6 +70215,19 @@
         }
       ]
     },
+    "chutes\u0000glm-5.2-fast": {
+      "id": "glm-5.2-fast",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 2.45,
+          "out": 7.7,
+          "cache_read": 0.49,
+          "cache_write": 2.45,
+          "source": "chutes"
+        }
+      ]
+    },
     "chutes\u0000glm-5.2-tee": {
       "id": "glm-5.2-tee",
       "rates": [
@@ -69927,6 +70245,32 @@
           "out": 3.95,
           "cache_read": 0.125,
           "cache_write": 1.25,
+          "source": "chutes"
+        }
+      ]
+    },
+    "chutes\u0000glm-5.3": {
+      "id": "glm-5.3",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 1.225,
+          "out": 3.85,
+          "cache_read": 0.245,
+          "cache_write": 1.225,
+          "source": "chutes"
+        }
+      ]
+    },
+    "chutes\u0000hy4": {
+      "id": "hy4",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 0.525,
+          "out": 1.5625,
+          "cache_read": 0.025,
+          "cache_write": 0.525,
           "source": "chutes"
         }
       ]
@@ -69972,6 +70316,19 @@
           "out": 1.8,
           "cache_read": 0.039,
           "cache_write": 0.39,
+          "source": "chutes"
+        }
+      ]
+    },
+    "chutes\u0000kimi-k2.7-code": {
+      "id": "kimi-k2.7-code",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 0.832,
+          "out": 3.5,
+          "cache_read": 0.167,
+          "cache_write": 0.832,
           "source": "chutes"
         }
       ]
@@ -70120,6 +70477,19 @@
         }
       ]
     },
+    "chutes\u0000qwen3.8-2.4t-a95b": {
+      "id": "qwen3.8-2.4t-a95b",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 2,
+          "out": 6,
+          "cache_read": 0.25,
+          "cache_write": 2,
+          "source": "chutes"
+        }
+      ]
+    },
     "chutes\u0000qwen3.8-27b-tee": {
       "id": "qwen3.8-27b-tee",
       "rates": [
@@ -70161,6 +70531,19 @@
           "out": 1.25,
           "cache_read": 0.0039,
           "cache_write": 0.039,
+          "source": "chutes"
+        }
+      ]
+    },
+    "chutes\u0000qwen3.8-max-0902": {
+      "id": "qwen3.8-max-0902",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 2,
+          "out": 6,
+          "cache_read": 0.25,
+          "cache_write": 2,
           "source": "chutes"
         }
       ]
@@ -84695,10 +85078,10 @@
         },
         {
           "from": "2026-11-12",
-          "in": 0.15,
-          "out": 0.6,
-          "cache_read": 0.015,
-          "cache_write": 0.15,
+          "in": 0.075,
+          "out": 0.3,
+          "cache_read": 0.0075,
+          "cache_write": 0.075,
           "source": "edenai"
         }
       ]
@@ -89974,6 +90357,34 @@
         }
       ]
     },
+    "frogbot\u0000claude-fable-5": {
+      "id": "claude-fable-5",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 10,
+          "out": 50,
+          "cache_read": 1,
+          "cache_write": 12.5,
+          "cache_write_1h": 20,
+          "source": "frogbot"
+        }
+      ]
+    },
+    "frogbot\u0000claude-fable-5-1": {
+      "id": "claude-fable-5-1",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 10,
+          "out": 50,
+          "cache_read": 0.25,
+          "cache_write": 12.5,
+          "cache_write_1h": 20,
+          "source": "frogbot"
+        }
+      ]
+    },
     "frogbot\u0000claude-haiku-4-5": {
       "id": "claude-haiku-4-5",
       "rates": [
@@ -89984,6 +90395,20 @@
           "cache_read": 0.1,
           "cache_write": 1.25,
           "cache_write_1h": 2,
+          "source": "frogbot"
+        }
+      ]
+    },
+    "frogbot\u0000claude-haiku-5-5": {
+      "id": "claude-haiku-5-5",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 0.1,
+          "out": 0.5,
+          "cache_read": 0.01,
+          "cache_write": 0.125,
+          "cache_write_1h": 0.2,
           "source": "frogbot"
         }
       ]
@@ -90016,6 +90441,48 @@
         }
       ]
     },
+    "frogbot\u0000claude-opus-4-8": {
+      "id": "claude-opus-4-8",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 5,
+          "out": 25,
+          "cache_read": 0.5,
+          "cache_write": 6.25,
+          "cache_write_1h": 10,
+          "source": "frogbot"
+        }
+      ]
+    },
+    "frogbot\u0000claude-opus-5": {
+      "id": "claude-opus-5",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 5,
+          "out": 25,
+          "cache_read": 0.5,
+          "cache_write": 6.25,
+          "cache_write_1h": 10,
+          "source": "frogbot"
+        }
+      ]
+    },
+    "frogbot\u0000claude-opus-5-5": {
+      "id": "claude-opus-5-5",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 4,
+          "out": 20,
+          "cache_read": 0.2,
+          "cache_write": 5,
+          "cache_write_1h": 8,
+          "source": "frogbot"
+        }
+      ]
+    },
     "frogbot\u0000claude-sonnet-4-6": {
       "id": "claude-sonnet-4-6",
       "rates": [
@@ -90026,6 +90493,47 @@
           "cache_read": 0.3,
           "cache_write": 3.75,
           "cache_write_1h": 6,
+          "source": "frogbot"
+        }
+      ]
+    },
+    "frogbot\u0000claude-sonnet-5": {
+      "id": "claude-sonnet-5",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 3,
+          "out": 15,
+          "cache_read": 0.3,
+          "cache_write": 3.75,
+          "cache_write_1h": 6,
+          "source": "frogbot"
+        }
+      ]
+    },
+    "frogbot\u0000claude-sonnet-5-5": {
+      "id": "claude-sonnet-5-5",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 2,
+          "out": 10,
+          "cache_read": 0.1,
+          "cache_write": 2.5,
+          "cache_write_1h": 4,
+          "source": "frogbot"
+        }
+      ]
+    },
+    "frogbot\u0000deepseek-v4-1-flash": {
+      "id": "deepseek-v4-1-flash",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 0.3,
+          "out": 1.2,
+          "cache_read": 0.006,
+          "cache_write": 0.3,
           "source": "frogbot"
         }
       ]
@@ -90090,6 +90598,45 @@
         }
       ]
     },
+    "frogbot\u0000gemini-3-5-flash-lite": {
+      "id": "gemini-3-5-flash-lite",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 0.3,
+          "out": 2.5,
+          "cache_read": 0.03,
+          "cache_write": 0.3,
+          "source": "frogbot"
+        }
+      ]
+    },
+    "frogbot\u0000gemini-3-6-flash": {
+      "id": "gemini-3-6-flash",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 1.5,
+          "out": 7.5,
+          "cache_read": 0.15,
+          "cache_write": 1.5,
+          "source": "frogbot"
+        }
+      ]
+    },
+    "frogbot\u0000gemini-3-8-flash": {
+      "id": "gemini-3-8-flash",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 1.5,
+          "out": 7.5,
+          "cache_read": 0.15,
+          "cache_write": 1.5,
+          "source": "frogbot"
+        }
+      ]
+    },
     "frogbot\u0000gemini-3-flash-preview": {
       "id": "gemini-3-flash-preview",
       "rates": [
@@ -90099,6 +90646,19 @@
           "out": 3,
           "cache_read": 0.05,
           "cache_write": 0.5,
+          "source": "frogbot"
+        }
+      ]
+    },
+    "frogbot\u0000gemini-4-argon": {
+      "id": "gemini-4-argon",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 4,
+          "out": 20,
+          "cache_read": 0.2,
+          "cache_write": 4,
           "source": "frogbot"
         }
       ]
@@ -90176,6 +90736,97 @@
         }
       ]
     },
+    "frogbot\u0000gpt-5-6-luna": {
+      "id": "gpt-5-6-luna",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 0.2,
+          "out": 1.2,
+          "cache_read": 0.02,
+          "cache_write": 0.25,
+          "source": "frogbot"
+        }
+      ]
+    },
+    "frogbot\u0000gpt-5-6-sol": {
+      "id": "gpt-5-6-sol",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 5,
+          "out": 30,
+          "cache_read": 0.5,
+          "cache_write": 6.25,
+          "source": "frogbot"
+        }
+      ]
+    },
+    "frogbot\u0000gpt-5-6-terra": {
+      "id": "gpt-5-6-terra",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 2,
+          "out": 12,
+          "cache_read": 0.2,
+          "cache_write": 2.5,
+          "source": "frogbot"
+        }
+      ]
+    },
+    "frogbot\u0000gpt-6-1-sol": {
+      "id": "gpt-6-1-sol",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 2,
+          "out": 10,
+          "cache_read": 0.1,
+          "cache_write": 2.5,
+          "source": "frogbot"
+        }
+      ]
+    },
+    "frogbot\u0000gpt-6-astra": {
+      "id": "gpt-6-astra",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 10,
+          "out": 50,
+          "cache_read": 1,
+          "cache_write": 12.5,
+          "source": "frogbot"
+        }
+      ]
+    },
+    "frogbot\u0000gpt-6-luna": {
+      "id": "gpt-6-luna",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 0.1,
+          "out": 0.5,
+          "cache_read": 0.01,
+          "cache_write": 0.125,
+          "source": "frogbot"
+        }
+      ]
+    },
+    "frogbot\u0000gpt-6-sol": {
+      "id": "gpt-6-sol",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 2,
+          "out": 10,
+          "cache_read": 0.2,
+          "cache_write": 2.5,
+          "source": "frogbot"
+        }
+      ]
+    },
     "frogbot\u0000gpt-oss-120b": {
       "id": "gpt-oss-120b",
       "rates": [
@@ -90241,6 +90892,19 @@
         }
       ]
     },
+    "frogbot\u0000grok-4-5": {
+      "id": "grok-4-5",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 2,
+          "out": 6,
+          "cache_read": 0.3,
+          "cache_write": 2,
+          "source": "frogbot"
+        }
+      ]
+    },
     "frogbot\u0000grok-code-fast-1": {
       "id": "grok-code-fast-1",
       "rates": [
@@ -90280,6 +90944,19 @@
         }
       ]
     },
+    "frogbot\u0000kimi-k3": {
+      "id": "kimi-k3",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 3,
+          "out": 15,
+          "cache_read": 0.3,
+          "cache_write": 3,
+          "source": "frogbot"
+        }
+      ]
+    },
     "frogbot\u0000minimax-m2-5": {
       "id": "minimax-m2-5",
       "rates": [
@@ -90298,6 +90975,19 @@
       "rates": [
         {
           "from": "2026-08-27",
+          "in": 0.3,
+          "out": 1.2,
+          "cache_read": 0.06,
+          "cache_write": 0.3,
+          "source": "frogbot"
+        }
+      ]
+    },
+    "frogbot\u0000minimax-m3": {
+      "id": "minimax-m3",
+      "rates": [
+        {
+          "from": "2026-11-12",
           "in": 0.3,
           "out": 1.2,
           "cache_read": 0.06,
@@ -90328,6 +91018,32 @@
           "out": 4.4,
           "cache_read": 0.26,
           "cache_write": 1.4,
+          "source": "frogbot"
+        }
+      ]
+    },
+    "frogbot\u0000zai-glm-5-3": {
+      "id": "zai-glm-5-3",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 1.4,
+          "out": 4.4,
+          "cache_read": 0.26,
+          "cache_write": 1.4,
+          "source": "frogbot"
+        }
+      ]
+    },
+    "frogbot\u0000zai-glm-5-3-flash": {
+      "id": "zai-glm-5-3-flash",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 0.15,
+          "out": 0.5,
+          "cache_read": 0.029,
+          "cache_write": 0.15,
           "source": "frogbot"
         }
       ]
@@ -91773,6 +92489,14 @@
           "tier_out": 15,
           "tier_cache_write": 2.5,
           "source": "google"
+        },
+        {
+          "from": "2026-11-12",
+          "in": 1.25,
+          "out": 10,
+          "cache_read": 0,
+          "cache_write": 1.25,
+          "source": "google"
         }
       ]
     },
@@ -92129,6 +92853,19 @@
         }
       ]
     },
+    "google\u0000gemini-4-hydrogen": {
+      "id": "gemini-4-hydrogen",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 1.5,
+          "out": 7.5,
+          "cache_read": 0.075,
+          "cache_write": 1.5,
+          "source": "google"
+        }
+      ]
+    },
     "google\u0000gemini-embedding-001": {
       "id": "gemini-embedding-001",
       "rates": [
@@ -92221,6 +92958,32 @@
           "out": 5,
           "cache_read": 0,
           "cache_write": 1,
+          "source": "google"
+        }
+      ]
+    },
+    "google\u0000gemma-4-26b-a4b-it": {
+      "id": "gemma-4-26b-a4b-it",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 0,
+          "out": 0,
+          "cache_read": 0,
+          "cache_write": 0,
+          "source": "google"
+        }
+      ]
+    },
+    "google\u0000gemma-4-31b-it": {
+      "id": "gemma-4-31b-it",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 0,
+          "out": 0,
+          "cache_read": 0,
+          "cache_write": 0,
           "source": "google"
         }
       ]
@@ -92900,6 +93663,19 @@
         }
       ]
     },
+    "google-vertex\u0000gemini-4-hydrogen": {
+      "id": "gemini-4-hydrogen",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 1.5,
+          "out": 7.5,
+          "cache_read": 0.075,
+          "cache_write": 1.5,
+          "source": "google-vertex"
+        }
+      ]
+    },
     "google-vertex\u0000gemini-embedding-001": {
       "id": "gemini-embedding-001",
       "rates": [
@@ -93106,6 +93882,14 @@
           "tier_out": 5,
           "tier_cache_read": 0.4,
           "tier_cache_write": 2.5,
+          "source": "google-vertex"
+        },
+        {
+          "from": "2026-11-12",
+          "in": 1.25,
+          "out": 2.5,
+          "cache_read": 0.2,
+          "cache_write": 1.25,
           "source": "google-vertex"
         }
       ]
@@ -99380,7 +100164,7 @@
         },
         {
           "from": "2026-11-12",
-          "in": 0.7995,
+          "in": 0.7985,
           "out": 3.75,
           "cache_read": 0.19,
           "cache_write": 0,
@@ -103343,6 +104127,32 @@
         }
       ]
     },
+    "kilo\u0000ampersand-v0.1": {
+      "id": "ampersand-v0.1",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 0,
+          "out": 0,
+          "cache_read": 0,
+          "cache_write": 0,
+          "source": "kilo"
+        }
+      ]
+    },
+    "kilo\u0000apex": {
+      "id": "apex",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 0.5,
+          "out": 3,
+          "cache_read": 0.2,
+          "cache_write": 0.5,
+          "source": "kilo"
+        }
+      ]
+    },
     "kilo\u0000apodex-1.1-mini": {
       "id": "apodex-1.1-mini",
       "rates": [
@@ -103352,6 +104162,32 @@
           "out": 0,
           "cache_read": 0,
           "cache_write": 0,
+          "source": "kilo"
+        }
+      ]
+    },
+    "kilo\u0000arrow-2": {
+      "id": "arrow-2",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 4,
+          "out": 20,
+          "cache_read": 0.4,
+          "cache_write": 5,
+          "source": "kilo"
+        }
+      ]
+    },
+    "kilo\u0000arrow-2-telos": {
+      "id": "arrow-2-telos",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 6,
+          "out": 30,
+          "cache_read": 0.6,
+          "cache_write": 7.5,
           "source": "kilo"
         }
       ]
@@ -103908,6 +104744,19 @@
           "cache_read": 0.1,
           "cache_write": 2.5,
           "cache_write_1h": 4,
+          "source": "kilo"
+        }
+      ]
+    },
+    "kilo\u0000codestral": {
+      "id": "codestral",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 0.3,
+          "out": 0.9,
+          "cache_read": 0.03,
+          "cache_write": 0.3,
           "source": "kilo"
         }
       ]
@@ -104771,6 +105620,14 @@
           "cache_read": 0,
           "cache_write": 0.7,
           "source": "kilo"
+        },
+        {
+          "from": "2026-11-12",
+          "in": 1.35,
+          "out": 5.4,
+          "cache_read": 0,
+          "cache_write": 1.35,
+          "source": "kilo"
         }
       ]
     },
@@ -104804,6 +105661,19 @@
           "out": 0.8,
           "cache_read": 0,
           "cache_write": 0.8,
+          "source": "kilo"
+        }
+      ]
+    },
+    "kilo\u0000deepseek-v3.1": {
+      "id": "deepseek-v3.1",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 0.25,
+          "out": 0.95,
+          "cache_read": 0.13,
+          "cache_write": 0.25,
           "source": "kilo"
         }
       ]
@@ -104899,6 +105769,19 @@
           "out": 0.41,
           "cache_read": 0,
           "cache_write": 0.27,
+          "source": "kilo"
+        }
+      ]
+    },
+    "kilo\u0000deepseek-v3.2-thinking": {
+      "id": "deepseek-v3.2-thinking",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 0.62,
+          "out": 1.85,
+          "cache_read": 0,
+          "cache_write": 0.62,
           "source": "kilo"
         }
       ]
@@ -105354,6 +106237,45 @@
         }
       ]
     },
+    "kilo\u0000deepseek-v4.1-flash-1017-fast": {
+      "id": "deepseek-v4.1-flash-1017-fast",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 0.6,
+          "out": 2.4,
+          "cache_read": 0.014,
+          "cache_write": 0.6,
+          "source": "kilo"
+        }
+      ]
+    },
+    "kilo\u0000deepseek-v4.1-flash-1017-ultrafast": {
+      "id": "deepseek-v4.1-flash-1017-ultrafast",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 2.4,
+          "out": 9.6,
+          "cache_read": 0.048,
+          "cache_write": 2.4,
+          "source": "kilo"
+        }
+      ]
+    },
+    "kilo\u0000deepseek-v4.1-flash-fast": {
+      "id": "deepseek-v4.1-flash-fast",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 0.6,
+          "out": 2.4,
+          "cache_read": 0.014,
+          "cache_write": 0.6,
+          "source": "kilo"
+        }
+      ]
+    },
     "kilo\u0000devstral-2512": {
       "id": "devstral-2512",
       "rates": [
@@ -105709,6 +106631,19 @@
         }
       ]
     },
+    "kilo\u0000gemini-3-flash": {
+      "id": "gemini-3-flash",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 0.5,
+          "out": 3,
+          "cache_read": 0.05,
+          "cache_write": 0.5,
+          "source": "kilo"
+        }
+      ]
+    },
     "kilo\u0000gemini-3-flash-preview": {
       "id": "gemini-3-flash-preview",
       "rates": [
@@ -106002,6 +106937,19 @@
         }
       ]
     },
+    "kilo\u0000gemini-4-hydrogen": {
+      "id": "gemini-4-hydrogen",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 0.75,
+          "out": 3.75,
+          "cache_read": 0.0375,
+          "cache_write": 0.041667,
+          "source": "kilo"
+        }
+      ]
+    },
     "kilo\u0000gemini-flash": {
       "id": "gemini-flash",
       "rates": [
@@ -106054,6 +107002,19 @@
       "rates": [
         {
           "from": "2026-11-06",
+          "in": 1.5,
+          "out": 9,
+          "cache_read": 0,
+          "cache_write": 1.5,
+          "source": "kilo"
+        }
+      ]
+    },
+    "kilo\u0000gemini-omni-flash-preview": {
+      "id": "gemini-omni-flash-preview",
+      "rates": [
+        {
+          "from": "2026-11-12",
           "in": 1.5,
           "out": 9,
           "cache_read": 0,
@@ -106232,22 +107193,6 @@
           "out": 0.032,
           "cache_read": 0.005,
           "cache_write": 0.011,
-          "source": "kilo"
-        },
-        {
-          "from": "2026-11-11",
-          "in": 0.011,
-          "out": 0.034,
-          "cache_read": 0.006,
-          "cache_write": 0.011,
-          "source": "kilo"
-        },
-        {
-          "from": "2026-11-12",
-          "in": 0.013,
-          "out": 0.04,
-          "cache_read": 0.007,
-          "cache_write": 0.013,
           "source": "kilo"
         }
       ]
@@ -106819,6 +107764,19 @@
         }
       ]
     },
+    "kilo\u0000glm-4.7-flashx": {
+      "id": "glm-4.7-flashx",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 0.06,
+          "out": 0.4,
+          "cache_read": 0.01,
+          "cache_write": 0.06,
+          "source": "kilo"
+        }
+      ]
+    },
     "kilo\u0000glm-5": {
       "id": "glm-5",
       "rates": [
@@ -106879,6 +107837,19 @@
         }
       ]
     },
+    "kilo\u0000glm-5.2-fast": {
+      "id": "glm-5.2-fast",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 2.8,
+          "out": 8.8,
+          "cache_read": 0.56,
+          "cache_write": 2.8,
+          "source": "kilo"
+        }
+      ]
+    },
     "kilo\u0000glm-5.3": {
       "id": "glm-5.3",
       "rates": [
@@ -106888,6 +107859,19 @@
           "out": 4.4,
           "cache_read": 0.26,
           "cache_write": 1.4,
+          "source": "kilo"
+        }
+      ]
+    },
+    "kilo\u0000glm-5.3-fast": {
+      "id": "glm-5.3-fast",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 2.1,
+          "out": 6.6,
+          "cache_read": 0.21,
+          "cache_write": 2.1,
           "source": "kilo"
         }
       ]
@@ -107420,6 +108404,19 @@
         }
       ]
     },
+    "kilo\u0000gpt-4.1-fast": {
+      "id": "gpt-4.1-fast",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 3.5,
+          "out": 14,
+          "cache_read": 0.875,
+          "cache_write": 3.5,
+          "source": "kilo"
+        }
+      ]
+    },
     "kilo\u0000gpt-4.1-mini": {
       "id": "gpt-4.1-mini",
       "rates": [
@@ -107429,6 +108426,19 @@
           "out": 1.6,
           "cache_read": 0.1,
           "cache_write": 0.4,
+          "source": "kilo"
+        }
+      ]
+    },
+    "kilo\u0000gpt-4.1-mini-fast": {
+      "id": "gpt-4.1-mini-fast",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 0.7,
+          "out": 2.8,
+          "cache_read": 0.175,
+          "cache_write": 0.7,
           "source": "kilo"
         }
       ]
@@ -107506,6 +108516,19 @@
         }
       ]
     },
+    "kilo\u0000gpt-4o-fast": {
+      "id": "gpt-4o-fast",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 4.25,
+          "out": 17,
+          "cache_read": 2.125,
+          "cache_write": 4.25,
+          "source": "kilo"
+        }
+      ]
+    },
     "kilo\u0000gpt-4o-mini": {
       "id": "gpt-4o-mini",
       "rates": [
@@ -107532,6 +108555,19 @@
         }
       ]
     },
+    "kilo\u0000gpt-4o-mini-fast": {
+      "id": "gpt-4o-mini-fast",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 0.25,
+          "out": 1,
+          "cache_read": 0.125,
+          "cache_write": 0.25,
+          "source": "kilo"
+        }
+      ]
+    },
     "kilo\u0000gpt-5": {
       "id": "gpt-5",
       "rates": [
@@ -107541,6 +108577,32 @@
           "out": 10,
           "cache_read": 0.125,
           "cache_write": 1.25,
+          "source": "kilo"
+        }
+      ]
+    },
+    "kilo\u0000gpt-5-codex": {
+      "id": "gpt-5-codex",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 1.25,
+          "out": 10,
+          "cache_read": 0.13,
+          "cache_write": 1.25,
+          "source": "kilo"
+        }
+      ]
+    },
+    "kilo\u0000gpt-5-fast": {
+      "id": "gpt-5-fast",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 2.5,
+          "out": 20,
+          "cache_read": 0.25,
+          "cache_write": 2.5,
           "source": "kilo"
         }
       ]
@@ -107580,6 +108642,19 @@
           "out": 2,
           "cache_read": 0.025,
           "cache_write": 0.25,
+          "source": "kilo"
+        }
+      ]
+    },
+    "kilo\u0000gpt-5-mini-fast": {
+      "id": "gpt-5-mini-fast",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 0.45,
+          "out": 3.6,
+          "cache_read": 0.045,
+          "cache_write": 0.45,
           "source": "kilo"
         }
       ]
@@ -107662,6 +108737,32 @@
         }
       ]
     },
+    "kilo\u0000gpt-5.1-thinking": {
+      "id": "gpt-5.1-thinking",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 1.25,
+          "out": 10,
+          "cache_read": 0.125,
+          "cache_write": 1.25,
+          "source": "kilo"
+        }
+      ]
+    },
+    "kilo\u0000gpt-5.1-thinking-fast": {
+      "id": "gpt-5.1-thinking-fast",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 2.5,
+          "out": 20,
+          "cache_read": 0.25,
+          "cache_write": 2.5,
+          "source": "kilo"
+        }
+      ]
+    },
     "kilo\u0000gpt-5.2": {
       "id": "gpt-5.2",
       "rates": [
@@ -107701,6 +108802,19 @@
         }
       ]
     },
+    "kilo\u0000gpt-5.2-fast": {
+      "id": "gpt-5.2-fast",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 3.5,
+          "out": 28,
+          "cache_read": 0.35,
+          "cache_write": 3.5,
+          "source": "kilo"
+        }
+      ]
+    },
     "kilo\u0000gpt-5.2-pro": {
       "id": "gpt-5.2-pro",
       "rates": [
@@ -107727,6 +108841,19 @@
         }
       ]
     },
+    "kilo\u0000gpt-5.3-codex-fast": {
+      "id": "gpt-5.3-codex-fast",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 3.5,
+          "out": 28,
+          "cache_read": 0.35,
+          "cache_write": 3.5,
+          "source": "kilo"
+        }
+      ]
+    },
     "kilo\u0000gpt-5.4": {
       "id": "gpt-5.4",
       "rates": [
@@ -107736,6 +108863,19 @@
           "out": 15,
           "cache_read": 0.25,
           "cache_write": 2.5,
+          "source": "kilo"
+        }
+      ]
+    },
+    "kilo\u0000gpt-5.4-fast": {
+      "id": "gpt-5.4-fast",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 5,
+          "out": 30,
+          "cache_read": 0.5,
+          "cache_write": 5,
           "source": "kilo"
         }
       ]
@@ -107762,6 +108902,19 @@
           "out": 4.5,
           "cache_read": 0.075,
           "cache_write": 0.75,
+          "source": "kilo"
+        }
+      ]
+    },
+    "kilo\u0000gpt-5.4-mini-fast": {
+      "id": "gpt-5.4-mini-fast",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 1.5,
+          "out": 9,
+          "cache_read": 0.15,
+          "cache_write": 1.5,
           "source": "kilo"
         }
       ]
@@ -107805,6 +108958,19 @@
         }
       ]
     },
+    "kilo\u0000gpt-5.5-fast": {
+      "id": "gpt-5.5-fast",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 12.5,
+          "out": 75,
+          "cache_read": 1.25,
+          "cache_write": 12.5,
+          "source": "kilo"
+        }
+      ]
+    },
     "kilo\u0000gpt-5.5-pro": {
       "id": "gpt-5.5-pro",
       "rates": [
@@ -107827,6 +108993,19 @@
           "out": 1.2,
           "cache_read": 0.02,
           "cache_write": 0.25,
+          "source": "kilo"
+        }
+      ]
+    },
+    "kilo\u0000gpt-5.6-luna-fast": {
+      "id": "gpt-5.6-luna-fast",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 0.4,
+          "out": 2.4,
+          "cache_read": 0.04,
+          "cache_write": 0.5,
           "source": "kilo"
         }
       ]
@@ -107878,6 +109057,19 @@
         }
       ]
     },
+    "kilo\u0000gpt-5.6-sol-fast": {
+      "id": "gpt-5.6-sol-fast",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 8,
+          "out": 40,
+          "cache_read": 0.8,
+          "cache_write": 10,
+          "source": "kilo"
+        }
+      ]
+    },
     "kilo\u0000gpt-5.6-sol-pro": {
       "id": "gpt-5.6-sol-pro",
       "rates": [
@@ -107900,6 +109092,19 @@
           "out": 12,
           "cache_read": 0.2,
           "cache_write": 2.5,
+          "source": "kilo"
+        }
+      ]
+    },
+    "kilo\u0000gpt-5.6-terra-fast": {
+      "id": "gpt-5.6-terra-fast",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 4,
+          "out": 24,
+          "cache_read": 0.4,
+          "cache_write": 5,
           "source": "kilo"
         }
       ]
@@ -107930,6 +109135,19 @@
         }
       ]
     },
+    "kilo\u0000gpt-6-astra-fast": {
+      "id": "gpt-6-astra-fast",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 20,
+          "out": 100,
+          "cache_read": 2,
+          "cache_write": 25,
+          "source": "kilo"
+        }
+      ]
+    },
     "kilo\u0000gpt-6-astra-pro": {
       "id": "gpt-6-astra-pro",
       "rates": [
@@ -107952,6 +109170,19 @@
           "out": 0.5,
           "cache_read": 0.01,
           "cache_write": 0.125,
+          "source": "kilo"
+        }
+      ]
+    },
+    "kilo\u0000gpt-6-luna-fast": {
+      "id": "gpt-6-luna-fast",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 0.2,
+          "out": 1,
+          "cache_read": 0.02,
+          "cache_write": 0.25,
           "source": "kilo"
         }
       ]
@@ -107982,6 +109213,19 @@
         }
       ]
     },
+    "kilo\u0000gpt-6-sol-fast": {
+      "id": "gpt-6-sol-fast",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 4,
+          "out": 20,
+          "cache_read": 0.4,
+          "cache_write": 5,
+          "source": "kilo"
+        }
+      ]
+    },
     "kilo\u0000gpt-6-sol-pro": {
       "id": "gpt-6-sol-pro",
       "rates": [
@@ -108008,6 +109252,19 @@
         }
       ]
     },
+    "kilo\u0000gpt-6.1-sol-fast": {
+      "id": "gpt-6.1-sol-fast",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 4,
+          "out": 20,
+          "cache_read": 0.2,
+          "cache_write": 5,
+          "source": "kilo"
+        }
+      ]
+    },
     "kilo\u0000gpt-6.1-sol-pro": {
       "id": "gpt-6.1-sol-pro",
       "rates": [
@@ -108030,6 +109287,19 @@
           "out": 5,
           "cache_read": 0.05,
           "cache_write": 1.25,
+          "source": "kilo"
+        }
+      ]
+    },
+    "kilo\u0000gpt-6.1-terra-fast": {
+      "id": "gpt-6.1-terra-fast",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 2,
+          "out": 10,
+          "cache_read": 0.1,
+          "cache_write": 2.5,
           "source": "kilo"
         }
       ]
@@ -108287,6 +109557,19 @@
         }
       ]
     },
+    "kilo\u0000gpt-oss-safeguard-120b": {
+      "id": "gpt-oss-safeguard-120b",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 0.15,
+          "out": 0.6,
+          "cache_read": 0,
+          "cache_write": 0.15,
+          "source": "kilo"
+        }
+      ]
+    },
     "kilo\u0000gpt-oss-safeguard-20b": {
       "id": "gpt-oss-safeguard-20b",
       "rates": [
@@ -108444,6 +109727,71 @@
       "rates": [
         {
           "from": "2026-08-27",
+          "in": 1.25,
+          "out": 2.5,
+          "cache_read": 0.2,
+          "cache_write": 1.25,
+          "source": "kilo"
+        }
+      ]
+    },
+    "kilo\u0000grok-4.20-multi-agent-beta": {
+      "id": "grok-4.20-multi-agent-beta",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 1.25,
+          "out": 2.5,
+          "cache_read": 0.2,
+          "cache_write": 1.25,
+          "source": "kilo"
+        }
+      ]
+    },
+    "kilo\u0000grok-4.20-non-reasoning": {
+      "id": "grok-4.20-non-reasoning",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 1.25,
+          "out": 2.5,
+          "cache_read": 0.2,
+          "cache_write": 1.25,
+          "source": "kilo"
+        }
+      ]
+    },
+    "kilo\u0000grok-4.20-non-reasoning-beta": {
+      "id": "grok-4.20-non-reasoning-beta",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 1.25,
+          "out": 2.5,
+          "cache_read": 0.2,
+          "cache_write": 1.25,
+          "source": "kilo"
+        }
+      ]
+    },
+    "kilo\u0000grok-4.20-reasoning": {
+      "id": "grok-4.20-reasoning",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 1.25,
+          "out": 2.5,
+          "cache_read": 0.2,
+          "cache_write": 1.25,
+          "source": "kilo"
+        }
+      ]
+    },
+    "kilo\u0000grok-4.20-reasoning-beta": {
+      "id": "grok-4.20-reasoning-beta",
+      "rates": [
+        {
+          "from": "2026-11-12",
           "in": 1.25,
           "out": 2.5,
           "cache_read": 0.2,
@@ -108645,6 +109993,45 @@
         }
       ]
     },
+    "kilo\u0000hy-mt2-lite": {
+      "id": "hy-mt2-lite",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 0.044,
+          "out": 0.177,
+          "cache_read": 0,
+          "cache_write": 0.044,
+          "source": "kilo"
+        }
+      ]
+    },
+    "kilo\u0000hy-mt2-plus": {
+      "id": "hy-mt2-plus",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 0.074,
+          "out": 0.295,
+          "cache_read": 0,
+          "cache_write": 0.074,
+          "source": "kilo"
+        }
+      ]
+    },
+    "kilo\u0000hy-mt2-pro": {
+      "id": "hy-mt2-pro",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 0.074,
+          "out": 0.295,
+          "cache_read": 0,
+          "cache_write": 0.074,
+          "source": "kilo"
+        }
+      ]
+    },
     "kilo\u0000hy3": {
       "id": "hy3",
       "rates": [
@@ -108706,10 +110093,10 @@
         },
         {
           "from": "2026-11-12",
-          "in": 0.132,
-          "out": 0.528,
-          "cache_read": 0.033,
-          "cache_write": 0.132,
+          "in": 0.0825,
+          "out": 0.33,
+          "cache_read": 0.020625,
+          "cache_write": 0.0825,
           "source": "kilo"
         }
       ]
@@ -108777,10 +110164,10 @@
         },
         {
           "from": "2026-11-12",
-          "in": 0.834,
-          "out": 2.501,
-          "cache_read": 0.042,
-          "cache_write": 0.834,
+          "in": 0.7506,
+          "out": 2.2509,
+          "cache_read": 0.0378,
+          "cache_write": 0.7506,
           "source": "kilo"
         }
       ]
@@ -108870,6 +110257,19 @@
           "out": 0,
           "cache_read": 0,
           "cache_write": 0,
+          "source": "kilo"
+        }
+      ]
+    },
+    "kilo\u0000interfaze-beta": {
+      "id": "interfaze-beta",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 1.5,
+          "out": 3.5,
+          "cache_read": 0,
+          "cache_write": 1.5,
           "source": "kilo"
         }
       ]
@@ -109524,6 +110924,19 @@
         }
       ]
     },
+    "kilo\u0000kimi-k2.7-code-highspeed": {
+      "id": "kimi-k2.7-code-highspeed",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 1.9,
+          "out": 8,
+          "cache_read": 0.38,
+          "cache_write": 1.9,
+          "source": "kilo"
+        }
+      ]
+    },
     "kilo\u0000kimi-k3": {
       "id": "kimi-k3",
       "rates": [
@@ -109585,6 +110998,19 @@
         }
       ]
     },
+    "kilo\u0000kimi-k3-fast": {
+      "id": "kimi-k3-fast",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 4.5,
+          "out": 22.5,
+          "cache_read": 0.45,
+          "cache_write": 4.5,
+          "source": "kilo"
+        }
+      ]
+    },
     "kilo\u0000kimi-k3.1-pro": {
       "id": "kimi-k3.1-pro",
       "rates": [
@@ -109599,9 +111025,22 @@
         {
           "from": "2026-11-12",
           "in": 0.2375,
-          "out": 8.4085,
-          "cache_read": 0.2,
+          "out": 8.7856,
+          "cache_read": 0.19,
           "cache_write": 0.2375,
+          "source": "kilo"
+        }
+      ]
+    },
+    "kilo\u0000kimi-k3.1-pro-highspeed": {
+      "id": "kimi-k3.1-pro-highspeed",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 4,
+          "out": 20,
+          "cache_read": 0.2,
+          "cache_write": 4,
           "source": "kilo"
         }
       ]
@@ -109662,6 +111101,14 @@
           "out": 0.2,
           "cache_read": 0.01,
           "cache_write": 0.1,
+          "source": "kilo"
+        },
+        {
+          "from": "2026-11-12",
+          "in": 0.09,
+          "out": 0.18,
+          "cache_read": 0.009,
+          "cache_write": 0.09,
           "source": "kilo"
         }
       ]
@@ -109782,6 +111229,19 @@
           "out": 0,
           "cache_read": 0,
           "cache_write": 0,
+          "source": "kilo"
+        }
+      ]
+    },
+    "kilo\u0000lfm2.5-24b-a2b": {
+      "id": "lfm2.5-24b-a2b",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 0.05,
+          "out": 0.7,
+          "cache_read": 0.025,
+          "cache_write": 0.05,
           "source": "kilo"
         }
       ]
@@ -109909,6 +111369,19 @@
         },
         {
           "from": "2026-10-14",
+          "in": 0.3,
+          "out": 0.9,
+          "cache_read": 0.06,
+          "cache_write": 0.3,
+          "source": "kilo"
+        }
+      ]
+    },
+    "kilo\u0000ling-3.1-flash-1019": {
+      "id": "ling-3.1-flash-1019",
+      "rates": [
+        {
+          "from": "2026-11-12",
           "in": 0.3,
           "out": 0.9,
           "cache_read": 0.06,
@@ -110108,6 +111581,19 @@
         }
       ]
     },
+    "kilo\u0000longcat-2.5": {
+      "id": "longcat-2.5",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 0.3,
+          "out": 1.2,
+          "cache_read": 0.006,
+          "cache_write": 0.3,
+          "source": "kilo"
+        }
+      ]
+    },
     "kilo\u0000lyria-3-clip-preview": {
       "id": "lyria-3-clip-preview",
       "rates": [
@@ -110186,6 +111672,14 @@
           "cache_read": 0.02,
           "cache_write": 0.2,
           "source": "kilo"
+        },
+        {
+          "from": "2026-11-12",
+          "in": 0.04,
+          "out": 0.15,
+          "cache_read": 0.004,
+          "cache_write": 0.04,
+          "source": "kilo"
         }
       ]
     },
@@ -110211,6 +111705,27 @@
           "out": 0.7,
           "cache_read": 0.02,
           "cache_write": 0.2,
+          "source": "kilo"
+        },
+        {
+          "from": "2026-11-12",
+          "in": 0.1,
+          "out": 0.35,
+          "cache_read": 0.01,
+          "cache_write": 0.1,
+          "source": "kilo"
+        }
+      ]
+    },
+    "kilo\u0000mercury-coder-small": {
+      "id": "mercury-coder-small",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 0.25,
+          "out": 1,
+          "cache_read": 0,
+          "cache_write": 0.25,
           "source": "kilo"
         }
       ]
@@ -110517,6 +112032,14 @@
           "cache_read": 0,
           "cache_write": 0.255,
           "source": "kilo"
+        },
+        {
+          "from": "2026-11-12",
+          "in": 0.3,
+          "out": 1.2,
+          "cache_read": 0.03,
+          "cache_write": 0.375,
+          "source": "kilo"
         }
       ]
     },
@@ -110542,6 +112065,27 @@
           "out": 1.2,
           "cache_read": 0.03,
           "cache_write": 0.3,
+          "source": "kilo"
+        },
+        {
+          "from": "2026-11-12",
+          "in": 0.3,
+          "out": 1.2,
+          "cache_read": 0.03,
+          "cache_write": 0.375,
+          "source": "kilo"
+        }
+      ]
+    },
+    "kilo\u0000minimax-m2.1-lightning": {
+      "id": "minimax-m2.1-lightning",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 0.3,
+          "out": 2.4,
+          "cache_read": 0.03,
+          "cache_write": 0.375,
           "source": "kilo"
         }
       ]
@@ -110591,6 +112135,19 @@
         }
       ]
     },
+    "kilo\u0000minimax-m2.5-highspeed": {
+      "id": "minimax-m2.5-highspeed",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 0.6,
+          "out": 2.4,
+          "cache_read": 0.03,
+          "cache_write": 0.375,
+          "source": "kilo"
+        }
+      ]
+    },
     "kilo\u0000minimax-m2.7": {
       "id": "minimax-m2.7",
       "rates": [
@@ -110616,6 +112173,19 @@
           "out": 0.84,
           "cache_read": 0.042,
           "cache_write": 0.21,
+          "source": "kilo"
+        }
+      ]
+    },
+    "kilo\u0000minimax-m2.7-highspeed": {
+      "id": "minimax-m2.7-highspeed",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 0.6,
+          "out": 2.4,
+          "cache_read": 0.06,
+          "cache_write": 0.375,
           "source": "kilo"
         }
       ]
@@ -110678,10 +112248,10 @@
         },
         {
           "from": "2026-11-12",
-          "in": 0.15,
-          "out": 0.6,
-          "cache_read": 0.015,
-          "cache_write": 0.15,
+          "in": 0.075,
+          "out": 0.3,
+          "cache_read": 0.0075,
+          "cache_write": 0.075,
           "source": "kilo"
         }
       ]
@@ -110699,6 +112269,19 @@
         }
       ]
     },
+    "kilo\u0000ministral-14b": {
+      "id": "ministral-14b",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 0.2,
+          "out": 0.2,
+          "cache_read": 0.02,
+          "cache_write": 0.2,
+          "source": "kilo"
+        }
+      ]
+    },
     "kilo\u0000ministral-14b-2512": {
       "id": "ministral-14b-2512",
       "rates": [
@@ -110708,6 +112291,19 @@
           "out": 0.2,
           "cache_read": 0.02,
           "cache_write": 0.2,
+          "source": "kilo"
+        }
+      ]
+    },
+    "kilo\u0000ministral-3b": {
+      "id": "ministral-3b",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 0.1,
+          "out": 0.1,
+          "cache_read": 0.01,
+          "cache_write": 0.1,
           "source": "kilo"
         }
       ]
@@ -110734,6 +112330,14 @@
           "out": 0.11,
           "cache_read": 0,
           "cache_write": 0.11,
+          "source": "kilo"
+        },
+        {
+          "from": "2026-11-12",
+          "in": 0.15,
+          "out": 0.15,
+          "cache_read": 0.015,
+          "cache_write": 0.15,
           "source": "kilo"
         }
       ]
@@ -110904,6 +112508,19 @@
           "out": 0.6,
           "cache_read": 0.02,
           "cache_write": 0.2,
+          "source": "kilo"
+        }
+      ]
+    },
+    "kilo\u0000mistral-small": {
+      "id": "mistral-small",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 0.15,
+          "out": 0.6,
+          "cache_read": 0.015,
+          "cache_write": 0.15,
           "source": "kilo"
         }
       ]
@@ -111187,6 +112804,19 @@
         }
       ]
     },
+    "kilo\u0000muse-wonder-1.0": {
+      "id": "muse-wonder-1.0",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 4,
+          "out": 20,
+          "cache_read": 0.2,
+          "cache_write": 4,
+          "source": "kilo"
+        }
+      ]
+    },
     "kilo\u0000mythomax-l2-13b": {
       "id": "mythomax-l2-13b",
       "rates": [
@@ -111418,6 +113048,19 @@
         }
       ]
     },
+    "kilo\u0000nemotron-3.5-lightning-free": {
+      "id": "nemotron-3.5-lightning-free",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 0,
+          "out": 0,
+          "cache_read": 0,
+          "cache_write": 0,
+          "source": "kilo"
+        }
+      ]
+    },
     "kilo\u0000nemotron-3.5-lightning:free": {
       "id": "nemotron-3.5-lightning:free",
       "rates": [
@@ -111461,6 +113104,32 @@
           "out": 0,
           "cache_read": 0,
           "cache_write": 0,
+          "source": "kilo"
+        }
+      ]
+    },
+    "kilo\u0000nemotron-nano-12b-v2-vl": {
+      "id": "nemotron-nano-12b-v2-vl",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 0.2,
+          "out": 0.6,
+          "cache_read": 0,
+          "cache_write": 0.2,
+          "source": "kilo"
+        }
+      ]
+    },
+    "kilo\u0000nemotron-nano-9b-v2": {
+      "id": "nemotron-nano-9b-v2",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 0.06,
+          "out": 0.23,
+          "cache_read": 0,
+          "cache_write": 0.06,
           "source": "kilo"
         }
       ]
@@ -111572,6 +113241,19 @@
         }
       ]
     },
+    "kilo\u0000nova-2-lite": {
+      "id": "nova-2-lite",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 0.33,
+          "out": 2.75,
+          "cache_read": 0.0825,
+          "cache_write": 0.33,
+          "source": "kilo"
+        }
+      ]
+    },
     "kilo\u0000nova-2-lite-v1": {
       "id": "nova-2-lite-v1",
       "rates": [
@@ -111585,6 +113267,19 @@
         }
       ]
     },
+    "kilo\u0000nova-lite": {
+      "id": "nova-lite",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 0.06,
+          "out": 0.24,
+          "cache_read": 0.015,
+          "cache_write": 0.06,
+          "source": "kilo"
+        }
+      ]
+    },
     "kilo\u0000nova-lite-v1": {
       "id": "nova-lite-v1",
       "rates": [
@@ -111594,6 +113289,19 @@
           "out": 0.24,
           "cache_read": 0,
           "cache_write": 0.06,
+          "source": "kilo"
+        }
+      ]
+    },
+    "kilo\u0000nova-micro": {
+      "id": "nova-micro",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 0.035,
+          "out": 0.14,
+          "cache_read": 0.0087,
+          "cache_write": 0.035,
           "source": "kilo"
         }
       ]
@@ -111620,6 +113328,19 @@
           "out": 12.5,
           "cache_read": 0.625,
           "cache_write": 2.5,
+          "source": "kilo"
+        }
+      ]
+    },
+    "kilo\u0000nova-pro": {
+      "id": "nova-pro",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 0.8,
+          "out": 3.2,
+          "cache_read": 0.2,
+          "cache_write": 0.8,
           "source": "kilo"
         }
       ]
@@ -111672,6 +113393,19 @@
           "out": 8,
           "cache_read": 0.5,
           "cache_write": 2,
+          "source": "kilo"
+        }
+      ]
+    },
+    "kilo\u0000o3-fast": {
+      "id": "o3-fast",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 3.5,
+          "out": 14,
+          "cache_read": 0.875,
+          "cache_write": 3.5,
           "source": "kilo"
         }
       ]
@@ -111866,6 +113600,14 @@
           "cache_read": 0.003,
           "cache_write": 0.05,
           "source": "kilo"
+        },
+        {
+          "from": "2026-11-12",
+          "in": 0.125,
+          "out": 0.5,
+          "cache_read": 0.015,
+          "cache_write": 0.125,
+          "source": "kilo"
         }
       ]
     },
@@ -111951,6 +113693,19 @@
           "out": 1,
           "cache_read": 0,
           "cache_write": 0.66,
+          "source": "kilo"
+        }
+      ]
+    },
+    "kilo\u0000qwen-3-14b": {
+      "id": "qwen-3-14b",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 0.12,
+          "out": 0.24,
+          "cache_read": 0,
+          "cache_write": 0.12,
           "source": "kilo"
         }
       ]
@@ -112311,6 +114066,14 @@
           "cache_read": 0,
           "cache_write": 0.78,
           "source": "kilo"
+        },
+        {
+          "from": "2026-11-12",
+          "in": 1.2,
+          "out": 6,
+          "cache_read": 0.24,
+          "cache_write": 1.2,
+          "source": "kilo"
         }
       ]
     },
@@ -112479,6 +114242,19 @@
         }
       ]
     },
+    "kilo\u0000qwen3-vl-instruct": {
+      "id": "qwen3-vl-instruct",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 0.2,
+          "out": 0.88,
+          "cache_read": 0.11,
+          "cache_write": 0.2,
+          "source": "kilo"
+        }
+      ]
+    },
     "kilo\u0000qwen3.5-122b-a10b": {
       "id": "qwen3.5-122b-a10b",
       "rates": [
@@ -112560,10 +114336,23 @@
         },
         {
           "from": "2026-11-12",
-          "in": 0.056,
-          "out": 0.083,
-          "cache_read": 0.051,
-          "cache_write": 0.056,
+          "in": 0.165,
+          "out": 0.242,
+          "cache_read": 0.148,
+          "cache_write": 0.165,
+          "source": "kilo"
+        }
+      ]
+    },
+    "kilo\u0000qwen3.5-flash": {
+      "id": "qwen3.5-flash",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 0.1,
+          "out": 0.4,
+          "cache_read": 0.01,
+          "cache_write": 0.125,
           "source": "kilo"
         }
       ]
@@ -112577,6 +114366,19 @@
           "out": 0.26,
           "cache_read": 0,
           "cache_write": 0.065,
+          "source": "kilo"
+        }
+      ]
+    },
+    "kilo\u0000qwen3.5-plus": {
+      "id": "qwen3.5-plus",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 0.4,
+          "out": 2.4,
+          "cache_read": 0.04,
+          "cache_write": 0.5,
           "source": "kilo"
         }
       ]
@@ -112840,6 +114642,14 @@
           "cache_read": 0.25,
           "cache_write": 2.5,
           "source": "kilo"
+        },
+        {
+          "from": "2026-11-12",
+          "in": 2,
+          "out": 6,
+          "cache_read": 0.25,
+          "cache_write": 2,
+          "source": "kilo"
         }
       ]
     },
@@ -113014,6 +114824,32 @@
           "out": 4,
           "cache_read": 0.15,
           "cache_write": 0.95,
+          "source": "kilo"
+        }
+      ]
+    },
+    "kilo\u0000scaledown-extract-1": {
+      "id": "scaledown-extract-1",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 0.05,
+          "out": 0,
+          "cache_read": 0,
+          "cache_write": 0.05,
+          "source": "kilo"
+        }
+      ]
+    },
+    "kilo\u0000scaledown-summarize-1": {
+      "id": "scaledown-summarize-1",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 0.05,
+          "out": 0,
+          "cache_read": 0,
+          "cache_write": 0.05,
           "source": "kilo"
         }
       ]
@@ -113405,6 +115241,19 @@
           "out": 0.13,
           "cache_read": 0.04,
           "cache_write": 0.08,
+          "source": "kilo"
+        }
+      ]
+    },
+    "kilo\u0000toast-1": {
+      "id": "toast-1",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 0.3,
+          "out": 0.72,
+          "cache_read": 0.036,
+          "cache_write": 0.3,
           "source": "kilo"
         }
       ]
@@ -114469,6 +116318,14 @@
           "in": 0.135,
           "out": 0.54,
           "cache_read": 0.0027,
+          "cache_write": 0.135,
+          "source": "llmgateway"
+        },
+        {
+          "from": "2026-11-12",
+          "in": 0.135,
+          "out": 0.54,
+          "cache_read": 0.003,
           "cache_write": 0.135,
           "source": "llmgateway"
         }
@@ -129844,7 +131701,7 @@
           "from": "2026-10-25",
           "in": 0.48,
           "out": 0.48,
-          "cache_read": 0,
+          "cache_read": 0.24,
           "cache_write": 0.48,
           "source": "nano-gpt"
         }
@@ -130980,7 +132837,7 @@
           "from": "2026-11-04",
           "in": 1.8,
           "out": 1.8,
-          "cache_read": 0,
+          "cache_read": 0.9,
           "cache_write": 1.8,
           "source": "nano-gpt"
         }
@@ -131229,8 +133086,8 @@
         {
           "from": "2026-11-12",
           "in": 0.66,
-          "out": 4.0139,
-          "cache_read": 0.105,
+          "out": 2.5,
+          "cache_read": 0.04,
           "cache_write": 0.66,
           "source": "nano-gpt"
         }
@@ -131457,6 +133314,14 @@
           "cache_read": 0.0216,
           "cache_write": 0.2088,
           "source": "nano-gpt"
+        },
+        {
+          "from": "2026-11-12",
+          "in": 0.286,
+          "out": 0.418,
+          "cache_read": 0.143,
+          "cache_write": 0.286,
+          "source": "nano-gpt"
         }
       ]
     },
@@ -131503,6 +133368,14 @@
           "out": 0.3096,
           "cache_read": 0.0216,
           "cache_write": 0.2088,
+          "source": "nano-gpt"
+        },
+        {
+          "from": "2026-11-12",
+          "in": 0.286,
+          "out": 0.418,
+          "cache_read": 0.143,
+          "cache_write": 0.286,
           "source": "nano-gpt"
         }
       ]
@@ -131899,8 +133772,8 @@
         {
           "from": "2026-11-12",
           "in": 0.66,
-          "out": 4.1267,
-          "cache_read": 0.0921,
+          "out": 2.5,
+          "cache_read": 0.04,
           "cache_write": 0.66,
           "source": "nano-gpt"
         }
@@ -132024,9 +133897,35 @@
         {
           "from": "2026-11-12",
           "in": 0.66,
-          "out": 4.0139,
-          "cache_read": 0.105,
+          "out": 2.5,
+          "cache_read": 0.04,
           "cache_write": 0.66,
+          "source": "nano-gpt"
+        }
+      ]
+    },
+    "nano-gpt\u0000deepseek-v4-pro-20260423": {
+      "id": "deepseek-v4-pro-20260423",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 0.86979,
+          "out": 1.77565,
+          "cache_read": 0.0796,
+          "cache_write": 0.86979,
+          "source": "nano-gpt"
+        }
+      ]
+    },
+    "nano-gpt\u0000deepseek-v4-pro-20260423:thinking": {
+      "id": "deepseek-v4-pro-20260423:thinking",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 0.95124,
+          "out": 1.79607,
+          "cache_read": 0.0796,
+          "cache_write": 0.95124,
           "source": "nano-gpt"
         }
       ]
@@ -132170,6 +134069,14 @@
           "out": 0.4,
           "cache_read": 0.004,
           "cache_write": 0.022,
+          "source": "nano-gpt"
+        },
+        {
+          "from": "2026-11-12",
+          "in": 0.0387,
+          "out": 0.4,
+          "cache_read": 0.0089,
+          "cache_write": 0.0387,
           "source": "nano-gpt"
         }
       ]
@@ -132490,6 +134397,14 @@
           "cache_read": 0.004,
           "cache_write": 0.022,
           "source": "nano-gpt"
+        },
+        {
+          "from": "2026-11-12",
+          "in": 0.0387,
+          "out": 0.4,
+          "cache_read": 0.0089,
+          "cache_write": 0.0387,
+          "source": "nano-gpt"
         }
       ]
     },
@@ -132654,6 +134569,14 @@
           "cache_read": 0.0731,
           "cache_write": 0.25,
           "source": "nano-gpt"
+        },
+        {
+          "from": "2026-11-12",
+          "in": 0.25,
+          "out": 2,
+          "cache_read": 0.125,
+          "cache_write": 0.25,
+          "source": "nano-gpt"
         }
       ]
     },
@@ -132673,6 +134596,14 @@
           "in": 0.1,
           "out": 0.4845,
           "cache_read": 0.02465,
+          "cache_write": 0.1,
+          "source": "nano-gpt"
+        },
+        {
+          "from": "2026-11-12",
+          "in": 0.1,
+          "out": 0.4845,
+          "cache_read": 0.05,
           "cache_write": 0.1,
           "source": "nano-gpt"
         }
@@ -132870,7 +134801,7 @@
           "from": "2026-11-04",
           "in": 0.799,
           "out": 0.799,
-          "cache_read": 0,
+          "cache_read": 0.3995,
           "cache_write": 0.799,
           "source": "nano-gpt"
         }
@@ -133757,10 +135688,10 @@
         },
         {
           "from": "2026-11-12",
-          "in": 0.01,
-          "out": 0.031,
-          "cache_read": 0.005,
-          "cache_write": 0.01,
+          "in": 0.0354,
+          "out": 0.0943,
+          "cache_read": 0.0177,
+          "cache_write": 0.0354,
           "source": "nano-gpt"
         }
       ]
@@ -133999,10 +135930,10 @@
         },
         {
           "from": "2026-11-12",
-          "in": 0.01,
-          "out": 0.031,
-          "cache_read": 0.005,
-          "cache_write": 0.01,
+          "in": 0.023,
+          "out": 0.068,
+          "cache_read": 0.011,
+          "cache_write": 0.023,
           "source": "nano-gpt"
         }
       ]
@@ -134085,7 +136016,7 @@
           "from": "2026-10-25",
           "in": 0.306,
           "out": 0.306,
-          "cache_read": 0,
+          "cache_read": 0.153,
           "cache_write": 0.306,
           "source": "nano-gpt"
         }
@@ -134098,7 +136029,7 @@
           "from": "2026-10-25",
           "in": 0.306,
           "out": 0.306,
-          "cache_read": 0,
+          "cache_read": 0.153,
           "cache_write": 0.306,
           "source": "nano-gpt"
         }
@@ -134111,7 +136042,7 @@
           "from": "2026-10-25",
           "in": 0.306,
           "out": 0.306,
-          "cache_read": 0,
+          "cache_read": 0.153,
           "cache_write": 0.306,
           "source": "nano-gpt"
         }
@@ -134158,7 +136089,7 @@
           "from": "2026-10-25",
           "in": 0.306,
           "out": 0.306,
-          "cache_read": 0,
+          "cache_read": 0.153,
           "cache_write": 0.306,
           "source": "nano-gpt"
         }
@@ -134184,7 +136115,7 @@
           "from": "2026-10-25",
           "in": 0.306,
           "out": 0.306,
-          "cache_read": 0,
+          "cache_read": 0.153,
           "cache_write": 0.306,
           "source": "nano-gpt"
         }
@@ -134210,7 +136141,7 @@
           "from": "2026-10-25",
           "in": 0.306,
           "out": 0.306,
-          "cache_read": 0,
+          "cache_read": 0.153,
           "cache_write": 0.306,
           "source": "nano-gpt"
         }
@@ -134223,7 +136154,7 @@
           "from": "2026-10-25",
           "in": 0.306,
           "out": 0.306,
-          "cache_read": 0,
+          "cache_read": 0.153,
           "cache_write": 0.306,
           "source": "nano-gpt"
         }
@@ -134236,7 +136167,7 @@
           "from": "2026-10-25",
           "in": 0.306,
           "out": 0.306,
-          "cache_read": 0,
+          "cache_read": 0.153,
           "cache_write": 0.306,
           "source": "nano-gpt"
         }
@@ -134267,6 +136198,14 @@
           "out": 0.4,
           "cache_read": 0.05,
           "cache_write": 0.14,
+          "source": "nano-gpt"
+        },
+        {
+          "from": "2026-11-12",
+          "in": 0.11,
+          "out": 0.33,
+          "cache_read": 0.05,
+          "cache_write": 0.11,
           "source": "nano-gpt"
         }
       ]
@@ -134403,7 +136342,7 @@
           "from": "2026-10-25",
           "in": 0.306,
           "out": 0.306,
-          "cache_read": 0,
+          "cache_read": 0.153,
           "cache_write": 0.306,
           "source": "nano-gpt"
         }
@@ -134416,7 +136355,7 @@
           "from": "2026-10-25",
           "in": 0.306,
           "out": 0.306,
-          "cache_read": 0,
+          "cache_read": 0.153,
           "cache_write": 0.306,
           "source": "nano-gpt"
         }
@@ -134463,7 +136402,7 @@
           "from": "2026-10-25",
           "in": 0.306,
           "out": 0.306,
-          "cache_read": 0,
+          "cache_read": 0.153,
           "cache_write": 0.306,
           "source": "nano-gpt"
         }
@@ -134489,7 +136428,7 @@
           "from": "2026-10-25",
           "in": 0.306,
           "out": 0.306,
-          "cache_read": 0,
+          "cache_read": 0.153,
           "cache_write": 0.306,
           "source": "nano-gpt"
         }
@@ -134502,7 +136441,7 @@
           "from": "2026-10-25",
           "in": 0.306,
           "out": 0.306,
-          "cache_read": 0,
+          "cache_read": 0.153,
           "cache_write": 0.306,
           "source": "nano-gpt"
         }
@@ -134567,7 +136506,7 @@
           "from": "2026-10-16",
           "in": 0.24,
           "out": 0.48,
-          "cache_read": 0,
+          "cache_read": 0.12,
           "cache_write": 0.24,
           "source": "nano-gpt"
         }
@@ -135355,6 +137294,14 @@
           "cache_read": 0.18,
           "cache_write": 0.7,
           "source": "nano-gpt"
+        },
+        {
+          "from": "2026-11-12",
+          "in": 0.8083,
+          "out": 3.2526,
+          "cache_read": 0.18,
+          "cache_write": 0.8083,
+          "source": "nano-gpt"
         }
       ]
     },
@@ -135404,6 +137351,14 @@
           "out": 2.5,
           "cache_read": 0.18,
           "cache_write": 0.7,
+          "source": "nano-gpt"
+        },
+        {
+          "from": "2026-11-12",
+          "in": 0.7614,
+          "out": 2.7204,
+          "cache_read": 0.1964,
+          "cache_write": 0.7614,
           "source": "nano-gpt"
         }
       ]
@@ -136801,7 +138756,7 @@
           "from": "2026-10-25",
           "in": 0.3,
           "out": 0.3,
-          "cache_read": 0,
+          "cache_read": 0.15,
           "cache_write": 0.3,
           "source": "nano-gpt"
         }
@@ -137271,10 +139226,10 @@
         },
         {
           "from": "2026-11-12",
-          "in": 0.834,
-          "out": 2.501,
-          "cache_read": 0.042,
-          "cache_write": 0.834,
+          "in": 0.7506,
+          "out": 2.2509,
+          "cache_read": 0.0378,
+          "cache_write": 0.7506,
           "source": "nano-gpt"
         }
       ]
@@ -137710,6 +139665,14 @@
           "cache_read": 0.07,
           "cache_write": 0.375,
           "source": "nano-gpt"
+        },
+        {
+          "from": "2026-11-12",
+          "in": 0.557,
+          "out": 2.832,
+          "cache_read": 0.0912,
+          "cache_write": 0.557,
+          "source": "nano-gpt"
         }
       ]
     },
@@ -137730,6 +139693,14 @@
           "out": 2,
           "cache_read": 0.07,
           "cache_write": 0.375,
+          "source": "nano-gpt"
+        },
+        {
+          "from": "2026-11-12",
+          "in": 0.6265,
+          "out": 3.2187,
+          "cache_read": 0.1053,
+          "cache_write": 0.6265,
           "source": "nano-gpt"
         }
       ]
@@ -137779,10 +139750,10 @@
         },
         {
           "from": "2026-11-12",
-          "in": 0.39,
-          "out": 1.8,
-          "cache_read": 0.039,
-          "cache_write": 0.39,
+          "in": 0.3895,
+          "out": 1.64,
+          "cache_read": 0.0656,
+          "cache_write": 0.3895,
           "source": "nano-gpt"
         }
       ]
@@ -137837,6 +139808,14 @@
           "cache_read": 0.231,
           "cache_write": 0.88,
           "source": "nano-gpt"
+        },
+        {
+          "from": "2026-11-12",
+          "in": 0.5,
+          "out": 2.6,
+          "cache_read": 0.125,
+          "cache_write": 0.5,
+          "source": "nano-gpt"
         }
       ]
     },
@@ -137873,6 +139852,14 @@
           "out": 3,
           "cache_read": 0.12,
           "cache_write": 0.6,
+          "source": "nano-gpt"
+        },
+        {
+          "from": "2026-11-12",
+          "in": 0.7076,
+          "out": 3.5379,
+          "cache_read": 0.1414,
+          "cache_write": 0.7076,
           "source": "nano-gpt"
         }
       ]
@@ -138383,6 +140370,14 @@
           "cache_read": 0.0272,
           "cache_write": 0.02,
           "source": "nano-gpt"
+        },
+        {
+          "from": "2026-11-12",
+          "in": 0.02,
+          "out": 0.04,
+          "cache_read": 0.01,
+          "cache_write": 0.02,
+          "source": "nano-gpt"
         }
       ]
     },
@@ -138476,6 +140471,14 @@
           "out": 0.6,
           "cache_read": 0.05,
           "cache_write": 0.15,
+          "source": "nano-gpt"
+        },
+        {
+          "from": "2026-11-12",
+          "in": 0.4059,
+          "out": 1.1416,
+          "cache_read": 0.2157,
+          "cache_write": 0.4059,
           "source": "nano-gpt"
         }
       ]
@@ -138634,6 +140637,14 @@
           "in": 2.65,
           "out": 5.3,
           "cache_read": 1.003,
+          "cache_write": 2.65,
+          "source": "nano-gpt"
+        },
+        {
+          "from": "2026-11-12",
+          "in": 2.65,
+          "out": 5.3,
+          "cache_read": 1.325,
           "cache_write": 2.65,
           "source": "nano-gpt"
         }
@@ -138803,6 +140814,14 @@
           "cache_read": 0.004,
           "cache_write": 0,
           "source": "nano-gpt"
+        },
+        {
+          "from": "2026-11-12",
+          "in": 0.5051,
+          "out": 0.9999,
+          "cache_read": 0.0042,
+          "cache_write": 0,
+          "source": "nano-gpt"
         }
       ]
     },
@@ -138835,6 +140854,14 @@
           "in": 0.49,
           "out": 0.97,
           "cache_read": 0.004,
+          "cache_write": 0,
+          "source": "nano-gpt"
+        },
+        {
+          "from": "2026-11-12",
+          "in": 0.5051,
+          "out": 0.9999,
+          "cache_read": 0.0042,
           "cache_write": 0,
           "source": "nano-gpt"
         }
@@ -138973,6 +141000,14 @@
           "cache_read": 0.05,
           "cache_write": 0.23,
           "source": "nano-gpt"
+        },
+        {
+          "from": "2026-11-12",
+          "in": 0.2719,
+          "out": 1.0676,
+          "cache_read": 0.0544,
+          "cache_write": 0.2719,
+          "source": "nano-gpt"
         }
       ]
     },
@@ -139067,6 +141102,14 @@
           "cache_read": 0.03,
           "cache_write": 0.3,
           "source": "nano-gpt"
+        },
+        {
+          "from": "2026-11-12",
+          "in": 0.3,
+          "out": 1.2,
+          "cache_read": 0.15,
+          "cache_write": 0.3,
+          "source": "nano-gpt"
         }
       ]
     },
@@ -139130,6 +141173,14 @@
           "cache_read": 0.06,
           "cache_write": 0.6,
           "source": "nano-gpt"
+        },
+        {
+          "from": "2026-11-12",
+          "in": 0.6,
+          "out": 2.4,
+          "cache_read": 0.3,
+          "cache_write": 0.6,
+          "source": "nano-gpt"
         }
       ]
     },
@@ -139150,6 +141201,14 @@
           "out": 0.96,
           "cache_read": 0.05,
           "cache_write": 0.23,
+          "source": "nano-gpt"
+        },
+        {
+          "from": "2026-11-12",
+          "in": 0.2719,
+          "out": 1.0676,
+          "cache_read": 0.0544,
+          "cache_write": 0.2719,
           "source": "nano-gpt"
         }
       ]
@@ -139184,6 +141243,14 @@
           "out": 0.96,
           "cache_read": 0.05,
           "cache_write": 0.23,
+          "source": "nano-gpt"
+        },
+        {
+          "from": "2026-11-12",
+          "in": 0.2719,
+          "out": 1.0676,
+          "cache_read": 0.0544,
+          "cache_write": 0.2719,
           "source": "nano-gpt"
         }
       ]
@@ -139520,7 +141587,7 @@
           "from": "2026-10-17",
           "in": 0.3,
           "out": 2.5,
-          "cache_read": 0,
+          "cache_read": 0.15,
           "cache_write": 0.3,
           "source": "nano-gpt"
         }
@@ -139533,7 +141600,7 @@
           "from": "2026-10-17",
           "in": 0.3,
           "out": 2.5,
-          "cache_read": 0,
+          "cache_read": 0.15,
           "cache_write": 0.3,
           "source": "nano-gpt"
         }
@@ -140465,7 +142532,7 @@
           "from": "2026-09-26",
           "in": 0.15,
           "out": 1.5,
-          "cache_read": 0,
+          "cache_read": 0.075,
           "cache_write": 0.15,
           "source": "nano-gpt"
         }
@@ -140554,6 +142621,14 @@
           "cache_read": 0.1785,
           "cache_write": 0.36,
           "source": "nano-gpt"
+        },
+        {
+          "from": "2026-11-12",
+          "in": 0.36,
+          "out": 0.4,
+          "cache_read": 0.18,
+          "cache_write": 0.36,
+          "source": "nano-gpt"
         }
       ]
     },
@@ -140616,7 +142691,7 @@
           "from": "2026-10-25",
           "in": 0.3,
           "out": 0.6,
-          "cache_read": 0,
+          "cache_read": 0.15,
           "cache_write": 0.3,
           "source": "nano-gpt"
         }
@@ -140650,7 +142725,7 @@
           "from": "2026-11-04",
           "in": 0.7,
           "out": 0.7,
-          "cache_read": 0,
+          "cache_read": 0.35,
           "cache_write": 0.7,
           "source": "nano-gpt"
         }
@@ -140684,7 +142759,7 @@
           "from": "2026-10-25",
           "in": 0.69989,
           "out": 0.69989,
-          "cache_read": 0,
+          "cache_read": 0.349945,
           "cache_write": 0.69989,
           "source": "nano-gpt"
         }
@@ -140771,6 +142846,14 @@
           "cache_read": 0.0175,
           "cache_write": 0.09,
           "source": "nano-gpt"
+        },
+        {
+          "from": "2026-11-12",
+          "in": 0.09495,
+          "out": 0.58025,
+          "cache_read": 0.047475,
+          "cache_write": 0.09495,
+          "source": "nano-gpt"
         }
       ]
     },
@@ -140789,7 +142872,7 @@
           "from": "2026-10-21",
           "in": 0.3,
           "out": 0.5,
-          "cache_read": 0,
+          "cache_read": 0.15,
           "cache_write": 0.3,
           "source": "nano-gpt"
         }
@@ -140804,6 +142887,14 @@
           "out": 0.3,
           "cache_read": 0.05,
           "cache_write": 0.1,
+          "source": "nano-gpt"
+        },
+        {
+          "from": "2026-11-12",
+          "in": 0.1266,
+          "out": 0.5275,
+          "cache_read": 0.0633,
+          "cache_write": 0.1266,
           "source": "nano-gpt"
         }
       ]
@@ -140839,6 +142930,14 @@
           "cache_read": 0.05,
           "cache_write": 0.08,
           "source": "nano-gpt"
+        },
+        {
+          "from": "2026-11-12",
+          "in": 0.0925,
+          "out": 0.3236,
+          "cache_read": 0.04625,
+          "cache_write": 0.0925,
+          "source": "nano-gpt"
         }
       ]
     },
@@ -140857,7 +142956,7 @@
           "from": "2026-11-07",
           "in": 0.47,
           "out": 0.47,
-          "cache_read": 0,
+          "cache_read": 0.235,
           "cache_write": 0.47,
           "source": "nano-gpt"
         }
@@ -141004,6 +143103,14 @@
           "cache_read": 0.07,
           "cache_write": 0.09,
           "source": "nano-gpt"
+        },
+        {
+          "from": "2026-11-12",
+          "in": 0.09,
+          "out": 1.1,
+          "cache_read": 0.045,
+          "cache_write": 0.09,
+          "source": "nano-gpt"
         }
       ]
     },
@@ -141106,6 +143213,14 @@
           "cache_read": 0.103788,
           "cache_write": 0.26,
           "source": "nano-gpt"
+        },
+        {
+          "from": "2026-11-12",
+          "in": 0.26,
+          "out": 2.08,
+          "cache_read": 0.13,
+          "cache_write": 0.26,
+          "source": "nano-gpt"
         }
       ]
     },
@@ -141125,6 +143240,14 @@
           "in": 0.26,
           "out": 2.08,
           "cache_read": 0.103788,
+          "cache_write": 0.26,
+          "source": "nano-gpt"
+        },
+        {
+          "from": "2026-11-12",
+          "in": 0.26,
+          "out": 2.08,
+          "cache_read": 0.13,
           "cache_write": 0.26,
           "source": "nano-gpt"
         }
@@ -141166,7 +143289,7 @@
           "from": "2026-10-25",
           "in": 0.306,
           "out": 0.306,
-          "cache_read": 0,
+          "cache_read": 0.153,
           "cache_write": 0.306,
           "source": "nano-gpt"
         }
@@ -141342,6 +143465,14 @@
           "cache_read": 0.3,
           "cache_write": 0.39,
           "source": "nano-gpt"
+        },
+        {
+          "from": "2026-11-12",
+          "in": 0.495,
+          "out": 3.3,
+          "cache_read": 0.242,
+          "cache_write": 0.495,
+          "source": "nano-gpt"
         }
       ]
     },
@@ -141375,6 +143506,14 @@
           "out": 2.34,
           "cache_read": 0.3,
           "cache_write": 0.39,
+          "source": "nano-gpt"
+        },
+        {
+          "from": "2026-11-12",
+          "in": 0.495,
+          "out": 3.3,
+          "cache_read": 0.242,
+          "cache_write": 0.495,
           "source": "nano-gpt"
         }
       ]
@@ -142100,6 +144239,14 @@
           "cache_read": 0.016,
           "cache_write": 0.2,
           "source": "nano-gpt"
+        },
+        {
+          "from": "2026-11-12",
+          "in": 0.1687,
+          "out": 0.5286,
+          "cache_read": 0.018,
+          "cache_write": 0.2,
+          "source": "nano-gpt"
         }
       ]
     },
@@ -142688,7 +144835,7 @@
           "from": "2026-10-25",
           "in": 0.03,
           "out": 0.1,
-          "cache_read": 0,
+          "cache_read": 0.015,
           "cache_write": 0.03,
           "source": "nano-gpt"
         }
@@ -142701,7 +144848,7 @@
           "from": "2026-10-25",
           "in": 0.1,
           "out": 0.2,
-          "cache_read": 0,
+          "cache_read": 0.05,
           "cache_write": 0.1,
           "source": "nano-gpt"
         }
@@ -142787,7 +144934,7 @@
           "from": "2026-11-04",
           "in": 0.3,
           "out": 0.3,
-          "cache_read": 0,
+          "cache_read": 0.15,
           "cache_write": 0.3,
           "source": "nano-gpt"
         }
@@ -152580,6 +154727,19 @@
         }
       ]
     },
+    "openai\u0000chatgpt-image": {
+      "id": "chatgpt-image",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 5,
+          "out": 10,
+          "cache_read": 1.25,
+          "cache_write": 5,
+          "source": "openai"
+        }
+      ]
+    },
     "openai\u0000gpt-3.5-turbo": {
       "id": "gpt-3.5-turbo",
       "rates": [
@@ -153151,6 +155311,19 @@
           "out": 75,
           "cache_read": 1.25,
           "cache_write": 15.625,
+          "source": "openai"
+        }
+      ]
+    },
+    "openai\u0000gpt-image-1.5": {
+      "id": "gpt-image-1.5",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 5,
+          "out": 10,
+          "cache_read": 1.25,
+          "cache_write": 5,
           "source": "openai"
         }
       ]
@@ -153911,6 +156084,19 @@
           "out": 10,
           "cache_read": 0.1,
           "cache_write": 2,
+          "source": "opencode"
+        }
+      ]
+    },
+    "opencode\u0000gemini-4-hydrogen": {
+      "id": "gemini-4-hydrogen",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 1.5,
+          "out": 7.5,
+          "cache_read": 0.075,
+          "cache_write": 1.5,
           "source": "opencode"
         }
       ]
@@ -158662,22 +160848,6 @@
           "cache_read": 0.074081,
           "cache_write": 0.888966,
           "source": "openrouter"
-        },
-        {
-          "from": "2026-11-11",
-          "in": 0.95526,
-          "out": 1.91052,
-          "cache_read": 0.079605,
-          "cache_write": 0.95526,
-          "source": "openrouter"
-        },
-        {
-          "from": "2026-11-12",
-          "in": 0.95526,
-          "out": 1.91052,
-          "cache_read": 0.079605,
-          "cache_write": 0.95526,
-          "source": "openrouter"
         }
       ]
     },
@@ -159079,22 +161249,6 @@
           "out": 1.2,
           "cache_read": 0.006,
           "cache_write": 0.3,
-          "source": "openrouter"
-        },
-        {
-          "from": "2026-11-11",
-          "in": 0.051,
-          "out": 0.567,
-          "cache_read": 0.018,
-          "cache_write": 0.051,
-          "source": "openrouter"
-        },
-        {
-          "from": "2026-11-12",
-          "in": 0.022,
-          "out": 0.4,
-          "cache_read": 0.004,
-          "cache_write": 0.022,
           "source": "openrouter"
         }
       ]
@@ -159689,6 +161843,19 @@
         }
       ]
     },
+    "openrouter\u0000gemini-4-hydrogen": {
+      "id": "gemini-4-hydrogen",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 1.5,
+          "out": 7.5,
+          "cache_read": 0.075,
+          "cache_write": 0.083333,
+          "source": "openrouter"
+        }
+      ]
+    },
     "openrouter\u0000gemini-flash": {
       "id": "gemini-flash",
       "rates": [
@@ -159706,6 +161873,14 @@
           "out": 3.75,
           "cache_read": 0.075,
           "cache_write": 0.041667,
+          "source": "openrouter"
+        },
+        {
+          "from": "2026-11-12",
+          "in": 1.5,
+          "out": 7.5,
+          "cache_read": 0.075,
+          "cache_write": 0.083333,
           "source": "openrouter"
         }
       ]
@@ -159937,6 +162112,14 @@
           "out": 0.1,
           "cache_read": 0.046,
           "cache_write": 0.08,
+          "source": "openrouter"
+        },
+        {
+          "from": "2026-11-12",
+          "in": 0.09,
+          "out": 0.28,
+          "cache_read": 0.049,
+          "cache_write": 0.09,
           "source": "openrouter"
         }
       ]
@@ -163047,10 +165230,10 @@
         },
         {
           "from": "2026-11-12",
-          "in": 0.132,
-          "out": 0.528,
-          "cache_read": 0.033,
-          "cache_write": 0.132,
+          "in": 0.0825,
+          "out": 0.33,
+          "cache_read": 0.020625,
+          "cache_write": 0.0825,
           "source": "openrouter"
         }
       ]
@@ -163094,10 +165277,10 @@
         },
         {
           "from": "2026-11-12",
-          "in": 0.834,
-          "out": 2.501,
-          "cache_read": 0.042,
-          "cache_write": 0.834,
+          "in": 0.7506,
+          "out": 2.2509,
+          "cache_read": 0.0378,
+          "cache_write": 0.7506,
           "source": "openrouter"
         }
       ]
@@ -163700,6 +165883,14 @@
           "cache_read": 0.209,
           "cache_write": 0.532,
           "source": "openrouter"
+        },
+        {
+          "from": "2026-11-12",
+          "in": 0.5,
+          "out": 2.5,
+          "cache_read": 0.15,
+          "cache_write": 0.5,
+          "source": "openrouter"
         }
       ]
     },
@@ -164124,8 +166315,8 @@
         {
           "from": "2026-11-12",
           "in": 0.2375,
-          "out": 8.4085,
-          "cache_read": 0.2,
+          "out": 8.7856,
+          "cache_read": 0.19,
           "cache_write": 0.2375,
           "source": "openrouter"
         }
@@ -165189,10 +167380,10 @@
         },
         {
           "from": "2026-11-12",
-          "in": 0.15,
-          "out": 0.6,
-          "cache_read": 0.015,
-          "cache_write": 0.15,
+          "in": 0.075,
+          "out": 0.3,
+          "cache_read": 0.0075,
+          "cache_write": 0.075,
           "source": "openrouter"
         }
       ]
@@ -167262,10 +169453,10 @@
         },
         {
           "from": "2026-11-12",
-          "in": 0.056,
-          "out": 0.083,
-          "cache_read": 0.051,
-          "cache_write": 0.056,
+          "in": 0.156,
+          "out": 0.229,
+          "cache_read": 0.14,
+          "cache_write": 0.156,
           "source": "openrouter"
         }
       ]
@@ -195725,6 +197916,19 @@
         }
       ]
     },
+    "vercel\u0000gemini-4-hydrogen": {
+      "id": "gemini-4-hydrogen",
+      "rates": [
+        {
+          "from": "2026-11-12",
+          "in": 1.5,
+          "out": 7.5,
+          "cache_read": 0.075,
+          "cache_write": 1.5,
+          "source": "vercel"
+        }
+      ]
+    },
     "vercel\u0000gemini-nano-banana-2.1": {
       "id": "gemini-nano-banana-2.1",
       "rates": [
@@ -207227,6 +209431,7 @@
     "cerebras-llama-4-scout-17b-16e-instruct-latest": "cerebras-llama-4-scout-17b-16e-instruct",
     "chat-latest": "chat",
     "chatgpt-4o-latest": "chatgpt-4o",
+    "chatgpt-image-latest": "chatgpt-image",
     "claude-3-5-haiku-20241022-latest": "claude-3-5-haiku-20241022",
     "claude-3-5-haiku-latest": "claude-3-5-haiku",
     "claude-3-5-sonnet-v2": "claude-3.5-sonnet-v2",
@@ -207712,6 +209917,8 @@
     "deepseek-v4-pro-0813-latest": "deepseek-v4-pro-0813",
     "deepseek-v4-pro-0813:thinking-latest": "deepseek-v4-pro-0813:thinking",
     "deepseek-v4-pro-0813@eu-latest": "deepseek-v4-pro-0813@eu",
+    "deepseek-v4-pro-20260423-latest": "deepseek-v4-pro-20260423",
+    "deepseek-v4-pro-20260423:thinking-latest": "deepseek-v4-pro-20260423:thinking",
     "deepseek-v4-pro-el-latest": "deepseek-v4-pro-el",
     "deepseek-v4-pro-fast-latest": "deepseek-v4-pro-fast",
     "deepseek-v4-pro-ga-260813-latest": "deepseek-v4-pro-ga-260813",
@@ -208304,6 +210511,7 @@
     "gemini-4-carbon-latest": "gemini-4-carbon",
     "gemini-4-carbon@eu-latest": "gemini-4-carbon@eu",
     "gemini-4-carbon@us-latest": "gemini-4-carbon@us",
+    "gemini-4-hydrogen-latest": "gemini-4-hydrogen",
     "gemini-deep-research-latest": "gemini-deep-research",
     "gemini-embedding-001-latest": "gemini-embedding-001",
     "gemini-embedding-2-latest": "gemini-embedding-2",
