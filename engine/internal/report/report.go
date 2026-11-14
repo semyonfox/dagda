@@ -45,8 +45,17 @@ type Filter struct {
 	Agents   []string
 	Models   []string
 	Projects []string
+	// Sessions match a session id by prefix, so a copied short id is enough
+	Sessions []string
 	// Subagents controls delegated turns: "include" (default), "only", "exclude".
 	Subagents string
+
+	// set once Projects and Models are resolved, see filter_match.go
+	projectsResolved bool
+	exactProjects    []string
+	projectKeys      map[string]bool
+	modelsResolved   bool
+	modelNames       map[string]bool
 }
 
 func (f Filter) match(t model.Turn, resolvedModel string, project projectRef) bool {
@@ -56,10 +65,15 @@ func (f Filter) match(t model.Turn, resolvedModel string, project projectRef) bo
 	// Model matching accepts either the id the agent recorded or the normalised
 	// id it resolved to, so `--model claude-opus-5` catches a turn logged as
 	// `anthropic/claude-opus-5`.
-	if len(f.Models) > 0 && !containsFold(f.Models, t.Model) && !containsFold(f.Models, resolvedModel) {
+	if len(f.Models) > 0 && !f.matchesModel(t.Model, resolvedModel) {
 		return false
 	}
-	if len(f.Projects) > 0 && !matchProject(f.Projects, t.Project, project.key) {
+	if len(f.Sessions) > 0 && !slices.ContainsFunc(f.Sessions, func(id string) bool {
+		return t.SessionID != "" && strings.HasPrefix(strings.ToLower(t.SessionID), strings.ToLower(id))
+	}) {
+		return false
+	}
+	if len(f.Projects) > 0 && !f.matchesProject(t.Project, project.key) {
 		return false
 	}
 	switch f.Subagents {
@@ -126,6 +140,10 @@ type Bucket struct {
 	Turns        int         `json:"turns"`
 	Sessions     int         `json:"sessions"`
 	Unpriced     int         `json:"unpriced,omitempty"`
+	// FirstUsed and LastUsed are the local days of the bucket's earliest and
+	// latest dated turns, empty when none had a timestamp.
+	FirstUsed string `json:"first_used,omitempty"`
+	LastUsed  string `json:"last_used,omitempty"`
 	// Models lists the distinct models in this bucket, busiest first.
 	Models []string `json:"models,omitempty"`
 	// CostByAgent splits the priced cost by agent, so a day can be drawn as
@@ -159,6 +177,10 @@ type Report struct {
 
 	// GroupBy records the nested dimensions applied beneath each row.
 	GroupBy []Dimension `json:"group_by,omitempty"`
+
+	// FilterMatches says how each --project and --model query was resolved,
+	// so a loose match is never silent.
+	FilterMatches []FilterMatch `json:"filter_matches,omitempty"`
 
 	Granularity  Granularity  `json:"granularity"`
 	PricingDate  pricing.Date `json:"pricing_updated"`
@@ -196,6 +218,8 @@ type acc struct {
 	sub          map[string]*acc
 	dims         []Dimension
 	projectPaths map[string]struct{}
+	firstDay     string
+	lastDay      string
 }
 
 func newAcc(dims []Dimension, projectBucket bool) *acc {
@@ -212,6 +236,12 @@ func newAcc(dims []Dimension, projectBucket bool) *acc {
 func (a *acc) add(t model.Turn, c cost.Cost, rawProject string) {
 	a.usage.Add(t.Usage)
 	a.turns++
+	if d := dayKey(t.Timestamp); d != "" {
+		if a.firstDay == "" || d < a.firstDay {
+			a.firstDay = d
+		}
+		a.lastDay = max(a.lastDay, d)
+	}
 	if t.Aggregate {
 		a.aggregates++
 	}
@@ -266,6 +296,7 @@ func (a *acc) bucket(key string) Bucket {
 		Key: key, Usage: a.usage, Cost: a.cost, Turns: a.turns,
 		AggregateRecords: a.aggregates, HeuristicRecords: a.heuristic,
 		Sessions: len(a.sessions), Unpriced: a.unpriced, Models: models,
+		FirstUsed: a.firstDay, LastUsed: a.lastDay,
 	}
 	for p := range a.projectPaths {
 		b.ProjectPaths = append(b.ProjectPaths, p)
@@ -311,6 +342,10 @@ func BuildWithProjectLineage(turns []model.Turn, tbl *pricing.Table, f Filter, g
 	totals := newAcc(nil, false)
 	billing := map[string]float64{}
 	projects := newProjectCatalog(turns, lineage)
+	var projectMatches, modelMatches []FilterMatch
+	f, projectMatches = projects.resolveProjects(f)
+	f, modelMatches = resolveModels(f, turns, tbl)
+	rep.FilterMatches = append(projectMatches, modelMatches...)
 	type runtimeSource struct {
 		agent   model.Agent
 		session string

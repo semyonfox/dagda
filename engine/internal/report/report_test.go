@@ -109,9 +109,35 @@ func TestModelFilter(t *testing.T) {
 		turn("a", "cheap", "/p", local(2026, 8, 1, 10, 0), 1_000_000),
 		turn("b", "dear", "/p", local(2026, 8, 1, 11, 0), 1_000_000),
 	}
-	rep := Build(turns, tbl(), Filter{Models: []string{"dear"}}, Daily, 0, nil)
-	if rep.MatchedTurns != 1 || rep.Totals.Cost != 100 {
-		t.Errorf("matched=%d cost=%v, want 1/100", rep.MatchedTurns, rep.Totals.Cost)
+	// a part of the name or a near spelling still finds it, and says how
+	for query, how := range map[string]string{"dear": "exact", "DEA": "contains", "deer": "typo"} {
+		rep := Build(turns, tbl(), Filter{Models: []string{query}}, Daily, 0, nil)
+		if rep.MatchedTurns != 1 || rep.Totals.Cost != 100 || rep.FilterMatches[0].How != how {
+			t.Errorf("%q: matched=%d cost=%v via %+v, want 1/100 via %s", query, rep.MatchedTurns, rep.Totals.Cost, rep.FilterMatches, how)
+		}
+	}
+}
+
+func TestModelRowsCarryFirstAndLastUsedDay(t *testing.T) {
+	undated := turn("c", "cheap", "/p", time.Time{}, 1)
+	turns := []model.Turn{
+		turn("b", "cheap", "/p", local(2026, 8, 3, 23, 30), 1),
+		turn("a", "cheap", "/p", local(2026, 8, 1, 0, 15), 1),
+		undated,
+	}
+	row, ok := find(Build(turns, tbl(), Filter{}, Daily, 0, nil).ByModel, "cheap")
+	if !ok || row.FirstUsed != "2026-08-01" || row.LastUsed != "2026-08-03" {
+		t.Errorf("cheap row = %+v, want first 2026-08-01 last 2026-08-03", row)
+	}
+}
+
+func TestSessionFilterMatchesIDPrefix(t *testing.T) {
+	a := turn("a", "cheap", "/p", local(2026, 8, 1, 10, 0), 1)
+	a.SessionID = "5e2c0a91-7b3d"
+	b := turn("b", "cheap", "/p", local(2026, 8, 1, 11, 0), 1)
+	b.SessionID = "5e2d44f0-1c8a"
+	if got := Build([]model.Turn{a, b}, tbl(), Filter{Sessions: []string{"5E2C0A"}}, Daily, 0, nil).MatchedTurns; got != 1 {
+		t.Errorf("session prefix matched %d turns, want 1", got)
 	}
 }
 

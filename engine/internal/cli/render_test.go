@@ -5,6 +5,7 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/semyonfox/dagda/engine/internal/model"
 	"github.com/semyonfox/dagda/engine/internal/pricing"
 	"github.com/semyonfox/dagda/engine/internal/report"
 )
@@ -258,6 +259,28 @@ func TestRenderPriceMarksAnnouncedRateAsScheduled(t *testing.T) {
 	}
 	if !strings.Contains(now, "current") || !strings.Contains(later, "scheduled") || strings.Contains(later, "current") {
 		t.Errorf("rate markers wrong:\n%s", buf.String())
+	}
+}
+
+// A squeezed model column drops the vendor before the version, because the
+// version is what tells two rows apart.
+func TestNarrowModelColumnKeepsVersionOverVendor(t *testing.T) {
+	big := model.Usage{Input: 104_603, Output: 1_036_409, CacheWrite: 3_630_651, CacheRead: 359_796_843}
+	rep := &report.Report{ByModel: []report.Bucket{
+		{Key: "claude-opus-5-5", Usage: big, Turns: 1, Cost: 0.8, FirstUsed: "2026-11-05", LastUsed: "2026-11-14"},
+		{Key: "anthropic/claude-haiku-5-5", Usage: big, Turns: 1, Cost: 0.1, FirstUsed: "2026-11-05", LastUsed: "2026-11-05"},
+		{Key: "gpt-6.1-sol", Usage: big, Turns: 1, Cost: 0.1, FirstUsed: "2026-11-08", LastUsed: "2026-11-08"},
+	}}
+	t.Setenv("COLUMNS", "110")
+	var out bytes.Buffer
+	render(&out, "model", rep, 0, false, false, false, nil)
+	for _, want := range []string{"opus-5-5 ", "haiku-5-5 ", "gpt-6.1-sol", "2026-11-14"} {
+		if !strings.Contains(out.String(), want) {
+			t.Errorf("missing %q in narrow model table:\n%s", want, out.String())
+		}
+	}
+	if strings.Contains(out.String(), "claude-o") {
+		t.Errorf("vendor kept over version:\n%s", out.String())
 	}
 }
 

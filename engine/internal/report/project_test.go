@@ -145,6 +145,33 @@ func TestProjectFilterMatchesFamilyAndExactRecordedPath(t *testing.T) {
 	}
 }
 
+func TestProjectFilterAcceptsPrintedLabelsAndLooseQueries(t *testing.T) {
+	at := local(2026, time.August, 1, 10, 0)
+	turns := []model.Turn{
+		turn("a", "cheap", "/work/apps/orbit", at, 1),
+		turn("b", "cheap", "/work/runs/orbit", at, 1),
+		turn("c", "cheap", "/work/OrbitMaps", at, 1),
+		turn("d", "cheap", "/work/labs/heron-notes", at, 1),
+	}
+	for _, tc := range []struct {
+		query string
+		how   string
+		turns int
+	}{
+		{"apps/orbit", "label", 1},
+		// strict rules win, so a folder name never widens to OrbitMaps
+		{"orbit", "exact", 2},
+		{"heron", "contains", 1},
+		{"orbtimaps", "typo", 1},
+		{"nope", "none", 0},
+	} {
+		rep := Build(turns, tbl(), Filter{Projects: []string{tc.query}}, Daily, 0, nil)
+		if rep.MatchedTurns != tc.turns || len(rep.FilterMatches) != 1 || rep.FilterMatches[0].How != tc.how {
+			t.Errorf("%q matched %d turns via %+v, want %d via %s", tc.query, rep.MatchedTurns, rep.FilterMatches, tc.turns, tc.how)
+		}
+	}
+}
+
 func TestProjectBuildUsesPersistedRootForDeletedWorktreeAndNestedCWD(t *testing.T) {
 	base := t.TempDir()
 	main := filepath.Join(base, "main")

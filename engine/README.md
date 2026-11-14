@@ -60,7 +60,8 @@ exposes the same command.
 --since / --until DATE   inclusive local-day bounds, YYYY-MM-DD
 --agent NAME            repeatable, or comma-separated
 --model NAME            repeatable, or comma-separated
---project NAME          full path or trailing folder name; repeatable
+--project NAME          path, folder name or printed label; repeatable
+--session ID            session id or id prefix; repeatable
 --subagents MODE        include (default) | only | exclude
 --group-by DIMS         nested detailed reports: day, week, month, agent,
                         model, provider, project, session; "none" for flat
@@ -84,7 +85,22 @@ a width.
 `--group-by` adds nested data to JSON and detailed tables; summary charts stay flat.
 Detailed timeline and session views default to a model breakdown. `project` stays
 flat by default, ranked by list cost, so it remains a useful overview; add
-`--group-by model` or `--breakdown` when the per-model detail is needed.
+`--group-by model` when the per-model detail is needed. Naming projects, as in
+`dagda project dagda`, switches to the per-model view.
+
+`project`, `model` and `session` take names directly: `dagda project dagda`,
+`dagda model opus` and `dagda session 5e2c0a91` are the same as `--project`,
+`--model` and `--session`. Sessions match by id prefix.
+
+`--project` first accepts a recorded path, a folder name or the label the
+project report prints, such as `apps/orbit`. `--model` first accepts the
+recorded or resolved model id. If nothing matches exactly, both fall back to a
+case-insensitive substring of the displayed name, then to a name a typo or two
+away. A loose match prints what it picked to stderr and JSON records it in
+`filter_matches`, so a widened filter is never silent.
+
+A summary with no date flags covers the last 30 days and says so under the
+report. Every other report covers all history unless filtered.
 
 Project grouping normalizes path separators. An exact Codex session link from
 an active T3 project takes precedence; otherwise live Git metadata groups nested
@@ -98,6 +114,7 @@ recorded CWDs in `project_paths`.
 ./dist/dagda summary --all-time --agent claude,codex
 ./dist/dagda summary --since 2026-08-01 --until 2026-08-31 --json
 ./dist/dagda daily --group-by agent,model
+./dist/dagda project dagda
 ./dist/dagda session --project dagda --limit 10
 ```
 
