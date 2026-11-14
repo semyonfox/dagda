@@ -21,7 +21,7 @@
     }
   },
   "schema": 2,
-  "updated": "2026-11-13",
+  "updated": "2026-11-14",
   "sources": [
     "https://models.dev/api.json"
   ],
@@ -9135,6 +9135,19 @@
         }
       ]
     },
+    "deepseek-v4.1-flash-1017-economy": {
+      "id": "deepseek-v4.1-flash-1017-economy",
+      "rates": [
+        {
+          "from": "2026-11-14",
+          "in": 0.2,
+          "out": 0.6,
+          "cache_read": 0.01,
+          "cache_write": 0.2,
+          "source": "hyper"
+        }
+      ]
+    },
     "deepseek-v4.1-flash-1017-fast": {
       "id": "deepseek-v4.1-flash-1017-fast",
       "rates": [
@@ -14825,14 +14838,6 @@
           "out": 0.068,
           "cache_read": 0.011,
           "cache_write": 0.023,
-          "source": "nano-gpt"
-        },
-        {
-          "from": "2026-11-13",
-          "in": 0.047,
-          "out": 0.142,
-          "cache_read": 0.024,
-          "cache_write": 0.047,
           "source": "nano-gpt"
         }
       ]
@@ -27351,6 +27356,19 @@
           "cache_read": 0,
           "cache_write": 0,
           "source": "commandcode"
+        }
+      ]
+    },
+    "ling-3.2-flash:free": {
+      "id": "ling-3.2-flash:free",
+      "rates": [
+        {
+          "from": "2026-11-14",
+          "in": 0,
+          "out": 0,
+          "cache_read": 0,
+          "cache_write": 0,
+          "source": "kilo"
         }
       ]
     },
@@ -98700,6 +98718,19 @@
         }
       ]
     },
+    "hyper\u0000deepseek-v4.1-flash-1017-economy": {
+      "id": "deepseek-v4.1-flash-1017-economy",
+      "rates": [
+        {
+          "from": "2026-11-14",
+          "in": 0.2,
+          "out": 0.6,
+          "cache_read": 0.01,
+          "cache_write": 0.2,
+          "source": "hyper"
+        }
+      ]
+    },
     "hyper\u0000gemma-4-26b-a4b-it": {
       "id": "gemma-4-26b-a4b-it",
       "rates": [
@@ -106003,6 +106034,14 @@
           "cache_read": 0,
           "cache_write": 0.32,
           "source": "kilo"
+        },
+        {
+          "from": "2026-11-14",
+          "in": 0.2574,
+          "out": 1.0287,
+          "cache_read": 0,
+          "cache_write": 0.2574,
+          "source": "kilo"
         }
       ]
     },
@@ -108287,6 +108326,14 @@
           "from": "2026-11-13",
           "in": 0.024,
           "out": 0.071,
+          "cache_read": 0.012,
+          "cache_write": 0.024,
+          "source": "kilo"
+        },
+        {
+          "from": "2026-11-14",
+          "in": 0.024,
+          "out": 0.072,
           "cache_read": 0.012,
           "cache_write": 0.024,
           "source": "kilo"
@@ -111186,14 +111233,6 @@
           "cache_read": 0.033,
           "cache_write": 0.132,
           "source": "kilo"
-        },
-        {
-          "from": "2026-11-13",
-          "in": 0.0825,
-          "out": 0.33,
-          "cache_read": 0.020625,
-          "cache_write": 0.0825,
-          "source": "kilo"
         }
       ]
     },
@@ -111256,14 +111295,6 @@
           "out": 2.501,
           "cache_read": 0.042,
           "cache_write": 0.834,
-          "source": "kilo"
-        },
-        {
-          "from": "2026-11-13",
-          "in": 0.7506,
-          "out": 2.2509,
-          "cache_read": 0.0378,
-          "cache_write": 0.7506,
           "source": "kilo"
         }
       ]
@@ -112143,6 +112174,14 @@
           "cache_read": 0.2,
           "cache_write": 4,
           "source": "kilo"
+        },
+        {
+          "from": "2026-11-14",
+          "in": 4,
+          "out": 20,
+          "cache_read": 0.2,
+          "cache_write": 5,
+          "source": "kilo"
         }
       ]
     },
@@ -112496,6 +112535,19 @@
       "rates": [
         {
           "from": "2026-10-31",
+          "in": 0,
+          "out": 0,
+          "cache_read": 0,
+          "cache_write": 0,
+          "source": "kilo"
+        }
+      ]
+    },
+    "kilo\u0000ling-3.2-flash:free": {
+      "id": "ling-3.2-flash:free",
+      "rates": [
+        {
+          "from": "2026-11-14",
           "in": 0,
           "out": 0,
           "cache_read": 0,
@@ -115470,6 +115522,14 @@
           "out": 0.199,
           "cache_read": 0.122,
           "cache_write": 0.135,
+          "source": "kilo"
+        },
+        {
+          "from": "2026-11-14",
+          "in": 0.158,
+          "out": 0.232,
+          "cache_read": 0.142,
+          "cache_write": 0.158,
           "source": "kilo"
         }
       ]
@@ -137154,14 +137214,6 @@
           "cache_read": 0.011,
           "cache_write": 0.023,
           "source": "nano-gpt"
-        },
-        {
-          "from": "2026-11-13",
-          "in": 0.047,
-          "out": 0.142,
-          "cache_read": 0.024,
-          "cache_write": 0.047,
-          "source": "nano-gpt"
         }
       ]
     },
@@ -139853,14 +139905,6 @@
           "in": 0.03,
           "out": 0.15,
           "cache_read": 0.03,
-          "cache_write": 0.03,
-          "source": "nano-gpt"
-        },
-        {
-          "from": "2026-11-12",
-          "in": 0.03,
-          "out": 0.15,
-          "cache_read": 0.015,
           "cache_write": 0.03,
           "source": "nano-gpt"
         }
@@ -201824,6 +201868,14 @@
           "cache_read": 0.2,
           "cache_write": 4,
           "source": "vercel"
+        },
+        {
+          "from": "2026-11-14",
+          "in": 4,
+          "out": 20,
+          "cache_read": 0.2,
+          "cache_write": 5,
+          "source": "vercel"
         }
       ]
     },
@@ -211539,6 +211591,7 @@
     "deepseek-v4-1-flash-0910-uncensored:thinking": "deepseek-v4.1-flash-0910-uncensored:thinking",
     "deepseek-v4-1-flash-1017-abliterated": "deepseek-v4.1-flash-1017-abliterated",
     "deepseek-v4-1-flash-1017-basic": "deepseek-v4.1-flash-1017-basic",
+    "deepseek-v4-1-flash-1017-economy": "deepseek-v4.1-flash-1017-economy",
     "deepseek-v4-1-flash-1017-fast": "deepseek-v4.1-flash-1017-fast",
     "deepseek-v4-1-flash-1017-heretic": "deepseek-v4.1-flash-1017-heretic",
     "deepseek-v4-1-flash-1017-heretic:thinking": "deepseek-v4.1-flash-1017-heretic:thinking",
@@ -211610,6 +211663,7 @@
     "deepseek-v4.1-flash-0910-uncensored:thinking-latest": "deepseek-v4.1-flash-0910-uncensored:thinking",
     "deepseek-v4.1-flash-1017-abliterated-latest": "deepseek-v4.1-flash-1017-abliterated",
     "deepseek-v4.1-flash-1017-basic-latest": "deepseek-v4.1-flash-1017-basic",
+    "deepseek-v4.1-flash-1017-economy-latest": "deepseek-v4.1-flash-1017-economy",
     "deepseek-v4.1-flash-1017-fast-latest": "deepseek-v4.1-flash-1017-fast",
     "deepseek-v4.1-flash-1017-heretic-latest": "deepseek-v4.1-flash-1017-heretic",
     "deepseek-v4.1-flash-1017-heretic:thinking-latest": "deepseek-v4.1-flash-1017-heretic:thinking",
@@ -211641,6 +211695,7 @@
     "deepseek-v4p1-flash-1017": "deepseek-v4.1-flash-1017",
     "deepseek-v4p1-flash-1017-abliterated": "deepseek-v4.1-flash-1017-abliterated",
     "deepseek-v4p1-flash-1017-basic": "deepseek-v4.1-flash-1017-basic",
+    "deepseek-v4p1-flash-1017-economy": "deepseek-v4.1-flash-1017-economy",
     "deepseek-v4p1-flash-1017-fast": "deepseek-v4.1-flash-1017-fast",
     "deepseek-v4p1-flash-1017-heretic": "deepseek-v4.1-flash-1017-heretic",
     "deepseek-v4p1-flash-1017-heretic:thinking": "deepseek-v4.1-flash-1017-heretic:thinking",
@@ -213586,6 +213641,7 @@
     "ling-3-1-flash-1019-free": "ling-3.1-flash-1019-free",
     "ling-3-1-flash-free": "ling-3.1-flash-free",
     "ling-3-1-flash:free": "ling-3.1-flash:free",
+    "ling-3-2-flash:free": "ling-3.2-flash:free",
     "ling-3.0-flash-fin-free-latest": "ling-3.0-flash-fin-free",
     "ling-3.0-flash-fin-latest": "ling-3.0-flash-fin",
     "ling-3.0-flash-free-latest": "ling-3.0-flash-free",
@@ -213604,6 +213660,7 @@
     "ling-3.1-flash-free-latest": "ling-3.1-flash-free",
     "ling-3.1-flash-latest": "ling-3.1-flash",
     "ling-3.1-flash:free-latest": "ling-3.1-flash:free",
+    "ling-3.2-flash:free-latest": "ling-3.2-flash:free",
     "ling-3p0-flash": "ling-3.0-flash",
     "ling-3p0-flash-fin": "ling-3.0-flash-fin",
     "ling-3p0-flash-fin-free": "ling-3.0-flash-fin-free",
@@ -213622,6 +213679,7 @@
     "ling-3p1-flash-1019-free": "ling-3.1-flash-1019-free",
     "ling-3p1-flash-free": "ling-3.1-flash-free",
     "ling-3p1-flash:free": "ling-3.1-flash:free",
+    "ling-3p2-flash:free": "ling-3.2-flash:free",
     "ling-flash-2-0": "ling-flash-2.0",
     "ling-flash-2.0-latest": "ling-flash-2.0",
     "ling-flash-2p0": "ling-flash-2.0",
