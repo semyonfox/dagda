@@ -9,6 +9,7 @@ import (
 	"io/fs"
 	"os"
 	"path/filepath"
+	"sort"
 	"strconv"
 	"strings"
 	"time"
@@ -36,10 +37,15 @@ func (c *Codex) Roots() []string {
 	if c.root == "" {
 		return nil
 	}
-	if d := existingDir(filepath.Join(c.root, "sessions")); d != "" {
-		return []string{d}
+	// T3 Code and the Codex app move finished rollouts into archived_sessions,
+	// so reading only sessions loses their usage after the fact
+	var roots []string
+	for _, name := range []string{"sessions", "archived_sessions"} {
+		if d := existingDir(filepath.Join(c.root, name)); d != "" {
+			roots = append(roots, d)
+		}
 	}
-	return nil
+	return roots
 }
 
 type codexUsage struct {
@@ -97,32 +103,55 @@ func (c *Codex) Scan(ctx context.Context, emit func(model.Turn)) error {
 	if len(roots) == 0 {
 		return nil
 	}
-	var files []string
-	err := filepath.WalkDir(roots[0], func(path string, d fs.DirEntry, err error) error {
-		if err != nil {
-			return nil // an unreadable subtree is skipped, not fatal
-		}
-		if ctx.Err() != nil {
-			return ctx.Err()
-		}
-		if d.IsDir() {
+	// a rollout caught mid-move can sit in both roots. Keep the larger copy,
+	// which holds every call the smaller one does
+	files := map[string]codexFile{}
+	for _, root := range roots {
+		err := filepath.WalkDir(root, func(path string, d fs.DirEntry, err error) error {
+			if err != nil {
+				return nil // an unreadable subtree is skipped, not fatal
+			}
+			if ctx.Err() != nil {
+				return ctx.Err()
+			}
+			if d.IsDir() {
+				return nil
+			}
+			name := d.Name()
+			if !strings.HasPrefix(name, "rollout-") || !strings.HasSuffix(name, ".jsonl") {
+				return nil
+			}
+			var size int64
+			if info, err := os.Stat(path); err == nil {
+				size = info.Size()
+			}
+			if kept, dup := files[name]; !dup || size > kept.size {
+				files[name] = codexFile{path: path, size: size}
+			}
 			return nil
+		})
+		if err != nil {
+			return err
 		}
-		name := d.Name()
-		if strings.HasPrefix(name, "rollout-") && strings.HasSuffix(name, ".jsonl") {
-			files = append(files, path)
-		}
-		return nil
-	})
-	if err != nil {
-		return err
 	}
-	for _, t := range mapFiles(ctx, files, func(path string) []model.Turn {
+	paths := make([]string, 0, len(files))
+	for _, f := range files {
+		paths = append(paths, f.path)
+	}
+	sort.Strings(paths)
+	for _, t := range mapFiles(ctx, paths, func(path string) []model.Turn {
 		return cachedParsedFile(ctx, path, "codex-rollout-v1", func() []model.Turn { return c.scanFile(path) })
 	}) {
 		emit(t)
 	}
 	return nil
+}
+
+// codexFile is a rollout found while walking the roots. The file name carries
+// the session id, so it identifies the rollout wherever it lives.
+type codexFile struct {
+	path string
+	size int64
 }
 
 func (c *Codex) scanFile(path string) []model.Turn {

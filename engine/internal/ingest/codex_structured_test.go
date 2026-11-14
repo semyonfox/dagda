@@ -3,6 +3,7 @@ package ingest
 import (
 	"context"
 	"encoding/json"
+	"os"
 	"path/filepath"
 	"strings"
 	"testing"
@@ -163,4 +164,38 @@ func TestCodexRepeatAfterStructuredTurnIsNotCounted(t *testing.T) {
 			t.Fatalf("legacy key shifted: %+v", v)
 		}
 	}
+}
+
+// T3 Code moves a finished rollout from sessions to archived_sessions. The
+// usage must survive the move, including the moment it sits in both places,
+// and a warm cache keyed on the old path must not lose or double it.
+func TestCodexArchivedRolloutKeepsUsageAcrossMove(t *testing.T) {
+	root, cacheDir := t.TempDir(), t.TempDir()
+	live := filepath.Join(root, "sessions", "2026", "11", "14", "rollout-a.jsonl")
+	archived := filepath.Join(root, "archived_sessions", "rollout-a.jsonl")
+	lines := []string{
+		codexMeta("a", "", "user", "example"),
+		codexTokens("2026-11-14T12:00:00Z", 1000, 600, 20),
+		codexTokens("2026-11-14T12:05:00Z", 500, 0, 10),
+	}
+	// 400 input + 600 cache read + 20 output, then 500 input + 10 output
+	const want = 1530
+	total := func(stage string) {
+		t.Helper()
+		res, err := RunCached(context.Background(), []Scanner{newCodexAt(root)}, cacheDir)
+		if err != nil || len(res.Errors) > 0 {
+			t.Fatalf("%s: %v %v", stage, err, res.Errors)
+		}
+		if got := sumUsage(res.Turns).Total(); got != want || len(res.Turns) != 2 {
+			t.Fatalf("%s: %d tokens over %d turns, want %d over 2", stage, got, len(res.Turns), want)
+		}
+	}
+	writeFile(t, live, lines...)
+	total("live")
+	writeFile(t, archived, lines...)
+	total("in both")
+	if err := os.Remove(live); err != nil {
+		t.Fatal(err)
+	}
+	total("archived")
 }
