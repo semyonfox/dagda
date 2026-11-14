@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"strings"
 	"time"
 
 	"github.com/semyonfox/dagda/engine/internal/ingest"
@@ -82,6 +83,14 @@ func cmdReport(cmd string, args []string) int {
 	for _, e := range res.Errors {
 		fmt.Fprintf(os.Stderr, "dagda: warning: %v\n", e)
 	}
+	for _, m := range rep.FilterMatches {
+		switch {
+		case m.How == "none":
+			fmt.Fprintf(os.Stderr, "dagda: no %s matches %q (`dagda %s` lists them)\n", m.Filter, m.Query, m.Filter)
+		case m.Loose():
+			fmt.Fprintf(os.Stderr, "dagda: %s %q matched %s\n", m.Filter, m.Query, strings.Join(m.Matches, ", "))
+		}
+	}
 	if opts.verbose && cacheDir != "" {
 		fmt.Fprintf(os.Stderr, "dagda: scan cache: %d hit(s), %d miss(es)\n", res.CacheHits, res.CacheMisses)
 	}
@@ -97,6 +106,10 @@ func cmdReport(cmd string, args []string) int {
 	}
 	if cmd == "summary" {
 		renderOverview(os.Stdout, rep, opts.limit, colorEnabled(opts.noColor), opts.verbose, !opts.plainOutput, agents)
+		if opts.defaultWindow {
+			// other reports default to all history, so say why this one is shorter
+			fmt.Fprintln(os.Stdout, "\n    last 30 days by default · dagda -a for all history")
+		}
 		return 0
 	}
 	render(os.Stdout, cmd, rep, opts.limit, colorEnabled(opts.noColor), opts.verbose, opts.compact, agents)

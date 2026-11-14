@@ -18,7 +18,7 @@ func TestFocusedCommandHelp(t *testing.T) {
 		{[]string{"help"}, "REPORTS", "--subagents"},
 		{[]string{"help", "summary"}, "last 30 local calendar days", "dagda price MODEL"},
 		{[]string{"daily", "--help"}, "Includes all available history", "last 30 local calendar days"},
-		{[]string{"help", "sessions"}, "dagda session [flags]", "dagda agents [NAME"},
+		{[]string{"help", "sessions"}, "dagda session [NAME ...] [flags]", "dagda agents [NAME"},
 		{[]string{"agents", "--help"}, "--installed", "--group-by"},
 		{[]string{"providers", "-h"}, "dagda providers [NAME", "--since"},
 		{[]string{"price", "--help"}, "dagda price MODEL", "--agent"},

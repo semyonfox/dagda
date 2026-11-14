@@ -46,6 +46,7 @@ Windows zips, the other platforms and `checksums.txt` are on the
 ```sh
 dagda                               # last 30 days: totals, daily cost, top models and agents
 dagda daily --group-by agent,model  # every day, split by agent and model
+dagda project dagda                 # one project, cost per model
 dagda agents --installed            # which agents were found, and where
 dagda -a --json                     # all history as JSON for your own scripts
 ```

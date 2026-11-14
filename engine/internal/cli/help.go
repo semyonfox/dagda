@@ -94,7 +94,12 @@ Run dagda help COMMAND for all flags, date defaults and examples.
 	command, _ := findCommand(name)
 	fmt.Printf("Dagda %s - %s\n\n", name, command.description)
 	if command.report {
-		fmt.Printf("USAGE\n  dagda %s [flags]\n", name)
+		switch name {
+		case "project", "model", "session":
+			fmt.Printf("USAGE\n  dagda %s [NAME ...] [flags]\n", name)
+		default:
+			fmt.Printf("USAGE\n  dagda %s [flags]\n", name)
+		}
 		if len(command.aliases) > 0 {
 			fmt.Printf("  Aliases: %s\n", strings.Join(command.aliases, ", "))
 		}
@@ -106,8 +111,14 @@ Run dagda help COMMAND for all flags, date defaults and examples.
 		switch name {
 		case "daily", "weekly", "monthly", "session":
 			fmt.Print("Includes a model breakdown by default; --group-by none gives flat rows.\n")
+		}
+		switch name {
+		case "session":
+			fmt.Print("Names are session id prefixes, as in dagda session 5e2c0a91.\n")
+		case "model":
+			fmt.Print("Names filter models like --model, as in dagda model opus.\n")
 		case "project":
-			fmt.Print("Projects are flat by default; --group-by model adds model detail.\n")
+			fmt.Print("Projects are flat by default; --group-by model adds model detail.\nNaming projects, as in dagda project dagda, shows each one by model.\n")
 		case "summary":
 			fmt.Print("Charts stay flat; --group-by adds breakdowns to JSON output.\n")
 		}
@@ -182,14 +193,16 @@ FILTERS
   --until DATE        include usage on or before DATE
                       date bounds cannot be combined with --all-time
   --agent NAME        repeatable or comma-separated; use dagda agents for names
-  --model NAME        repeatable or comma-separated model filter
-  --project NAME      repeatable full path or trailing folder name
+  --model NAME        repeatable or comma-separated model id
+  --project NAME      repeatable path, folder name or printed label
+                      model and project fall back to a substring, then a
+                      near spelling, and say what they matched
+  --session ID        repeatable session id or id prefix
   --subagents MODE    include (default), only, or exclude
 
 GROUPING
   --group-by DIMS     comma-separated day, week, month, agent, model,
                       provider, project, session; none for flat output
-  --breakdown         same as --group-by model
 
 OUTPUT
   --json              machine-readable output

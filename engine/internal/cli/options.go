@@ -21,13 +21,15 @@ type reportOptions struct {
 	verbose     bool
 	noCache     bool
 	compact     bool
+	// summary fell back to its 30-day window, worth saying on screen
+	defaultWindow bool
 }
 
 func parseReportOptions(cmd string, args []string) (reportOptions, error) {
 	var opts reportOptions
 	fs := flag.NewFlagSet(cmd, flag.ContinueOnError)
 	fs.SetOutput(io.Discard)
-	var agents, models, projects stringList
+	var agents, models, projects, sessions stringList
 	var allTime bool
 	fs.BoolVar(&allTime, "all-time", false, "")
 	fs.BoolVar(&allTime, "a", false, "")
@@ -46,12 +48,20 @@ func parseReportOptions(cmd string, args []string) (reportOptions, error) {
 	fs.Var(&agents, "agent", "")
 	fs.Var(&models, "model", "")
 	fs.Var(&projects, "project", "")
+	fs.Var(&sessions, "session", "")
 	positional, err := parseFlags(fs, args)
 	if err != nil {
 		return opts, err
 	}
-	if len(positional) > 0 {
+	// `dagda project dagda` reads better than `dagda project --project dagda`
+	named := map[string]*stringList{"project": &projects, "model": &models, "session": &sessions}[cmd]
+	if named == nil && len(positional) > 0 {
 		return opts, fmt.Errorf("unexpected report arguments: %s", strings.Join(positional, " "))
+	}
+	for _, name := range positional {
+		if err := named.Set(name); err != nil {
+			return opts, err
+		}
 	}
 	if opts.limit < 0 {
 		return opts, fmt.Errorf("--limit must not be negative")
@@ -79,7 +89,7 @@ func parseReportOptions(cmd string, args []string) (reportOptions, error) {
 	}
 	opts.filter = report.Filter{
 		From: *since, To: *until,
-		Agents: agents, Models: models, Projects: projects, Subagents: *subagents,
+		Agents: agents, Models: models, Projects: projects, Sessions: sessions, Subagents: *subagents,
 	}
 	f := &opts.filter
 	if allTime && (f.From != "" || f.To != "") {
@@ -89,6 +99,7 @@ func parseReportOptions(cmd string, args []string) (reportOptions, error) {
 		now := time.Now()
 		f.From = now.AddDate(0, 0, -29).Format("2006-01-02")
 		f.To = now.Format("2006-01-02")
+		opts.defaultWindow = true
 	}
 	if f.From != "" && f.To != "" && f.From > f.To {
 		return opts, fmt.Errorf("--since must not be after --until")
@@ -114,6 +125,10 @@ func parseReportOptions(cmd string, args []string) (reportOptions, error) {
 		return opts, err
 	}
 	opts.dimensions = defaultDimensions(cmd, spec, *breakdown, dims)
+	// a project report narrowed to named projects is only useful with its models
+	if cmd == "project" && len(projects) > 0 && spec == "" && !*breakdown {
+		opts.dimensions = []report.Dimension{report.DimModel}
+	}
 	return opts, nil
 }
 

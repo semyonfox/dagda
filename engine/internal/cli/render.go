@@ -1,6 +1,7 @@
 package cli
 
 import (
+	"cmp"
 	"fmt"
 	"io"
 	"path"
@@ -84,6 +85,11 @@ func render(w io.Writer, cmd string, rep *report.Report, limit int, color, verbo
 	// level in its own column the eye can scan a single agent down the page,
 	// which is not possible when the only cue is how far a label is inset.
 	cols := []column{{title: label, align: alignLeft, max: colMax}}
+	// when a model was in use is the model report's own question
+	showDates := cmd == "model"
+	if showDates {
+		cols = append(cols, column{title: "FIRST USED", align: alignLeft}, column{title: "LAST USED", align: alignLeft})
+	}
 	for _, d := range rep.GroupBy {
 		col := column{title: d.Title(), align: alignLeft, max: 28}
 		if d == report.DimProject {
@@ -118,7 +124,7 @@ func render(w io.Writer, cmd string, rep *report.Report, limit int, color, verbo
 		// Blank line between groups, but only when a group spans several lines;
 		// separating single-line rows would just double the report's length.
 		spaced := i > 0 && nDims > 0 && len(r.Breakdown) > 0
-		emitGroup(t, th, r, rowLabel(cmd, r), 0, nDims, showModels, fmtNum, spaced)
+		emitGroup(t, th, r, rowLabel(cmd, r), 0, nDims, showModels, showDates, fmtNum, spaced)
 	}
 	// A closing total, so a truncated or filtered view still shows what the rows
 	// on screen add up to.
@@ -131,6 +137,9 @@ func render(w io.Writer, cmd string, rep *report.Report, limit int, color, verbo
 			tot.Unpriced += r.Unpriced
 		}
 		cells := []cell{styled("Total", th.strong)}
+		if showDates {
+			cells = append(cells, plain(""), plain(""))
+		}
 		for i := 0; i < nDims; i++ {
 			cells = append(cells, plain(""))
 		}
@@ -148,7 +157,7 @@ func render(w io.Writer, cmd string, rep *report.Report, limit int, color, verbo
 
 // emitGroup writes one bucket and, recursively, its nested breakdown. depth is
 // which grouping column this bucket's key belongs in.
-func emitGroup(t *table, th theme, b report.Bucket, topLabel string, depth, nDims int, showModels bool, fmtNum func(int64) string, spaced bool) {
+func emitGroup(t *table, th theme, b report.Bucket, topLabel string, depth, nDims int, showModels, showDates bool, fmtNum func(int64) string, spaced bool) {
 	cells := make([]cell, 0, nDims+8)
 
 	// Leading label column: only the top-level row carries it.
@@ -158,6 +167,9 @@ func emitGroup(t *table, th theme, b report.Bucket, topLabel string, depth, nDim
 		cells = append(cells, styled(topLabel, th.strong))
 	} else {
 		cells = append(cells, plain(""))
+	}
+	if showDates {
+		cells = append(cells, styled(cmp.Or(b.FirstUsed, "—"), th.dim), styled(cmp.Or(b.LastUsed, "—"), th.dim))
 	}
 	for i := 0; i < nDims; i++ {
 		switch {
@@ -200,7 +212,7 @@ func emitGroup(t *table, th theme, b report.Bucket, topLabel string, depth, nDim
 	}
 
 	for _, sub := range b.Breakdown {
-		emitGroup(t, th, sub, "", depth+1, nDims, showModels, fmtNum, false)
+		emitGroup(t, th, sub, "", depth+1, nDims, showModels, showDates, fmtNum, false)
 	}
 }
 
