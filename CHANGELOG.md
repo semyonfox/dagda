@@ -1,7 +1,19 @@
 # Changelog
 
-## Unreleased
+## 0.3.0 (2026-11-14)
 
+- Read Codex rollouts in `~/.codex/archived_sessions` as well as
+  `~/.codex/sessions`. T3 Code and the Codex app move a rollout there when its
+  thread finishes, so its usage used to drop out of every report.
+- `--project` accepts the label the project table prints, and `--project` and
+  `--model` fall back to a substring, then a near spelling. Loose matches say
+  what they picked and appear in JSON as `filter_matches`.
+- `project`, `model` and `session` take a name directly, as in
+  `dagda project dagda`, and `--session` matches an id prefix. A named project
+  report shows its models by default.
+- The model report shows when each model was first and last used.
+- Narrow model columns drop the route prefix and `claude-` before truncating,
+  so the version stays visible.
 - Price Claude Mythos 5.1 and 5.2 and Mythos 5.2 fast mode, which models.dev
   does not list, from a small hand-checked file of vendor list rates. An
   upstream first-party rate replaces a hand-checked one, scheduled rates
