@@ -20,6 +20,9 @@ type column struct {
 	// max caps the rendered width; longer cells are truncated. Zero means no
 	// cap.
 	max int
+	// shorten, when set, gets a line that does not fit before truncation does,
+	// so a column can drop its least useful part instead of its last characters
+	shorten func(string) string
 }
 
 // cell is one rendered value plus the style to paint it with. Style is applied
@@ -219,7 +222,11 @@ func (t *table) writeLine(out io.Writer, w []int, r row, ln int) {
 		}
 		// A column is only narrower than its content when capped or fitted, so
 		// this is a no-op on the common path.
-		text := truncate(c.lineAt(ln), w[i])
+		text := c.lineAt(ln)
+		if col.shorten != nil && displayWidth(text) > w[i] {
+			text = col.shorten(text)
+		}
+		text = truncate(text, w[i])
 
 		// Pad the plain text, then style — never the other way round, or the
 		// escape sequences would be counted as visible width.
