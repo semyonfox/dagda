@@ -3,7 +3,7 @@ module github.com/semyonfox/dagda/engine
 go 1.26.0
 
 require (
-	github.com/klauspost/compress v1.19.0
+	github.com/klauspost/compress v1.20.4
 	github.com/mattn/go-isatty v0.0.24
 	golang.org/x/sys v0.49.0
 	modernc.org/sqlite v1.62.0
