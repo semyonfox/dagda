@@ -15220,10 +15220,10 @@
         },
         {
           "from": "2026-11-15",
-          "in": 0.019,
-          "out": 0.058,
-          "cache_read": 0.01,
-          "cache_write": 0.019,
+          "in": 0.014,
+          "out": 0.041,
+          "cache_read": 0.007,
+          "cache_write": 0.014,
           "source": "nano-gpt"
         }
       ]
@@ -29744,9 +29744,9 @@
           "from": "2026-07-14",
           "in": 0.25,
           "out": 1,
-          "cache_read": 0,
+          "cache_read": 0.125,
           "cache_write": 0.25,
-          "source": "vercel"
+          "source": "nano-gpt"
         }
       ]
     },
@@ -112827,6 +112827,14 @@
           "cache_read": 0.01,
           "cache_write": 0.038,
           "source": "kilo"
+        },
+        {
+          "from": "2026-11-15",
+          "in": 0.02,
+          "out": 0.108,
+          "cache_read": 0.007,
+          "cache_write": 0.02,
+          "source": "kilo"
         }
       ]
     },
@@ -113177,14 +113185,6 @@
           "out": 2.15,
           "cache_read": 0.35,
           "cache_write": 0.5,
-          "source": "kilo"
-        },
-        {
-          "from": "2026-11-14",
-          "in": 0.571,
-          "out": 2.286,
-          "cache_read": 0,
-          "cache_write": 0.571,
           "source": "kilo"
         }
       ]
@@ -114633,6 +114633,14 @@
           "cache_read": 0,
           "cache_write": 0.08,
           "source": "kilo"
+        },
+        {
+          "from": "2026-11-15",
+          "in": 0.064,
+          "out": 0.128,
+          "cache_read": 0,
+          "cache_write": 0.064,
+          "source": "kilo"
         }
       ]
     },
@@ -114758,10 +114766,10 @@
         },
         {
           "from": "2026-11-15",
-          "in": 0.019,
-          "out": 0.056,
-          "cache_read": 0.009,
-          "cache_write": 0.019,
+          "in": 0.01,
+          "out": 0.031,
+          "cache_read": 0.005,
+          "cache_write": 0.01,
           "source": "kilo"
         }
       ]
@@ -115308,6 +115316,14 @@
           "out": 2.2,
           "cache_read": 0.11,
           "cache_write": 0.6,
+          "source": "kilo"
+        },
+        {
+          "from": "2026-11-15",
+          "in": 0.4,
+          "out": 1.75,
+          "cache_read": 0.08,
+          "cache_write": 0.4,
           "source": "kilo"
         }
       ]
@@ -117659,6 +117675,14 @@
           "cache_read": 0.033,
           "cache_write": 0.132,
           "source": "kilo"
+        },
+        {
+          "from": "2026-11-15",
+          "in": 0.0825,
+          "out": 0.33,
+          "cache_read": 0.020625,
+          "cache_write": 0.0825,
+          "source": "kilo"
         }
       ]
     },
@@ -117721,6 +117745,14 @@
           "out": 2.501,
           "cache_read": 0.042,
           "cache_write": 0.834,
+          "source": "kilo"
+        },
+        {
+          "from": "2026-11-15",
+          "in": 0.7506,
+          "out": 2.2509,
+          "cache_read": 0.0378,
+          "cache_write": 0.7506,
           "source": "kilo"
         }
       ]
@@ -121984,10 +122016,10 @@
         },
         {
           "from": "2026-11-15",
-          "in": 0.063,
-          "out": 0.093,
-          "cache_read": 0.057,
-          "cache_write": 0.063,
+          "in": 0.032,
+          "out": 0.046,
+          "cache_read": 0.028,
+          "cache_write": 0.032,
           "source": "kilo"
         }
       ]
@@ -128120,6 +128152,19 @@
         }
       ]
     },
+    "llmgateway\u0000sakana-namazu": {
+      "id": "sakana-namazu",
+      "rates": [
+        {
+          "from": "2026-11-15",
+          "in": 0.95,
+          "out": 4,
+          "cache_read": 0.15,
+          "cache_write": 0.95,
+          "source": "llmgateway"
+        }
+      ]
+    },
     "llmgateway\u0000seed-1-6-250615": {
       "id": "seed-1-6-250615",
       "rates": [
@@ -131825,6 +131870,19 @@
           "out": 0.1,
           "cache_read": 0,
           "cache_write": 0.1,
+          "source": "llmgateway-providers"
+        }
+      ]
+    },
+    "llmgateway-providers\u0000sakana-namazu": {
+      "id": "sakana-namazu",
+      "rates": [
+        {
+          "from": "2026-11-15",
+          "in": 0.95,
+          "out": 4,
+          "cache_read": 0.15,
+          "cache_write": 0.95,
           "source": "llmgateway-providers"
         }
       ]
@@ -145179,10 +145237,10 @@
         },
         {
           "from": "2026-11-15",
-          "in": 0.019,
-          "out": 0.058,
-          "cache_read": 0.01,
-          "cache_write": 0.019,
+          "in": 0.014,
+          "out": 0.041,
+          "cache_read": 0.007,
+          "cache_write": 0.014,
           "source": "nano-gpt"
         }
       ]
@@ -148911,6 +148969,14 @@
           "cache_read": 0.2,
           "cache_write": 2,
           "source": "nano-gpt"
+        },
+        {
+          "from": "2026-11-15",
+          "in": 1.4,
+          "out": 7,
+          "cache_read": 0.14,
+          "cache_write": 1.4,
+          "source": "nano-gpt"
         }
       ]
     },
@@ -149332,6 +149398,14 @@
           "out": 10,
           "cache_read": 0.2,
           "cache_write": 2,
+          "source": "nano-gpt"
+        },
+        {
+          "from": "2026-11-15",
+          "in": 1.4,
+          "out": 7,
+          "cache_read": 0.14,
+          "cache_write": 1.4,
           "source": "nano-gpt"
         }
       ]
