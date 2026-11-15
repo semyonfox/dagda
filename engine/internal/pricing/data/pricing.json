@@ -21,7 +21,7 @@
     }
   },
   "schema": 2,
-  "updated": "2026-11-14",
+  "updated": "2026-11-15",
   "sources": [
     "https://models.dev/api.json"
   ],
@@ -15216,6 +15216,14 @@
           "out": 0.064,
           "cache_read": 0.011,
           "cache_write": 0.021,
+          "source": "nano-gpt"
+        },
+        {
+          "from": "2026-11-15",
+          "in": 0.019,
+          "out": 0.058,
+          "cache_read": 0.01,
+          "cache_write": 0.019,
           "source": "nano-gpt"
         }
       ]
@@ -101841,6 +101849,15 @@
           "cache_write": 15,
           "cache_write_1h": 24,
           "source": "hostinger-router"
+        },
+        {
+          "from": "2026-11-15",
+          "in": 13.2,
+          "out": 66,
+          "cache_read": 1.32,
+          "cache_write": 16.5,
+          "cache_write_1h": 26.4,
+          "source": "hostinger-router"
         }
       ]
     },
@@ -101854,6 +101871,15 @@
           "cache_read": 0.12,
           "cache_write": 1.5,
           "cache_write_1h": 2.4,
+          "source": "hostinger-router"
+        },
+        {
+          "from": "2026-11-15",
+          "in": 1.32,
+          "out": 6.6,
+          "cache_read": 0.132,
+          "cache_write": 1.65,
+          "cache_write_1h": 2.64,
           "source": "hostinger-router"
         }
       ]
@@ -101869,6 +101895,15 @@
           "cache_write": 7.5,
           "cache_write_1h": 12,
           "source": "hostinger-router"
+        },
+        {
+          "from": "2026-11-15",
+          "in": 6.6,
+          "out": 33,
+          "cache_read": 0.66,
+          "cache_write": 8.25,
+          "cache_write_1h": 13.2,
+          "source": "hostinger-router"
         }
       ]
     },
@@ -101882,6 +101917,15 @@
           "cache_read": 0.36,
           "cache_write": 4.5,
           "cache_write_1h": 7.2,
+          "source": "hostinger-router"
+        },
+        {
+          "from": "2026-11-15",
+          "in": 3.96,
+          "out": 19.8,
+          "cache_read": 0.396,
+          "cache_write": 4.956,
+          "cache_write_1h": 7.92,
           "source": "hostinger-router"
         }
       ]
@@ -101911,6 +101955,15 @@
           "cache_write": 3,
           "cache_write_1h": 4.8,
           "source": "hostinger-router"
+        },
+        {
+          "from": "2026-11-15",
+          "in": 2.64,
+          "out": 13.2,
+          "cache_read": 0.264,
+          "cache_write": 3.3,
+          "cache_write_1h": 5.28,
+          "source": "hostinger-router"
         }
       ]
     },
@@ -101923,6 +101976,14 @@
           "out": 0.792,
           "cache_read": 0.008,
           "cache_write": 0.264,
+          "source": "hostinger-router"
+        },
+        {
+          "from": "2026-11-15",
+          "in": 0.6,
+          "out": 1.8,
+          "cache_read": 0.156,
+          "cache_write": 0.6,
           "source": "hostinger-router"
         }
       ]
@@ -101949,6 +102010,14 @@
           "out": 18,
           "cache_read": 0.36,
           "cache_write": 3.6,
+          "source": "hostinger-router"
+        },
+        {
+          "from": "2026-11-15",
+          "in": 3.96,
+          "out": 19.8,
+          "cache_read": 0.9,
+          "cache_write": 4.95,
           "source": "hostinger-router"
         }
       ]
@@ -114686,6 +114755,14 @@
           "cache_read": 0.009,
           "cache_write": 0.018,
           "source": "kilo"
+        },
+        {
+          "from": "2026-11-15",
+          "in": 0.019,
+          "out": 0.056,
+          "cache_read": 0.009,
+          "cache_write": 0.019,
+          "source": "kilo"
         }
       ]
     },
@@ -117582,14 +117659,6 @@
           "cache_read": 0.033,
           "cache_write": 0.132,
           "source": "kilo"
-        },
-        {
-          "from": "2026-11-14",
-          "in": 0.0825,
-          "out": 0.33,
-          "cache_read": 0.020625,
-          "cache_write": 0.0825,
-          "source": "kilo"
         }
       ]
     },
@@ -117652,14 +117721,6 @@
           "out": 2.501,
           "cache_read": 0.042,
           "cache_write": 0.834,
-          "source": "kilo"
-        },
-        {
-          "from": "2026-11-14",
-          "in": 0.7506,
-          "out": 2.2509,
-          "cache_read": 0.0378,
-          "cache_write": 0.7506,
           "source": "kilo"
         }
       ]
@@ -118580,6 +118641,14 @@
           "out": 0.85,
           "cache_read": 0,
           "cache_write": 0.85,
+          "source": "kilo"
+        },
+        {
+          "from": "2026-11-15",
+          "in": 0.68,
+          "out": 0.68,
+          "cache_read": 0,
+          "cache_write": 0.68,
           "source": "kilo"
         }
       ]
@@ -120461,6 +120530,14 @@
           "cache_read": 0,
           "cache_write": 0.075,
           "source": "kilo"
+        },
+        {
+          "from": "2026-11-15",
+          "in": 0.06,
+          "out": 0.32,
+          "cache_read": 0,
+          "cache_write": 0.06,
+          "source": "kilo"
         }
       ]
     },
@@ -121903,6 +121980,14 @@
           "out": 0.114,
           "cache_read": 0.069,
           "cache_write": 0.077,
+          "source": "kilo"
+        },
+        {
+          "from": "2026-11-15",
+          "in": 0.063,
+          "out": 0.093,
+          "cache_read": 0.057,
+          "cache_write": 0.063,
           "source": "kilo"
         }
       ]
@@ -145090,6 +145175,14 @@
           "out": 0.064,
           "cache_read": 0.011,
           "cache_write": 0.021,
+          "source": "nano-gpt"
+        },
+        {
+          "from": "2026-11-15",
+          "in": 0.019,
+          "out": 0.058,
+          "cache_read": 0.01,
+          "cache_write": 0.019,
           "source": "nano-gpt"
         }
       ]
