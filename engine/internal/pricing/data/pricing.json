@@ -21,7 +21,7 @@
     }
   },
   "schema": 2,
-  "updated": "2026-11-15",
+  "updated": "2026-11-16",
   "sources": [
     "https://models.dev/api.json"
   ],
@@ -12821,6 +12821,14 @@
           "cache_read": 0.075,
           "cache_write": 0.3,
           "source": "google"
+        },
+        {
+          "from": "2026-11-16",
+          "in": 0.3,
+          "out": 2.5,
+          "cache_read": 0.075,
+          "cache_write": 0.3,
+          "source": "google"
         }
       ],
       "first_party": true
@@ -13476,6 +13484,14 @@
           "cache_read": 0,
           "cache_write": 2,
           "source": "google"
+        },
+        {
+          "from": "2026-11-16",
+          "in": 2,
+          "out": 12,
+          "cache_read": 0,
+          "cache_write": 2,
+          "source": "google"
         }
       ],
       "first_party": true
@@ -13536,6 +13552,14 @@
           "cache_read": 0,
           "cache_write": 0.5,
           "source": "google"
+        },
+        {
+          "from": "2026-11-16",
+          "in": 0.5,
+          "out": 3,
+          "cache_read": 0,
+          "cache_write": 0.5,
+          "source": "google"
         }
       ],
       "first_party": true
@@ -13590,6 +13614,14 @@
           "from": "2026-08-01",
           "in": 0.25,
           "out": 30,
+          "cache_read": 0,
+          "cache_write": 0.25,
+          "source": "google"
+        },
+        {
+          "from": "2026-11-16",
+          "in": 0.25,
+          "out": 1.5,
           "cache_read": 0,
           "cache_write": 0.25,
           "source": "google"
@@ -14532,6 +14564,14 @@
           "cache_read": 0.15,
           "cache_write": 1.5,
           "source": "google-vertex"
+        },
+        {
+          "from": "2026-11-16",
+          "in": 1.5,
+          "out": 7.5,
+          "cache_read": 0.15,
+          "cache_write": 1.5,
+          "source": "google-vertex"
         }
       ],
       "first_party": true
@@ -15224,6 +15264,14 @@
           "out": 0.041,
           "cache_read": 0.007,
           "cache_write": 0.014,
+          "source": "nano-gpt"
+        },
+        {
+          "from": "2026-11-16",
+          "in": 0.018,
+          "out": 0.054,
+          "cache_read": 0.009,
+          "cache_write": 0.018,
           "source": "nano-gpt"
         }
       ]
@@ -22383,9 +22431,16 @@
           "cache_read": 1.25,
           "cache_write": 5,
           "source": "openai"
+        },
+        {
+          "from": "2026-11-16",
+          "in": 5,
+          "out": 10,
+          "cache_read": 1.25,
+          "cache_write": 5,
+          "source": "aihubmix"
         }
-      ],
-      "first_party": true
+      ]
     },
     "gpt-image-2.5-flare": {
       "id": "gpt-image-2.5-flare",
@@ -22397,6 +22452,14 @@
           "cache_read": 1.25,
           "cache_write": 5,
           "source": "vercel"
+        },
+        {
+          "from": "2026-11-16",
+          "in": 5,
+          "out": 10,
+          "cache_read": 1.25,
+          "cache_write": 5,
+          "source": "aihubmix"
         }
       ]
     },
@@ -22410,6 +22473,14 @@
           "cache_read": 1.25,
           "cache_write": 5,
           "source": "vercel"
+        },
+        {
+          "from": "2026-11-16",
+          "in": 5,
+          "out": 10,
+          "cache_read": 1.25,
+          "cache_write": 5,
+          "source": "aihubmix"
         }
       ]
     },
@@ -37626,6 +37697,14 @@
           "cache_read": 0,
           "cache_write": 8,
           "source": "digitalocean"
+        },
+        {
+          "from": "2026-11-16",
+          "in": 5,
+          "out": 0,
+          "cache_read": 1.25,
+          "cache_write": 5,
+          "source": "digitalocean"
         }
       ]
     },
@@ -43927,6 +44006,19 @@
           "cache_read": 0.25,
           "cache_write": 2,
           "source": "fireworks-ai"
+        }
+      ]
+    },
+    "qwen4-max": {
+      "id": "qwen4-max",
+      "rates": [
+        {
+          "from": "2026-11-16",
+          "in": 1.5,
+          "out": 4.5,
+          "cache_read": 0.075,
+          "cache_write": 1.875,
+          "source": "opencode-go"
         }
       ]
     },
@@ -51134,6 +51226,14 @@
           "cache_read": 0,
           "cache_write": 0.3,
           "source": "abacus"
+        },
+        {
+          "from": "2026-11-16",
+          "in": 0.3,
+          "out": 2.5,
+          "cache_read": 0,
+          "cache_write": 0.3,
+          "source": "abacus"
         }
       ]
     },
@@ -54410,6 +54510,14 @@
           "cache_read": 0.03,
           "cache_write": 0.3,
           "source": "aihubmix"
+        },
+        {
+          "from": "2026-11-16",
+          "in": 0.3,
+          "out": 2.499,
+          "cache_read": 0.03,
+          "cache_write": 0.3,
+          "source": "aihubmix"
         }
       ]
     },
@@ -54477,6 +54585,14 @@
           "from": "2026-09-28",
           "in": 2,
           "out": 120,
+          "cache_read": 0,
+          "cache_write": 2,
+          "source": "aihubmix"
+        },
+        {
+          "from": "2026-11-16",
+          "in": 2,
+          "out": 12,
           "cache_read": 0,
           "cache_write": 2,
           "source": "aihubmix"
@@ -55191,6 +55307,14 @@
           "cache_read": 0,
           "cache_write": 5,
           "source": "aihubmix"
+        },
+        {
+          "from": "2026-11-16",
+          "in": 5,
+          "out": 10,
+          "cache_read": 0,
+          "cache_write": 5,
+          "source": "aihubmix"
         }
       ]
     },
@@ -55201,6 +55325,14 @@
           "from": "2026-09-28",
           "in": 5,
           "out": 30,
+          "cache_read": 1.25,
+          "cache_write": 5,
+          "source": "aihubmix"
+        },
+        {
+          "from": "2026-11-16",
+          "in": 5,
+          "out": 10,
           "cache_read": 1.25,
           "cache_write": 5,
           "source": "aihubmix"
@@ -55217,6 +55349,14 @@
           "cache_read": 1.25,
           "cache_write": 5,
           "source": "aihubmix"
+        },
+        {
+          "from": "2026-11-16",
+          "in": 5,
+          "out": 10,
+          "cache_read": 1.25,
+          "cache_write": 5,
+          "source": "aihubmix"
         }
       ]
     },
@@ -55227,6 +55367,14 @@
           "from": "2026-09-28",
           "in": 5,
           "out": 30,
+          "cache_read": 1.25,
+          "cache_write": 5,
+          "source": "aihubmix"
+        },
+        {
+          "from": "2026-11-16",
+          "in": 5,
+          "out": 10,
           "cache_read": 1.25,
           "cache_write": 5,
           "source": "aihubmix"
@@ -85131,6 +85279,14 @@
           "cache_read": 0,
           "cache_write": 8,
           "source": "digitalocean"
+        },
+        {
+          "from": "2026-11-16",
+          "in": 5,
+          "out": 0,
+          "cache_read": 1.25,
+          "cache_write": 5,
+          "source": "digitalocean"
         }
       ]
     },
@@ -97935,6 +98091,14 @@
           "cache_read": 0.075,
           "cache_write": 0.3,
           "source": "google"
+        },
+        {
+          "from": "2026-11-16",
+          "in": 0.3,
+          "out": 2.5,
+          "cache_read": 0.075,
+          "cache_write": 0.3,
+          "source": "google"
         }
       ]
     },
@@ -98018,6 +98182,14 @@
           "cache_read": 0,
           "cache_write": 2,
           "source": "google"
+        },
+        {
+          "from": "2026-11-16",
+          "in": 2,
+          "out": 12,
+          "cache_read": 0,
+          "cache_write": 2,
+          "source": "google"
         }
       ]
     },
@@ -98041,6 +98213,14 @@
           "from": "2026-08-27",
           "in": 0.5,
           "out": 60,
+          "cache_read": 0,
+          "cache_write": 0.5,
+          "source": "google"
+        },
+        {
+          "from": "2026-11-16",
+          "in": 0.5,
+          "out": 3,
           "cache_read": 0,
           "cache_write": 0.5,
           "source": "google"
@@ -98080,6 +98260,14 @@
           "from": "2026-08-27",
           "in": 0.25,
           "out": 30,
+          "cache_read": 0,
+          "cache_write": 0.25,
+          "source": "google"
+        },
+        {
+          "from": "2026-11-16",
+          "in": 0.25,
+          "out": 1.5,
           "cache_read": 0,
           "cache_write": 0.25,
           "source": "google"
@@ -98810,6 +98998,14 @@
           "cache_read": 0,
           "cache_write": 0.3,
           "source": "google-vertex"
+        },
+        {
+          "from": "2026-11-16",
+          "in": 0.3,
+          "out": 2.5,
+          "cache_read": 0,
+          "cache_write": 0.3,
+          "source": "google-vertex"
         }
       ]
     },
@@ -98893,6 +99089,14 @@
           "cache_read": 0.2,
           "cache_write": 2,
           "source": "google-vertex"
+        },
+        {
+          "from": "2026-11-16",
+          "in": 2,
+          "out": 12,
+          "cache_read": 0.2,
+          "cache_write": 2,
+          "source": "google-vertex"
         }
       ]
     },
@@ -98903,6 +99107,14 @@
           "from": "2026-08-27",
           "in": 0.5,
           "out": 60,
+          "cache_read": 0.05,
+          "cache_write": 0.5,
+          "source": "google-vertex"
+        },
+        {
+          "from": "2026-11-16",
+          "in": 0.5,
+          "out": 3,
           "cache_read": 0.05,
           "cache_write": 0.5,
           "source": "google-vertex"
@@ -98929,6 +99141,14 @@
           "from": "2026-10-09",
           "in": 0.25,
           "out": 30,
+          "cache_read": 0.025,
+          "cache_write": 0.25,
+          "source": "google-vertex"
+        },
+        {
+          "from": "2026-11-16",
+          "in": 0.25,
+          "out": 1.5,
           "cache_read": 0.025,
           "cache_write": 0.25,
           "source": "google-vertex"
@@ -99134,6 +99354,14 @@
           "from": "2026-10-09",
           "in": 1.5,
           "out": 30,
+          "cache_read": 0.15,
+          "cache_write": 1.5,
+          "source": "google-vertex"
+        },
+        {
+          "from": "2026-11-16",
+          "in": 1.5,
+          "out": 7.5,
           "cache_read": 0.15,
           "cache_write": 1.5,
           "source": "google-vertex"
@@ -106276,6 +106504,14 @@
         {
           "from": "2026-11-13",
           "in": 0.7985,
+          "out": 3.75,
+          "cache_read": 0.19,
+          "cache_write": 0,
+          "source": "inceptron"
+        },
+        {
+          "from": "2026-11-16",
+          "in": 0.7995,
           "out": 3.75,
           "cache_read": 0.19,
           "cache_write": 0,
@@ -114771,6 +115007,14 @@
           "cache_read": 0.005,
           "cache_write": 0.01,
           "source": "kilo"
+        },
+        {
+          "from": "2026-11-16",
+          "in": 0.021,
+          "out": 0.062,
+          "cache_read": 0.01,
+          "cache_write": 0.021,
+          "source": "kilo"
         }
       ]
     },
@@ -115192,6 +115436,14 @@
           "out": 1.1,
           "cache_read": 0.03,
           "cache_write": 0.2,
+          "source": "kilo"
+        },
+        {
+          "from": "2026-11-16",
+          "in": 0.13,
+          "out": 0.85,
+          "cache_read": 0.025,
+          "cache_write": 0.13,
           "source": "kilo"
         }
       ]
@@ -117675,14 +117927,6 @@
           "cache_read": 0.033,
           "cache_write": 0.132,
           "source": "kilo"
-        },
-        {
-          "from": "2026-11-15",
-          "in": 0.0825,
-          "out": 0.33,
-          "cache_read": 0.020625,
-          "cache_write": 0.0825,
-          "source": "kilo"
         }
       ]
     },
@@ -117745,14 +117989,6 @@
           "out": 2.501,
           "cache_read": 0.042,
           "cache_write": 0.834,
-          "source": "kilo"
-        },
-        {
-          "from": "2026-11-15",
-          "in": 0.7506,
-          "out": 2.2509,
-          "cache_read": 0.0378,
-          "cache_write": 0.7506,
           "source": "kilo"
         }
       ]
@@ -118626,6 +118862,14 @@
           "out": 10,
           "cache_read": 0.2,
           "cache_write": 2,
+          "source": "kilo"
+        },
+        {
+          "from": "2026-11-16",
+          "in": 2.3,
+          "out": 11.5,
+          "cache_read": 0.23,
+          "cache_write": 2.3,
           "source": "kilo"
         }
       ]
@@ -122020,6 +122264,14 @@
           "out": 0.046,
           "cache_read": 0.028,
           "cache_write": 0.032,
+          "source": "kilo"
+        },
+        {
+          "from": "2026-11-16",
+          "in": 0.169,
+          "out": 0.248,
+          "cache_read": 0.152,
+          "cache_write": 0.169,
           "source": "kilo"
         }
       ]
@@ -145241,6 +145493,14 @@
           "out": 0.041,
           "cache_read": 0.007,
           "cache_write": 0.014,
+          "source": "nano-gpt"
+        },
+        {
+          "from": "2026-11-16",
+          "in": 0.018,
+          "out": 0.054,
+          "cache_read": 0.009,
+          "cache_write": 0.018,
           "source": "nano-gpt"
         }
       ]
@@ -168601,6 +168861,19 @@
           "out": 6,
           "cache_read": 0.25,
           "cache_write": 2.5,
+          "source": "opencode-go"
+        }
+      ]
+    },
+    "opencode-go\u0000qwen4-max": {
+      "id": "qwen4-max",
+      "rates": [
+        {
+          "from": "2026-11-16",
+          "in": 1.5,
+          "out": 4.5,
+          "cache_read": 0.075,
+          "cache_write": 1.875,
           "source": "opencode-go"
         }
       ]
@@ -229094,6 +229367,7 @@
     "qwen3p8-max-prime": "qwen3.8-max-prime",
     "qwen3p8-max:thinking": "qwen3.8-max:thinking",
     "qwen3p8-omni-flash": "qwen3.8-omni-flash",
+    "qwen4-max-latest": "qwen4-max",
     "qwenpqwen3-235b-a22b-2507-v1": "qwen.qwen3-235b-a22b-2507-v1",
     "qwenpqwen3-32b-v1": "qwen.qwen3-32b-v1",
     "qwenpqwen3-coder-30b-a3b-v1": "qwen.qwen3-coder-30b-a3b-v1",
