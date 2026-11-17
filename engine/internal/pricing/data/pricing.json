@@ -21,7 +21,7 @@
     }
   },
   "schema": 2,
-  "updated": "2026-11-16",
+  "updated": "2026-11-17",
   "sources": [
     "https://models.dev/api.json"
   ],
@@ -5492,6 +5492,32 @@
           "out": 0.8,
           "cache_read": 0,
           "cache_write": 0.15,
+          "source": "nano-gpt"
+        }
+      ]
+    },
+    "clover-2": {
+      "id": "clover-2",
+      "rates": [
+        {
+          "from": "2026-11-17",
+          "in": 0,
+          "out": 0,
+          "cache_read": 0,
+          "cache_write": 0,
+          "source": "nano-gpt"
+        }
+      ]
+    },
+    "clover-2:thinking": {
+      "id": "clover-2:thinking",
+      "rates": [
+        {
+          "from": "2026-11-17",
+          "in": 0,
+          "out": 0,
+          "cache_read": 0,
+          "cache_write": 0,
           "source": "nano-gpt"
         }
       ]
@@ -12473,6 +12499,19 @@
         }
       ]
     },
+    "flint-v1.0": {
+      "id": "flint-v1.0",
+      "rates": [
+        {
+          "from": "2026-11-17",
+          "in": 0,
+          "out": 0,
+          "cache_read": 0,
+          "cache_write": 0,
+          "source": "vercel"
+        }
+      ]
+    },
     "flint-v1.0:free": {
       "id": "flint-v1.0:free",
       "rates": [
@@ -13307,6 +13346,14 @@
           "cache_read": 0.02857143,
           "cache_write": 0.08571429,
           "source": "kenari"
+        },
+        {
+          "from": "2026-11-17",
+          "in": 0.2857,
+          "out": 1.71,
+          "cache_read": 0.0286,
+          "cache_write": 0.0857,
+          "source": "kenari"
         }
       ]
     },
@@ -13345,6 +13392,14 @@
           "out": 7.14285714,
           "cache_read": 0.12,
           "cache_write": 0.22285714,
+          "source": "kenari"
+        },
+        {
+          "from": "2026-11-17",
+          "in": 1.2,
+          "out": 7.14,
+          "cache_read": 0.12,
+          "cache_write": 0.2229,
           "source": "kenari"
         }
       ]
@@ -13434,6 +13489,14 @@
           "out": 1.71428571,
           "cache_read": 0.03428571,
           "cache_write": 0.01714286,
+          "source": "kenari"
+        },
+        {
+          "from": "2026-11-17",
+          "in": 0.3429,
+          "out": 1.71,
+          "cache_read": 0.0343,
+          "cache_write": 0.0171,
           "source": "kenari"
         }
       ]
@@ -15332,6 +15395,14 @@
           "cache_read": 0.026,
           "cache_write": 0.051,
           "source": "nano-gpt"
+        },
+        {
+          "from": "2026-11-17",
+          "in": 0.048,
+          "out": 0.145,
+          "cache_read": 0.024,
+          "cache_write": 0.048,
+          "source": "nano-gpt"
         }
       ]
     },
@@ -16512,6 +16583,19 @@
           "cache_read": 0,
           "cache_write": 0,
           "source": "empiriolabs"
+        }
+      ]
+    },
+    "glm-4-6v-flash:free": {
+      "id": "glm-4-6v-flash:free",
+      "rates": [
+        {
+          "from": "2026-11-17",
+          "in": 0,
+          "out": 0,
+          "cache_read": 0,
+          "cache_write": 0,
+          "source": "kenari"
         }
       ]
     },
@@ -18650,6 +18734,14 @@
           "out": 8.8,
           "cache_read": 0.56,
           "cache_write": 2.8,
+          "source": "kilo"
+        },
+        {
+          "from": "2026-11-17",
+          "in": 1.68,
+          "out": 5.28,
+          "cache_read": 0.336,
+          "cache_write": 1.68,
           "source": "kilo"
         }
       ]
@@ -21939,6 +22031,19 @@
         }
       ]
     },
+    "gpt-6-1-terra": {
+      "id": "gpt-6-1-terra",
+      "rates": [
+        {
+          "from": "2026-11-17",
+          "in": 1.14,
+          "out": 5.71,
+          "cache_read": 0.0571,
+          "cache_write": 1.43,
+          "source": "kenari"
+        }
+      ]
+    },
     "gpt-6-astra": {
       "id": "gpt-6-astra",
       "rates": [
@@ -23533,6 +23638,14 @@
           "cache_read": 0.34285714,
           "cache_write": 2.28571429,
           "source": "kenari"
+        },
+        {
+          "from": "2026-11-17",
+          "in": 2.29,
+          "out": 6.86,
+          "cache_read": 0.3429,
+          "cache_write": 2.29,
+          "source": "kenari"
         }
       ]
     },
@@ -23546,6 +23659,14 @@
           "cache_read": 0.5,
           "cache_write": 2,
           "source": "llmgateway"
+        },
+        {
+          "from": "2026-11-17",
+          "in": 2.29,
+          "out": 6.86,
+          "cache_read": 0.3429,
+          "cache_write": 2.29,
+          "source": "kenari"
         }
       ]
     },
@@ -29298,6 +29419,19 @@
         }
       ]
     },
+    "longcat-2-5:free": {
+      "id": "longcat-2-5:free",
+      "rates": [
+        {
+          "from": "2026-11-17",
+          "in": 0,
+          "out": 0,
+          "cache_read": 0,
+          "cache_write": 0,
+          "source": "kenari"
+        }
+      ]
+    },
     "longcat-2.0": {
       "id": "longcat-2.0",
       "rates": [
@@ -32049,6 +32183,14 @@
           "cache_read": 0,
           "cache_write": 0.33156,
           "source": "edenai"
+        },
+        {
+          "from": "2026-11-17",
+          "in": 0.33042,
+          "out": 0.44056,
+          "cache_read": 0,
+          "cache_write": 0.33042,
+          "source": "edenai"
         }
       ]
     },
@@ -34081,6 +34223,19 @@
         }
       ]
     },
+    "muse-ember-1-0": {
+      "id": "muse-ember-1-0",
+      "rates": [
+        {
+          "from": "2026-11-17",
+          "in": 0.1714,
+          "out": 0.8571,
+          "cache_read": 0.0086,
+          "cache_write": 0.1714,
+          "source": "kenari"
+        }
+      ]
+    },
     "muse-ember-1.0": {
       "id": "muse-ember-1.0",
       "rates": [
@@ -34127,6 +34282,19 @@
         }
       ]
     },
+    "muse-glimmer-30b:free": {
+      "id": "muse-glimmer-30b:free",
+      "rates": [
+        {
+          "from": "2026-11-17",
+          "in": 0,
+          "out": 0,
+          "cache_read": 0,
+          "cache_write": 0,
+          "source": "kenari"
+        }
+      ]
+    },
     "muse-spark-1-1": {
       "id": "muse-spark-1-1",
       "rates": [
@@ -34163,6 +34331,14 @@
           "cache_read": 0.01142857,
           "cache_write": 0.11428571,
           "source": "kenari"
+        },
+        {
+          "from": "2026-11-17",
+          "in": 0.1143,
+          "out": 0.2286,
+          "cache_read": 0.0114,
+          "cache_write": 0.1143,
+          "source": "kenari"
         }
       ]
     },
@@ -34188,6 +34364,14 @@
           "out": 0.22857143,
           "cache_read": 0.01142857,
           "cache_write": 0.11428571,
+          "source": "kenari"
+        },
+        {
+          "from": "2026-11-17",
+          "in": 0.1143,
+          "out": 0.2286,
+          "cache_read": 0.0114,
+          "cache_write": 0.1143,
           "source": "kenari"
         }
       ]
@@ -34324,6 +34508,19 @@
           "cache_read": 0.2,
           "cache_write": 4,
           "source": "kilo"
+        }
+      ]
+    },
+    "muse-wonder-1-0": {
+      "id": "muse-wonder-1-0",
+      "rates": [
+        {
+          "from": "2026-11-17",
+          "in": 4,
+          "out": 20,
+          "cache_read": 0.2,
+          "cache_write": 4,
+          "source": "kenari"
         }
       ]
     },
@@ -39442,6 +39639,14 @@
           "out": 5.625,
           "cache_read": 0.09375,
           "cache_write": 2.34375,
+          "source": "venice"
+        },
+        {
+          "from": "2026-11-17",
+          "in": 1.5,
+          "out": 4.5,
+          "cache_read": 0.07500000000000001,
+          "cache_write": 1.875,
           "source": "venice"
         }
       ]
@@ -45458,6 +45663,19 @@
           "cache_read": 0.01,
           "cache_write": 0.1,
           "source": "kilo"
+        }
+      ]
+    },
+    "solar-mini4:free": {
+      "id": "solar-mini4:free",
+      "rates": [
+        {
+          "from": "2026-11-17",
+          "in": 0,
+          "out": 0,
+          "cache_read": 0,
+          "cache_write": 0,
+          "source": "kenari"
         }
       ]
     },
@@ -67880,6 +68098,19 @@
         }
       ]
     },
+    "ambient\u0000deepseek-v4.1-flash-1017": {
+      "id": "deepseek-v4.1-flash-1017",
+      "rates": [
+        {
+          "from": "2026-11-17",
+          "in": 0.098,
+          "out": 0.294,
+          "cache_read": 0.0029,
+          "cache_write": 0,
+          "source": "ambient"
+        }
+      ]
+    },
     "ambient\u0000glm-5.1-fp8": {
       "id": "glm-5.1-fp8",
       "rates": [
@@ -89267,6 +89498,14 @@
           "cache_read": 0.033156,
           "cache_write": 0.22104,
           "source": "edenai"
+        },
+        {
+          "from": "2026-11-17",
+          "in": 0.22028,
+          "out": 0.71591,
+          "cache_read": 0.033042,
+          "cache_write": 0.22028,
+          "source": "edenai"
         }
       ]
     },
@@ -90264,6 +90503,14 @@
           "cache_read": 0,
           "cache_write": 0.99468,
           "source": "edenai"
+        },
+        {
+          "from": "2026-11-17",
+          "in": 0.99126,
+          "out": 0.99126,
+          "cache_read": 0,
+          "cache_write": 0.99126,
+          "source": "edenai"
         }
       ]
     },
@@ -90440,14 +90687,6 @@
           "out": 0.6,
           "cache_read": 0.015,
           "cache_write": 0.15,
-          "source": "edenai"
-        },
-        {
-          "from": "2026-11-14",
-          "in": 0.075,
-          "out": 0.3,
-          "cache_read": 0.0075,
-          "cache_write": 0.075,
           "source": "edenai"
         }
       ]
@@ -90844,6 +91083,14 @@
           "out": 0.44208,
           "cache_read": 0,
           "cache_write": 0.33156,
+          "source": "edenai"
+        },
+        {
+          "from": "2026-11-17",
+          "in": 0.33042,
+          "out": 0.44056,
+          "cache_read": 0,
+          "cache_write": 0.33042,
           "source": "edenai"
         }
       ]
@@ -91899,6 +92146,14 @@
           "cache_read": 0,
           "cache_write": 0.8289,
           "source": "edenai"
+        },
+        {
+          "from": "2026-11-17",
+          "in": 0.82605,
+          "out": 2.478151,
+          "cache_read": 0,
+          "cache_write": 0.82605,
+          "source": "edenai"
         }
       ]
     },
@@ -92240,6 +92495,14 @@
           "out": 0.88416,
           "cache_read": 0,
           "cache_write": 0.16578,
+          "source": "edenai"
+        },
+        {
+          "from": "2026-11-17",
+          "in": 0.16521,
+          "out": 0.88112,
+          "cache_read": 0,
+          "cache_write": 0.16521,
           "source": "edenai"
         }
       ]
@@ -106959,6 +107222,14 @@
           "cache_read": 0.22,
           "cache_write": 0,
           "source": "inceptron"
+        },
+        {
+          "from": "2026-11-17",
+          "in": 0.7995,
+          "out": 3.75,
+          "cache_read": 0.22,
+          "cache_write": 0,
+          "source": "inceptron"
         }
       ]
     },
@@ -111063,6 +111334,29 @@
           "cache_write": 14.85714286,
           "cache_write_1h": 24,
           "source": "kenari"
+        },
+        {
+          "from": "2026-11-17",
+          "in": 12,
+          "out": 57.14,
+          "cache_read": 1.2,
+          "cache_write": 14.86,
+          "cache_write_1h": 24,
+          "source": "kenari"
+        }
+      ]
+    },
+    "kenari\u0000claude-haiku-5-5": {
+      "id": "claude-haiku-5-5",
+      "rates": [
+        {
+          "from": "2026-11-17",
+          "in": 0.1714,
+          "out": 0.8571,
+          "cache_read": 0.0171,
+          "cache_write": 0.2286,
+          "cache_write_1h": 0.3428,
+          "source": "kenari"
         }
       ]
     },
@@ -111084,6 +111378,15 @@
           "cache_read": 0.57142857,
           "cache_write": 7.42857143,
           "cache_write_1h": 11.42857142,
+          "source": "kenari"
+        },
+        {
+          "from": "2026-11-17",
+          "in": 5.71,
+          "out": 29.71,
+          "cache_read": 0.5714,
+          "cache_write": 7.43,
+          "cache_write_1h": 11.42,
           "source": "kenari"
         }
       ]
@@ -111107,6 +111410,15 @@
           "cache_write": 7.42857143,
           "cache_write_1h": 11.42857142,
           "source": "kenari"
+        },
+        {
+          "from": "2026-11-17",
+          "in": 5.71,
+          "out": 29.71,
+          "cache_read": 0.5714,
+          "cache_write": 7.43,
+          "cache_write_1h": 11.42,
+          "source": "kenari"
         }
       ]
     },
@@ -111129,6 +111441,29 @@
           "cache_write": 5.71428571,
           "cache_write_1h": 11.42857142,
           "source": "kenari"
+        },
+        {
+          "from": "2026-11-17",
+          "in": 5.71,
+          "out": 28.57,
+          "cache_read": 2.29,
+          "cache_write": 5.71,
+          "cache_write_1h": 11.42,
+          "source": "kenari"
+        }
+      ]
+    },
+    "kenari\u0000claude-opus-5-5": {
+      "id": "claude-opus-5-5",
+      "rates": [
+        {
+          "from": "2026-11-17",
+          "in": 4.57,
+          "out": 22.86,
+          "cache_read": 0.4571,
+          "cache_write": 5.71,
+          "cache_write_1h": 9.14,
+          "source": "kenari"
         }
       ]
     },
@@ -111149,6 +111484,15 @@
           "out": 17.71428571,
           "cache_read": 0.36,
           "cache_write": 4.45714286,
+          "cache_write_1h": 7.2,
+          "source": "kenari"
+        },
+        {
+          "from": "2026-11-17",
+          "in": 3.6,
+          "out": 17.71,
+          "cache_read": 0.36,
+          "cache_write": 4.46,
           "cache_write_1h": 7.2,
           "source": "kenari"
         }
@@ -111173,6 +111517,29 @@
           "cache_write": 1.71428571,
           "cache_write_1h": 2.85714286,
           "source": "kenari"
+        },
+        {
+          "from": "2026-11-17",
+          "in": 1.43,
+          "out": 7.14,
+          "cache_read": 0.5714,
+          "cache_write": 1.71,
+          "cache_write_1h": 2.86,
+          "source": "kenari"
+        }
+      ]
+    },
+    "kenari\u0000claude-sonnet-5-5": {
+      "id": "claude-sonnet-5-5",
+      "rates": [
+        {
+          "from": "2026-11-17",
+          "in": 2.29,
+          "out": 11.43,
+          "cache_read": 0.8571,
+          "cache_write": 2.86,
+          "cache_write_1h": 4.58,
+          "source": "kenari"
         }
       ]
     },
@@ -111194,6 +111561,14 @@
           "cache_read": 0.00371429,
           "cache_write": 0.15714286,
           "source": "kenari"
+        },
+        {
+          "from": "2026-11-17",
+          "in": 0.1857,
+          "out": 0.3429,
+          "cache_read": 0.0054,
+          "cache_write": 0.1857,
+          "source": "kenari"
         }
       ]
     },
@@ -111214,6 +111589,14 @@
           "out": 0.31428571,
           "cache_read": 0.00371429,
           "cache_write": 0.15714286,
+          "source": "kenari"
+        },
+        {
+          "from": "2026-11-17",
+          "in": 0.1857,
+          "out": 0.3429,
+          "cache_read": 0.0054,
+          "cache_write": 0.1857,
           "source": "kenari"
         }
       ]
@@ -111248,6 +111631,14 @@
           "out": 1.14285714,
           "cache_read": 0.00571429,
           "cache_write": 0.57142857,
+          "source": "kenari"
+        },
+        {
+          "from": "2026-11-17",
+          "in": 0.5714,
+          "out": 1.14,
+          "cache_read": 0.0057,
+          "cache_write": 0.5714,
           "source": "kenari"
         }
       ]
@@ -111296,6 +111687,14 @@
           "cache_read": 0.02857143,
           "cache_write": 0.08571429,
           "source": "kenari"
+        },
+        {
+          "from": "2026-11-17",
+          "in": 0.2857,
+          "out": 1.71,
+          "cache_read": 0.0286,
+          "cache_write": 0.0857,
+          "source": "kenari"
         }
       ]
     },
@@ -111329,6 +111728,14 @@
           "out": 7.14285714,
           "cache_read": 0.12,
           "cache_write": 0.22285714,
+          "source": "kenari"
+        },
+        {
+          "from": "2026-11-17",
+          "in": 1.2,
+          "out": 7.14,
+          "cache_read": 0.12,
+          "cache_write": 0.2229,
           "source": "kenari"
         }
       ]
@@ -111364,6 +111771,14 @@
           "cache_read": 0.03428571,
           "cache_write": 0.01714286,
           "source": "kenari"
+        },
+        {
+          "from": "2026-11-17",
+          "in": 0.3429,
+          "out": 1.71,
+          "cache_read": 0.0343,
+          "cache_write": 0.0171,
+          "source": "kenari"
         }
       ]
     },
@@ -111385,6 +111800,27 @@
           "cache_read": 0.03428571,
           "cache_write": 0.01714286,
           "source": "kenari"
+        },
+        {
+          "from": "2026-11-17",
+          "in": 0.3429,
+          "out": 1.71,
+          "cache_read": 0.0343,
+          "cache_write": 0.0171,
+          "source": "kenari"
+        }
+      ]
+    },
+    "kenari\u0000gemini-3-8-flash": {
+      "id": "gemini-3-8-flash",
+      "rates": [
+        {
+          "from": "2026-11-17",
+          "in": 0.3429,
+          "out": 1.71,
+          "cache_read": 0.0343,
+          "cache_write": 0.0171,
+          "source": "kenari"
         }
       ]
     },
@@ -111405,6 +111841,19 @@
           "out": 0.40571429,
           "cache_read": 0.04114286,
           "cache_write": 0.10285714,
+          "source": "kenari"
+        }
+      ]
+    },
+    "kenari\u0000glm-4-6v-flash:free": {
+      "id": "glm-4-6v-flash:free",
+      "rates": [
+        {
+          "from": "2026-11-17",
+          "in": 0,
+          "out": 0,
+          "cache_read": 0,
+          "cache_write": 0,
           "source": "kenari"
         }
       ]
@@ -111466,6 +111915,14 @@
           "cache_read": 0.05314286,
           "cache_write": 0.28571429,
           "source": "kenari"
+        },
+        {
+          "from": "2026-11-17",
+          "in": 0.2857,
+          "out": 3.43,
+          "cache_read": 0.0531,
+          "cache_write": 0.2857,
+          "source": "kenari"
         }
       ]
     },
@@ -111487,6 +111944,14 @@
           "cache_read": 0.05314286,
           "cache_write": 0.28571429,
           "source": "kenari"
+        },
+        {
+          "from": "2026-11-17",
+          "in": 0.2857,
+          "out": 3.43,
+          "cache_read": 0.0531,
+          "cache_write": 0.2857,
+          "source": "kenari"
         }
       ]
     },
@@ -111507,6 +111972,14 @@
           "out": 0.34285714,
           "cache_read": 0.02285714,
           "cache_write": 0.11428571,
+          "source": "kenari"
+        },
+        {
+          "from": "2026-11-17",
+          "in": 0.1143,
+          "out": 0.3429,
+          "cache_read": 0.0229,
+          "cache_write": 0.1143,
           "source": "kenari"
         }
       ]
@@ -111571,6 +112044,14 @@
           "cache_read": 0.02,
           "cache_write": 0.25714286,
           "source": "kenari"
+        },
+        {
+          "from": "2026-11-17",
+          "in": 0.2,
+          "out": 1.14,
+          "cache_read": 0.02,
+          "cache_write": 0.2571,
+          "source": "kenari"
         }
       ]
     },
@@ -111592,6 +112073,14 @@
           "cache_read": 1.18857143,
           "cache_write": 3.71428571,
           "source": "kenari"
+        },
+        {
+          "from": "2026-11-17",
+          "in": 2.97,
+          "out": 17.71,
+          "cache_read": 1.19,
+          "cache_write": 3.71,
+          "source": "kenari"
         }
       ]
     },
@@ -111612,6 +112101,71 @@
           "out": 14.28571429,
           "cache_read": 0,
           "cache_write": 2.4,
+          "source": "kenari"
+        }
+      ]
+    },
+    "kenari\u0000gpt-6-1-sol": {
+      "id": "gpt-6-1-sol",
+      "rates": [
+        {
+          "from": "2026-11-17",
+          "in": 2.29,
+          "out": 11.43,
+          "cache_read": 0.2286,
+          "cache_write": 2.86,
+          "source": "kenari"
+        }
+      ]
+    },
+    "kenari\u0000gpt-6-1-terra": {
+      "id": "gpt-6-1-terra",
+      "rates": [
+        {
+          "from": "2026-11-17",
+          "in": 1.14,
+          "out": 5.71,
+          "cache_read": 0.0571,
+          "cache_write": 1.43,
+          "source": "kenari"
+        }
+      ]
+    },
+    "kenari\u0000gpt-6-astra": {
+      "id": "gpt-6-astra",
+      "rates": [
+        {
+          "from": "2026-11-17",
+          "in": 11.43,
+          "out": 57.14,
+          "cache_read": 1.14,
+          "cache_write": 11.43,
+          "source": "kenari"
+        }
+      ]
+    },
+    "kenari\u0000gpt-6-luna": {
+      "id": "gpt-6-luna",
+      "rates": [
+        {
+          "from": "2026-11-17",
+          "in": 0.1,
+          "out": 0.4857,
+          "cache_read": 0.01,
+          "cache_write": 0.1143,
+          "source": "kenari"
+        }
+      ]
+    },
+    "kenari\u0000gpt-6-sol": {
+      "id": "gpt-6-sol",
+      "rates": [
+        {
+          "from": "2026-11-17",
+          "in": 2.29,
+          "out": 11.43,
+          "cache_read": 0.2286,
+          "cache_write": 2.29,
           "source": "kenari"
         }
       ]
@@ -111668,6 +112222,14 @@
           "cache_read": 0.00371429,
           "cache_write": 0.036,
           "source": "kenari"
+        },
+        {
+          "from": "2026-11-17",
+          "in": 0.036,
+          "out": 0.1543,
+          "cache_read": 0.0037,
+          "cache_write": 0.036,
+          "source": "kenari"
         }
       ]
     },
@@ -111689,6 +112251,14 @@
           "cache_read": 0.34285714,
           "cache_write": 2.28571429,
           "source": "kenari"
+        },
+        {
+          "from": "2026-11-17",
+          "in": 2.29,
+          "out": 6.86,
+          "cache_read": 0.3429,
+          "cache_write": 2.29,
+          "source": "kenari"
         }
       ]
     },
@@ -111709,6 +112279,27 @@
           "out": 6.85714286,
           "cache_read": 0.34285714,
           "cache_write": 2.28571429,
+          "source": "kenari"
+        },
+        {
+          "from": "2026-11-17",
+          "in": 2.29,
+          "out": 6.86,
+          "cache_read": 0.3429,
+          "cache_write": 2.29,
+          "source": "kenari"
+        }
+      ]
+    },
+    "kenari\u0000grok-4-7": {
+      "id": "grok-4-7",
+      "rates": [
+        {
+          "from": "2026-11-17",
+          "in": 2.29,
+          "out": 6.86,
+          "cache_read": 0.3429,
+          "cache_write": 2.29,
           "source": "kenari"
         }
       ]
@@ -111770,6 +112361,14 @@
           "cache_read": 0.01542857,
           "cache_write": 0.15428571,
           "source": "kenari"
+        },
+        {
+          "from": "2026-11-17",
+          "in": 0.1543,
+          "out": 0.6286,
+          "cache_read": 0.0154,
+          "cache_write": 0.1543,
+          "source": "kenari"
         }
       ]
     },
@@ -111782,6 +112381,19 @@
           "out": 0,
           "cache_read": 0,
           "cache_write": 0,
+          "source": "kenari"
+        }
+      ]
+    },
+    "kenari\u0000hy4": {
+      "id": "hy4",
+      "rates": [
+        {
+          "from": "2026-11-17",
+          "in": 0.3429,
+          "out": 1.2,
+          "cache_read": 0.0343,
+          "cache_write": 0.3429,
           "source": "kenari"
         }
       ]
@@ -111897,6 +112509,40 @@
           "out": 8.57142857,
           "cache_read": 0.11428571,
           "cache_write": 0.85714286,
+          "source": "kenari"
+        },
+        {
+          "from": "2026-11-17",
+          "in": 1.09,
+          "out": 10.86,
+          "cache_read": 0.1429,
+          "cache_write": 1.09,
+          "source": "kenari"
+        }
+      ]
+    },
+    "kenari\u0000kimi-k3-1-pro": {
+      "id": "kimi-k3-1-pro",
+      "rates": [
+        {
+          "from": "2026-11-17",
+          "in": 0.8,
+          "out": 8,
+          "cache_read": 0.08,
+          "cache_write": 0.8,
+          "source": "kenari"
+        }
+      ]
+    },
+    "kenari\u0000longcat-2-5:free": {
+      "id": "longcat-2-5:free",
+      "rates": [
+        {
+          "from": "2026-11-17",
+          "in": 0,
+          "out": 0,
+          "cache_read": 0,
+          "cache_write": 0,
           "source": "kenari"
         }
       ]
@@ -112019,6 +112665,19 @@
         }
       ]
     },
+    "kenari\u0000minimax-m3-1-flash": {
+      "id": "minimax-m3-1-flash",
+      "rates": [
+        {
+          "from": "2026-11-17",
+          "in": 0.1829,
+          "out": 0.7429,
+          "cache_read": 0.0343,
+          "cache_write": 0.1829,
+          "source": "kenari"
+        }
+      ]
+    },
     "kenari\u0000mistral-large": {
       "id": "mistral-large",
       "rates": [
@@ -112071,6 +112730,45 @@
         }
       ]
     },
+    "kenari\u0000muse-ember-1-0": {
+      "id": "muse-ember-1-0",
+      "rates": [
+        {
+          "from": "2026-11-17",
+          "in": 0.1714,
+          "out": 0.8571,
+          "cache_read": 0.0086,
+          "cache_write": 0.1714,
+          "source": "kenari"
+        }
+      ]
+    },
+    "kenari\u0000muse-glimmer-30b:free": {
+      "id": "muse-glimmer-30b:free",
+      "rates": [
+        {
+          "from": "2026-11-17",
+          "in": 0,
+          "out": 0,
+          "cache_read": 0,
+          "cache_write": 0,
+          "source": "kenari"
+        }
+      ]
+    },
+    "kenari\u0000muse-spark-1-2": {
+      "id": "muse-spark-1-2",
+      "rates": [
+        {
+          "from": "2026-11-17",
+          "in": 1.14,
+          "out": 4.57,
+          "cache_read": 0.1143,
+          "cache_write": 1.14,
+          "source": "kenari"
+        }
+      ]
+    },
     "kenari\u0000muse-spark-1-2-contributor": {
       "id": "muse-spark-1-2-contributor",
       "rates": [
@@ -112080,6 +112778,27 @@
           "out": 0.22857143,
           "cache_read": 0.01142857,
           "cache_write": 0.11428571,
+          "source": "kenari"
+        },
+        {
+          "from": "2026-11-17",
+          "in": 0.1143,
+          "out": 0.2286,
+          "cache_read": 0.0114,
+          "cache_write": 0.1143,
+          "source": "kenari"
+        }
+      ]
+    },
+    "kenari\u0000muse-spark-1-3": {
+      "id": "muse-spark-1-3",
+      "rates": [
+        {
+          "from": "2026-11-17",
+          "in": 1.14,
+          "out": 4.57,
+          "cache_read": 0.1143,
+          "cache_write": 1.14,
           "source": "kenari"
         }
       ]
@@ -112093,6 +112812,27 @@
           "out": 0.22857143,
           "cache_read": 0.01142857,
           "cache_write": 0.11428571,
+          "source": "kenari"
+        },
+        {
+          "from": "2026-11-17",
+          "in": 0.1143,
+          "out": 0.2286,
+          "cache_read": 0.0114,
+          "cache_write": 0.1143,
+          "source": "kenari"
+        }
+      ]
+    },
+    "kenari\u0000muse-wonder-1-0": {
+      "id": "muse-wonder-1-0",
+      "rates": [
+        {
+          "from": "2026-11-17",
+          "in": 4,
+          "out": 20,
+          "cache_read": 0.2,
+          "cache_write": 4,
           "source": "kenari"
         }
       ]
@@ -112180,6 +112920,14 @@
           "cache_read": 0.00971429,
           "cache_write": 0.09714286,
           "source": "kenari"
+        },
+        {
+          "from": "2026-11-17",
+          "in": 0.0971,
+          "out": 0.48,
+          "cache_read": 0.0097,
+          "cache_write": 0.0971,
+          "source": "kenari"
         }
       ]
     },
@@ -112213,6 +112961,27 @@
           "out": 4.28571429,
           "cache_read": 0.06857143,
           "cache_write": 0.68571429,
+          "source": "kenari"
+        },
+        {
+          "from": "2026-11-17",
+          "in": 0.6857,
+          "out": 4.29,
+          "cache_read": 0.0686,
+          "cache_write": 0.6857,
+          "source": "kenari"
+        }
+      ]
+    },
+    "kenari\u0000nemotron-3-ultra-550b-a55b:free": {
+      "id": "nemotron-3-ultra-550b-a55b:free",
+      "rates": [
+        {
+          "from": "2026-11-17",
+          "in": 0,
+          "out": 0,
+          "cache_read": 0,
+          "cache_write": 0,
           "source": "kenari"
         }
       ]
@@ -112269,6 +113038,27 @@
           "cache_read": 0.29714286,
           "cache_write": 2.97142857,
           "source": "kenari"
+        },
+        {
+          "from": "2026-11-17",
+          "in": 2.4,
+          "out": 6.86,
+          "cache_read": 0.2971,
+          "cache_write": 2.97,
+          "source": "kenari"
+        }
+      ]
+    },
+    "kenari\u0000solar-mini4:free": {
+      "id": "solar-mini4:free",
+      "rates": [
+        {
+          "from": "2026-11-17",
+          "in": 0,
+          "out": 0,
+          "cache_read": 0,
+          "cache_write": 0,
+          "source": "kenari"
         }
       ]
     },
@@ -112290,6 +113080,14 @@
           "cache_read": 0.048,
           "cache_write": 0.24,
           "source": "kenari"
+        },
+        {
+          "from": "2026-11-17",
+          "in": 0.24,
+          "out": 1.37,
+          "cache_read": 0.048,
+          "cache_write": 0.24,
+          "source": "kenari"
         }
       ]
     },
@@ -112302,6 +113100,19 @@
           "out": 0,
           "cache_read": 0,
           "cache_write": 0,
+          "source": "kenari"
+        }
+      ]
+    },
+    "kenari\u0000step-5-preview": {
+      "id": "step-5-preview",
+      "rates": [
+        {
+          "from": "2026-11-17",
+          "in": 1.14,
+          "out": 2.86,
+          "cache_read": 0.0571,
+          "cache_write": 1.14,
           "source": "kenari"
         }
       ]
@@ -114742,6 +115553,19 @@
         }
       ]
     },
+    "kilo\u0000flint-v1.0": {
+      "id": "flint-v1.0",
+      "rates": [
+        {
+          "from": "2026-11-17",
+          "in": 0,
+          "out": 0,
+          "cache_read": 0,
+          "cache_write": 0,
+          "source": "kilo"
+        }
+      ]
+    },
     "kilo\u0000flint-v1.0:free": {
       "id": "flint-v1.0:free",
       "rates": [
@@ -115557,6 +116381,14 @@
           "cache_read": 0.02,
           "cache_write": 0.04,
           "source": "kilo"
+        },
+        {
+          "from": "2026-11-17",
+          "in": 0.03,
+          "out": 0.09,
+          "cache_read": 0.015,
+          "cache_write": 0.03,
+          "source": "kilo"
         }
       ]
     },
@@ -115601,6 +116433,14 @@
           "out": 0.34,
           "cache_read": 0.1,
           "cache_write": 0.1,
+          "source": "kilo"
+        },
+        {
+          "from": "2026-11-17",
+          "in": 0.067,
+          "out": 0.113,
+          "cache_read": 0.034,
+          "cache_write": 0.067,
           "source": "kilo"
         }
       ]
@@ -116327,6 +117167,14 @@
           "out": 8.8,
           "cache_read": 0.56,
           "cache_write": 2.8,
+          "source": "kilo"
+        },
+        {
+          "from": "2026-11-17",
+          "in": 1.68,
+          "out": 5.28,
+          "cache_read": 0.336,
+          "cache_write": 1.68,
           "source": "kilo"
         }
       ]
@@ -118469,14 +119317,6 @@
           "cache_read": 0.033,
           "cache_write": 0.132,
           "source": "kilo"
-        },
-        {
-          "from": "2026-11-16",
-          "in": 0.0825,
-          "out": 0.33,
-          "cache_read": 0.020625,
-          "cache_write": 0.0825,
-          "source": "kilo"
         }
       ]
     },
@@ -118552,14 +119392,6 @@
           "out": 2.501,
           "cache_read": 0.042,
           "cache_write": 0.834,
-          "source": "kilo"
-        },
-        {
-          "from": "2026-11-16",
-          "in": 0.7506,
-          "out": 2.2509,
-          "cache_read": 0.0378,
-          "cache_write": 0.7506,
           "source": "kilo"
         }
       ]
@@ -120703,14 +121535,6 @@
           "cache_read": 0.015,
           "cache_write": 0.15,
           "source": "kilo"
-        },
-        {
-          "from": "2026-11-14",
-          "in": 0.075,
-          "out": 0.3,
-          "cache_read": 0.0075,
-          "cache_write": 0.075,
-          "source": "kilo"
         }
       ]
     },
@@ -122852,6 +123676,14 @@
           "cache_read": 0.149,
           "cache_write": 0.166,
           "source": "kilo"
+        },
+        {
+          "from": "2026-11-17",
+          "in": 0.169,
+          "out": 0.249,
+          "cache_read": 0.152,
+          "cache_write": 0.169,
+          "source": "kilo"
         }
       ]
     },
@@ -123204,6 +124036,14 @@
           "out": 4.5,
           "cache_read": 0.075,
           "cache_write": 1.875,
+          "source": "kilo"
+        },
+        {
+          "from": "2026-11-17",
+          "in": 1.425,
+          "out": 4.275,
+          "cache_read": 0.07125,
+          "cache_write": 1.78125,
           "source": "kilo"
         }
       ]
@@ -126040,6 +126880,14 @@
           "cache_read": 0.15,
           "cache_write": 0.16667,
           "source": "llmgateway"
+        },
+        {
+          "from": "2026-11-17",
+          "in": 0.75,
+          "out": 3.75,
+          "cache_read": 0.075,
+          "cache_write": 0.083335,
+          "source": "llmgateway"
         }
       ]
     },
@@ -126060,6 +126908,14 @@
           "out": 7.5,
           "cache_read": 0.15,
           "cache_write": 0.16667,
+          "source": "llmgateway"
+        },
+        {
+          "from": "2026-11-17",
+          "in": 0.75,
+          "out": 3.75,
+          "cache_read": 0.075,
+          "cache_write": 0.083335,
           "source": "llmgateway"
         }
       ]
@@ -126082,6 +126938,14 @@
           "cache_read": 0.15,
           "cache_write": 0.16667,
           "source": "llmgateway"
+        },
+        {
+          "from": "2026-11-17",
+          "in": 0.75,
+          "out": 3.75,
+          "cache_read": 0.075,
+          "cache_write": 0.083335,
+          "source": "llmgateway"
         }
       ]
     },
@@ -126095,6 +126959,14 @@
           "cache_read": 0.2,
           "cache_write": 0.375,
           "source": "llmgateway"
+        },
+        {
+          "from": "2026-11-17",
+          "in": 2,
+          "out": 10,
+          "cache_read": 0.1,
+          "cache_write": 0.1875,
+          "source": "llmgateway"
         }
       ]
     },
@@ -126107,6 +126979,14 @@
           "out": 20,
           "cache_read": 0.2,
           "cache_write": 0.375,
+          "source": "llmgateway"
+        },
+        {
+          "from": "2026-11-17",
+          "in": 2,
+          "out": 10,
+          "cache_read": 0.1,
+          "cache_write": 0.1875,
           "source": "llmgateway"
         }
       ]
@@ -126474,6 +127354,14 @@
           "cache_read": 0.429,
           "cache_write": 2.156,
           "source": "llmgateway"
+        },
+        {
+          "from": "2026-11-17",
+          "in": 2.1256,
+          "out": 6.776,
+          "cache_read": 0.429,
+          "cache_write": 2.1256,
+          "source": "llmgateway"
         }
       ]
     },
@@ -126534,6 +127422,14 @@
           "out": 2,
           "cache_read": 0.15,
           "cache_write": 0.5,
+          "source": "llmgateway"
+        },
+        {
+          "from": "2026-11-17",
+          "in": 0.45,
+          "out": 1.8,
+          "cache_read": 0.135,
+          "cache_write": 0.45,
           "source": "llmgateway"
         }
       ]
@@ -127116,6 +128012,14 @@
           "out": 0.25,
           "cache_read": 0.01,
           "cache_write": 0.05,
+          "source": "llmgateway"
+        },
+        {
+          "from": "2026-11-17",
+          "in": 0.0475,
+          "out": 0.2375,
+          "cache_read": 0.0095,
+          "cache_write": 0.0475,
           "source": "llmgateway"
         }
       ]
@@ -127882,6 +128786,14 @@
           "cache_read": 0.0028,
           "cache_write": 0.14,
           "source": "llmgateway"
+        },
+        {
+          "from": "2026-11-17",
+          "in": 0.133,
+          "out": 0.266,
+          "cache_read": 0.00266,
+          "cache_write": 0.133,
+          "source": "llmgateway"
         }
       ]
     },
@@ -128525,6 +129437,14 @@
           "cache_read": 0,
           "cache_write": 0.076,
           "source": "llmgateway"
+        },
+        {
+          "from": "2026-11-17",
+          "in": 0.0608,
+          "out": 0.1824,
+          "cache_read": 0,
+          "cache_write": 0.0608,
+          "source": "llmgateway"
         }
       ]
     },
@@ -128576,6 +129496,14 @@
           "out": 0.285,
           "cache_read": 0,
           "cache_write": 0.095,
+          "source": "llmgateway"
+        },
+        {
+          "from": "2026-11-17",
+          "in": 0.076,
+          "out": 0.228,
+          "cache_read": 0,
+          "cache_write": 0.076,
           "source": "llmgateway"
         }
       ]
@@ -128852,6 +129780,14 @@
           "out": 1.35,
           "cache_read": 0,
           "cache_write": 0.15,
+          "source": "llmgateway"
+        },
+        {
+          "from": "2026-11-17",
+          "in": 0.12,
+          "out": 1.08,
+          "cache_read": 0,
+          "cache_write": 0.12,
           "source": "llmgateway"
         }
       ]
@@ -129299,6 +130235,19 @@
         }
       ]
     },
+    "llmgateway-providers\u0000beam-1.0-501b-a23b": {
+      "id": "beam-1.0-501b-a23b",
+      "rates": [
+        {
+          "from": "2026-11-17",
+          "in": 0.4,
+          "out": 1.2,
+          "cache_read": 0.04,
+          "cache_write": 0.4,
+          "source": "llmgateway-providers"
+        }
+      ]
+    },
     "llmgateway-providers\u0000claude-fable-5": {
       "id": "claude-fable-5",
       "rates": [
@@ -129654,6 +130603,14 @@
           "cache_read": 0.003,
           "cache_write": 0.15,
           "source": "llmgateway-providers"
+        },
+        {
+          "from": "2026-11-17",
+          "in": 0.076,
+          "out": 0.153,
+          "cache_read": 0.014,
+          "cache_write": 0.076,
+          "source": "llmgateway-providers"
         }
       ]
     },
@@ -129679,6 +130636,14 @@
           "out": 0.28,
           "cache_read": 0.0028,
           "cache_write": 0.14,
+          "source": "llmgateway-providers"
+        },
+        {
+          "from": "2026-11-17",
+          "in": 0.44,
+          "out": 1.32,
+          "cache_read": 0,
+          "cache_write": 0.44,
           "source": "llmgateway-providers"
         }
       ]
@@ -129966,6 +130931,14 @@
           "cache_read": 0.075,
           "cache_write": 0.08333,
           "source": "llmgateway-providers"
+        },
+        {
+          "from": "2026-11-17",
+          "in": 0.75,
+          "out": 3.75,
+          "cache_read": 0.075,
+          "cache_write": 0.083335,
+          "source": "llmgateway-providers"
         }
       ]
     },
@@ -129978,6 +130951,14 @@
           "out": 3.75,
           "cache_read": 0.075,
           "cache_write": 0.08333,
+          "source": "llmgateway-providers"
+        },
+        {
+          "from": "2026-11-17",
+          "in": 0.75,
+          "out": 3.75,
+          "cache_read": 0.075,
+          "cache_write": 0.083335,
           "source": "llmgateway-providers"
         }
       ]
@@ -129992,6 +130973,14 @@
           "cache_read": 0.2,
           "cache_write": 0.375,
           "source": "llmgateway-providers"
+        },
+        {
+          "from": "2026-11-17",
+          "in": 2,
+          "out": 10,
+          "cache_read": 0.1,
+          "cache_write": 0.1875,
+          "source": "llmgateway-providers"
         }
       ]
     },
@@ -130004,6 +130993,14 @@
           "out": 20,
           "cache_read": 0.2,
           "cache_write": 0.375,
+          "source": "llmgateway-providers"
+        },
+        {
+          "from": "2026-11-17",
+          "in": 2,
+          "out": 10,
+          "cache_read": 0.1,
+          "cache_write": 0.1875,
           "source": "llmgateway-providers"
         }
       ]
@@ -130330,6 +131327,14 @@
           "out": 6.776,
           "cache_read": 0.429,
           "cache_write": 2.156,
+          "source": "llmgateway-providers"
+        },
+        {
+          "from": "2026-11-17",
+          "in": 2.1256,
+          "out": 6.776,
+          "cache_read": 0.429,
+          "cache_write": 2.1256,
           "source": "llmgateway-providers"
         }
       ]
@@ -131388,6 +132393,14 @@
           "cache_read": 0.19,
           "cache_write": 1.9,
           "source": "llmgateway-providers"
+        },
+        {
+          "from": "2026-11-17",
+          "in": 2,
+          "out": 10,
+          "cache_read": 0.2,
+          "cache_write": 2,
+          "source": "llmgateway-providers"
         }
       ]
     },
@@ -131400,6 +132413,14 @@
           "out": 20,
           "cache_read": 0.2,
           "cache_write": 4,
+          "source": "llmgateway-providers"
+        },
+        {
+          "from": "2026-11-17",
+          "in": 3.8,
+          "out": 19,
+          "cache_read": 0.19,
+          "cache_write": 3.8,
           "source": "llmgateway-providers"
         }
       ]
@@ -131639,6 +132660,19 @@
           "out": 0.87,
           "cache_read": 0.0036,
           "cache_write": 0.435,
+          "source": "llmgateway-providers"
+        }
+      ]
+    },
+    "llmgateway-providers\u0000mimo-v2.6-pro-ultraspeed": {
+      "id": "mimo-v2.6-pro-ultraspeed",
+      "rates": [
+        {
+          "from": "2026-11-17",
+          "in": 4.35,
+          "out": 8.7,
+          "cache_read": 0.036,
+          "cache_write": 4.35,
           "source": "llmgateway-providers"
         }
       ]
@@ -132010,6 +133044,19 @@
         }
       ]
     },
+    "llmgateway-providers\u0000muse-spark-open": {
+      "id": "muse-spark-open",
+      "rates": [
+        {
+          "from": "2026-11-17",
+          "in": 1.25,
+          "out": 4.25,
+          "cache_read": 0.15,
+          "cache_write": 1.25,
+          "source": "llmgateway-providers"
+        }
+      ]
+    },
     "llmgateway-providers\u0000muse-wonder-1.0": {
       "id": "muse-wonder-1.0",
       "rates": [
@@ -132236,6 +133283,14 @@
           "cache_read": 0,
           "cache_write": 0.076,
           "source": "llmgateway-providers"
+        },
+        {
+          "from": "2026-11-17",
+          "in": 0.0608,
+          "out": 0.1824,
+          "cache_read": 0,
+          "cache_write": 0.0608,
+          "source": "llmgateway-providers"
         }
       ]
     },
@@ -132295,6 +133350,14 @@
           "out": 0.285,
           "cache_read": 0,
           "cache_write": 0.095,
+          "source": "llmgateway-providers"
+        },
+        {
+          "from": "2026-11-17",
+          "in": 0.076,
+          "out": 0.228,
+          "cache_read": 0,
+          "cache_write": 0.076,
           "source": "llmgateway-providers"
         }
       ]
@@ -132580,6 +133643,14 @@
           "cache_read": 0,
           "cache_write": 0.15,
           "source": "llmgateway-providers"
+        },
+        {
+          "from": "2026-11-17",
+          "in": 0.12,
+          "out": 1.08,
+          "cache_read": 0,
+          "cache_write": 0.12,
+          "source": "llmgateway-providers"
         }
       ]
     },
@@ -132793,6 +133864,19 @@
           "out": 3.6,
           "cache_read": 0,
           "cache_write": 0.6,
+          "source": "llmgateway-providers"
+        }
+      ]
+    },
+    "llmgateway-providers\u0000qwen4-max": {
+      "id": "qwen4-max",
+      "rates": [
+        {
+          "from": "2026-11-17",
+          "in": 1.5,
+          "out": 4.5,
+          "cache_read": 0.075,
+          "cache_write": 1.875,
           "source": "llmgateway-providers"
         }
       ]
@@ -142934,6 +144018,32 @@
         }
       ]
     },
+    "nano-gpt\u0000clover-2": {
+      "id": "clover-2",
+      "rates": [
+        {
+          "from": "2026-11-17",
+          "in": 0,
+          "out": 0,
+          "cache_read": 0,
+          "cache_write": 0,
+          "source": "nano-gpt"
+        }
+      ]
+    },
+    "nano-gpt\u0000clover-2:thinking": {
+      "id": "clover-2:thinking",
+      "rates": [
+        {
+          "from": "2026-11-17",
+          "in": 0,
+          "out": 0,
+          "cache_read": 0,
+          "cache_write": 0,
+          "source": "nano-gpt"
+        }
+      ]
+    },
     "nano-gpt\u0000codestral-2508": {
       "id": "codestral-2508",
       "rates": [
@@ -146211,6 +147321,14 @@
           "out": 0.154,
           "cache_read": 0.026,
           "cache_write": 0.051,
+          "source": "nano-gpt"
+        },
+        {
+          "from": "2026-11-17",
+          "in": 0.048,
+          "out": 0.145,
+          "cache_read": 0.024,
+          "cache_write": 0.048,
           "source": "nano-gpt"
         }
       ]
@@ -149579,14 +150697,6 @@
           "out": 2.501,
           "cache_read": 0.042,
           "cache_write": 0.834,
-          "source": "nano-gpt"
-        },
-        {
-          "from": "2026-11-14",
-          "in": 0.7506,
-          "out": 2.2509,
-          "cache_read": 0.0378,
-          "cache_write": 0.7506,
           "source": "nano-gpt"
         }
       ]
@@ -162861,6 +163971,14 @@
           "cache_read": 0.00975,
           "cache_write": 0.0975,
           "source": "obscurify"
+        },
+        {
+          "from": "2026-11-17",
+          "in": 0.16575,
+          "out": 0.663,
+          "cache_read": 0.016575,
+          "cache_write": 0.16575,
+          "source": "obscurify"
         }
       ]
     },
@@ -172690,6 +173808,14 @@
           "cache_read": 0.003,
           "cache_write": 0.15,
           "source": "openrouter"
+        },
+        {
+          "from": "2026-11-17",
+          "in": 0.036,
+          "out": 0.5,
+          "cache_read": 0.01,
+          "cache_write": 0.036,
+          "source": "openrouter"
         }
       ]
     },
@@ -174805,6 +175931,14 @@
           "cache_read": 0.56,
           "cache_write": 2.8,
           "source": "openrouter"
+        },
+        {
+          "from": "2026-11-17",
+          "in": 1.68,
+          "out": 5.28,
+          "cache_read": 0.336,
+          "cache_write": 1.68,
+          "source": "openrouter"
         }
       ]
     },
@@ -176188,14 +177322,6 @@
           "cache_read": 0.03,
           "cache_write": 0.03,
           "source": "openrouter"
-        },
-        {
-          "from": "2026-11-16",
-          "in": 0.075,
-          "out": 0.3,
-          "cache_read": 0.0375,
-          "cache_write": 0.075,
-          "source": "openrouter"
         }
       ]
     },
@@ -176678,6 +177804,14 @@
           "cache_read": 0.020625,
           "cache_write": 0.0825,
           "source": "openrouter"
+        },
+        {
+          "from": "2026-11-17",
+          "in": 0.132,
+          "out": 0.528,
+          "cache_read": 0.033,
+          "cache_write": 0.132,
+          "source": "openrouter"
         }
       ]
     },
@@ -176737,6 +177871,14 @@
           "out": 2.2509,
           "cache_read": 0.0378,
           "cache_write": 0.7506,
+          "source": "openrouter"
+        },
+        {
+          "from": "2026-11-17",
+          "in": 0.834,
+          "out": 2.501,
+          "cache_read": 0.042,
+          "cache_write": 0.834,
           "source": "openrouter"
         }
       ]
@@ -178899,6 +180041,14 @@
           "cache_read": 0.0075,
           "cache_write": 0.075,
           "source": "openrouter"
+        },
+        {
+          "from": "2026-11-17",
+          "in": 0.15,
+          "out": 0.6,
+          "cache_read": 0.015,
+          "cache_write": 0.15,
+          "source": "openrouter"
         }
       ]
     },
@@ -179325,6 +180475,14 @@
           "cache_read": 0.04,
           "cache_write": 0.3,
           "source": "openrouter"
+        },
+        {
+          "from": "2026-11-17",
+          "in": 0.35,
+          "out": 1.5,
+          "cache_read": 0.04,
+          "cache_write": 0.35,
+          "source": "openrouter"
         }
       ]
     },
@@ -179594,6 +180752,14 @@
           "out": 2.4,
           "cache_read": 0.12,
           "cache_write": 0.6,
+          "source": "openrouter"
+        },
+        {
+          "from": "2026-11-17",
+          "in": 0.5,
+          "out": 2.2,
+          "cache_read": 0.1,
+          "cache_write": 0.5,
           "source": "openrouter"
         }
       ]
@@ -181025,6 +182191,14 @@
           "cache_read": 0.11,
           "cache_write": 0.122,
           "source": "openrouter"
+        },
+        {
+          "from": "2026-11-17",
+          "in": 0.169,
+          "out": 0.248,
+          "cache_read": 0.152,
+          "cache_write": 0.169,
+          "source": "openrouter"
         }
       ]
     },
@@ -181533,6 +182707,14 @@
           "out": 4.5,
           "cache_read": 0.075,
           "cache_write": 1.875,
+          "source": "openrouter"
+        },
+        {
+          "from": "2026-11-17",
+          "in": 1.425,
+          "out": 4.275,
+          "cache_read": 0.07125,
+          "cache_write": 1.78125,
           "source": "openrouter"
         }
       ]
@@ -206994,6 +208176,19 @@
         }
       ]
     },
+    "tinfoil\u0000inkling-2-small": {
+      "id": "inkling-2-small",
+      "rates": [
+        {
+          "from": "2026-11-17",
+          "in": 0.3,
+          "out": 1,
+          "cache_read": 0.03,
+          "cache_write": 0.3,
+          "source": "tinfoil"
+        }
+      ]
+    },
     "tinfoil\u0000kimi-k3": {
       "id": "kimi-k3",
       "rates": [
@@ -211628,6 +212823,14 @@
           "cache_read": 0.09375,
           "cache_write": 2.34375,
           "source": "venice"
+        },
+        {
+          "from": "2026-11-17",
+          "in": 1.5,
+          "out": 4.5,
+          "cache_read": 0.07500000000000001,
+          "cache_write": 1.875,
+          "source": "venice"
         }
       ]
     },
@@ -212841,6 +214044,19 @@
           "out": 15,
           "cache_read": 0.3,
           "cache_write": 3,
+          "source": "vercel"
+        }
+      ]
+    },
+    "vercel\u0000flint-v1.0": {
+      "id": "flint-v1.0",
+      "rates": [
+        {
+          "from": "2026-11-17",
+          "in": 0,
+          "out": 0,
+          "cache_read": 0,
+          "cache_write": 0,
           "source": "vercel"
         }
       ]
@@ -226481,6 +227697,8 @@
     "claw-medium-latest": "claw-medium",
     "clef-omni-latest": "clef-omni",
     "clover-1-150b-latest": "clover-1-150b",
+    "clover-2-latest": "clover-2",
+    "clover-2:thinking-latest": "clover-2:thinking",
     "cobuddy-latest": "cobuddy",
     "codestral-2-latest": "codestral-2",
     "codestral-22b-v0-1": "codestral-22b-v0.1",
@@ -227137,8 +228355,11 @@
     "fastgpt-latest": "fastgpt",
     "fledge-alpha-free-latest": "fledge-alpha-free",
     "flint-40b-free-latest": "flint-40b-free",
+    "flint-v1-0": "flint-v1.0",
     "flint-v1-0:free": "flint-v1.0:free",
+    "flint-v1.0-latest": "flint-v1.0",
     "flint-v1.0:free-latest": "flint-v1.0:free",
+    "flint-v1p0": "flint-v1.0",
     "flint-v1p0:free": "flint-v1.0:free",
     "flux-1-dev": "flux.1-dev",
     "flux-2-klein-4b": "flux.2-klein-4b",
@@ -227549,6 +228770,7 @@
     "glm-4-6v": "glm-4.6v",
     "glm-4-6v-flash-free": "glm-4.6v-flash-free",
     "glm-4-6v-flash-latest": "glm-4-6v-flash",
+    "glm-4-6v-flash:free-latest": "glm-4-6v-flash:free",
     "glm-4-6v-flashx": "glm-4.6v-flashx",
     "glm-4-6v-original": "glm-4.6v-original",
     "glm-4-7": "glm-4.7",
@@ -228239,6 +229461,7 @@
     "gpt-6-1-sol@eu": "gpt-6.1-sol@eu",
     "gpt-6-1-terra": "gpt-6.1-terra",
     "gpt-6-1-terra-fast": "gpt-6.1-terra-fast",
+    "gpt-6-1-terra-latest": "gpt-6-1-terra",
     "gpt-6-1-terra-pro": "gpt-6.1-terra-pro",
     "gpt-6-1-terra@eu": "gpt-6.1-terra@eu",
     "gpt-6-astra-fast-latest": "gpt-6-astra-fast",
@@ -229021,6 +230244,7 @@
     "longcat-2-5-free": "longcat-2.5-free",
     "longcat-2-5-preview": "longcat-2.5-preview",
     "longcat-2-5-preview-free": "longcat-2.5-preview-free",
+    "longcat-2-5:free-latest": "longcat-2-5:free",
     "longcat-2.0-free-latest": "longcat-2.0-free",
     "longcat-2.0-latest": "longcat-2.0",
     "longcat-2.0:thinking-latest": "longcat-2.0:thinking",
@@ -229141,8 +230365,10 @@
     "midm-k-3-0-pro": "midm-k-3.0-pro",
     "midm-k-3.0-pro-latest": "midm-k-3.0-pro",
     "midm-k-3p0-pro": "midm-k-3.0-pro",
+    "mimo-v2-5": "mimo-v2.5",
     "mimo-v2-5-free": "mimo-v2.5-free",
     "mimo-v2-5-latest": "mimo-v2-5",
+    "mimo-v2-5-pro": "mimo-v2.5-pro",
     "mimo-v2-5-pro-crof": "mimo-v2.5-pro-crof",
     "mimo-v2-5-pro-latest": "mimo-v2-5-pro",
     "mimo-v2-5-pro-ultraspeed": "mimo-v2.5-pro-ultraspeed",
@@ -229485,11 +230711,13 @@
     "multi-qa-mpnet-base-dot-v1-latest": "multi-qa-mpnet-base-dot-v1",
     "multilingual-e5-large-instruct-latest": "multilingual-e5-large-instruct",
     "muse-ember-1-0": "muse-ember-1.0",
+    "muse-ember-1-0-latest": "muse-ember-1-0",
     "muse-ember-1.0-latest": "muse-ember-1.0",
     "muse-ember-1p0": "muse-ember-1.0",
     "muse-ember-latest": "muse-ember",
     "muse-glimmer-30b-latest": "muse-glimmer-30b",
     "muse-glimmer-30b-tr-latest": "muse-glimmer-30b-tr",
+    "muse-glimmer-30b:free-latest": "muse-glimmer-30b:free",
     "muse-spark-1-1-latest": "muse-spark-1-1",
     "muse-spark-1-2-contributor": "muse-spark-1.2-contributor",
     "muse-spark-1-2-contributor-free": "muse-spark-1.2-contributor-free",
@@ -229516,6 +230744,7 @@
     "muse-spark-open-816b-a42b-latest": "muse-spark-open-816b-a42b",
     "muse-spark-open-latest": "muse-spark-open",
     "muse-wonder-1-0": "muse-wonder-1.0",
+    "muse-wonder-1-0-latest": "muse-wonder-1-0",
     "muse-wonder-1.0-latest": "muse-wonder-1.0",
     "muse-wonder-1p0": "muse-wonder-1.0",
     "muse-wonder-full-1-0-latest": "muse-wonder-full-1-0",
@@ -230630,6 +231859,7 @@
     "solar-10p7b-instruct": "solar-10.7b-instruct",
     "solar-mini-latest": "solar-mini",
     "solar-mini4-latest": "solar-mini4",
+    "solar-mini4:free-latest": "solar-mini4:free",
     "solar-mini4:thinking-latest": "solar-mini4:thinking",
     "solar-pro-3-latest": "solar-pro-3",
     "solar-pro2-latest": "solar-pro2",
@@ -230659,6 +231889,7 @@
     "step-3-5-flash-latest": "step-3-5-flash",
     "step-3-7-flash-free": "step-3.7-flash-free",
     "step-3-7-flash-latest": "step-3-7-flash",
+    "step-3-7-flash:free": "step-3.7-flash:free",
     "step-3-7-flash:free-latest": "step-3-7-flash:free",
     "step-3-7-flash:thinking": "step-3.7-flash:thinking",
     "step-3-latest": "step-3",
