@@ -21,7 +21,7 @@
     }
   },
   "schema": 2,
-  "updated": "2026-11-17",
+  "updated": "2026-11-18",
   "sources": [
     "https://models.dev/api.json"
   ],
@@ -15473,6 +15473,14 @@
           "cache_read": 0.046,
           "cache_write": 0.07,
           "source": "nano-gpt"
+        },
+        {
+          "from": "2026-11-18",
+          "in": 0.064,
+          "out": 0.191,
+          "cache_read": 0.032,
+          "cache_write": 0.064,
+          "source": "nano-gpt"
         }
       ]
     },
@@ -22693,6 +22701,14 @@
           "cache_read": 2,
           "cache_write": 25,
           "source": "kilo"
+        },
+        {
+          "from": "2026-11-18",
+          "in": 16,
+          "out": 60,
+          "cache_read": 0.8,
+          "cache_write": 20,
+          "source": "kilo"
         }
       ]
     },
@@ -27471,6 +27487,14 @@
           "cache_read": 0.4,
           "cache_write": 4,
           "source": "nano-gpt"
+        },
+        {
+          "from": "2026-11-18",
+          "in": 4,
+          "out": 15,
+          "cache_read": 4,
+          "cache_write": 4,
+          "source": "nano-gpt"
         }
       ]
     },
@@ -30497,6 +30521,14 @@
           "cache_read": 0,
           "cache_write": 0.6,
           "source": "sambanova"
+        },
+        {
+          "from": "2026-11-18",
+          "in": 0.59,
+          "out": 0.79,
+          "cache_read": 0,
+          "cache_write": 0.59,
+          "source": "abacus"
         }
       ]
     },
@@ -31492,6 +31524,14 @@
           "cache_read": 0.03,
           "cache_write": 0.375,
           "source": "vercel"
+        },
+        {
+          "from": "2026-11-18",
+          "in": 0.12,
+          "out": 0.48,
+          "cache_read": 0,
+          "cache_write": 0.12,
+          "source": "llmgateway"
         }
       ]
     },
@@ -32449,6 +32489,14 @@
           "cache_read": 0,
           "cache_write": 0.33042,
           "source": "edenai"
+        },
+        {
+          "from": "2026-11-18",
+          "in": 0.32967,
+          "out": 0.43956,
+          "cache_read": 0,
+          "cache_write": 0.32967,
+          "source": "edenai"
         }
       ]
     },
@@ -33334,6 +33382,14 @@
           "out": 2.2,
           "cache_read": 0.044,
           "cache_write": 0.44,
+          "source": "edenai"
+        },
+        {
+          "from": "2026-11-18",
+          "in": 0.484,
+          "out": 2.42,
+          "cache_read": 0.0484,
+          "cache_write": 0.484,
           "source": "edenai"
         }
       ]
@@ -38316,6 +38372,78 @@
         }
       ]
     },
+    "openai-gpt-62-astra": {
+      "id": "openai-gpt-62-astra",
+      "rates": [
+        {
+          "from": "2026-11-18",
+          "in": 8,
+          "out": 40,
+          "cache_read": 0.4,
+          "cache_write": 10,
+          "tier_threshold": 272000,
+          "tier_in": 16,
+          "tier_out": 60,
+          "tier_cache_read": 0.8,
+          "tier_cache_write": 20,
+          "source": "venice"
+        }
+      ]
+    },
+    "openai-gpt-62-astra-pro": {
+      "id": "openai-gpt-62-astra-pro",
+      "rates": [
+        {
+          "from": "2026-11-18",
+          "in": 8,
+          "out": 40,
+          "cache_read": 0.4,
+          "cache_write": 10,
+          "tier_threshold": 272000,
+          "tier_in": 16,
+          "tier_out": 60,
+          "tier_cache_read": 0.8,
+          "tier_cache_write": 20,
+          "source": "venice"
+        }
+      ]
+    },
+    "openai-gpt-62-sol": {
+      "id": "openai-gpt-62-sol",
+      "rates": [
+        {
+          "from": "2026-11-18",
+          "in": 2,
+          "out": 10,
+          "cache_read": 0.1,
+          "cache_write": 2.5,
+          "tier_threshold": 272000,
+          "tier_in": 4,
+          "tier_out": 15,
+          "tier_cache_read": 0.2,
+          "tier_cache_write": 5,
+          "source": "venice"
+        }
+      ]
+    },
+    "openai-gpt-62-sol-pro": {
+      "id": "openai-gpt-62-sol-pro",
+      "rates": [
+        {
+          "from": "2026-11-18",
+          "in": 2,
+          "out": 10,
+          "cache_read": 0.1,
+          "cache_write": 2.5,
+          "tier_threshold": 272000,
+          "tier_in": 4,
+          "tier_out": 15,
+          "tier_cache_read": 0.2,
+          "tier_cache_write": 5,
+          "source": "venice"
+        }
+      ]
+    },
     "openai-gpt-image-1": {
       "id": "openai-gpt-image-1",
       "rates": [
@@ -41643,6 +41771,14 @@
           "tier_cache_read": 0.54,
           "tier_cache_write": 2.7,
           "source": "vercel"
+        },
+        {
+          "from": "2026-11-18",
+          "in": 0.22,
+          "out": 0.95,
+          "cache_read": 0,
+          "cache_write": 0.22,
+          "source": "helicone"
         }
       ]
     },
@@ -82281,6 +82417,42 @@
         }
       ]
     },
+    "crossmodel\u0000gpt-6.2-astra": {
+      "id": "gpt-6.2-astra",
+      "rates": [
+        {
+          "from": "2026-11-18",
+          "in": 8,
+          "out": 40,
+          "cache_read": 0.4,
+          "cache_write": 10,
+          "tier_threshold": 272000,
+          "tier_in": 16,
+          "tier_out": 60,
+          "tier_cache_read": 0.8,
+          "tier_cache_write": 20,
+          "source": "crossmodel"
+        }
+      ]
+    },
+    "crossmodel\u0000gpt-6.2-sol": {
+      "id": "gpt-6.2-sol",
+      "rates": [
+        {
+          "from": "2026-11-18",
+          "in": 2,
+          "out": 10,
+          "cache_read": 0.1,
+          "cache_write": 2.5,
+          "tier_threshold": 272000,
+          "tier_in": 4,
+          "tier_out": 15,
+          "tier_cache_read": 0.2,
+          "tier_cache_write": 5,
+          "source": "crossmodel"
+        }
+      ]
+    },
     "crossmodel\u0000grok-4.3": {
       "id": "grok-4.3",
       "rates": [
@@ -89906,6 +90078,14 @@
           "cache_read": 0.033042,
           "cache_write": 0.22028,
           "source": "edenai"
+        },
+        {
+          "from": "2026-11-18",
+          "in": 0.21978,
+          "out": 0.714285,
+          "cache_read": 0.032967,
+          "cache_write": 0.21978,
+          "source": "edenai"
         }
       ]
     },
@@ -90911,6 +91091,14 @@
           "cache_read": 0,
           "cache_write": 0.99126,
           "source": "edenai"
+        },
+        {
+          "from": "2026-11-18",
+          "in": 0.98901,
+          "out": 0.98901,
+          "cache_read": 0,
+          "cache_write": 0.98901,
+          "source": "edenai"
         }
       ]
     },
@@ -91087,14 +91275,6 @@
           "out": 0.6,
           "cache_read": 0.015,
           "cache_write": 0.15,
-          "source": "edenai"
-        },
-        {
-          "from": "2026-11-17",
-          "in": 0.075,
-          "out": 0.3,
-          "cache_read": 0.0075,
-          "cache_write": 0.075,
           "source": "edenai"
         }
       ]
@@ -91500,6 +91680,14 @@
           "cache_read": 0,
           "cache_write": 0.33042,
           "source": "edenai"
+        },
+        {
+          "from": "2026-11-18",
+          "in": 0.32967,
+          "out": 0.43956,
+          "cache_read": 0,
+          "cache_write": 0.32967,
+          "source": "edenai"
         }
       ]
     },
@@ -91737,6 +91925,14 @@
           "cache_read": 0.04,
           "cache_write": 0.4,
           "source": "edenai"
+        },
+        {
+          "from": "2026-11-18",
+          "in": 0.44,
+          "out": 2.2,
+          "cache_read": 0.044,
+          "cache_write": 0.44,
+          "source": "edenai"
         }
       ]
     },
@@ -91775,6 +91971,14 @@
           "out": 2.2,
           "cache_read": 0.044,
           "cache_write": 0.44,
+          "source": "edenai"
+        },
+        {
+          "from": "2026-11-18",
+          "in": 0.484,
+          "out": 2.42,
+          "cache_read": 0.0484,
+          "cache_write": 0.484,
           "source": "edenai"
         }
       ]
@@ -92562,6 +92766,14 @@
           "cache_read": 0,
           "cache_write": 0.82605,
           "source": "edenai"
+        },
+        {
+          "from": "2026-11-18",
+          "in": 0.824175,
+          "out": 2.472525,
+          "cache_read": 0,
+          "cache_write": 0.824175,
+          "source": "edenai"
         }
       ]
     },
@@ -92911,6 +93123,14 @@
           "out": 0.88112,
           "cache_read": 0,
           "cache_write": 0.16521,
+          "source": "edenai"
+        },
+        {
+          "from": "2026-11-18",
+          "in": 0.164835,
+          "out": 0.87912,
+          "cache_read": 0,
+          "cache_write": 0.164835,
           "source": "edenai"
         }
       ]
@@ -107755,6 +107975,14 @@
           "cache_read": 0.23,
           "cache_write": 0,
           "source": "inceptron"
+        },
+        {
+          "from": "2026-11-18",
+          "in": 0.819,
+          "out": 4.32,
+          "cache_read": 0.23,
+          "cache_write": 0,
+          "source": "inceptron"
         }
       ]
     },
@@ -117618,6 +117846,14 @@
           "cache_read": 0.055,
           "cache_write": 0.3,
           "source": "kilo"
+        },
+        {
+          "from": "2026-11-18",
+          "in": 0.3,
+          "out": 0.9,
+          "cache_read": 0.05,
+          "cache_write": 0.3,
+          "source": "kilo"
         }
       ]
     },
@@ -119688,6 +119924,14 @@
           "cache_read": 2,
           "cache_write": 25,
           "source": "kilo"
+        },
+        {
+          "from": "2026-11-18",
+          "in": 16,
+          "out": 60,
+          "cache_read": 0.8,
+          "cache_write": 20,
+          "source": "kilo"
         }
       ]
     },
@@ -121520,6 +121764,14 @@
           "cache_read": 0.2,
           "cache_write": 0.2403,
           "source": "kilo"
+        },
+        {
+          "from": "2026-11-18",
+          "in": 4,
+          "out": 20,
+          "cache_read": 0.2,
+          "cache_write": 5,
+          "source": "kilo"
         }
       ]
     },
@@ -122796,14 +123048,6 @@
           "out": 0.6,
           "cache_read": 0.015,
           "cache_write": 0.15,
-          "source": "kilo"
-        },
-        {
-          "from": "2026-11-17",
-          "in": 0.075,
-          "out": 0.3,
-          "cache_read": 0.0075,
-          "cache_write": 0.075,
           "source": "kilo"
         }
       ]
@@ -124764,6 +125008,14 @@
           "cache_read": 0,
           "cache_write": 0.09,
           "source": "kilo"
+        },
+        {
+          "from": "2026-11-18",
+          "in": 0.1,
+          "out": 1.1,
+          "cache_read": 0.07,
+          "cache_write": 0.1,
+          "source": "kilo"
         }
       ]
     },
@@ -125041,6 +125293,14 @@
           "out": 0.25,
           "cache_read": 0.153,
           "cache_write": 0.17,
+          "source": "kilo"
+        },
+        {
+          "from": "2026-11-18",
+          "in": 0.147,
+          "out": 0.216,
+          "cache_read": 0.132,
+          "cache_write": 0.147,
           "source": "kilo"
         }
       ]
@@ -128975,6 +129235,14 @@
           "cache_read": 0.012804,
           "cache_write": 0.08536,
           "source": "llmgateway"
+        },
+        {
+          "from": "2026-11-18",
+          "in": 0.07,
+          "out": 0.245,
+          "cache_read": 0.014,
+          "cache_write": 0.07,
+          "source": "llmgateway"
         }
       ]
     },
@@ -129485,6 +129753,32 @@
           "out": 5,
           "cache_read": 0.05,
           "cache_write": 1.25,
+          "source": "llmgateway"
+        }
+      ]
+    },
+    "llmgateway\u0000gpt-6.2-astra": {
+      "id": "gpt-6.2-astra",
+      "rates": [
+        {
+          "from": "2026-11-18",
+          "in": 8,
+          "out": 40,
+          "cache_read": 0.4,
+          "cache_write": 10,
+          "source": "llmgateway"
+        }
+      ]
+    },
+    "llmgateway\u0000gpt-6.2-sol": {
+      "id": "gpt-6.2-sol",
+      "rates": [
+        {
+          "from": "2026-11-18",
+          "in": 2,
+          "out": 10,
+          "cache_read": 0.1,
+          "cache_write": 2.5,
           "source": "llmgateway"
         }
       ]
@@ -133434,6 +133728,32 @@
           "out": 5,
           "cache_read": 0.05,
           "cache_write": 1.25,
+          "source": "llmgateway-providers"
+        }
+      ]
+    },
+    "llmgateway-providers\u0000gpt-6.2-astra": {
+      "id": "gpt-6.2-astra",
+      "rates": [
+        {
+          "from": "2026-11-18",
+          "in": 8,
+          "out": 40,
+          "cache_read": 0.4,
+          "cache_write": 10,
+          "source": "llmgateway-providers"
+        }
+      ]
+    },
+    "llmgateway-providers\u0000gpt-6.2-sol": {
+      "id": "gpt-6.2-sol",
+      "rates": [
+        {
+          "from": "2026-11-18",
+          "in": 2,
+          "out": 10,
+          "cache_read": 0.1,
+          "cache_write": 2.5,
           "source": "llmgateway-providers"
         }
       ]
@@ -143225,6 +143545,19 @@
         }
       ]
     },
+    "moneo\u0000gpt-5-6-luna": {
+      "id": "gpt-5-6-luna",
+      "rates": [
+        {
+          "from": "2026-11-18",
+          "in": 0.2,
+          "out": 1.2,
+          "cache_read": 0,
+          "cache_write": 0.2,
+          "source": "moneo"
+        }
+      ]
+    },
     "moneo\u0000gpt-oss-120b": {
       "id": "gpt-oss-120b",
       "rates": [
@@ -148970,6 +149303,14 @@
           "cache_read": 0.046,
           "cache_write": 0.07,
           "source": "nano-gpt"
+        },
+        {
+          "from": "2026-11-18",
+          "in": 0.064,
+          "out": 0.191,
+          "cache_read": 0.032,
+          "cache_write": 0.064,
+          "source": "nano-gpt"
         }
       ]
     },
@@ -151590,6 +151931,58 @@
         }
       ]
     },
+    "nano-gpt\u0000gpt-6.2-astra": {
+      "id": "gpt-6.2-astra",
+      "rates": [
+        {
+          "from": "2026-11-18",
+          "in": 8,
+          "out": 40,
+          "cache_read": 0.4,
+          "cache_write": 10,
+          "source": "nano-gpt"
+        }
+      ]
+    },
+    "nano-gpt\u0000gpt-6.2-astra-pro": {
+      "id": "gpt-6.2-astra-pro",
+      "rates": [
+        {
+          "from": "2026-11-18",
+          "in": 8,
+          "out": 40,
+          "cache_read": 0.4,
+          "cache_write": 10,
+          "source": "nano-gpt"
+        }
+      ]
+    },
+    "nano-gpt\u0000gpt-6.2-sol": {
+      "id": "gpt-6.2-sol",
+      "rates": [
+        {
+          "from": "2026-11-18",
+          "in": 2,
+          "out": 10,
+          "cache_read": 0.1,
+          "cache_write": 2.5,
+          "source": "nano-gpt"
+        }
+      ]
+    },
+    "nano-gpt\u0000gpt-6.2-sol-pro": {
+      "id": "gpt-6.2-sol-pro",
+      "rates": [
+        {
+          "from": "2026-11-18",
+          "in": 2,
+          "out": 10,
+          "cache_read": 0.1,
+          "cache_write": 2.5,
+          "source": "nano-gpt"
+        }
+      ]
+    },
     "nano-gpt\u0000gpt-astra": {
       "id": "gpt-astra",
       "rates": [
@@ -153151,6 +153544,14 @@
           "in": 4,
           "out": 15,
           "cache_read": 0.4,
+          "cache_write": 4,
+          "source": "nano-gpt"
+        },
+        {
+          "from": "2026-11-18",
+          "in": 4,
+          "out": 15,
+          "cache_read": 4,
           "cache_write": 4,
           "source": "nano-gpt"
         }
@@ -165685,6 +166086,14 @@
           "cache_read": 0.00975,
           "cache_write": 0.0975,
           "source": "obscurify"
+        },
+        {
+          "from": "2026-11-18",
+          "in": 0.16575,
+          "out": 0.663,
+          "cache_read": 0.016575,
+          "cache_write": 0.16575,
+          "source": "obscurify"
         }
       ]
     },
@@ -175575,6 +175984,14 @@
           "cache_read": 0.006,
           "cache_write": 0.3,
           "source": "openrouter"
+        },
+        {
+          "from": "2026-11-18",
+          "in": 0.051,
+          "out": 0.567,
+          "cache_read": 0.018,
+          "cache_write": 0.051,
+          "source": "openrouter"
         }
       ]
     },
@@ -176332,6 +176749,14 @@
           "cache_read": 0.04,
           "cache_write": 0.08,
           "source": "openrouter"
+        },
+        {
+          "from": "2026-11-18",
+          "in": 0.08,
+          "out": 0.45,
+          "cache_read": 0.04,
+          "cache_write": 0.08,
+          "source": "openrouter"
         }
       ]
     },
@@ -176974,6 +177399,14 @@
           "in": 0.3,
           "out": 0.9,
           "cache_read": 0.055,
+          "cache_write": 0.3,
+          "source": "openrouter"
+        },
+        {
+          "from": "2026-11-18",
+          "in": 0.3,
+          "out": 0.9,
+          "cache_read": 0.05,
           "cache_write": 0.3,
           "source": "openrouter"
         }
@@ -177671,14 +178104,6 @@
           "out": 0.0784,
           "cache_read": 0.03,
           "cache_write": 0.0399,
-          "source": "openrouter"
-        },
-        {
-          "from": "2026-11-17",
-          "in": 0.15,
-          "out": 0.5,
-          "cache_read": 0.03,
-          "cache_write": 0.15,
           "source": "openrouter"
         }
       ]
@@ -179009,6 +179434,19 @@
           "tier_cache_read": 2,
           "tier_cache_write": 25,
           "source": "openrouter"
+        },
+        {
+          "from": "2026-11-18",
+          "in": 8,
+          "out": 40,
+          "cache_read": 0.4,
+          "cache_write": 10,
+          "tier_threshold": 272000,
+          "tier_in": 16,
+          "tier_out": 60,
+          "tier_cache_read": 0.8,
+          "tier_cache_write": 20,
+          "source": "openrouter"
         }
       ]
     },
@@ -179696,6 +180134,14 @@
           "cache_read": 0.020625,
           "cache_write": 0.0825,
           "source": "openrouter"
+        },
+        {
+          "from": "2026-11-18",
+          "in": 0.132,
+          "out": 0.528,
+          "cache_read": 0.033,
+          "cache_write": 0.132,
+          "source": "openrouter"
         }
       ]
     },
@@ -179763,6 +180209,14 @@
           "out": 2.2509,
           "cache_read": 0.0378,
           "cache_write": 0.7506,
+          "source": "openrouter"
+        },
+        {
+          "from": "2026-11-18",
+          "in": 0.834,
+          "out": 2.501,
+          "cache_read": 0.042,
+          "cache_write": 0.834,
           "source": "openrouter"
         }
       ]
@@ -181941,6 +182395,14 @@
           "cache_read": 0.0075,
           "cache_write": 0.075,
           "source": "openrouter"
+        },
+        {
+          "from": "2026-11-18",
+          "in": 0.15,
+          "out": 0.6,
+          "cache_read": 0.015,
+          "cache_write": 0.15,
+          "source": "openrouter"
         }
       ]
     },
@@ -183722,6 +184184,14 @@
           "cache_read": 0,
           "cache_write": 0.09,
           "source": "openrouter"
+        },
+        {
+          "from": "2026-11-18",
+          "in": 0.1,
+          "out": 1.1,
+          "cache_read": 0.07,
+          "cache_write": 0.1,
+          "source": "openrouter"
         }
       ]
     },
@@ -183931,6 +184401,14 @@
           "out": 2.6,
           "cache_read": 0,
           "cache_write": 0.26,
+          "source": "openrouter"
+        },
+        {
+          "from": "2026-11-18",
+          "in": 0.3,
+          "out": 2.4,
+          "cache_read": 0,
+          "cache_write": 0.3,
           "source": "openrouter"
         }
       ]
@@ -184521,6 +184999,14 @@
           "out": 1.875,
           "cache_read": 0.0375,
           "cache_write": 0.15,
+          "source": "openrouter"
+        },
+        {
+          "from": "2026-11-18",
+          "in": 0.06,
+          "out": 2.2,
+          "cache_read": 0.059,
+          "cache_write": 0.06,
           "source": "openrouter"
         }
       ]
@@ -214618,6 +215104,78 @@
         }
       ]
     },
+    "venice\u0000openai-gpt-62-astra": {
+      "id": "openai-gpt-62-astra",
+      "rates": [
+        {
+          "from": "2026-11-18",
+          "in": 8,
+          "out": 40,
+          "cache_read": 0.4,
+          "cache_write": 10,
+          "tier_threshold": 272000,
+          "tier_in": 16,
+          "tier_out": 60,
+          "tier_cache_read": 0.8,
+          "tier_cache_write": 20,
+          "source": "venice"
+        }
+      ]
+    },
+    "venice\u0000openai-gpt-62-astra-pro": {
+      "id": "openai-gpt-62-astra-pro",
+      "rates": [
+        {
+          "from": "2026-11-18",
+          "in": 8,
+          "out": 40,
+          "cache_read": 0.4,
+          "cache_write": 10,
+          "tier_threshold": 272000,
+          "tier_in": 16,
+          "tier_out": 60,
+          "tier_cache_read": 0.8,
+          "tier_cache_write": 20,
+          "source": "venice"
+        }
+      ]
+    },
+    "venice\u0000openai-gpt-62-sol": {
+      "id": "openai-gpt-62-sol",
+      "rates": [
+        {
+          "from": "2026-11-18",
+          "in": 2,
+          "out": 10,
+          "cache_read": 0.1,
+          "cache_write": 2.5,
+          "tier_threshold": 272000,
+          "tier_in": 4,
+          "tier_out": 15,
+          "tier_cache_read": 0.2,
+          "tier_cache_write": 5,
+          "source": "venice"
+        }
+      ]
+    },
+    "venice\u0000openai-gpt-62-sol-pro": {
+      "id": "openai-gpt-62-sol-pro",
+      "rates": [
+        {
+          "from": "2026-11-18",
+          "in": 2,
+          "out": 10,
+          "cache_read": 0.1,
+          "cache_write": 2.5,
+          "tier_threshold": 272000,
+          "tier_in": 4,
+          "tier_out": 15,
+          "tier_cache_read": 0.2,
+          "tier_cache_write": 5,
+          "source": "venice"
+        }
+      ]
+    },
     "venice\u0000openai-gpt-oss-120b": {
       "id": "openai-gpt-oss-120b",
       "rates": [
@@ -219339,6 +219897,14 @@
           "cache_read": 0.03,
           "cache_write": 0.375,
           "source": "vercel"
+        },
+        {
+          "from": "2026-11-18",
+          "in": 0.3,
+          "out": 1.2,
+          "cache_read": 0.15,
+          "cache_write": 0.3,
+          "source": "vercel"
         }
       ]
     },
@@ -219365,6 +219931,14 @@
           "cache_read": 0.03,
           "cache_write": 0.375,
           "source": "vercel"
+        },
+        {
+          "from": "2026-11-18",
+          "in": 0.3,
+          "out": 1.2,
+          "cache_read": 0,
+          "cache_write": 0.3,
+          "source": "vercel"
         }
       ]
     },
@@ -219390,6 +219964,14 @@
           "out": 1.2,
           "cache_read": 0.06,
           "cache_write": 0.375,
+          "source": "vercel"
+        },
+        {
+          "from": "2026-11-18",
+          "in": 0.21,
+          "out": 0.84,
+          "cache_read": 0.042,
+          "cache_write": 0.21,
           "source": "vercel"
         }
       ]
@@ -220444,6 +221026,14 @@
           "out": 1.2,
           "cache_read": 0,
           "cache_write": 0.15,
+          "source": "vercel"
+        },
+        {
+          "from": "2026-11-18",
+          "in": 0.09,
+          "out": 1.1,
+          "cache_read": 0,
+          "cache_write": 0.09,
           "source": "vercel"
         }
       ]
@@ -231838,6 +232428,7 @@
     "kimi-k2-0711-latest": "kimi-k2-0711",
     "kimi-k2-0905-latest": "kimi-k2-0905",
     "kimi-k2-0905-preview-latest": "kimi-k2-0905-preview",
+    "kimi-k2-5": "kimi-k2.5",
     "kimi-k2-5-free": "kimi-k2.5-free",
     "kimi-k2-5-fw": "kimi-k2.5-fw",
     "kimi-k2-5-latest": "kimi-k2-5",
@@ -233070,6 +233661,10 @@
     "openai-gpt-61-sol-latest": "openai-gpt-61-sol",
     "openai-gpt-61-sol-ultrafast-latest": "openai-gpt-61-sol-ultrafast",
     "openai-gpt-61-terra-latest": "openai-gpt-61-terra",
+    "openai-gpt-62-astra-latest": "openai-gpt-62-astra",
+    "openai-gpt-62-astra-pro-latest": "openai-gpt-62-astra-pro",
+    "openai-gpt-62-sol-latest": "openai-gpt-62-sol",
+    "openai-gpt-62-sol-pro-latest": "openai-gpt-62-sol-pro",
     "openai-gpt-6p1-terra": "openai-gpt-6.1-terra",
     "openai-gpt-image-1-5": "openai-gpt-image-1.5",
     "openai-gpt-image-1-latest": "openai-gpt-image-1",
