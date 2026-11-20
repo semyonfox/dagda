@@ -21,7 +21,7 @@
     }
   },
   "schema": 2,
-  "updated": "2026-11-19",
+  "updated": "2026-11-20",
   "sources": [
     "https://models.dev/api.json"
   ],
@@ -535,6 +535,14 @@
           "cache_read": 0.0825,
           "cache_write": 0.33,
           "source": "amazon-bedrock"
+        },
+        {
+          "from": "2026-11-20",
+          "in": 0.33,
+          "out": 2.75,
+          "cache_read": 0.0825,
+          "cache_write": 0,
+          "source": "amazon-bedrock"
         }
       ]
     },
@@ -547,6 +555,14 @@
           "out": 0.24,
           "cache_read": 0.015,
           "cache_write": 0.06,
+          "source": "amazon-bedrock"
+        },
+        {
+          "from": "2026-11-20",
+          "in": 0.06,
+          "out": 0.24,
+          "cache_read": 0.015,
+          "cache_write": 0,
           "source": "amazon-bedrock"
         }
       ]
@@ -582,6 +598,14 @@
           "cache_read": 0.00875,
           "cache_write": 0.035,
           "source": "amazon-bedrock"
+        },
+        {
+          "from": "2026-11-20",
+          "in": 0.035,
+          "out": 0.14,
+          "cache_read": 0.00875,
+          "cache_write": 0,
+          "source": "amazon-bedrock"
         }
       ]
     },
@@ -615,6 +639,14 @@
           "out": 3.2,
           "cache_read": 0.2,
           "cache_write": 0.8,
+          "source": "amazon-bedrock"
+        },
+        {
+          "from": "2026-11-20",
+          "in": 0.8,
+          "out": 3.2,
+          "cache_read": 0.2,
+          "cache_write": 0,
           "source": "amazon-bedrock"
         }
       ]
@@ -1195,6 +1227,14 @@
           "cache_read": 1,
           "cache_write": 12.5,
           "source": "amazon-bedrock"
+        },
+        {
+          "from": "2026-11-20",
+          "in": 11,
+          "out": 55,
+          "cache_read": 1.1,
+          "cache_write": 13.75,
+          "source": "amazon-bedrock"
         }
       ]
     },
@@ -1207,6 +1247,14 @@
           "out": 50,
           "cache_read": 0.25,
           "cache_write": 12.5,
+          "source": "amazon-bedrock"
+        },
+        {
+          "from": "2026-11-20",
+          "in": 11,
+          "out": 55,
+          "cache_read": 0.275,
+          "cache_write": 13.75,
           "source": "amazon-bedrock"
         }
       ]
@@ -1221,6 +1269,14 @@
           "cache_read": 0.2,
           "cache_write": 10,
           "source": "amazon-bedrock"
+        },
+        {
+          "from": "2026-11-20",
+          "in": 8.8,
+          "out": 44,
+          "cache_read": 0.22,
+          "cache_write": 11,
+          "source": "amazon-bedrock"
         }
       ]
     },
@@ -1233,6 +1289,14 @@
           "out": 5,
           "cache_read": 0.1,
           "cache_write": 1.25,
+          "source": "amazon-bedrock"
+        },
+        {
+          "from": "2026-11-20",
+          "in": 1.1,
+          "out": 5.5,
+          "cache_read": 0.11,
+          "cache_write": 1.375,
           "source": "amazon-bedrock"
         }
       ]
@@ -1251,6 +1315,19 @@
           "tier_out": 2.5,
           "tier_cache_read": 0.05,
           "tier_cache_write": 0.625,
+          "source": "amazon-bedrock"
+        },
+        {
+          "from": "2026-11-20",
+          "in": 0.11,
+          "out": 0.55,
+          "cache_read": 0.011,
+          "cache_write": 0.1375,
+          "tier_threshold": 100000,
+          "tier_in": 0.55,
+          "tier_out": 2.75,
+          "tier_cache_read": 0.055,
+          "tier_cache_write": 0.6875,
           "source": "amazon-bedrock"
         }
       ]
@@ -1277,6 +1354,14 @@
           "out": 25,
           "cache_read": 0.5,
           "cache_write": 6.25,
+          "source": "amazon-bedrock"
+        },
+        {
+          "from": "2026-11-20",
+          "in": 5.5,
+          "out": 27.5,
+          "cache_read": 0.55,
+          "cache_write": 6.875,
           "source": "amazon-bedrock"
         }
       ]
@@ -1312,6 +1397,14 @@
           "cache_read": 0.5,
           "cache_write": 6.25,
           "source": "amazon-bedrock"
+        },
+        {
+          "from": "2026-11-20",
+          "in": 5.5,
+          "out": 27.5,
+          "cache_read": 0.55,
+          "cache_write": 6.875,
+          "source": "amazon-bedrock"
         }
       ]
     },
@@ -1324,6 +1417,14 @@
           "out": 25,
           "cache_read": 0.5,
           "cache_write": 6.25,
+          "source": "amazon-bedrock"
+        },
+        {
+          "from": "2026-11-20",
+          "in": 5.5,
+          "out": 27.5,
+          "cache_read": 0.55,
+          "cache_write": 6.875,
           "source": "amazon-bedrock"
         }
       ]
@@ -1338,6 +1439,14 @@
           "cache_read": 0.5,
           "cache_write": 6.25,
           "source": "amazon-bedrock"
+        },
+        {
+          "from": "2026-11-20",
+          "in": 5.5,
+          "out": 27.5,
+          "cache_read": 0.55,
+          "cache_write": 6.875,
+          "source": "amazon-bedrock"
         }
       ]
     },
@@ -1351,6 +1460,14 @@
           "cache_read": 0.2,
           "cache_write": 5,
           "source": "amazon-bedrock"
+        },
+        {
+          "from": "2026-11-20",
+          "in": 4.4,
+          "out": 22,
+          "cache_read": 0.22,
+          "cache_write": 5.5,
+          "source": "amazon-bedrock"
         }
       ]
     },
@@ -1363,6 +1480,14 @@
           "out": 15,
           "cache_read": 0.3,
           "cache_write": 3.75,
+          "source": "amazon-bedrock"
+        },
+        {
+          "from": "2026-11-20",
+          "in": 3.3,
+          "out": 16.5,
+          "cache_read": 0.33,
+          "cache_write": 4.125,
           "source": "amazon-bedrock"
         }
       ]
@@ -1398,6 +1523,14 @@
           "cache_read": 0.2,
           "cache_write": 2.5,
           "source": "amazon-bedrock"
+        },
+        {
+          "from": "2026-11-20",
+          "in": 2.2,
+          "out": 11,
+          "cache_read": 0.22,
+          "cache_write": 2.75,
+          "source": "amazon-bedrock"
         }
       ]
     },
@@ -1418,6 +1551,14 @@
           "out": 10,
           "cache_read": 0.1,
           "cache_write": 2.5,
+          "source": "amazon-bedrock"
+        },
+        {
+          "from": "2026-11-20",
+          "in": 2.2,
+          "out": 11,
+          "cache_read": 0.11,
+          "cache_write": 2.75,
           "source": "amazon-bedrock"
         }
       ]
@@ -9757,6 +9898,14 @@
           "cache_read": 0.025,
           "cache_write": 0.12,
           "source": "refuseless"
+        },
+        {
+          "from": "2026-11-20",
+          "in": 0.297,
+          "out": 1.045,
+          "cache_read": 0.066,
+          "cache_write": 0.297,
+          "source": "nano-gpt"
         }
       ]
     },
@@ -10158,6 +10307,14 @@
           "cache_read": 0.0042,
           "cache_write": 0.21,
           "source": "fireworks-ai"
+        },
+        {
+          "from": "2026-11-20",
+          "in": 0.15,
+          "out": 0.6,
+          "cache_read": 0.003,
+          "cache_write": 0.15,
+          "source": "fireworks-ai"
         }
       ]
     },
@@ -10171,6 +10328,14 @@
           "cache_read": 0.048,
           "cache_write": 2.4,
           "source": "fireworks-ai"
+        },
+        {
+          "from": "2026-11-20",
+          "in": 1.2,
+          "out": 4.8,
+          "cache_read": 0.024,
+          "cache_write": 1.2,
+          "source": "fireworks-ai"
         }
       ]
     },
@@ -10183,6 +10348,14 @@
           "out": 0.84,
           "cache_read": 0.0042,
           "cache_write": 0.21,
+          "source": "fireworks-ai"
+        },
+        {
+          "from": "2026-11-20",
+          "in": 0.15,
+          "out": 0.6,
+          "cache_read": 0.003,
+          "cache_write": 0.15,
           "source": "fireworks-ai"
         }
       ]
@@ -18468,14 +18641,6 @@
           "cache_read": 0.125,
           "cache_write": 1.25,
           "source": "nano-gpt"
-        },
-        {
-          "from": "2026-11-19",
-          "in": 0.42,
-          "out": 1.32,
-          "cache_read": 0.078,
-          "cache_write": 0.42,
-          "source": "nano-gpt"
         }
       ]
     },
@@ -18532,6 +18697,14 @@
           "cache_read": 0.15,
           "cache_write": 1,
           "source": "refuseless"
+        },
+        {
+          "from": "2026-11-20",
+          "in": 0.429,
+          "out": 1.452,
+          "cache_read": 0.165,
+          "cache_write": 0.429,
+          "source": "nano-gpt"
         }
       ]
     },
@@ -19130,6 +19303,14 @@
           "cache_read": 0.182,
           "cache_write": 0.98,
           "source": "fireworks-ai"
+        },
+        {
+          "from": "2026-11-20",
+          "in": 0.7,
+          "out": 2.2,
+          "cache_read": 0.13,
+          "cache_write": 0.7,
+          "source": "fireworks-ai"
         }
       ]
     },
@@ -19377,6 +19558,14 @@
           "out": 2.5,
           "cache_read": 0.075,
           "cache_write": 0.3,
+          "source": "amazon-bedrock"
+        },
+        {
+          "from": "2026-11-20",
+          "in": 0.3,
+          "out": 2.5,
+          "cache_read": 0.075,
+          "cache_write": 0,
           "source": "amazon-bedrock"
         }
       ]
@@ -24692,9 +24881,16 @@
           "tier_cache_read": 0.4,
           "tier_cache_write": 2,
           "source": "xai"
+        },
+        {
+          "from": "2026-11-20",
+          "in": 1,
+          "out": 2,
+          "cache_read": 0.2,
+          "cache_write": 1,
+          "source": "aihubmix"
         }
-      ],
-      "first_party": true
+      ]
     },
     "grok-code": {
       "id": "grok-code",
@@ -32689,6 +32885,14 @@
           "cache_read": 0,
           "cache_write": 0.32904,
           "source": "edenai"
+        },
+        {
+          "from": "2026-11-20",
+          "in": 0.32976,
+          "out": 0.43968,
+          "cache_read": 0,
+          "cache_write": 0.32976,
+          "source": "edenai"
         }
       ]
     },
@@ -35864,6 +36068,14 @@
           "cache_read": 0.06,
           "cache_write": 0.06,
           "source": "nebius"
+        },
+        {
+          "from": "2026-11-20",
+          "in": 0.06,
+          "out": 0.24,
+          "cache_read": 0.03,
+          "cache_write": 0.06,
+          "source": "nebius"
         }
       ]
     },
@@ -36333,6 +36545,14 @@
           "cache_read": 0.015,
           "cache_write": 0.06,
           "source": "vercel"
+        },
+        {
+          "from": "2026-11-20",
+          "in": 0.06,
+          "out": 0.24,
+          "cache_read": 0.015,
+          "cache_write": 0,
+          "source": "vercel"
         }
       ]
     },
@@ -36374,6 +36594,14 @@
           "out": 0.14,
           "cache_read": 0.00875,
           "cache_write": 0.035,
+          "source": "vercel"
+        },
+        {
+          "from": "2026-11-20",
+          "in": 0.035,
+          "out": 0.14,
+          "cache_read": 0.00875,
+          "cache_write": 0,
           "source": "vercel"
         }
       ]
@@ -36429,6 +36657,14 @@
           "out": 3.2,
           "cache_read": 0.2,
           "cache_write": 0.8,
+          "source": "vercel"
+        },
+        {
+          "from": "2026-11-20",
+          "in": 0.8,
+          "out": 3.2,
+          "cache_read": 0.2,
+          "cache_write": 0,
           "source": "vercel"
         }
       ]
@@ -45179,6 +45415,19 @@
         }
       ]
     },
+    "qwen4-max:free": {
+      "id": "qwen4-max:free",
+      "rates": [
+        {
+          "from": "2026-11-20",
+          "in": 0,
+          "out": 0,
+          "cache_read": 0,
+          "cache_write": 0,
+          "source": "kenari"
+        }
+      ]
+    },
     "qwen4-max:thinking": {
       "id": "qwen4-max:thinking",
       "rates": [
@@ -47714,6 +47963,14 @@
           "cache_read": 0.0825,
           "cache_write": 0.33,
           "source": "amazon-bedrock"
+        },
+        {
+          "from": "2026-11-20",
+          "in": 0.33,
+          "out": 2.75,
+          "cache_read": 0.0825,
+          "cache_write": 0,
+          "source": "amazon-bedrock"
         }
       ]
     },
@@ -47727,6 +47984,14 @@
           "cache_read": 0.015,
           "cache_write": 0.06,
           "source": "amazon-bedrock"
+        },
+        {
+          "from": "2026-11-20",
+          "in": 0.06,
+          "out": 0.24,
+          "cache_read": 0.015,
+          "cache_write": 0,
+          "source": "amazon-bedrock"
         }
       ]
     },
@@ -47739,6 +48004,14 @@
           "out": 0.14,
           "cache_read": 0.00875,
           "cache_write": 0.035,
+          "source": "amazon-bedrock"
+        },
+        {
+          "from": "2026-11-20",
+          "in": 0.035,
+          "out": 0.14,
+          "cache_read": 0.00875,
+          "cache_write": 0,
           "source": "amazon-bedrock"
         }
       ]
@@ -47765,6 +48038,14 @@
           "out": 3.2,
           "cache_read": 0.2,
           "cache_write": 0.8,
+          "source": "amazon-bedrock"
+        },
+        {
+          "from": "2026-11-20",
+          "in": 0.8,
+          "out": 3.2,
+          "cache_read": 0.2,
+          "cache_write": 0,
           "source": "amazon-bedrock"
         }
       ]
@@ -65734,6 +66015,14 @@
           "cache_read": 0.0825,
           "cache_write": 0.33,
           "source": "amazon-bedrock"
+        },
+        {
+          "from": "2026-11-20",
+          "in": 0.33,
+          "out": 2.75,
+          "cache_read": 0.0825,
+          "cache_write": 0,
+          "source": "amazon-bedrock"
         }
       ]
     },
@@ -65746,6 +66035,14 @@
           "out": 0.24,
           "cache_read": 0.015,
           "cache_write": 0.06,
+          "source": "amazon-bedrock"
+        },
+        {
+          "from": "2026-11-20",
+          "in": 0.06,
+          "out": 0.24,
+          "cache_read": 0.015,
+          "cache_write": 0,
           "source": "amazon-bedrock"
         }
       ]
@@ -65760,6 +66057,14 @@
           "cache_read": 0.00875,
           "cache_write": 0.035,
           "source": "amazon-bedrock"
+        },
+        {
+          "from": "2026-11-20",
+          "in": 0.035,
+          "out": 0.14,
+          "cache_read": 0.00875,
+          "cache_write": 0,
+          "source": "amazon-bedrock"
         }
       ]
     },
@@ -65772,6 +66077,14 @@
           "out": 3.2,
           "cache_read": 0.2,
           "cache_write": 0.8,
+          "source": "amazon-bedrock"
+        },
+        {
+          "from": "2026-11-20",
+          "in": 0.8,
+          "out": 3.2,
+          "cache_read": 0.2,
+          "cache_write": 0,
           "source": "amazon-bedrock"
         }
       ]
@@ -65786,6 +66099,14 @@
           "cache_read": 1,
           "cache_write": 12.5,
           "source": "amazon-bedrock"
+        },
+        {
+          "from": "2026-11-20",
+          "in": 11,
+          "out": 55,
+          "cache_read": 1.1,
+          "cache_write": 13.75,
+          "source": "amazon-bedrock"
         }
       ]
     },
@@ -65798,6 +66119,14 @@
           "out": 50,
           "cache_read": 0.25,
           "cache_write": 12.5,
+          "source": "amazon-bedrock"
+        },
+        {
+          "from": "2026-11-20",
+          "in": 11,
+          "out": 55,
+          "cache_read": 0.275,
+          "cache_write": 13.75,
           "source": "amazon-bedrock"
         }
       ]
@@ -65812,6 +66141,14 @@
           "cache_read": 0.2,
           "cache_write": 10,
           "source": "amazon-bedrock"
+        },
+        {
+          "from": "2026-11-20",
+          "in": 8.8,
+          "out": 44,
+          "cache_read": 0.22,
+          "cache_write": 11,
+          "source": "amazon-bedrock"
         }
       ]
     },
@@ -65824,6 +66161,14 @@
           "out": 5,
           "cache_read": 0.1,
           "cache_write": 1.25,
+          "source": "amazon-bedrock"
+        },
+        {
+          "from": "2026-11-20",
+          "in": 1.1,
+          "out": 5.5,
+          "cache_read": 0.11,
+          "cache_write": 1.375,
           "source": "amazon-bedrock"
         }
       ]
@@ -65842,6 +66187,19 @@
           "tier_out": 2.5,
           "tier_cache_read": 0.05,
           "tier_cache_write": 0.625,
+          "source": "amazon-bedrock"
+        },
+        {
+          "from": "2026-11-20",
+          "in": 0.11,
+          "out": 0.55,
+          "cache_read": 0.011,
+          "cache_write": 0.1375,
+          "tier_threshold": 100000,
+          "tier_in": 0.55,
+          "tier_out": 2.75,
+          "tier_cache_read": 0.055,
+          "tier_cache_write": 0.6875,
           "source": "amazon-bedrock"
         }
       ]
@@ -65868,6 +66226,14 @@
           "out": 25,
           "cache_read": 0.5,
           "cache_write": 6.25,
+          "source": "amazon-bedrock"
+        },
+        {
+          "from": "2026-11-20",
+          "in": 5.5,
+          "out": 27.5,
+          "cache_read": 0.55,
+          "cache_write": 6.875,
           "source": "amazon-bedrock"
         }
       ]
@@ -65903,6 +66269,14 @@
           "cache_read": 0.5,
           "cache_write": 6.25,
           "source": "amazon-bedrock"
+        },
+        {
+          "from": "2026-11-20",
+          "in": 5.5,
+          "out": 27.5,
+          "cache_read": 0.55,
+          "cache_write": 6.875,
+          "source": "amazon-bedrock"
         }
       ]
     },
@@ -65915,6 +66289,14 @@
           "out": 25,
           "cache_read": 0.5,
           "cache_write": 6.25,
+          "source": "amazon-bedrock"
+        },
+        {
+          "from": "2026-11-20",
+          "in": 5.5,
+          "out": 27.5,
+          "cache_read": 0.55,
+          "cache_write": 6.875,
           "source": "amazon-bedrock"
         }
       ]
@@ -65929,6 +66311,14 @@
           "cache_read": 0.5,
           "cache_write": 6.25,
           "source": "amazon-bedrock"
+        },
+        {
+          "from": "2026-11-20",
+          "in": 5.5,
+          "out": 27.5,
+          "cache_read": 0.55,
+          "cache_write": 6.875,
+          "source": "amazon-bedrock"
         }
       ]
     },
@@ -65942,6 +66332,14 @@
           "cache_read": 0.2,
           "cache_write": 5,
           "source": "amazon-bedrock"
+        },
+        {
+          "from": "2026-11-20",
+          "in": 4.4,
+          "out": 22,
+          "cache_read": 0.22,
+          "cache_write": 5.5,
+          "source": "amazon-bedrock"
         }
       ]
     },
@@ -65954,6 +66352,14 @@
           "out": 15,
           "cache_read": 0.3,
           "cache_write": 3.75,
+          "source": "amazon-bedrock"
+        },
+        {
+          "from": "2026-11-20",
+          "in": 3.3,
+          "out": 16.5,
+          "cache_read": 0.33,
+          "cache_write": 4.125,
           "source": "amazon-bedrock"
         }
       ]
@@ -65989,6 +66395,14 @@
           "cache_read": 0.2,
           "cache_write": 2.5,
           "source": "amazon-bedrock"
+        },
+        {
+          "from": "2026-11-20",
+          "in": 2.2,
+          "out": 11,
+          "cache_read": 0.22,
+          "cache_write": 2.75,
+          "source": "amazon-bedrock"
         }
       ]
     },
@@ -66009,6 +66423,14 @@
           "out": 10,
           "cache_read": 0.1,
           "cache_write": 2.5,
+          "source": "amazon-bedrock"
+        },
+        {
+          "from": "2026-11-20",
+          "in": 2.2,
+          "out": 11,
+          "cache_read": 0.11,
+          "cache_write": 2.75,
           "source": "amazon-bedrock"
         }
       ]
@@ -66582,6 +67004,14 @@
           "out": 2.5,
           "cache_read": 0.075,
           "cache_write": 0.3,
+          "source": "amazon-bedrock"
+        },
+        {
+          "from": "2026-11-20",
+          "in": 0.3,
+          "out": 2.5,
+          "cache_read": 0.075,
+          "cache_write": 0,
           "source": "amazon-bedrock"
         }
       ]
@@ -68162,6 +68592,14 @@
           "cache_read": 0.0825,
           "cache_write": 0.33,
           "source": "amazon-bedrock"
+        },
+        {
+          "from": "2026-11-20",
+          "in": 0.33,
+          "out": 2.75,
+          "cache_read": 0.0825,
+          "cache_write": 0,
+          "source": "amazon-bedrock"
         }
       ]
     },
@@ -68175,6 +68613,14 @@
           "cache_read": 0.015,
           "cache_write": 0.06,
           "source": "amazon-bedrock"
+        },
+        {
+          "from": "2026-11-20",
+          "in": 0.06,
+          "out": 0.24,
+          "cache_read": 0.015,
+          "cache_write": 0,
+          "source": "amazon-bedrock"
         }
       ]
     },
@@ -68187,6 +68633,14 @@
           "out": 0.14,
           "cache_read": 0.00875,
           "cache_write": 0.035,
+          "source": "amazon-bedrock"
+        },
+        {
+          "from": "2026-11-20",
+          "in": 0.035,
+          "out": 0.14,
+          "cache_read": 0.00875,
+          "cache_write": 0,
           "source": "amazon-bedrock"
         }
       ]
@@ -68213,6 +68667,14 @@
           "out": 3.2,
           "cache_read": 0.2,
           "cache_write": 0.8,
+          "source": "amazon-bedrock"
+        },
+        {
+          "from": "2026-11-20",
+          "in": 0.8,
+          "out": 3.2,
+          "cache_read": 0.2,
+          "cache_write": 0,
           "source": "amazon-bedrock"
         }
       ]
@@ -69026,6 +69488,14 @@
           "in": 0.08,
           "out": 0.52,
           "cache_read": 0.003,
+          "cache_write": 0,
+          "source": "ambient"
+        },
+        {
+          "from": "2026-11-20",
+          "in": 0.045,
+          "out": 0.25,
+          "cache_read": 0.0025,
           "cache_write": 0,
           "source": "ambient"
         }
@@ -70654,7 +71124,7 @@
           "from": "2026-08-27",
           "in": 0.19,
           "out": 0.51,
-          "cache_read": 0,
+          "cache_read": 0.028,
           "cache_write": 0.19,
           "source": "azure"
         }
@@ -70667,7 +71137,7 @@
           "from": "2026-08-27",
           "in": 1.74,
           "out": 3.48,
-          "cache_read": 0,
+          "cache_read": 0.145,
           "cache_write": 1.74,
           "source": "azure"
         }
@@ -71453,6 +71923,37 @@
           "cache_read": 0.5,
           "cache_write": 2,
           "source": "azure"
+        },
+        {
+          "from": "2026-11-20",
+          "in": 2,
+          "out": 6,
+          "cache_read": 0.5,
+          "cache_write": 2,
+          "tier_threshold": 200000,
+          "tier_in": 4,
+          "tier_out": 12,
+          "tier_cache_read": 1,
+          "tier_cache_write": 4,
+          "source": "azure"
+        }
+      ]
+    },
+    "azure\u0000grok-4.7": {
+      "id": "grok-4.7",
+      "rates": [
+        {
+          "from": "2026-11-20",
+          "in": 2,
+          "out": 6,
+          "cache_read": 0.5,
+          "cache_write": 2,
+          "tier_threshold": 200000,
+          "tier_in": 4,
+          "tier_out": 12,
+          "tier_cache_read": 1,
+          "tier_cache_write": 4,
+          "source": "azure"
         }
       ]
     },
@@ -71476,7 +71977,7 @@
           "from": "2026-08-27",
           "in": 0.95,
           "out": 4,
-          "cache_read": 0,
+          "cache_read": 0.16,
           "cache_write": 0.95,
           "source": "azure"
         }
@@ -72132,7 +72633,7 @@
           "from": "2026-10-20",
           "in": 0.19,
           "out": 0.51,
-          "cache_read": 0,
+          "cache_read": 0.028,
           "cache_write": 0.19,
           "source": "azure-cognitive-services"
         }
@@ -72145,7 +72646,7 @@
           "from": "2026-10-20",
           "in": 1.74,
           "out": 3.48,
-          "cache_read": 0,
+          "cache_read": 0.145,
           "cache_write": 1.74,
           "source": "azure-cognitive-services"
         }
@@ -72936,6 +73437,37 @@
           "cache_read": 0.5,
           "cache_write": 2,
           "source": "azure-cognitive-services"
+        },
+        {
+          "from": "2026-11-20",
+          "in": 2,
+          "out": 6,
+          "cache_read": 0.5,
+          "cache_write": 2,
+          "tier_threshold": 200000,
+          "tier_in": 4,
+          "tier_out": 12,
+          "tier_cache_read": 1,
+          "tier_cache_write": 4,
+          "source": "azure-cognitive-services"
+        }
+      ]
+    },
+    "azure-cognitive-services\u0000grok-4.7": {
+      "id": "grok-4.7",
+      "rates": [
+        {
+          "from": "2026-11-20",
+          "in": 2,
+          "out": 6,
+          "cache_read": 0.5,
+          "cache_write": 2,
+          "tier_threshold": 200000,
+          "tier_in": 4,
+          "tier_out": 12,
+          "tier_cache_read": 1,
+          "tier_cache_write": 4,
+          "source": "azure-cognitive-services"
         }
       ]
     },
@@ -72959,7 +73491,7 @@
           "from": "2026-08-27",
           "in": 0.95,
           "out": 4,
-          "cache_read": 0,
+          "cache_read": 0.16,
           "cache_write": 0.95,
           "source": "azure-cognitive-services"
         }
@@ -80427,6 +80959,19 @@
         }
       ]
     },
+    "cortecs\u0000gemini-4-neon": {
+      "id": "gemini-4-neon",
+      "rates": [
+        {
+          "from": "2026-11-20",
+          "in": 3.412,
+          "out": 17.061,
+          "cache_read": 0.17,
+          "cache_write": 3.412,
+          "source": "cortecs"
+        }
+      ]
+    },
     "cortecs\u0000gemma-3-27b-it": {
       "id": "gemma-3-27b-it",
       "rates": [
@@ -81013,6 +81558,32 @@
           "out": 6.204,
           "cache_read": 0.062,
           "cache_write": 1.551,
+          "source": "cortecs"
+        }
+      ]
+    },
+    "cortecs\u0000gpt-6.2-astra": {
+      "id": "gpt-6.2-astra",
+      "rates": [
+        {
+          "from": "2026-11-20",
+          "in": 9.925,
+          "out": 49.622,
+          "cache_read": 0.497,
+          "cache_write": 12.406,
+          "source": "cortecs"
+        }
+      ]
+    },
+    "cortecs\u0000gpt-6.2-sol": {
+      "id": "gpt-6.2-sol",
+      "rates": [
+        {
+          "from": "2026-11-20",
+          "in": 2.482,
+          "out": 12.408,
+          "cache_read": 0.124,
+          "cache_write": 3.102,
           "source": "cortecs"
         }
       ]
@@ -81619,6 +82190,19 @@
           "out": 0.758,
           "cache_read": 0,
           "cache_write": 0.488,
+          "source": "cortecs"
+        }
+      ]
+    },
+    "cortecs\u0000nemotron-3.5-super-vl": {
+      "id": "nemotron-3.5-super-vl",
+      "rates": [
+        {
+          "from": "2026-11-20",
+          "in": 0.204,
+          "out": 0.51,
+          "cache_read": 0.041,
+          "cache_write": 0.204,
           "source": "cortecs"
         }
       ]
@@ -91086,6 +91670,14 @@
           "cache_read": 0.032904,
           "cache_write": 0.21936,
           "source": "edenai"
+        },
+        {
+          "from": "2026-11-20",
+          "in": 0.21984,
+          "out": 0.71448,
+          "cache_read": 0.032976,
+          "cache_write": 0.21984,
+          "source": "edenai"
         }
       ]
     },
@@ -92107,6 +92699,14 @@
           "cache_read": 0,
           "cache_write": 0.98712,
           "source": "edenai"
+        },
+        {
+          "from": "2026-11-20",
+          "in": 0.98928,
+          "out": 0.98928,
+          "cache_read": 0,
+          "cache_write": 0.98928,
+          "source": "edenai"
         }
       ]
     },
@@ -92283,14 +92883,6 @@
           "out": 0.6,
           "cache_read": 0.015,
           "cache_write": 0.15,
-          "source": "edenai"
-        },
-        {
-          "from": "2026-11-19",
-          "in": 0.075,
-          "out": 0.3,
-          "cache_read": 0.0075,
-          "cache_write": 0.075,
           "source": "edenai"
         }
       ]
@@ -92711,6 +93303,14 @@
           "out": 0.43872,
           "cache_read": 0,
           "cache_write": 0.32904,
+          "source": "edenai"
+        },
+        {
+          "from": "2026-11-20",
+          "in": 0.32976,
+          "out": 0.43968,
+          "cache_read": 0,
+          "cache_write": 0.32976,
           "source": "edenai"
         }
       ]
@@ -93806,6 +94406,14 @@
           "cache_read": 0,
           "cache_write": 0.8226,
           "source": "edenai"
+        },
+        {
+          "from": "2026-11-20",
+          "in": 0.8244,
+          "out": 2.473199,
+          "cache_read": 0,
+          "cache_write": 0.8244,
+          "source": "edenai"
         }
       ]
     },
@@ -94171,6 +94779,14 @@
           "out": 0.87744,
           "cache_read": 0,
           "cache_write": 0.16452,
+          "source": "edenai"
+        },
+        {
+          "from": "2026-11-20",
+          "in": 0.16488,
+          "out": 0.87936,
+          "cache_read": 0,
+          "cache_write": 0.16488,
           "source": "edenai"
         }
       ]
@@ -97359,6 +97975,14 @@
           "cache_read": 0.0042,
           "cache_write": 0.21,
           "source": "fireworks-ai"
+        },
+        {
+          "from": "2026-11-20",
+          "in": 0.15,
+          "out": 0.6,
+          "cache_read": 0.003,
+          "cache_write": 0.15,
+          "source": "fireworks-ai"
         }
       ]
     },
@@ -97372,6 +97996,14 @@
           "cache_read": 0.048,
           "cache_write": 2.4,
           "source": "fireworks-ai"
+        },
+        {
+          "from": "2026-11-20",
+          "in": 1.2,
+          "out": 4.8,
+          "cache_read": 0.024,
+          "cache_write": 1.2,
+          "source": "fireworks-ai"
         }
       ]
     },
@@ -97384,6 +98016,14 @@
           "out": 0.84,
           "cache_read": 0.0042,
           "cache_write": 0.21,
+          "source": "fireworks-ai"
+        },
+        {
+          "from": "2026-11-20",
+          "in": 0.15,
+          "out": 0.6,
+          "cache_read": 0.003,
+          "cache_write": 0.15,
           "source": "fireworks-ai"
         }
       ]
@@ -97488,6 +98128,14 @@
           "out": 3.08,
           "cache_read": 0.182,
           "cache_write": 0.98,
+          "source": "fireworks-ai"
+        },
+        {
+          "from": "2026-11-20",
+          "in": 0.7,
+          "out": 2.2,
+          "cache_read": 0.13,
+          "cache_write": 0.7,
           "source": "fireworks-ai"
         }
       ]
@@ -109263,6 +109911,14 @@
           "cache_read": 0.19,
           "cache_write": 0,
           "source": "inceptron"
+        },
+        {
+          "from": "2026-11-20",
+          "in": 0.546,
+          "out": 3.15,
+          "cache_read": 0.19,
+          "cache_write": 0,
+          "source": "inceptron"
         }
       ]
     },
@@ -115116,6 +115772,19 @@
         }
       ]
     },
+    "kenari\u0000qwen4-max:free": {
+      "id": "qwen4-max:free",
+      "rates": [
+        {
+          "from": "2026-11-20",
+          "in": 0,
+          "out": 0,
+          "cache_read": 0,
+          "cache_write": 0,
+          "source": "kenari"
+        }
+      ]
+    },
     "kenari\u0000solar-mini4:free": {
       "id": "solar-mini4:free",
       "rates": [
@@ -119106,14 +119775,6 @@
           "cache_read": 0.055,
           "cache_write": 0.3,
           "source": "kilo"
-        },
-        {
-          "from": "2026-11-18",
-          "in": 0.3,
-          "out": 0.9,
-          "cache_read": 0.05,
-          "cache_write": 0.3,
-          "source": "kilo"
         }
       ]
     },
@@ -119239,6 +119900,14 @@
           "out": 4.4,
           "cache_read": 0.26,
           "cache_write": 1.4,
+          "source": "kilo"
+        },
+        {
+          "from": "2026-11-20",
+          "in": 1.19,
+          "out": 3.74,
+          "cache_read": 0.6,
+          "cache_write": 1.19,
           "source": "kilo"
         }
       ]
@@ -121269,6 +121938,14 @@
           "cache_read": 0.0375,
           "cache_write": 0.075,
           "source": "kilo"
+        },
+        {
+          "from": "2026-11-20",
+          "in": 0.07,
+          "out": 0.2,
+          "cache_read": 0,
+          "cache_write": 0.07,
+          "source": "kilo"
         }
       ]
     },
@@ -122651,6 +123328,14 @@
           "out": 3.5,
           "cache_read": 0.16,
           "cache_write": 0.65,
+          "source": "kilo"
+        },
+        {
+          "from": "2026-11-20",
+          "in": 0.6,
+          "out": 3,
+          "cache_read": 0.12,
+          "cache_write": 0.6,
           "source": "kilo"
         }
       ]
@@ -124057,14 +124742,6 @@
           "out": 0.6,
           "cache_read": 0.015,
           "cache_write": 0.15,
-          "source": "kilo"
-        },
-        {
-          "from": "2026-11-19",
-          "in": 0.075,
-          "out": 0.3,
-          "cache_read": 0.0075,
-          "cache_write": 0.075,
           "source": "kilo"
         }
       ]
@@ -125568,6 +126245,19 @@
           "out": 0.112,
           "cache_read": 0,
           "cache_write": 0.056,
+          "source": "kilo"
+        }
+      ]
+    },
+    "kilo\u0000pixtral-large-2502": {
+      "id": "pixtral-large-2502",
+      "rates": [
+        {
+          "from": "2026-11-20",
+          "in": 2,
+          "out": 6,
+          "cache_read": 0,
+          "cache_write": 2,
           "source": "kilo"
         }
       ]
@@ -148697,6 +149387,19 @@
         }
       ]
     },
+    "nano-gpt\u0000deepseek-v4.1-flash-abliterated": {
+      "id": "deepseek-v4.1-flash-abliterated",
+      "rates": [
+        {
+          "from": "2026-11-20",
+          "in": 0.297,
+          "out": 1.045,
+          "cache_read": 0.066,
+          "cache_write": 0.297,
+          "source": "nano-gpt"
+        }
+      ]
+    },
     "nano-gpt\u0000deepseek-v4.1-flash-uncensored": {
       "id": "deepseek-v4.1-flash-uncensored",
       "rates": [
@@ -152071,6 +152774,19 @@
         }
       ]
     },
+    "nano-gpt\u0000glm-5.3-abliterated": {
+      "id": "glm-5.3-abliterated",
+      "rates": [
+        {
+          "from": "2026-11-20",
+          "in": 0.429,
+          "out": 1.452,
+          "cache_read": 0.165,
+          "cache_write": 0.429,
+          "source": "nano-gpt"
+        }
+      ]
+    },
     "nano-gpt\u0000glm-5.3-flash": {
       "id": "glm-5.3-flash",
       "rates": [
@@ -152088,6 +152804,19 @@
           "out": 0.3,
           "cache_read": 0.025,
           "cache_write": 0.1,
+          "source": "nano-gpt"
+        }
+      ]
+    },
+    "nano-gpt\u0000glm-5.3-flash-abliterated": {
+      "id": "glm-5.3-flash-abliterated",
+      "rates": [
+        {
+          "from": "2026-11-20",
+          "in": 0.242,
+          "out": 0.88,
+          "cache_read": 0.088,
+          "cache_write": 0.242,
           "source": "nano-gpt"
         }
       ]
@@ -153790,6 +154519,19 @@
         }
       ]
     },
+    "nano-gpt\u0000hy4-flash": {
+      "id": "hy4-flash",
+      "rates": [
+        {
+          "from": "2026-11-20",
+          "in": 0.035,
+          "out": 0.1405,
+          "cache_read": 0.0015,
+          "cache_write": 0.035,
+          "source": "nano-gpt"
+        }
+      ]
+    },
     "nano-gpt\u0000hy4-preview": {
       "id": "hy4-preview",
       "rates": [
@@ -153799,14 +154541,6 @@
           "out": 2.501,
           "cache_read": 0.042,
           "cache_write": 0.834,
-          "source": "nano-gpt"
-        },
-        {
-          "from": "2026-11-17",
-          "in": 0.7506,
-          "out": 2.2509,
-          "cache_read": 0.0378,
-          "cache_write": 0.7506,
           "source": "nano-gpt"
         }
       ]
@@ -161136,6 +161870,14 @@
           "cache_read": 0.1,
           "cache_write": 0.1,
           "source": "nebius"
+        },
+        {
+          "from": "2026-11-20",
+          "in": 0.1,
+          "out": 0.3,
+          "cache_read": 0.04,
+          "cache_write": 0.1,
+          "source": "nebius"
         }
       ]
     },
@@ -161241,6 +161983,14 @@
           "cache_read": 0.15,
           "cache_write": 0.15,
           "source": "nebius"
+        },
+        {
+          "from": "2026-11-20",
+          "in": 0.15,
+          "out": 0.6,
+          "cache_read": 0.1,
+          "cache_write": 0.15,
+          "source": "nebius"
         }
       ]
     },
@@ -161273,6 +162023,14 @@
           "in": 1,
           "out": 3,
           "cache_read": 1,
+          "cache_write": 1,
+          "source": "nebius"
+        },
+        {
+          "from": "2026-11-20",
+          "in": 1,
+          "out": 3,
+          "cache_read": 0.2,
           "cache_write": 1,
           "source": "nebius"
         }
@@ -161613,6 +162371,14 @@
           "in": 0.06,
           "out": 0.24,
           "cache_read": 0.06,
+          "cache_write": 0.06,
+          "source": "nebius"
+        },
+        {
+          "from": "2026-11-20",
+          "in": 0.06,
+          "out": 0.24,
+          "cache_read": 0.03,
           "cache_write": 0.06,
           "source": "nebius"
         }
@@ -167220,14 +167986,6 @@
           "cache_read": 0,
           "cache_write": 0.05187,
           "source": "obscurify"
-        },
-        {
-          "from": "2026-11-17",
-          "in": 0.1105,
-          "out": 0.3315,
-          "cache_read": 0,
-          "cache_write": 0.1105,
-          "source": "obscurify"
         }
       ]
     },
@@ -167313,6 +168071,14 @@
           "out": 0.39,
           "cache_read": 0.00975,
           "cache_write": 0.0975,
+          "source": "obscurify"
+        },
+        {
+          "from": "2026-11-20",
+          "in": 0.16575,
+          "out": 0.663,
+          "cache_read": 0.016575,
+          "cache_write": 0.16575,
           "source": "obscurify"
         }
       ]
@@ -168231,6 +168997,19 @@
           "out": 7.5,
           "cache_read": 0.075,
           "cache_write": 1.5,
+          "source": "ofox"
+        }
+      ]
+    },
+    "ofox\u0000gemini-4-neon": {
+      "id": "gemini-4-neon",
+      "rates": [
+        {
+          "from": "2026-11-20",
+          "in": 3,
+          "out": 15,
+          "cache_read": 0.15,
+          "cache_write": 3,
           "source": "ofox"
         }
       ]
@@ -175862,6 +176641,14 @@
           "cache_read": 0.12,
           "cache_write": 0.117,
           "source": "openrouter"
+        },
+        {
+          "from": "2026-11-20",
+          "in": 0.2565,
+          "out": 8,
+          "cache_read": 0.26,
+          "cache_write": 0.2565,
+          "source": "openrouter"
         }
       ]
     },
@@ -176345,6 +177132,14 @@
           "cache_read": 0.001484,
           "cache_write": 0.04664,
           "source": "openrouter"
+        },
+        {
+          "from": "2026-11-20",
+          "in": 0.047,
+          "out": 0.3,
+          "cache_read": 0.035,
+          "cache_write": 0.047,
+          "source": "openrouter"
         }
       ]
     },
@@ -176630,6 +177425,14 @@
           "cache_read": 0.035,
           "cache_write": 0.062,
           "source": "openrouter"
+        },
+        {
+          "from": "2026-11-20",
+          "in": 0.047,
+          "out": 0.3,
+          "cache_read": 0.035,
+          "cache_write": 0.047,
+          "source": "openrouter"
         }
       ]
     },
@@ -176912,6 +177715,14 @@
           "cache_read": 0.25,
           "cache_write": 0.9,
           "source": "openrouter"
+        },
+        {
+          "from": "2026-11-20",
+          "in": 0.9,
+          "out": 1.5,
+          "cache_read": 0.2,
+          "cache_write": 0.9,
+          "source": "openrouter"
         }
       ]
     },
@@ -177092,6 +177903,14 @@
           "out": 5.5,
           "cache_read": 0.11,
           "cache_write": 0.13,
+          "source": "openrouter"
+        },
+        {
+          "from": "2026-11-20",
+          "in": 1.32,
+          "out": 3.96,
+          "cache_read": 0.044,
+          "cache_write": 1.32,
           "source": "openrouter"
         }
       ]
@@ -177322,14 +178141,6 @@
           "cache_read": 0.006,
           "cache_write": 0.3,
           "source": "openrouter"
-        },
-        {
-          "from": "2026-11-19",
-          "in": 0.0507,
-          "out": 0.2028,
-          "cache_read": 0.001014,
-          "cache_write": 0.0507,
-          "source": "openrouter"
         }
       ]
     },
@@ -177358,6 +178169,14 @@
           "out": 0.6,
           "cache_read": 0.003,
           "cache_write": 0.15,
+          "source": "openrouter"
+        },
+        {
+          "from": "2026-11-20",
+          "in": 0.3,
+          "out": 1.2,
+          "cache_read": 0.006,
+          "cache_write": 0.3,
           "source": "openrouter"
         }
       ]
@@ -178752,14 +179571,6 @@
           "cache_read": 0.055,
           "cache_write": 0.3,
           "source": "openrouter"
-        },
-        {
-          "from": "2026-11-18",
-          "in": 0.3,
-          "out": 0.9,
-          "cache_read": 0.05,
-          "cache_write": 0.3,
-          "source": "openrouter"
         }
       ]
     },
@@ -179471,14 +180282,6 @@
           "out": 0.0784,
           "cache_read": 0.03,
           "cache_write": 0.0399,
-          "source": "openrouter"
-        },
-        {
-          "from": "2026-11-18",
-          "in": 0.15,
-          "out": 0.5,
-          "cache_read": 0.03,
-          "cache_write": 0.15,
           "source": "openrouter"
         }
       ]
@@ -180974,6 +181777,14 @@
           "cache_read": 0.075,
           "cache_write": 0.15,
           "source": "openrouter"
+        },
+        {
+          "from": "2026-11-20",
+          "in": 0.09,
+          "out": 0.36,
+          "cache_read": 0,
+          "cache_write": 0.09,
+          "source": "openrouter"
         }
       ]
     },
@@ -181509,6 +182320,14 @@
           "cache_read": 0.020625,
           "cache_write": 0.0825,
           "source": "openrouter"
+        },
+        {
+          "from": "2026-11-20",
+          "in": 0.132,
+          "out": 0.528,
+          "cache_read": 0.033,
+          "cache_write": 0.132,
+          "source": "openrouter"
         }
       ]
     },
@@ -181576,6 +182395,14 @@
           "out": 2.2509,
           "cache_read": 0.0378,
           "cache_write": 0.7506,
+          "source": "openrouter"
+        },
+        {
+          "from": "2026-11-20",
+          "in": 0.834,
+          "out": 2.501,
+          "cache_read": 0.042,
+          "cache_write": 0.834,
           "source": "openrouter"
         }
       ]
@@ -182369,6 +183196,14 @@
           "cache_read": 0.16,
           "cache_write": 0.65,
           "source": "openrouter"
+        },
+        {
+          "from": "2026-11-20",
+          "in": 0.6,
+          "out": 3,
+          "cache_read": 0.12,
+          "cache_write": 0.6,
+          "source": "openrouter"
         }
       ]
     },
@@ -183107,6 +183942,14 @@
           "cache_read": 0,
           "cache_write": 0.0509,
           "source": "openrouter"
+        },
+        {
+          "from": "2026-11-20",
+          "in": 0.05,
+          "out": 0.33,
+          "cache_read": 0,
+          "cache_write": 0.05,
+          "source": "openrouter"
         }
       ]
     },
@@ -183777,6 +184620,14 @@
           "out": 0.3,
           "cache_read": 0.0075,
           "cache_write": 0.075,
+          "source": "openrouter"
+        },
+        {
+          "from": "2026-11-20",
+          "in": 0.15,
+          "out": 0.6,
+          "cache_read": 0.015,
+          "cache_write": 0.15,
           "source": "openrouter"
         }
       ]
@@ -185052,6 +185903,14 @@
           "cache_read": 0.003,
           "cache_write": 0.06,
           "source": "openrouter"
+        },
+        {
+          "from": "2026-11-20",
+          "in": 0.07,
+          "out": 0.5,
+          "cache_read": 0.006,
+          "cache_write": 0.07,
+          "source": "openrouter"
         }
       ]
     },
@@ -185103,6 +185962,19 @@
           "out": 0.14,
           "cache_read": 0,
           "cache_write": 0.07,
+          "source": "openrouter"
+        }
+      ]
+    },
+    "openrouter\u0000pixtral-large-2502": {
+      "id": "pixtral-large-2502",
+      "rates": [
+        {
+          "from": "2026-11-20",
+          "in": 2,
+          "out": 6,
+          "cache_read": 0,
+          "cache_write": 2,
           "source": "openrouter"
         }
       ]
@@ -185792,6 +186664,14 @@
           "out": 1.56,
           "cache_read": 0,
           "cache_write": 0.195,
+          "source": "openrouter"
+        },
+        {
+          "from": "2026-11-20",
+          "in": 0.26,
+          "out": 2.6,
+          "cache_read": 0,
+          "cache_write": 0.26,
           "source": "openrouter"
         }
       ]
@@ -195740,6 +196620,19 @@
         }
       ]
     },
+    "prime\u0000gemini-4-neon": {
+      "id": "gemini-4-neon",
+      "rates": [
+        {
+          "from": "2026-11-20",
+          "in": 3,
+          "out": 15,
+          "cache_read": 0,
+          "cache_write": 3,
+          "source": "prime"
+        }
+      ]
+    },
     "prime\u0000gemma-3-27b-it": {
       "id": "gemma-3-27b-it",
       "rates": [
@@ -196183,6 +197076,32 @@
       "rates": [
         {
           "from": "2026-10-13",
+          "in": 2,
+          "out": 10,
+          "cache_read": 0,
+          "cache_write": 2,
+          "source": "prime"
+        }
+      ]
+    },
+    "prime\u0000gpt-6.2-astra": {
+      "id": "gpt-6.2-astra",
+      "rates": [
+        {
+          "from": "2026-11-20",
+          "in": 8,
+          "out": 40,
+          "cache_read": 0,
+          "cache_write": 8,
+          "source": "prime"
+        }
+      ]
+    },
+    "prime\u0000gpt-6.2-sol": {
+      "id": "gpt-6.2-sol",
+      "rates": [
+        {
+          "from": "2026-11-20",
           "in": 2,
           "out": 10,
           "cache_read": 0,
@@ -199514,6 +200433,45 @@
           "out": 8.25,
           "cache_read": 0.0825,
           "cache_write": 1.65,
+          "source": "requesty"
+        }
+      ]
+    },
+    "requesty\u0000gemini-4-neon": {
+      "id": "gemini-4-neon",
+      "rates": [
+        {
+          "from": "2026-11-20",
+          "in": 3,
+          "out": 15,
+          "cache_read": 0.15,
+          "cache_write": 3,
+          "source": "requesty"
+        }
+      ]
+    },
+    "requesty\u0000gemini-4-neon@eu": {
+      "id": "gemini-4-neon@eu",
+      "rates": [
+        {
+          "from": "2026-11-20",
+          "in": 3.3,
+          "out": 16.5,
+          "cache_read": 0.165,
+          "cache_write": 3.3,
+          "source": "requesty"
+        }
+      ]
+    },
+    "requesty\u0000gemini-4-neon@us": {
+      "id": "gemini-4-neon@us",
+      "rates": [
+        {
+          "from": "2026-11-20",
+          "in": 3.3,
+          "out": 16.5,
+          "cache_read": 0.165,
+          "cache_write": 3.3,
           "source": "requesty"
         }
       ]
@@ -222084,6 +223042,14 @@
           "cache_read": 0.015,
           "cache_write": 0.06,
           "source": "vercel"
+        },
+        {
+          "from": "2026-11-20",
+          "in": 0.06,
+          "out": 0.24,
+          "cache_read": 0.015,
+          "cache_write": 0,
+          "source": "vercel"
         }
       ]
     },
@@ -222097,6 +223063,14 @@
           "cache_read": 0.00875,
           "cache_write": 0.035,
           "source": "vercel"
+        },
+        {
+          "from": "2026-11-20",
+          "in": 0.035,
+          "out": 0.14,
+          "cache_read": 0.00875,
+          "cache_write": 0,
+          "source": "vercel"
         }
       ]
     },
@@ -222109,6 +223083,14 @@
           "out": 3.2,
           "cache_read": 0.2,
           "cache_write": 0.8,
+          "source": "vercel"
+        },
+        {
+          "from": "2026-11-20",
+          "in": 0.8,
+          "out": 3.2,
+          "cache_read": 0.2,
+          "cache_write": 0,
           "source": "vercel"
         }
       ]
@@ -235987,6 +236969,7 @@
     "qwen3p8-max:thinking": "qwen3.8-max:thinking",
     "qwen3p8-omni-flash": "qwen3.8-omni-flash",
     "qwen4-max-latest": "qwen4-max",
+    "qwen4-max:free-latest": "qwen4-max:free",
     "qwen4-max:thinking-latest": "qwen4-max:thinking",
     "qwenpqwen3-235b-a22b-2507-v1": "qwen.qwen3-235b-a22b-2507-v1",
     "qwenpqwen3-32b-v1": "qwen.qwen3-32b-v1",
