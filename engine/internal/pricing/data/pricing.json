@@ -25990,10 +25990,10 @@
       "rates": [
         {
           "from": "2026-11-21",
-          "in": 0.1,
-          "out": 0.4,
-          "cache_read": 0.02,
-          "cache_write": 0.1,
+          "in": 0.075,
+          "out": 0.3,
+          "cache_read": 0.015,
+          "cache_write": 0.075,
           "source": "kilo"
         }
       ]
@@ -35093,6 +35093,14 @@
           "out": 0.8571,
           "cache_read": 0.0086,
           "cache_write": 0.1714,
+          "source": "kenari"
+        },
+        {
+          "from": "2026-11-21",
+          "in": 0.1143,
+          "out": 0.5714,
+          "cache_read": 0.0057,
+          "cache_write": 0.1143,
           "source": "kenari"
         }
       ]
@@ -46922,6 +46930,14 @@
           "out": 0.38088,
           "cache_read": 0.019044,
           "cache_write": 0.09522,
+          "source": "aimlapi"
+        },
+        {
+          "from": "2026-11-21",
+          "in": 0.1587,
+          "out": 0.6348,
+          "cache_read": 0.03174,
+          "cache_write": 0.1587,
           "source": "aimlapi"
         }
       ]
@@ -61944,6 +61960,14 @@
           "out": 0.38088,
           "cache_read": 0.019044,
           "cache_write": 0.09522,
+          "source": "aimlapi"
+        },
+        {
+          "from": "2026-11-21",
+          "in": 0.1587,
+          "out": 0.6348,
+          "cache_read": 0.03174,
+          "cache_write": 0.1587,
           "source": "aimlapi"
         }
       ]
@@ -115723,6 +115747,14 @@
           "cache_read": 0.0086,
           "cache_write": 0.1714,
           "source": "kenari"
+        },
+        {
+          "from": "2026-11-21",
+          "in": 0.1143,
+          "out": 0.5714,
+          "cache_read": 0.0057,
+          "cache_write": 0.1143,
+          "source": "kenari"
         }
       ]
     },
@@ -120254,14 +120286,6 @@
           "cache_read": 0.26,
           "cache_write": 1.4,
           "source": "kilo"
-        },
-        {
-          "from": "2026-11-20",
-          "in": 1.19,
-          "out": 3.74,
-          "cache_read": 0.6,
-          "cache_write": 1.19,
-          "source": "kilo"
         }
       ]
     },
@@ -122962,10 +122986,10 @@
       "rates": [
         {
           "from": "2026-11-21",
-          "in": 0.1,
-          "out": 0.4,
-          "cache_read": 0.02,
-          "cache_write": 0.1,
+          "in": 0.075,
+          "out": 0.3,
+          "cache_read": 0.015,
+          "cache_write": 0.075,
           "source": "kilo"
         }
       ]
@@ -155178,6 +155202,14 @@
           "cache_read": 0.042,
           "cache_write": 0.834,
           "source": "nano-gpt"
+        },
+        {
+          "from": "2026-11-21",
+          "in": 0.7506,
+          "out": 2.2509,
+          "cache_read": 0.0378,
+          "cache_write": 0.7506,
+          "source": "nano-gpt"
         }
       ]
     },
@@ -180439,14 +180471,6 @@
           "cache_read": 0.26,
           "cache_write": 1.4,
           "source": "openrouter"
-        },
-        {
-          "from": "2026-11-19",
-          "in": 1.19,
-          "out": 3.74,
-          "cache_read": 0.6,
-          "cache_write": 1.19,
-          "source": "openrouter"
         }
       ]
     },
@@ -183038,10 +183062,10 @@
         },
         {
           "from": "2026-11-21",
-          "in": 0.132,
-          "out": 0.528,
-          "cache_read": 0.033,
-          "cache_write": 0.132,
+          "in": 0.0825,
+          "out": 0.33,
+          "cache_read": 0.020625,
+          "cache_write": 0.0825,
           "source": "openrouter"
         }
       ]
@@ -183106,10 +183130,10 @@
         },
         {
           "from": "2026-11-21",
-          "in": 0.834,
-          "out": 2.501,
-          "cache_read": 0.042,
-          "cache_write": 0.834,
+          "in": 0.7506,
+          "out": 2.2509,
+          "cache_read": 0.0378,
+          "cache_write": 0.7506,
           "source": "openrouter"
         }
       ]
@@ -183140,10 +183164,10 @@
       "rates": [
         {
           "from": "2026-11-21",
-          "in": 0.1,
-          "out": 0.4,
-          "cache_read": 0.02,
-          "cache_write": 0.1,
+          "in": 0.075,
+          "out": 0.3,
+          "cache_read": 0.015,
+          "cache_write": 0.075,
           "source": "openrouter"
         }
       ]
@@ -183653,6 +183677,14 @@
           "out": 11.0055,
           "cache_read": 0.18,
           "cache_write": 0.1805,
+          "source": "openrouter"
+        },
+        {
+          "from": "2026-11-21",
+          "in": 0.1824,
+          "out": 10.6066,
+          "cache_read": 0.18,
+          "cache_write": 0.1824,
           "source": "openrouter"
         }
       ]
@@ -225650,6 +225682,45 @@
           "out": 3.75,
           "cache_read": 0.15,
           "cache_write": 0.75,
+          "source": "vivgrid"
+        }
+      ]
+    },
+    "vivgrid\u0000gemini-4-carbon": {
+      "id": "gemini-4-carbon",
+      "rates": [
+        {
+          "from": "2026-11-21",
+          "in": 4,
+          "out": 20,
+          "cache_read": 0.2,
+          "cache_write": 4,
+          "source": "vivgrid"
+        }
+      ]
+    },
+    "vivgrid\u0000gemini-4-hydrogen": {
+      "id": "gemini-4-hydrogen",
+      "rates": [
+        {
+          "from": "2026-11-21",
+          "in": 1.5,
+          "out": 7.5,
+          "cache_read": 0.075,
+          "cache_write": 1.5,
+          "source": "vivgrid"
+        }
+      ]
+    },
+    "vivgrid\u0000gemini-4-neon": {
+      "id": "gemini-4-neon",
+      "rates": [
+        {
+          "from": "2026-11-21",
+          "in": 3,
+          "out": 15,
+          "cache_read": 0.15,
+          "cache_write": 3,
           "source": "vivgrid"
         }
       ]
