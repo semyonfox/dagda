@@ -21,7 +21,7 @@
     }
   },
   "schema": 2,
-  "updated": "2026-11-22",
+  "updated": "2026-11-23",
   "sources": [
     "https://models.dev/api.json"
   ],
@@ -8522,6 +8522,19 @@
         }
       ]
     },
+    "deepseek-v4-1-fast": {
+      "id": "deepseek-v4-1-fast",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.6,
+          "out": 2.4,
+          "cache_read": 0.014,
+          "cache_write": 0.6,
+          "source": "concentrate"
+        }
+      ]
+    },
     "deepseek-v4-1-flash": {
       "id": "deepseek-v4-1-flash",
       "rates": [
@@ -8662,6 +8675,19 @@
         }
       ]
     },
+    "deepseek-v4-1-flash-fast": {
+      "id": "deepseek-v4-1-flash-fast",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.6,
+          "out": 2.4,
+          "cache_read": 0.014,
+          "cache_write": 0.6,
+          "source": "concentrate"
+        }
+      ]
+    },
     "deepseek-v4-1-flash-uncensored": {
       "id": "deepseek-v4-1-flash-uncensored",
       "rates": [
@@ -8730,6 +8756,14 @@
           "cache_read": 0,
           "cache_write": 0.139,
           "source": "merge-gateway"
+        },
+        {
+          "from": "2026-11-23",
+          "in": 0.09,
+          "out": 0.18,
+          "cache_read": 0.018,
+          "cache_write": 0.09,
+          "source": "concentrate"
         }
       ]
     },
@@ -10454,6 +10488,32 @@
           "cache_read": 0,
           "cache_write": 0.89,
           "source": "novita-ai"
+        }
+      ]
+    },
+    "deepseekv4.1-flash-1017": {
+      "id": "deepseekv4.1-flash-1017",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.14893617,
+          "out": 0.58510638,
+          "cache_read": 0.00265957,
+          "cache_write": 0.14893617,
+          "source": "sarvam"
+        }
+      ]
+    },
+    "deepseekv4.1-flash-1017-interactive": {
+      "id": "deepseekv4.1-flash-1017-interactive",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.26595745,
+          "out": 1.11702128,
+          "cache_read": 0.00531915,
+          "cache_write": 0.26595745,
+          "source": "sarvam"
         }
       ]
     },
@@ -15301,6 +15361,14 @@
           "cache_read": 0,
           "cache_write": 0.15,
           "source": "neon"
+        },
+        {
+          "from": "2026-11-23",
+          "in": 0.09,
+          "out": 0.29,
+          "cache_read": 0,
+          "cache_write": 0.09,
+          "source": "concentrate"
         }
       ]
     },
@@ -15485,6 +15553,19 @@
           "cache_read": 0.025,
           "cache_write": 0.05,
           "source": "nano-gpt"
+        }
+      ]
+    },
+    "gemma-4-26b": {
+      "id": "gemma-4-26b",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.13,
+          "out": 0.4,
+          "cache_read": 0,
+          "cache_write": 0.13,
+          "source": "concentrate"
         }
       ]
     },
@@ -15910,6 +15991,14 @@
           "cache_read": 0.0144,
           "cache_write": 0.144,
           "source": "neuralwatt"
+        },
+        {
+          "from": "2026-11-23",
+          "in": 0.2,
+          "out": 0.4,
+          "cache_read": 0,
+          "cache_write": 0.2,
+          "source": "concentrate"
         }
       ]
     },
@@ -18266,6 +18355,14 @@
           "cache_read": 0.247,
           "cache_write": 1.33,
           "source": "nano-gpt"
+        },
+        {
+          "from": "2026-11-23",
+          "in": 1.4,
+          "out": 4.4,
+          "cache_read": 0.26,
+          "cache_write": 1.4,
+          "source": "nano-gpt"
         }
       ]
     },
@@ -19308,6 +19405,19 @@
           "cache_read": 0.26,
           "cache_write": 1.2,
           "source": "requesty"
+        }
+      ]
+    },
+    "glm-5.4": {
+      "id": "glm-5.4",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0,
+          "out": 0,
+          "cache_read": 0,
+          "cache_write": 0,
+          "source": "zai-coding-plan"
         }
       ]
     },
@@ -25845,6 +25955,19 @@
         }
       ]
     },
+    "ibm-granite-micro": {
+      "id": "ibm-granite-micro",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.017,
+          "out": 0.112,
+          "cache_read": 0,
+          "cache_write": 0.017,
+          "source": "concentrate"
+        }
+      ]
+    },
     "iceman-contributor-free": {
       "id": "iceman-contributor-free",
       "rates": [
@@ -27021,6 +27144,14 @@
           "cache_read": 0.22,
           "cache_write": 0.56,
           "source": "venice"
+        },
+        {
+          "from": "2026-11-23",
+          "in": 0.6,
+          "out": 3.011,
+          "cache_read": 0.115,
+          "cache_write": 0.6,
+          "source": "concentrate"
         }
       ]
     },
@@ -27034,6 +27165,14 @@
           "cache_read": 0.1788,
           "cache_write": 0.8939,
           "source": "empiriolabs"
+        },
+        {
+          "from": "2026-11-23",
+          "in": 0.95,
+          "out": 4,
+          "cache_read": 0.16,
+          "cache_write": 0.95,
+          "source": "concentrate"
         }
       ]
     },
@@ -27060,6 +27199,14 @@
           "cache_read": 0.95,
           "cache_write": 0.95,
           "source": "empiriolabs"
+        },
+        {
+          "from": "2026-11-23",
+          "in": 0.95,
+          "out": 4,
+          "cache_read": 0.19,
+          "cache_write": 0.95,
+          "source": "concentrate"
         }
       ]
     },
@@ -27816,6 +27963,14 @@
           "cache_read": 0.184,
           "cache_write": 2,
           "source": "empiriolabs"
+        },
+        {
+          "from": "2026-11-23",
+          "in": 2,
+          "out": 11.2,
+          "cache_read": 0.24,
+          "cache_write": 2,
+          "source": "concentrate"
         }
       ]
     },
@@ -27845,6 +28000,14 @@
           "cache_read": 0.375,
           "cache_write": 5,
           "source": "venice"
+        },
+        {
+          "from": "2026-11-23",
+          "in": 4,
+          "out": 20,
+          "cache_read": 0.2,
+          "cache_write": 5,
+          "source": "concentrate"
         }
       ]
     },
@@ -31958,6 +32121,32 @@
       ],
       "first_party": true
     },
+    "minimax-m2-1": {
+      "id": "minimax-m2-1",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.3,
+          "out": 1.2,
+          "cache_read": 0.03,
+          "cache_write": 0.375,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "minimax-m2-1-highspeed": {
+      "id": "minimax-m2-1-highspeed",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.6,
+          "out": 2.4,
+          "cache_read": 0.03,
+          "cache_write": 0.375,
+          "source": "concentrate"
+        }
+      ]
+    },
     "minimax-m2-5": {
       "id": "minimax-m2-5",
       "rates": [
@@ -31968,6 +32157,27 @@
           "cache_read": 0.03,
           "cache_write": 0.3,
           "source": "frogbot"
+        },
+        {
+          "from": "2026-11-23",
+          "in": 0.3,
+          "out": 1.2,
+          "cache_read": 0.03,
+          "cache_write": 0.375,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "minimax-m2-5-highspeed": {
+      "id": "minimax-m2-5-highspeed",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.6,
+          "out": 2.4,
+          "cache_read": 0.03,
+          "cache_write": 0.375,
+          "source": "concentrate"
         }
       ]
     },
@@ -32334,6 +32544,14 @@
           "cache_read": 0.01125,
           "cache_write": 0.1125,
           "source": "empiriolabs"
+        },
+        {
+          "from": "2026-11-23",
+          "in": 0.15,
+          "out": 0.6,
+          "cache_read": 0.015,
+          "cache_write": 0.15,
+          "source": "concentrate"
         }
       ]
     },
@@ -33076,6 +33294,19 @@
         }
       ]
     },
+    "ministral-3-3b": {
+      "id": "ministral-3-3b",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.1,
+          "out": 0.1,
+          "cache_read": 0,
+          "cache_write": 0.1,
+          "source": "concentrate"
+        }
+      ]
+    },
     "ministral-3-3b-reasoning-2512": {
       "id": "ministral-3-3b-reasoning-2512",
       "rates": [
@@ -33086,6 +33317,19 @@
           "cache_read": 0,
           "cache_write": 1.039,
           "source": "clarifai"
+        }
+      ]
+    },
+    "ministral-3-8b": {
+      "id": "ministral-3-8b",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.15,
+          "out": 0.15,
+          "cache_read": 0,
+          "cache_write": 0.15,
+          "source": "concentrate"
         }
       ]
     },
@@ -34237,6 +34481,19 @@
         }
       ]
     },
+    "mistral-small-3.1": {
+      "id": "mistral-small-3.1",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.351,
+          "out": 0.555,
+          "cache_read": 0,
+          "cache_write": 0.351,
+          "source": "concentrate"
+        }
+      ]
+    },
     "mistral-small-3.1-24b-instruct": {
       "id": "mistral-small-3.1-24b-instruct",
       "rates": [
@@ -34263,6 +34520,19 @@
           "cache_read": 0,
           "cache_write": 0.371358,
           "source": "aimlapi"
+        }
+      ]
+    },
+    "mistral-small-3.2": {
+      "id": "mistral-small-3.2",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.1,
+          "out": 0.3,
+          "cache_read": 0,
+          "cache_write": 0.1,
+          "source": "concentrate"
         }
       ]
     },
@@ -35593,6 +35863,19 @@
         }
       ]
     },
+    "nemotron-3-120b": {
+      "id": "nemotron-3-120b",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.075,
+          "out": 0.4,
+          "cache_read": 0,
+          "cache_write": 0.075,
+          "source": "concentrate"
+        }
+      ]
+    },
     "nemotron-3-120b-a12b": {
       "id": "nemotron-3-120b-a12b",
       "rates": [
@@ -35643,6 +35926,14 @@
           "cache_read": 0,
           "cache_write": 0.06,
           "source": "llmgateway"
+        },
+        {
+          "from": "2026-11-23",
+          "in": 0.05,
+          "out": 0.2,
+          "cache_read": 0.03,
+          "cache_write": 0.05,
+          "source": "concentrate"
         }
       ]
     },
@@ -36034,6 +36325,14 @@
           "cache_read": 0.12,
           "cache_write": 0.6,
           "source": "fireworks-ai"
+        },
+        {
+          "from": "2026-11-23",
+          "in": 1,
+          "out": 3,
+          "cache_read": 0.1,
+          "cache_write": 1,
+          "source": "concentrate"
         }
       ]
     },
@@ -36141,6 +36440,19 @@
         }
       ]
     },
+    "nemotron-3.5-lightning-nvfp4": {
+      "id": "nemotron-3.5-lightning-nvfp4",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.15,
+          "out": 0.5,
+          "cache_read": 0.03,
+          "cache_write": 0.15,
+          "source": "primalabs"
+        }
+      ]
+    },
     "nemotron-3.5-lightning:free": {
       "id": "nemotron-3.5-lightning:free",
       "rates": [
@@ -36220,6 +36532,19 @@
         }
       ]
     },
+    "nemotron-3.5-super-vl-nvfp4": {
+      "id": "nemotron-3.5-super-vl-nvfp4",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.25,
+          "out": 1.5,
+          "cache_read": 0.05,
+          "cache_write": 0.25,
+          "source": "primalabs"
+        }
+      ]
+    },
     "nemotron-3.5-super-vl:free": {
       "id": "nemotron-3.5-super-vl:free",
       "rates": [
@@ -36280,6 +36605,19 @@
         }
       ],
       "first_party": true
+    },
+    "nemotron-lightning-3.5-30b": {
+      "id": "nemotron-lightning-3.5-30b",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.06,
+          "out": 0.24,
+          "cache_read": 0.03,
+          "cache_write": 0.06,
+          "source": "concentrate"
+        }
+      ]
     },
     "nemotron-lightning-3.5-30b-a3b": {
       "id": "nemotron-lightning-3.5-30b-a3b",
@@ -41783,6 +42121,14 @@
           "cache_read": 0,
           "cache_write": 0,
           "source": "iflowcn"
+        },
+        {
+          "from": "2026-11-23",
+          "in": 0.09,
+          "out": 0.55,
+          "cache_read": 0,
+          "cache_write": 0.09,
+          "source": "concentrate"
         }
       ]
     },
@@ -41915,6 +42261,19 @@
         }
       ]
     },
+    "qwen3-30b": {
+      "id": "qwen3-30b",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.12,
+          "out": 0.5,
+          "cache_read": 0,
+          "cache_write": 0.12,
+          "source": "concentrate"
+        }
+      ]
+    },
     "qwen3-30b-a3b": {
       "id": "qwen3-30b-a3b",
       "rates": [
@@ -41951,6 +42310,19 @@
           "cache_read": 0,
           "cache_write": 0.0509,
           "source": "cloudflare-workers-ai"
+        }
+      ]
+    },
+    "qwen3-30b-a3b-instruct": {
+      "id": "qwen3-30b-a3b-instruct",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.1,
+          "out": 0.3,
+          "cache_read": 0,
+          "cache_write": 0.1,
+          "source": "concentrate"
         }
       ]
     },
@@ -42582,6 +42954,19 @@
         }
       ]
     },
+    "qwen3-coder-480b-a35b": {
+      "id": "qwen3-coder-480b-a35b",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.3,
+          "out": 1,
+          "cache_read": 0.1,
+          "cache_write": 0.3,
+          "source": "concentrate"
+        }
+      ]
+    },
     "qwen3-coder-480b-a35b-instruct": {
       "id": "qwen3-coder-480b-a35b-instruct",
       "rates": [
@@ -42998,6 +43383,14 @@
           "cache_read": 0,
           "cache_write": 0.0013,
           "source": "opencheap"
+        },
+        {
+          "from": "2026-11-23",
+          "in": 0.14,
+          "out": 1.2,
+          "cache_read": 0,
+          "cache_write": 0.14,
+          "source": "concentrate"
         }
       ]
     },
@@ -44340,6 +44733,14 @@
           "cache_read": 0.029,
           "cache_write": 0.29,
           "source": "neuralwatt"
+        },
+        {
+          "from": "2026-11-23",
+          "in": 0.248,
+          "out": 1.485,
+          "cache_read": 0,
+          "cache_write": 0.248,
+          "source": "concentrate"
         }
       ]
     },
@@ -45420,6 +45821,19 @@
         }
       ]
     },
+    "qwen3.8-max-vl-thinking": {
+      "id": "qwen3.8-max-vl-thinking",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 2,
+          "out": 6,
+          "cache_read": 0.25,
+          "cache_write": 2,
+          "source": "modal"
+        }
+      ]
+    },
     "qwen3.8-max:thinking": {
       "id": "qwen3.8-max:thinking",
       "rates": [
@@ -46079,6 +46493,19 @@
           "cache_read": 0.025,
           "cache_write": 0.04,
           "source": "fastrouter"
+        }
+      ]
+    },
+    "sarvam-105b-conversations": {
+      "id": "sarvam-105b-conversations",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.10638298,
+          "out": 0.26595745,
+          "cache_read": 0.00265957,
+          "cache_write": 0.10638298,
+          "source": "sarvam"
         }
       ]
     },
@@ -49355,6 +49782,19 @@
           "cache_read": 0,
           "cache_write": 0.48,
           "source": "edenai"
+        }
+      ]
+    },
+    "writer.palmyra-vision-7b": {
+      "id": "writer.palmyra-vision-7b",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.15,
+          "out": 0.6,
+          "cache_read": 0,
+          "cache_write": 0.15,
+          "source": "amazon-bedrock"
         }
       ]
     },
@@ -69546,6 +69986,19 @@
         }
       ]
     },
+    "amazon-bedrock\u0000writer.palmyra-vision-7b": {
+      "id": "writer.palmyra-vision-7b",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.15,
+          "out": 0.6,
+          "cache_read": 0,
+          "cache_write": 0.15,
+          "source": "amazon-bedrock"
+        }
+      ]
+    },
     "amazon-bedrock\u0000writer.palmyra-x4-v1": {
       "id": "writer.palmyra-x4-v1",
       "rates": [
@@ -80298,6 +80751,2329 @@
           "cache_read": 0.05,
           "cache_write": 1,
           "source": "commandcode"
+        }
+      ]
+    },
+    "concentrate\u0000apodex-1.1-mini": {
+      "id": "apodex-1.1-mini",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0,
+          "out": 0,
+          "cache_read": 0,
+          "cache_write": 0,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000beam-1.0-501b-a23b": {
+      "id": "beam-1.0-501b-a23b",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.4,
+          "out": 1.2,
+          "cache_read": 0.04,
+          "cache_write": 0.4,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000claude-fable-5": {
+      "id": "claude-fable-5",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 10,
+          "out": 50,
+          "cache_read": 1,
+          "cache_write": 12.5,
+          "cache_write_1h": 20,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000claude-fable-5-1": {
+      "id": "claude-fable-5-1",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 10,
+          "out": 50,
+          "cache_read": 0.25,
+          "cache_write": 12.5,
+          "cache_write_1h": 20,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000claude-fable-5-2": {
+      "id": "claude-fable-5-2",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 8,
+          "out": 40,
+          "cache_read": 0.2,
+          "cache_write": 10,
+          "cache_write_1h": 16,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000claude-haiku-4-5": {
+      "id": "claude-haiku-4-5",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 1,
+          "out": 5,
+          "cache_read": 0.1,
+          "cache_write": 1.25,
+          "cache_write_1h": 2,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000claude-haiku-5-5": {
+      "id": "claude-haiku-5-5",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.1,
+          "out": 0.5,
+          "cache_read": 0.01,
+          "cache_write": 0.125,
+          "cache_write_1h": 0.2,
+          "tier_threshold": 100001,
+          "tier_in": 0.5,
+          "tier_out": 2.5,
+          "tier_cache_read": 0.05,
+          "tier_cache_write": 0.625,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000claude-opus-4-5": {
+      "id": "claude-opus-4-5",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 5,
+          "out": 25,
+          "cache_read": 0.5,
+          "cache_write": 6.25,
+          "cache_write_1h": 10,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000claude-opus-4-6": {
+      "id": "claude-opus-4-6",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 5,
+          "out": 25,
+          "cache_read": 0.5,
+          "cache_write": 6.25,
+          "cache_write_1h": 10,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000claude-opus-4-7": {
+      "id": "claude-opus-4-7",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 5,
+          "out": 25,
+          "cache_read": 0.5,
+          "cache_write": 6.25,
+          "cache_write_1h": 10,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000claude-opus-4-8": {
+      "id": "claude-opus-4-8",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 5,
+          "out": 25,
+          "cache_read": 0.5,
+          "cache_write": 6.25,
+          "cache_write_1h": 10,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000claude-opus-5": {
+      "id": "claude-opus-5",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 5,
+          "out": 25,
+          "cache_read": 0.5,
+          "cache_write": 6.25,
+          "cache_write_1h": 10,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000claude-opus-5-5": {
+      "id": "claude-opus-5-5",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 4,
+          "out": 20,
+          "cache_read": 0.2,
+          "cache_write": 5,
+          "cache_write_1h": 8,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000claude-sonnet-4-5": {
+      "id": "claude-sonnet-4-5",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 3,
+          "out": 15,
+          "cache_read": 0.3,
+          "cache_write": 3.75,
+          "cache_write_1h": 6,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000claude-sonnet-4-6": {
+      "id": "claude-sonnet-4-6",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 3,
+          "out": 15,
+          "cache_read": 0.3,
+          "cache_write": 3.75,
+          "cache_write_1h": 6,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000claude-sonnet-5": {
+      "id": "claude-sonnet-5",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 2,
+          "out": 10,
+          "cache_read": 0.2,
+          "cache_write": 2.5,
+          "cache_write_1h": 4,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000claude-sonnet-5-5": {
+      "id": "claude-sonnet-5-5",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 2,
+          "out": 10,
+          "cache_read": 0.1,
+          "cache_write": 2.5,
+          "cache_write_1h": 4,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000codestral": {
+      "id": "codestral",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.3,
+          "out": 0.9,
+          "cache_read": 0,
+          "cache_write": 0.3,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000deepseek-r1": {
+      "id": "deepseek-r1",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 1.35,
+          "out": 5.4,
+          "cache_read": 0,
+          "cache_write": 1.35,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000deepseek-r1-0528": {
+      "id": "deepseek-r1-0528",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.7,
+          "out": 2.5,
+          "cache_read": 0.35,
+          "cache_write": 0.7,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000deepseek-v3-1": {
+      "id": "deepseek-v3-1",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.25,
+          "out": 0.95,
+          "cache_read": 0.13,
+          "cache_write": 0.25,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000deepseek-v4-1-fast": {
+      "id": "deepseek-v4-1-fast",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.6,
+          "out": 2.4,
+          "cache_read": 0.014,
+          "cache_write": 0.6,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000deepseek-v4-1-flash": {
+      "id": "deepseek-v4-1-flash",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.375,
+          "out": 1.5,
+          "cache_read": 0.03,
+          "cache_write": 0.375,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000deepseek-v4-1-flash-1017": {
+      "id": "deepseek-v4-1-flash-1017",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.375,
+          "out": 1.5,
+          "cache_read": 0.01,
+          "cache_write": 0.375,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000deepseek-v4-1-flash-fast": {
+      "id": "deepseek-v4-1-flash-fast",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.6,
+          "out": 2.4,
+          "cache_read": 0.014,
+          "cache_write": 0.6,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000deepseek-v4-flash-0423": {
+      "id": "deepseek-v4-flash-0423",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.09,
+          "out": 0.18,
+          "cache_read": 0.018,
+          "cache_write": 0.09,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000deepseek-v4-flash-0731": {
+      "id": "deepseek-v4-flash-0731",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.44,
+          "out": 1.32,
+          "cache_read": 0.028,
+          "cache_write": 0.44,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000deepseek-v4-flash-vision-exp": {
+      "id": "deepseek-v4-flash-vision-exp",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.216,
+          "out": 0.647,
+          "cache_read": 0.007,
+          "cache_write": 0.216,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000deepseek-v4-pro": {
+      "id": "deepseek-v4-pro",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 1.65,
+          "out": 3.301,
+          "cache_read": 0.138,
+          "cache_write": 1.65,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000deepseek-v4-pro-0813": {
+      "id": "deepseek-v4-pro-0813",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 1.32,
+          "out": 3.96,
+          "cache_read": 0.05,
+          "cache_write": 1.32,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000gemini-3-flash-preview": {
+      "id": "gemini-3-flash-preview",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.5,
+          "out": 3,
+          "cache_read": 0.05,
+          "cache_write": 0.5,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000gemini-3.1-flash-lite-preview": {
+      "id": "gemini-3.1-flash-lite-preview",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.25,
+          "out": 1.5,
+          "cache_read": 0.025,
+          "cache_write": 0.25,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000gemini-3.1-pro-preview": {
+      "id": "gemini-3.1-pro-preview",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 2,
+          "out": 12,
+          "cache_read": 0.2,
+          "cache_write": 2,
+          "tier_threshold": 200000,
+          "tier_in": 4,
+          "tier_out": 18,
+          "tier_cache_read": 0.4,
+          "tier_cache_write": 4,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000gemini-3.5-flash": {
+      "id": "gemini-3.5-flash",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 1.5,
+          "out": 9,
+          "cache_read": 0.15,
+          "cache_write": 1.5,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000gemini-3.5-flash-lite": {
+      "id": "gemini-3.5-flash-lite",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.3,
+          "out": 2.5,
+          "cache_read": 0.03,
+          "cache_write": 0.3,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000gemini-3.6-flash": {
+      "id": "gemini-3.6-flash",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.75,
+          "out": 3.75,
+          "cache_read": 0.075,
+          "cache_write": 0.75,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000gemini-3.7-flash": {
+      "id": "gemini-3.7-flash",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.75,
+          "out": 3.75,
+          "cache_read": 0.075,
+          "cache_write": 0.75,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000gemini-3.8-flash": {
+      "id": "gemini-3.8-flash",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.75,
+          "out": 3.75,
+          "cache_read": 0.075,
+          "cache_write": 0.75,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000gemini-4-argon": {
+      "id": "gemini-4-argon",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 2,
+          "out": 10,
+          "cache_read": 0.1,
+          "cache_write": 2,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000gemini-4-carbon": {
+      "id": "gemini-4-carbon",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 2,
+          "out": 10,
+          "cache_read": 0.1,
+          "cache_write": 2,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000gemini-4-hydrogen": {
+      "id": "gemini-4-hydrogen",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 1.5,
+          "out": 7.5,
+          "cache_read": 0.075,
+          "cache_write": 1.5,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000gemini-4-neon": {
+      "id": "gemini-4-neon",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 3,
+          "out": 15,
+          "cache_read": 0.15,
+          "cache_write": 3,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000gemma-3-12b": {
+      "id": "gemma-3-12b",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.09,
+          "out": 0.29,
+          "cache_read": 0,
+          "cache_write": 0.09,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000gemma-4-26b": {
+      "id": "gemma-4-26b",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.13,
+          "out": 0.4,
+          "cache_read": 0,
+          "cache_write": 0.13,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000gemma-4-31b": {
+      "id": "gemma-4-31b",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.2,
+          "out": 0.4,
+          "cache_read": 0,
+          "cache_write": 0.2,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000glm-4.5": {
+      "id": "glm-4.5",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.6,
+          "out": 2.2,
+          "cache_read": 0.11,
+          "cache_write": 0.6,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000glm-4.5v": {
+      "id": "glm-4.5v",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.6,
+          "out": 1.8,
+          "cache_read": 0.11,
+          "cache_write": 0.6,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000glm-4.6": {
+      "id": "glm-4.6",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.6,
+          "out": 2.2,
+          "cache_read": 0.11,
+          "cache_write": 0.6,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000glm-4.6v": {
+      "id": "glm-4.6v",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.3,
+          "out": 0.9,
+          "cache_read": 0.05,
+          "cache_write": 0.3,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000glm-4.7": {
+      "id": "glm-4.7",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.6,
+          "out": 2.2,
+          "cache_read": 0.11,
+          "cache_write": 0.6,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000glm-5": {
+      "id": "glm-5",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 1,
+          "out": 3.2,
+          "cache_read": 0.2,
+          "cache_write": 1,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000glm-5.1": {
+      "id": "glm-5.1",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 1.4,
+          "out": 4.4,
+          "cache_read": 0.26,
+          "cache_write": 1.4,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000glm-5.3": {
+      "id": "glm-5.3",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 1.75,
+          "out": 5.5,
+          "cache_read": 0.325,
+          "cache_write": 1.75,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000glm-5.3-flash": {
+      "id": "glm-5.3-flash",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.45,
+          "out": 1.5,
+          "cache_read": 0.09,
+          "cache_write": 0.45,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000gpt-4.1": {
+      "id": "gpt-4.1",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 2,
+          "out": 8,
+          "cache_read": 0.5,
+          "cache_write": 2,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000gpt-4.1-mini": {
+      "id": "gpt-4.1-mini",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.4,
+          "out": 1.6,
+          "cache_read": 0.1,
+          "cache_write": 0.4,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000gpt-4o-mini": {
+      "id": "gpt-4o-mini",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.15,
+          "out": 0.6,
+          "cache_read": 0.075,
+          "cache_write": 0.15,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000gpt-5": {
+      "id": "gpt-5",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 1.25,
+          "out": 10,
+          "cache_read": 0.125,
+          "cache_write": 1.25,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000gpt-5-mini": {
+      "id": "gpt-5-mini",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.25,
+          "out": 2,
+          "cache_read": 0.025,
+          "cache_write": 0.25,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000gpt-5-nano": {
+      "id": "gpt-5-nano",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.05,
+          "out": 0.4,
+          "cache_read": 0.005,
+          "cache_write": 0.05,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000gpt-5.1": {
+      "id": "gpt-5.1",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 1.25,
+          "out": 10,
+          "cache_read": 0.125,
+          "cache_write": 1.25,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000gpt-5.4": {
+      "id": "gpt-5.4",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 2.5,
+          "out": 15,
+          "cache_read": 0.25,
+          "cache_write": 2.5,
+          "tier_threshold": 272000,
+          "tier_in": 5,
+          "tier_out": 22.5,
+          "tier_cache_read": 0.5,
+          "tier_cache_write": 5,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000gpt-5.4-pro": {
+      "id": "gpt-5.4-pro",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 30,
+          "out": 180,
+          "cache_read": 0,
+          "cache_write": 30,
+          "tier_threshold": 272000,
+          "tier_in": 60,
+          "tier_out": 270,
+          "tier_cache_write": 60,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000gpt-5.5": {
+      "id": "gpt-5.5",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 5,
+          "out": 30,
+          "cache_read": 0.5,
+          "cache_write": 5,
+          "tier_threshold": 272000,
+          "tier_in": 10,
+          "tier_out": 45,
+          "tier_cache_read": 1,
+          "tier_cache_write": 10,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000gpt-5.6-luna": {
+      "id": "gpt-5.6-luna",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.2,
+          "out": 1.2,
+          "cache_read": 0.02,
+          "cache_write": 0.25,
+          "tier_threshold": 272000,
+          "tier_in": 0.4,
+          "tier_out": 1.8,
+          "tier_cache_read": 0.04,
+          "tier_cache_write": 0.5,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000gpt-5.6-sol": {
+      "id": "gpt-5.6-sol",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 4,
+          "out": 20,
+          "cache_read": 0.4,
+          "cache_write": 5,
+          "tier_threshold": 272000,
+          "tier_in": 8,
+          "tier_out": 30,
+          "tier_cache_read": 0.8,
+          "tier_cache_write": 10,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000gpt-5.6-terra": {
+      "id": "gpt-5.6-terra",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 2,
+          "out": 12,
+          "cache_read": 0.2,
+          "cache_write": 2.5,
+          "tier_threshold": 272000,
+          "tier_in": 4,
+          "tier_out": 18,
+          "tier_cache_read": 0.4,
+          "tier_cache_write": 5,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000gpt-6-astra": {
+      "id": "gpt-6-astra",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 10,
+          "out": 50,
+          "cache_read": 1,
+          "cache_write": 12.5,
+          "tier_threshold": 272000,
+          "tier_in": 20,
+          "tier_out": 75,
+          "tier_cache_read": 2,
+          "tier_cache_write": 25,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000gpt-6-luna": {
+      "id": "gpt-6-luna",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.1,
+          "out": 0.5,
+          "cache_read": 0.01,
+          "cache_write": 0.125,
+          "tier_threshold": 272000,
+          "tier_in": 0.2,
+          "tier_out": 0.75,
+          "tier_cache_read": 0.02,
+          "tier_cache_write": 0.25,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000gpt-6-sol": {
+      "id": "gpt-6-sol",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 2,
+          "out": 10,
+          "cache_read": 0.2,
+          "cache_write": 2.5,
+          "tier_threshold": 272000,
+          "tier_in": 4,
+          "tier_out": 15,
+          "tier_cache_read": 0.4,
+          "tier_cache_write": 5,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000gpt-6.1-sol": {
+      "id": "gpt-6.1-sol",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 2,
+          "out": 10,
+          "cache_read": 0.1,
+          "cache_write": 2.5,
+          "tier_threshold": 272000,
+          "tier_in": 4,
+          "tier_out": 15,
+          "tier_cache_read": 0.2,
+          "tier_cache_write": 5,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000gpt-6.1-terra": {
+      "id": "gpt-6.1-terra",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 1,
+          "out": 5,
+          "cache_read": 0.05,
+          "cache_write": 1.25,
+          "tier_threshold": 272000,
+          "tier_in": 2,
+          "tier_out": 7.5,
+          "tier_cache_read": 0.1,
+          "tier_cache_write": 2.5,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000gpt-6.2-astra": {
+      "id": "gpt-6.2-astra",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 8,
+          "out": 40,
+          "cache_read": 0.4,
+          "cache_write": 10,
+          "tier_threshold": 272000,
+          "tier_in": 16,
+          "tier_out": 60,
+          "tier_cache_read": 0.8,
+          "tier_cache_write": 20,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000gpt-6.2-sol": {
+      "id": "gpt-6.2-sol",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 2,
+          "out": 10,
+          "cache_read": 0.1,
+          "cache_write": 2.5,
+          "tier_threshold": 272000,
+          "tier_in": 4,
+          "tier_out": 15,
+          "tier_cache_read": 0.2,
+          "tier_cache_write": 5,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000gpt-oss-safeguard-20b": {
+      "id": "gpt-oss-safeguard-20b",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.07,
+          "out": 0.2,
+          "cache_read": 0,
+          "cache_write": 0.07,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000grok-4.20-0309-reasoning": {
+      "id": "grok-4.20-0309-reasoning",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 1.25,
+          "out": 2.5,
+          "cache_read": 0.2,
+          "cache_write": 1.25,
+          "tier_threshold": 200000,
+          "tier_in": 2.5,
+          "tier_out": 5,
+          "tier_cache_read": 0.4,
+          "tier_cache_write": 2.5,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000grok-4.20-multi-agent-0309": {
+      "id": "grok-4.20-multi-agent-0309",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 1.25,
+          "out": 2.5,
+          "cache_read": 0.2,
+          "cache_write": 1.25,
+          "tier_threshold": 200000,
+          "tier_in": 2.5,
+          "tier_out": 5,
+          "tier_cache_read": 0.4,
+          "tier_cache_write": 2.5,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000grok-4.20-non-reasoning": {
+      "id": "grok-4.20-non-reasoning",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 1.25,
+          "out": 2.5,
+          "cache_read": 0.2,
+          "cache_write": 1.25,
+          "tier_threshold": 200000,
+          "tier_in": 2.5,
+          "tier_out": 5,
+          "tier_cache_read": 0.4,
+          "tier_cache_write": 2.5,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000grok-4.3": {
+      "id": "grok-4.3",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 1.25,
+          "out": 2.5,
+          "cache_read": 0.2,
+          "cache_write": 1.25,
+          "tier_threshold": 200000,
+          "tier_in": 2.5,
+          "tier_out": 5,
+          "tier_cache_read": 0.4,
+          "tier_cache_write": 2.5,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000grok-4.5": {
+      "id": "grok-4.5",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 2,
+          "out": 6,
+          "cache_read": 0.3,
+          "cache_write": 2,
+          "tier_threshold": 200000,
+          "tier_in": 4,
+          "tier_out": 12,
+          "tier_cache_read": 0.6,
+          "tier_cache_write": 4,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000grok-4.6": {
+      "id": "grok-4.6",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 2.2,
+          "out": 6.6,
+          "cache_read": 0.55,
+          "cache_write": 2.2,
+          "tier_threshold": 200000,
+          "tier_in": 4,
+          "tier_out": 12,
+          "tier_cache_read": 1,
+          "tier_cache_write": 4,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000grok-4.7": {
+      "id": "grok-4.7",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 2,
+          "out": 6,
+          "cache_read": 0.5,
+          "cache_write": 2,
+          "tier_threshold": 200000,
+          "tier_in": 4,
+          "tier_out": 12,
+          "tier_cache_read": 1,
+          "tier_cache_write": 4,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000grok-build-0.1": {
+      "id": "grok-build-0.1",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 1,
+          "out": 2,
+          "cache_read": 0.2,
+          "cache_write": 1,
+          "tier_threshold": 200000,
+          "tier_in": 2,
+          "tier_out": 4,
+          "tier_cache_read": 0.4,
+          "tier_cache_write": 2,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000hy3": {
+      "id": "hy3",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.14,
+          "out": 0.58,
+          "cache_read": 0.035,
+          "cache_write": 0.14,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000hy4": {
+      "id": "hy4",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.417,
+          "out": 1.2505,
+          "cache_read": 0.021,
+          "cache_write": 0.417,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000ibm-granite-micro": {
+      "id": "ibm-granite-micro",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.017,
+          "out": 0.112,
+          "cache_read": 0,
+          "cache_write": 0.017,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000inkling": {
+      "id": "inkling",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 1.2,
+          "out": 5,
+          "cache_read": 0.27,
+          "cache_write": 1.2,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000kimi-k2-5": {
+      "id": "kimi-k2-5",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.6,
+          "out": 3.011,
+          "cache_read": 0.115,
+          "cache_write": 0.6,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000kimi-k2-6": {
+      "id": "kimi-k2-6",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.95,
+          "out": 4,
+          "cache_read": 0.16,
+          "cache_write": 0.95,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000kimi-k2-7-code": {
+      "id": "kimi-k2-7-code",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.95,
+          "out": 4,
+          "cache_read": 0.19,
+          "cache_write": 0.95,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000kimi-k3": {
+      "id": "kimi-k3",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 3,
+          "out": 15,
+          "cache_read": 0.3,
+          "cache_write": 3,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000kimi-k3-1-pro": {
+      "id": "kimi-k3-1-pro",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 2,
+          "out": 11.2,
+          "cache_read": 0.24,
+          "cache_write": 2,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000kimi-k3-1-pro-highspeed": {
+      "id": "kimi-k3-1-pro-highspeed",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 4,
+          "out": 20,
+          "cache_read": 0.2,
+          "cache_write": 5,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000ling-3.1-flash": {
+      "id": "ling-3.1-flash",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.3,
+          "out": 0.9,
+          "cache_read": 0.06,
+          "cache_write": 0.3,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000mercury-3": {
+      "id": "mercury-3",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.1,
+          "out": 0.35,
+          "cache_read": 0.01,
+          "cache_write": 0.1,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000mimo-v2.6-flash": {
+      "id": "mimo-v2.6-flash",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.14,
+          "out": 0.28,
+          "cache_read": 0.0028,
+          "cache_write": 0.14,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000mimo-v2.6-pro": {
+      "id": "mimo-v2.6-pro",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.435,
+          "out": 0.87,
+          "cache_read": 0.0036,
+          "cache_write": 0.435,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000minimax-m2": {
+      "id": "minimax-m2",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.3,
+          "out": 1.2,
+          "cache_read": 0.03,
+          "cache_write": 0.375,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000minimax-m2-1": {
+      "id": "minimax-m2-1",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.3,
+          "out": 1.2,
+          "cache_read": 0.03,
+          "cache_write": 0.375,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000minimax-m2-1-highspeed": {
+      "id": "minimax-m2-1-highspeed",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.6,
+          "out": 2.4,
+          "cache_read": 0.03,
+          "cache_write": 0.375,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000minimax-m2-5": {
+      "id": "minimax-m2-5",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.3,
+          "out": 1.2,
+          "cache_read": 0.03,
+          "cache_write": 0.375,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000minimax-m2-5-highspeed": {
+      "id": "minimax-m2-5-highspeed",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.6,
+          "out": 2.4,
+          "cache_read": 0.03,
+          "cache_write": 0.375,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000minimax-m2-7": {
+      "id": "minimax-m2-7",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.3,
+          "out": 1.2,
+          "cache_read": 0.06,
+          "cache_write": 0.375,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000minimax-m2-7-highspeed": {
+      "id": "minimax-m2-7-highspeed",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.6,
+          "out": 2.4,
+          "cache_read": 0.07,
+          "cache_write": 0.375,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000minimax-m3": {
+      "id": "minimax-m3",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.3,
+          "out": 1.2,
+          "cache_read": 0.06,
+          "cache_write": 0.3,
+          "tier_threshold": 512000,
+          "tier_in": 0.6,
+          "tier_out": 2.4,
+          "tier_cache_read": 0.12,
+          "tier_cache_write": 0.6,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000minimax-m3-1-flash": {
+      "id": "minimax-m3-1-flash",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.15,
+          "out": 0.6,
+          "cache_read": 0.015,
+          "cache_write": 0.15,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000ministral-3-3b": {
+      "id": "ministral-3-3b",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.1,
+          "out": 0.1,
+          "cache_read": 0,
+          "cache_write": 0.1,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000ministral-3-8b": {
+      "id": "ministral-3-8b",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.15,
+          "out": 0.15,
+          "cache_read": 0,
+          "cache_write": 0.15,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000mistral-large-4": {
+      "id": "mistral-large-4",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.7,
+          "out": 2.1,
+          "cache_read": 0.07,
+          "cache_write": 0.7,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000mistral-medium-3": {
+      "id": "mistral-medium-3",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.4,
+          "out": 2,
+          "cache_read": 0,
+          "cache_write": 0.4,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000mistral-medium-3.1": {
+      "id": "mistral-medium-3.1",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.4,
+          "out": 2,
+          "cache_read": 0,
+          "cache_write": 0.4,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000mistral-small-3.1": {
+      "id": "mistral-small-3.1",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.351,
+          "out": 0.555,
+          "cache_read": 0,
+          "cache_write": 0.351,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000mistral-small-3.2": {
+      "id": "mistral-small-3.2",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.1,
+          "out": 0.3,
+          "cache_read": 0,
+          "cache_write": 0.1,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000muse-ember": {
+      "id": "muse-ember",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.1,
+          "out": 0.5,
+          "cache_read": 0.004,
+          "cache_write": 0.1,
+          "tier_threshold": 200001,
+          "tier_in": 0.3,
+          "tier_out": 1.5,
+          "tier_cache_read": 0.012,
+          "tier_cache_write": 0.3,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000muse-spark-1.1": {
+      "id": "muse-spark-1.1",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 1.25,
+          "out": 4.25,
+          "cache_read": 0.15,
+          "cache_write": 1.25,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000muse-spark-1.2": {
+      "id": "muse-spark-1.2",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 1.25,
+          "out": 4.25,
+          "cache_read": 0.15,
+          "cache_write": 1.25,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000muse-spark-1.2-contributor": {
+      "id": "muse-spark-1.2-contributor",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.1,
+          "out": 0.2,
+          "cache_read": 0.002,
+          "cache_write": 0.1,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000muse-spark-open": {
+      "id": "muse-spark-open",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 1.25,
+          "out": 4.25,
+          "cache_read": 0.15,
+          "cache_write": 1.25,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000muse-wonder": {
+      "id": "muse-wonder",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 4,
+          "out": 20,
+          "cache_read": 0.2,
+          "cache_write": 4,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000nemotron-3-120b": {
+      "id": "nemotron-3-120b",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.075,
+          "out": 0.4,
+          "cache_read": 0,
+          "cache_write": 0.075,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000nemotron-3-nano-30b": {
+      "id": "nemotron-3-nano-30b",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.05,
+          "out": 0.2,
+          "cache_read": 0.03,
+          "cache_write": 0.05,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000nemotron-3-ultra-nvfp4": {
+      "id": "nemotron-3-ultra-nvfp4",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 1,
+          "out": 3,
+          "cache_read": 0.1,
+          "cache_write": 1,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000nemotron-3.5-super-vl": {
+      "id": "nemotron-3.5-super-vl",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.15,
+          "out": 0.5,
+          "cache_read": 0.08,
+          "cache_write": 0.15,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000nemotron-lightning-3.5-30b": {
+      "id": "nemotron-lightning-3.5-30b",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.06,
+          "out": 0.24,
+          "cache_read": 0.03,
+          "cache_write": 0.06,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000nova-2-lite": {
+      "id": "nova-2-lite",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.3,
+          "out": 2.5,
+          "cache_read": 0,
+          "cache_write": 0.3,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000nova-lite": {
+      "id": "nova-lite",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.06,
+          "out": 0.24,
+          "cache_read": 0,
+          "cache_write": 0.06,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000nova-micro": {
+      "id": "nova-micro",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.035,
+          "out": 0.14,
+          "cache_read": 0,
+          "cache_write": 0.035,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000nova-pro": {
+      "id": "nova-pro",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.8,
+          "out": 3.2,
+          "cache_read": 0,
+          "cache_write": 0.8,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000o3": {
+      "id": "o3",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 2,
+          "out": 8,
+          "cache_read": 0.5,
+          "cache_write": 2,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000qwen-flash": {
+      "id": "qwen-flash",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.022,
+          "out": 0.216,
+          "cache_read": 0.005,
+          "cache_write": 0.022,
+          "tier_threshold": 128000,
+          "tier_in": 0.087,
+          "tier_out": 0.861,
+          "tier_cache_read": 0.005,
+          "tier_cache_write": 0.087,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000qwen-plus": {
+      "id": "qwen-plus",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.115,
+          "out": 0.287,
+          "cache_read": 0.023,
+          "cache_write": 0.115,
+          "tier_threshold": 128000,
+          "tier_in": 0.345,
+          "tier_out": 2.868,
+          "tier_cache_read": 0.069,
+          "tier_cache_write": 0.345,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000qwen3-235b-a22b-instruct": {
+      "id": "qwen3-235b-a22b-instruct",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.09,
+          "out": 0.55,
+          "cache_read": 0,
+          "cache_write": 0.09,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000qwen3-30b": {
+      "id": "qwen3-30b",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.12,
+          "out": 0.5,
+          "cache_read": 0,
+          "cache_write": 0.12,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000qwen3-30b-a3b-instruct": {
+      "id": "qwen3-30b-a3b-instruct",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.1,
+          "out": 0.3,
+          "cache_read": 0,
+          "cache_write": 0.1,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000qwen3-coder-480b-a35b": {
+      "id": "qwen3-coder-480b-a35b",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.3,
+          "out": 1,
+          "cache_read": 0.1,
+          "cache_write": 0.3,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000qwen3-coder-flash": {
+      "id": "qwen3-coder-flash",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.144,
+          "out": 0.574,
+          "cache_read": 0.029,
+          "cache_write": 0.144,
+          "tier_threshold": 32000,
+          "tier_in": 0.216,
+          "tier_out": 0.861,
+          "tier_cache_read": 0.044,
+          "tier_cache_write": 0.216,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000qwen3-coder-next": {
+      "id": "qwen3-coder-next",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.5,
+          "out": 1.2,
+          "cache_read": 0,
+          "cache_write": 0.5,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000qwen3-max": {
+      "id": "qwen3-max",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 1.2,
+          "out": 6,
+          "cache_read": 0.24,
+          "cache_write": 1.2,
+          "tier_threshold": 32000,
+          "tier_in": 2.4,
+          "tier_out": 12,
+          "tier_cache_read": 0.48,
+          "tier_cache_write": 2.4,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000qwen3-next-80b-a3b": {
+      "id": "qwen3-next-80b-a3b",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.14,
+          "out": 1.2,
+          "cache_read": 0,
+          "cache_write": 0.14,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000qwen3-vl-235b-a22b": {
+      "id": "qwen3-vl-235b-a22b",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.53,
+          "out": 2.66,
+          "cache_read": 0.11,
+          "cache_write": 0.53,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000qwen3-vl-30b-a3b": {
+      "id": "qwen3-vl-30b-a3b",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.15,
+          "out": 0.6,
+          "cache_read": 0,
+          "cache_write": 0.15,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000qwen3-vl-plus": {
+      "id": "qwen3-vl-plus",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.144,
+          "out": 1.434,
+          "cache_read": 0.029,
+          "cache_write": 0.144,
+          "tier_threshold": 32000,
+          "tier_in": 0.216,
+          "tier_out": 2.151,
+          "tier_cache_read": 0.044,
+          "tier_cache_write": 0.216,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000qwen3.5-122b-a10b": {
+      "id": "qwen3.5-122b-a10b",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.4,
+          "out": 3.2,
+          "cache_read": 0,
+          "cache_write": 0.4,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000qwen3.5-27b": {
+      "id": "qwen3.5-27b",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.26,
+          "out": 2.6,
+          "cache_read": 0,
+          "cache_write": 0.26,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000qwen3.5-35b-a3b": {
+      "id": "qwen3.5-35b-a3b",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.25,
+          "out": 2,
+          "cache_read": 0.05,
+          "cache_write": 0.25,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000qwen3.5-397b-a17b": {
+      "id": "qwen3.5-397b-a17b",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.6,
+          "out": 3.6,
+          "cache_read": 0.22,
+          "cache_write": 0.6,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000qwen3.5-9b": {
+      "id": "qwen3.5-9b",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.1,
+          "out": 0.15,
+          "cache_read": 0,
+          "cache_write": 0.1,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000qwen3.5-flash": {
+      "id": "qwen3.5-flash",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.029,
+          "out": 0.287,
+          "cache_read": 0,
+          "cache_write": 0.029,
+          "tier_threshold": 128000,
+          "tier_in": 0.115,
+          "tier_out": 1.147,
+          "tier_cache_write": 0.115,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000qwen3.5-plus": {
+      "id": "qwen3.5-plus",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.115,
+          "out": 0.688,
+          "cache_read": 0,
+          "cache_write": 0.115,
+          "tier_threshold": 128000,
+          "tier_in": 0.287,
+          "tier_out": 1.72,
+          "tier_cache_write": 0.287,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000qwen3.6-27b": {
+      "id": "qwen3.6-27b",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.32,
+          "out": 3.2,
+          "cache_read": 0,
+          "cache_write": 0.32,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000qwen3.6-35b": {
+      "id": "qwen3.6-35b",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.248,
+          "out": 1.485,
+          "cache_read": 0,
+          "cache_write": 0.248,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000qwen3.6-flash": {
+      "id": "qwen3.6-flash",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.165,
+          "out": 0.99,
+          "cache_read": 0,
+          "cache_write": 0.165,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000qwen3.6-plus": {
+      "id": "qwen3.6-plus",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.276,
+          "out": 1.651,
+          "cache_read": 0,
+          "cache_write": 0.276,
+          "tier_threshold": 256000,
+          "tier_in": 1.101,
+          "tier_out": 6.602,
+          "tier_cache_write": 1.101,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000qwen3.7-flash": {
+      "id": "qwen3.7-flash",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.028,
+          "out": 0.11,
+          "cache_read": 0.006,
+          "cache_write": 0.028,
+          "tier_threshold": 32000,
+          "tier_in": 0.083,
+          "tier_out": 0.33,
+          "tier_cache_read": 0.017,
+          "tier_cache_write": 0.083,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000qwen3.7-max": {
+      "id": "qwen3.7-max",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 2.5,
+          "out": 7.5,
+          "cache_read": 0.5,
+          "cache_write": 2.5,
+          "tier_threshold": 32000,
+          "tier_in": 5,
+          "tier_out": 15,
+          "tier_cache_read": 1,
+          "tier_cache_write": 5,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000qwen3.7-plus": {
+      "id": "qwen3.7-plus",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.276,
+          "out": 1.101,
+          "cache_read": 0.056,
+          "cache_write": 0.276,
+          "tier_threshold": 256000,
+          "tier_in": 0.826,
+          "tier_out": 3.301,
+          "tier_cache_read": 0.116,
+          "tier_cache_write": 0.826,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000qwen3.8-2.4t-a95b": {
+      "id": "qwen3.8-2.4t-a95b",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 2,
+          "out": 6,
+          "cache_read": 0.25,
+          "cache_write": 2,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000qwen3.8-27b": {
+      "id": "qwen3.8-27b",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.45,
+          "out": 3.2,
+          "cache_read": 0.15,
+          "cache_write": 0.45,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000qwen3.8-flash": {
+      "id": "qwen3.8-flash",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.113,
+          "out": 0.382,
+          "cache_read": 0.014,
+          "cache_write": 0.113,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000qwen3.8-max": {
+      "id": "qwen3.8-max",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 2,
+          "out": 6,
+          "cache_read": 0.25,
+          "cache_write": 2,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000qwen3.8-omni-flash": {
+      "id": "qwen3.8-omni-flash",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.113,
+          "out": 0.382,
+          "cache_read": 0.014,
+          "cache_write": 0.113,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000qwen4-max": {
+      "id": "qwen4-max",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 1.413,
+          "out": 4.24,
+          "cache_read": 0.071,
+          "cache_write": 1.413,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000step-3-7-flash": {
+      "id": "step-3-7-flash",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.2,
+          "out": 1.15,
+          "cache_read": 0.04,
+          "cache_write": 0.2,
+          "source": "concentrate"
+        }
+      ]
+    },
+    "concentrate\u0000ultramarine-1-flash": {
+      "id": "ultramarine-1-flash",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.15,
+          "out": 0.5,
+          "cache_read": 0.03,
+          "cache_write": 0.15,
+          "source": "concentrate"
         }
       ]
     },
@@ -92143,6 +94919,24 @@
         }
       ]
     },
+    "edenai\u0000grok-4.20-multi-agent-0309": {
+      "id": "grok-4.20-multi-agent-0309",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 1.25,
+          "out": 2.5,
+          "cache_read": 0.2,
+          "cache_write": 1.25,
+          "tier_threshold": 200000,
+          "tier_in": 2.5,
+          "tier_out": 5,
+          "tier_cache_read": 0.4,
+          "tier_cache_write": 2.5,
+          "source": "edenai"
+        }
+      ]
+    },
     "edenai\u0000grok-4.3": {
       "id": "grok-4.3",
       "rates": [
@@ -95546,6 +98340,19 @@
           "out": 0.48,
           "cache_read": 0,
           "cache_write": 0.48,
+          "source": "edenai"
+        }
+      ]
+    },
+    "edenai\u0000writer.palmyra-vision-7b": {
+      "id": "writer.palmyra-vision-7b",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.15,
+          "out": 0.6,
+          "cache_read": 0,
+          "cache_write": 0.15,
           "source": "edenai"
         }
       ]
@@ -109968,6 +112775,14 @@
           "cache_read": 0.1171,
           "cache_write": 0,
           "source": "inceptron"
+        },
+        {
+          "from": "2026-11-23",
+          "in": 1.05,
+          "out": 3.25,
+          "cache_read": 0.1776,
+          "cache_write": 0,
+          "source": "inceptron"
         }
       ]
     },
@@ -118402,6 +121217,14 @@
           "cache_read": 0.035,
           "cache_write": 0.0443,
           "source": "kilo"
+        },
+        {
+          "from": "2026-11-23",
+          "in": 0.0434,
+          "out": 0.3,
+          "cache_read": 0.035,
+          "cache_write": 0.0434,
+          "source": "kilo"
         }
       ]
     },
@@ -118422,6 +121245,14 @@
           "out": 0.3,
           "cache_read": 0.035,
           "cache_write": 0.0443,
+          "source": "kilo"
+        },
+        {
+          "from": "2026-11-23",
+          "in": 0.0434,
+          "out": 0.3,
+          "cache_read": 0.035,
+          "cache_write": 0.0434,
           "source": "kilo"
         }
       ]
@@ -122399,6 +125230,14 @@
           "out": 0.085,
           "cache_read": 0.0085,
           "cache_write": 0.017,
+          "source": "kilo"
+        },
+        {
+          "from": "2026-11-23",
+          "in": 0.0153,
+          "out": 0.0765,
+          "cache_read": 0.00765,
+          "cache_write": 0.0153,
           "source": "kilo"
         }
       ]
@@ -127720,6 +130559,14 @@
           "out": 0.9,
           "cache_read": 0.025,
           "cache_write": 0.1,
+          "source": "kilo"
+        },
+        {
+          "from": "2026-11-23",
+          "in": 0.05,
+          "out": 0.7,
+          "cache_read": 0.025,
+          "cache_write": 0.05,
           "source": "kilo"
         }
       ]
@@ -145569,6 +148416,19 @@
         }
       ]
     },
+    "modal\u0000kimi-k3.1-pro": {
+      "id": "kimi-k3.1-pro",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 2,
+          "out": 10,
+          "cache_read": 0.2,
+          "cache_write": 2,
+          "source": "modal"
+        }
+      ]
+    },
     "modal\u0000muse-spark-open-816b-a42b": {
       "id": "muse-spark-open-816b-a42b",
       "rates": [
@@ -145587,6 +148447,19 @@
       "rates": [
         {
           "from": "2026-09-07",
+          "in": 2,
+          "out": 6,
+          "cache_read": 0.25,
+          "cache_write": 2,
+          "source": "modal"
+        }
+      ]
+    },
+    "modal\u0000qwen3.8-max-vl-thinking": {
+      "id": "qwen3.8-max-vl-thinking",
+      "rates": [
+        {
+          "from": "2026-11-23",
           "in": 2,
           "out": 6,
           "cache_read": 0.25,
@@ -153253,6 +156126,14 @@
           "cache_read": 0.247,
           "cache_write": 1.33,
           "source": "nano-gpt"
+        },
+        {
+          "from": "2026-11-23",
+          "in": 1.4,
+          "out": 4.4,
+          "cache_read": 0.26,
+          "cache_write": 1.4,
+          "source": "nano-gpt"
         }
       ]
     },
@@ -153326,6 +156207,14 @@
           "out": 4.18,
           "cache_read": 0.247,
           "cache_write": 1.33,
+          "source": "nano-gpt"
+        },
+        {
+          "from": "2026-11-23",
+          "in": 1.4,
+          "out": 4.4,
+          "cache_read": 0.26,
+          "cache_write": 1.4,
           "source": "nano-gpt"
         }
       ]
@@ -155304,14 +158193,6 @@
           "out": 2.501,
           "cache_read": 0.042,
           "cache_write": 0.834,
-          "source": "nano-gpt"
-        },
-        {
-          "from": "2026-11-22",
-          "in": 0.7506,
-          "out": 2.2509,
-          "cache_read": 0.0378,
-          "cache_write": 0.7506,
           "source": "nano-gpt"
         }
       ]
@@ -161405,6 +164286,19 @@
           "out": 0.9,
           "cache_read": 0.125,
           "cache_write": 0.25,
+          "source": "nano-gpt"
+        }
+      ]
+    },
+    "nano-gpt\u0000ultramarine-1-flash": {
+      "id": "ultramarine-1-flash",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.15,
+          "out": 0.5,
+          "cache_read": 0.03,
+          "cache_write": 0.15,
           "source": "nano-gpt"
         }
       ]
@@ -177565,6 +180459,14 @@
           "cache_read": 0.12,
           "cache_write": 0.1188,
           "source": "openrouter"
+        },
+        {
+          "from": "2026-11-23",
+          "in": 0.1188,
+          "out": 5,
+          "cache_read": 0.12,
+          "cache_write": 0.1188,
+          "source": "openrouter"
         }
       ]
     },
@@ -178056,6 +180958,14 @@
           "cache_read": 0.0014,
           "cache_write": 0.044,
           "source": "openrouter"
+        },
+        {
+          "from": "2026-11-23",
+          "in": 0.0434,
+          "out": 0.3,
+          "cache_read": 0.035,
+          "cache_write": 0.0434,
+          "source": "openrouter"
         }
       ]
     },
@@ -178348,6 +181258,14 @@
           "out": 0.3,
           "cache_read": 0.035,
           "cache_write": 0.0443,
+          "source": "openrouter"
+        },
+        {
+          "from": "2026-11-23",
+          "in": 0.0434,
+          "out": 0.3,
+          "cache_read": 0.035,
+          "cache_write": 0.0434,
           "source": "openrouter"
         }
       ]
@@ -179110,6 +182028,14 @@
           "cache_read": 0.003,
           "cache_write": 0.15,
           "source": "openrouter"
+        },
+        {
+          "from": "2026-11-23",
+          "in": 0.3,
+          "out": 1.2,
+          "cache_read": 0.006,
+          "cache_write": 0.3,
+          "source": "openrouter"
         }
       ]
     },
@@ -179851,6 +182777,14 @@
           "cache_read": 0.04,
           "cache_write": 0.08,
           "source": "openrouter"
+        },
+        {
+          "from": "2026-11-23",
+          "in": 0.08,
+          "out": 0.16,
+          "cache_read": 0,
+          "cache_write": 0.08,
+          "source": "openrouter"
         }
       ]
     },
@@ -179988,14 +182922,6 @@
           "out": 0.3,
           "cache_read": 0.05,
           "cache_write": 0.09,
-          "source": "openrouter"
-        },
-        {
-          "from": "2026-11-21",
-          "in": 0.0675,
-          "out": 0.225,
-          "cache_read": 0.0375,
-          "cache_write": 0.0675,
           "source": "openrouter"
         }
       ]
@@ -182733,6 +185659,14 @@
           "cache_read": 0,
           "cache_write": 0.09,
           "source": "openrouter"
+        },
+        {
+          "from": "2026-11-23",
+          "in": 0.05,
+          "out": 0.25,
+          "cache_read": 0.05,
+          "cache_write": 0.05,
+          "source": "openrouter"
         }
       ]
     },
@@ -183351,6 +186285,14 @@
           "out": 2.2509,
           "cache_read": 0.0378,
           "cache_write": 0.7506,
+          "source": "openrouter"
+        },
+        {
+          "from": "2026-11-23",
+          "in": 0.834,
+          "out": 2.501,
+          "cache_read": 0.042,
+          "cache_write": 0.834,
           "source": "openrouter"
         }
       ]
@@ -188105,6 +191047,14 @@
           "out": 0.9,
           "cache_read": 0.025,
           "cache_write": 0.1,
+          "source": "openrouter"
+        },
+        {
+          "from": "2026-11-23",
+          "in": 0.05,
+          "out": 0.7,
+          "cache_read": 0.025,
+          "cache_write": 0.05,
           "source": "openrouter"
         }
       ]
@@ -197266,6 +200216,84 @@
         }
       ]
     },
+    "primalabs\u0000deepseek-v4.1-flash-1017": {
+      "id": "deepseek-v4.1-flash-1017",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.24,
+          "out": 0.96,
+          "cache_read": 0.0048,
+          "cache_write": 0.24,
+          "source": "primalabs"
+        }
+      ]
+    },
+    "primalabs\u0000glm-5.3-flash": {
+      "id": "glm-5.3-flash",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.15,
+          "out": 0.5,
+          "cache_read": 0.03,
+          "cache_write": 0.15,
+          "source": "primalabs"
+        }
+      ]
+    },
+    "primalabs\u0000kimi-k3.1-pro": {
+      "id": "kimi-k3.1-pro",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 1.8,
+          "out": 9,
+          "cache_read": 0.18,
+          "cache_write": 1.8,
+          "source": "primalabs"
+        }
+      ]
+    },
+    "primalabs\u0000mimo-v2.6-pro": {
+      "id": "mimo-v2.6-pro",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 4,
+          "out": 8,
+          "cache_read": 0.036,
+          "cache_write": 4,
+          "source": "primalabs"
+        }
+      ]
+    },
+    "primalabs\u0000nemotron-3.5-lightning-nvfp4": {
+      "id": "nemotron-3.5-lightning-nvfp4",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.15,
+          "out": 0.5,
+          "cache_read": 0.03,
+          "cache_write": 0.15,
+          "source": "primalabs"
+        }
+      ]
+    },
+    "primalabs\u0000nemotron-3.5-super-vl-nvfp4": {
+      "id": "nemotron-3.5-super-vl-nvfp4",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.25,
+          "out": 1.5,
+          "cache_read": 0.05,
+          "cache_write": 0.25,
+          "source": "primalabs"
+        }
+      ]
+    },
     "prime\u0000claude-fable-5": {
       "id": "claude-fable-5",
       "rates": [
@@ -197569,6 +200597,14 @@
           "out": 0.7,
           "cache_read": 0.00312,
           "cache_write": 0.056784,
+          "source": "prime"
+        },
+        {
+          "from": "2026-11-23",
+          "in": 0.075,
+          "out": 0.7,
+          "cache_read": 0.007,
+          "cache_write": 0.075,
           "source": "prime"
         }
       ]
@@ -205985,6 +209021,71 @@
         }
       ]
     },
+    "sarvam\u0000deepseekv4.1-flash-1017": {
+      "id": "deepseekv4.1-flash-1017",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.14893617,
+          "out": 0.58510638,
+          "cache_read": 0.00265957,
+          "cache_write": 0.14893617,
+          "source": "sarvam"
+        }
+      ]
+    },
+    "sarvam\u0000deepseekv4.1-flash-1017-interactive": {
+      "id": "deepseekv4.1-flash-1017-interactive",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.26595745,
+          "out": 1.11702128,
+          "cache_read": 0.00531915,
+          "cache_write": 0.26595745,
+          "source": "sarvam"
+        }
+      ]
+    },
+    "sarvam\u0000gemma4": {
+      "id": "gemma4",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.37234043,
+          "out": 0.95744681,
+          "cache_read": 0.10638298,
+          "cache_write": 0.37234043,
+          "source": "sarvam"
+        }
+      ]
+    },
+    "sarvam\u0000glm5.3": {
+      "id": "glm5.3",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 1.34042553,
+          "out": 4.14893617,
+          "cache_read": 0.21276596,
+          "cache_write": 1.34042553,
+          "source": "sarvam"
+        }
+      ]
+    },
+    "sarvam\u0000glm5.3-flash": {
+      "id": "glm5.3-flash",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.14361702,
+          "out": 0.4787234,
+          "cache_read": 0.02659574,
+          "cache_write": 0.14361702,
+          "source": "sarvam"
+        }
+      ]
+    },
     "sarvam\u0000sarvam-105b": {
       "id": "sarvam-105b",
       "rates": [
@@ -205994,6 +209095,27 @@
           "out": 0.63161075,
           "cache_read": 0.05263423,
           "cache_write": 0.15790269,
+          "source": "sarvam"
+        },
+        {
+          "from": "2026-11-23",
+          "in": 0.10638298,
+          "out": 0.26595745,
+          "cache_read": 0.00265957,
+          "cache_write": 0.10638298,
+          "source": "sarvam"
+        }
+      ]
+    },
+    "sarvam\u0000sarvam-105b-conversations": {
+      "id": "sarvam-105b-conversations",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0.10638298,
+          "out": 0.26595745,
+          "cache_read": 0.00265957,
+          "cache_write": 0.10638298,
           "source": "sarvam"
         }
       ]
@@ -230445,6 +233567,19 @@
         }
       ]
     },
+    "zai-coding-plan\u0000glm-5.4": {
+      "id": "glm-5.4",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0,
+          "out": 0,
+          "cache_read": 0,
+          "cache_write": 0,
+          "source": "zai-coding-plan"
+        }
+      ]
+    },
     "zeldoc\u0000zdev": {
       "id": "zdev",
       "rates": [
@@ -233302,6 +236437,19 @@
         }
       ]
     },
+    "zhipuai-coding-plan\u0000glm-5.4": {
+      "id": "glm-5.4",
+      "rates": [
+        {
+          "from": "2026-11-23",
+          "in": 0,
+          "out": 0,
+          "cache_read": 0,
+          "cache_write": 0,
+          "source": "zhipuai-coding-plan"
+        }
+      ]
+    },
     "zhipuai-coding-plan\u0000glm-5v-turbo": {
       "id": "glm-5v-turbo",
       "rates": [
@@ -234181,6 +237329,7 @@
     "deepseek-v3p2-tee": "deepseek-v3.2-tee",
     "deepseek-v3p2-thinking": "deepseek-v3.2-thinking",
     "deepseek-v3p2:thinking": "deepseek-v3.2:thinking",
+    "deepseek-v4-1-fast-latest": "deepseek-v4-1-fast",
     "deepseek-v4-1-flash": "deepseek-v4.1-flash",
     "deepseek-v4-1-flash-0910-uncensored": "deepseek-v4.1-flash-0910-uncensored",
     "deepseek-v4-1-flash-0910-uncensored:thinking": "deepseek-v4.1-flash-0910-uncensored:thinking",
@@ -234213,6 +237362,7 @@
     "deepseek-v4-1-flash-economy-261017-latest": "deepseek-v4-1-flash-economy-261017",
     "deepseek-v4-1-flash-fast": "deepseek-v4.1-flash-fast",
     "deepseek-v4-1-flash-fast-fp4": "deepseek-v4.1-flash-fast-fp4",
+    "deepseek-v4-1-flash-fast-latest": "deepseek-v4-1-flash-fast",
     "deepseek-v4-1-flash-flex": "deepseek-v4.1-flash-flex",
     "deepseek-v4-1-flash-free": "deepseek-v4.1-flash-free",
     "deepseek-v4-1-flash-latest": "deepseek-v4-1-flash",
@@ -234357,6 +237507,12 @@
     "deepseekpr1-v1": "deepseek.r1-v1",
     "deepseekpv3-v1": "deepseek.v3-v1",
     "deepseekpv3p2": "deepseek.v3.2",
+    "deepseekv4-1-flash-1017": "deepseekv4.1-flash-1017",
+    "deepseekv4-1-flash-1017-interactive": "deepseekv4.1-flash-1017-interactive",
+    "deepseekv4.1-flash-1017-interactive-latest": "deepseekv4.1-flash-1017-interactive",
+    "deepseekv4.1-flash-1017-latest": "deepseekv4.1-flash-1017",
+    "deepseekv4p1-flash-1017": "deepseekv4.1-flash-1017",
+    "deepseekv4p1-flash-1017-interactive": "deepseekv4.1-flash-1017-interactive",
     "devstral-2-123b-instruct-2512-int4-autoround-latest": "devstral-2-123b-instruct-2512-int4-autoround",
     "devstral-2-123b-instruct-2512-latest": "devstral-2-123b-instruct-2512",
     "devstral-2-123b-latest": "devstral-2-123b",
@@ -234948,6 +238104,7 @@
     "gemma-4-26b-a4b-meromero-latest": "gemma-4-26b-a4b-meromero",
     "gemma-4-26b-a4b-meromero:thinking-latest": "gemma-4-26b-a4b-meromero:thinking",
     "gemma-4-26b-a4b-uncensored-latest": "gemma-4-26b-a4b-uncensored",
+    "gemma-4-26b-latest": "gemma-4-26b",
     "gemma-4-31b-agares-v1-latest": "gemma-4-31b-agares-v1",
     "gemma-4-31b-animus-v14-1": "gemma-4-31b-animus-v14.1",
     "gemma-4-31b-animus-v14.1-latest": "gemma-4-31b-animus-v14.1",
@@ -235202,6 +238359,7 @@
     "glm-5-3:peft:262144": "glm-5.3:peft:262144",
     "glm-5-3:thinking": "glm-5.3:thinking",
     "glm-5-3@eu": "glm-5.3@eu",
+    "glm-5-4": "glm-5.4",
     "glm-5-fp8-latest": "glm-5-fp8",
     "glm-5-free-latest": "glm-5-free",
     "glm-5-latest": "glm-5",
@@ -235271,6 +238429,7 @@
     "glm-5.3:peft:262144-latest": "glm-5.3:peft:262144",
     "glm-5.3:thinking-latest": "glm-5.3:thinking",
     "glm-5.3@eu-latest": "glm-5.3@eu",
+    "glm-5.4-latest": "glm-5.4",
     "glm-5.x-menthol-latest": "glm-5.x-menthol",
     "glm-5:thinking-latest": "glm-5:thinking",
     "glm-5p1": "glm-5.1",
@@ -235337,6 +238496,7 @@
     "glm-5p3:peft:262144": "glm-5.3:peft:262144",
     "glm-5p3:thinking": "glm-5.3:thinking",
     "glm-5p3@eu": "glm-5.3@eu",
+    "glm-5p4": "glm-5.4",
     "glm-5px-menthol": "glm-5.x-menthol",
     "glm-5v-turbo-latest": "glm-5v-turbo",
     "glm-5v-turbo:thinking-latest": "glm-5v-turbo:thinking",
@@ -236028,6 +239188,7 @@
     "hy4-flash:free-latest": "hy4-flash:free",
     "hy4-latest": "hy4",
     "hy4-preview-latest": "hy4-preview",
+    "ibm-granite-micro-latest": "ibm-granite-micro",
     "iceman-contributor-free-latest": "iceman-contributor-free",
     "iceman-free-latest": "iceman-free",
     "in-anthropic-claude-haiku-4-5-20251001-v1": "in.anthropic.claude-haiku-4-5-20251001-v1",
@@ -236778,9 +239939,12 @@
     "minimax-m1-latest": "minimax-m1",
     "minimax-m2-1": "minimax-m2.1",
     "minimax-m2-1-free": "minimax-m2.1-free",
+    "minimax-m2-1-highspeed-latest": "minimax-m2-1-highspeed",
+    "minimax-m2-1-latest": "minimax-m2-1",
     "minimax-m2-1-lightning": "minimax-m2.1-lightning",
     "minimax-m2-5-free": "minimax-m2.5-free",
     "minimax-m2-5-highspeed": "minimax-m2.5-highspeed",
+    "minimax-m2-5-highspeed-latest": "minimax-m2-5-highspeed",
     "minimax-m2-5-latest": "minimax-m2-5",
     "minimax-m2-5-lightning": "minimax-m2.5-lightning",
     "minimax-m2-7-highspeed-latest": "minimax-m2-7-highspeed",
@@ -236857,7 +240021,9 @@
     "ministral-14b-latest": "ministral-14b",
     "ministral-3-14b-instruct-2512-latest": "ministral-3-14b-instruct-2512",
     "ministral-3-14b-reasoning-2512-latest": "ministral-3-14b-reasoning-2512",
+    "ministral-3-3b-latest": "ministral-3-3b",
     "ministral-3-3b-reasoning-2512-latest": "ministral-3-3b-reasoning-2512",
+    "ministral-3-8b-latest": "ministral-3-8b",
     "ministral-3b-2512-latest": "ministral-3b-2512",
     "ministral-3b-2512@eu-latest": "ministral-3b-2512@eu",
     "ministral-3b-latest": "ministral-3b",
@@ -236936,17 +240102,23 @@
     "mistral-small-2506-latest": "mistral-small-2506",
     "mistral-small-2603-latest": "mistral-small-2603",
     "mistral-small-2603@eu-latest": "mistral-small-2603@eu",
+    "mistral-small-3-1": "mistral-small-3.1",
     "mistral-small-3-1-24b-instruct": "mistral-small-3.1-24b-instruct",
     "mistral-small-3-1-24b-instruct-2503-latest": "mistral-small-3-1-24b-instruct-2503",
+    "mistral-small-3-2": "mistral-small-3.2",
     "mistral-small-3-2-24b": "mistral-small-3.2-24b",
     "mistral-small-3-2-24b-instruct-2506": "mistral-small-3.2-24b-instruct-2506",
     "mistral-small-3-2-24b-instruct-latest": "mistral-small-3-2-24b-instruct",
     "mistral-small-3.1-24b-instruct-latest": "mistral-small-3.1-24b-instruct",
+    "mistral-small-3.1-latest": "mistral-small-3.1",
     "mistral-small-3.2-24b-instruct-2506-latest": "mistral-small-3.2-24b-instruct-2506",
     "mistral-small-3.2-24b-instruct-latest": "mistral-small-3.2-24b-instruct",
     "mistral-small-3.2-24b-latest": "mistral-small-3.2-24b",
+    "mistral-small-3.2-latest": "mistral-small-3.2",
     "mistral-small-31-24b-instruct-latest": "mistral-small-31-24b-instruct",
+    "mistral-small-3p1": "mistral-small-3.1",
     "mistral-small-3p1-24b-instruct": "mistral-small-3.1-24b-instruct",
+    "mistral-small-3p2": "mistral-small-3.2",
     "mistral-small-3p2-24b": "mistral-small-3.2-24b",
     "mistral-small-3p2-24b-instruct": "mistral-small-3.2-24b-instruct",
     "mistral-small-3p2-24b-instruct-2506": "mistral-small-3.2-24b-instruct-2506",
@@ -237079,21 +240251,25 @@
     "nemomix-unleashed-12b-latest": "nemomix-unleashed-12b",
     "nemotron-120b-a12b-latest": "nemotron-120b-a12b",
     "nemotron-3-120b-a12b-latest": "nemotron-3-120b-a12b",
+    "nemotron-3-120b-latest": "nemotron-3-120b",
     "nemotron-3-5-content-safety": "nemotron-3.5-content-safety",
     "nemotron-3-5-content-safety-free": "nemotron-3.5-content-safety-free",
     "nemotron-3-5-content-safety:free": "nemotron-3.5-content-safety:free",
     "nemotron-3-5-lightning": "nemotron-3.5-lightning",
     "nemotron-3-5-lightning-30b-a3b": "nemotron-3.5-lightning-30b-a3b",
     "nemotron-3-5-lightning-free": "nemotron-3.5-lightning-free",
+    "nemotron-3-5-lightning-nvfp4": "nemotron-3.5-lightning-nvfp4",
     "nemotron-3-5-lightning:free": "nemotron-3.5-lightning:free",
     "nemotron-3-5-lightning:thinking": "nemotron-3.5-lightning:thinking",
     "nemotron-3-5-super-120b-a12b": "nemotron-3.5-super-120b-a12b",
     "nemotron-3-5-super-vl": "nemotron-3.5-super-vl",
     "nemotron-3-5-super-vl-120b-a12b": "nemotron-3.5-super-vl-120b-a12b",
     "nemotron-3-5-super-vl-free": "nemotron-3.5-super-vl-free",
+    "nemotron-3-5-super-vl-nvfp4": "nemotron-3.5-super-vl-nvfp4",
     "nemotron-3-5-super-vl:free": "nemotron-3.5-super-vl:free",
     "nemotron-3-content-safety-latest": "nemotron-3-content-safety",
     "nemotron-3-nano-30b-a3b-latest": "nemotron-3-nano-30b-a3b",
+    "nemotron-3-nano-30b-latest": "nemotron-3-nano-30b",
     "nemotron-3-nano-latest": "nemotron-3-nano",
     "nemotron-3-nano-omni-30b-a3b-reasoning-bf16-latest": "nemotron-3-nano-omni-30b-a3b-reasoning-bf16",
     "nemotron-3-nano-omni-30b-a3b-reasoning-free-latest": "nemotron-3-nano-omni-30b-a3b-reasoning-free",
@@ -237124,12 +240300,14 @@
     "nemotron-3.5-lightning-30b-a3b-latest": "nemotron-3.5-lightning-30b-a3b",
     "nemotron-3.5-lightning-free-latest": "nemotron-3.5-lightning-free",
     "nemotron-3.5-lightning-latest": "nemotron-3.5-lightning",
+    "nemotron-3.5-lightning-nvfp4-latest": "nemotron-3.5-lightning-nvfp4",
     "nemotron-3.5-lightning:free-latest": "nemotron-3.5-lightning:free",
     "nemotron-3.5-lightning:thinking-latest": "nemotron-3.5-lightning:thinking",
     "nemotron-3.5-super-120b-a12b-latest": "nemotron-3.5-super-120b-a12b",
     "nemotron-3.5-super-vl-120b-a12b-latest": "nemotron-3.5-super-vl-120b-a12b",
     "nemotron-3.5-super-vl-free-latest": "nemotron-3.5-super-vl-free",
     "nemotron-3.5-super-vl-latest": "nemotron-3.5-super-vl",
+    "nemotron-3.5-super-vl-nvfp4-latest": "nemotron-3.5-super-vl-nvfp4",
     "nemotron-3.5-super-vl:free-latest": "nemotron-3.5-super-vl:free",
     "nemotron-3_5-lightning-latest": "nemotron-3_5-lightning",
     "nemotron-3p5-content-safety": "nemotron-3.5-content-safety",
@@ -237138,17 +240316,22 @@
     "nemotron-3p5-lightning": "nemotron-3.5-lightning",
     "nemotron-3p5-lightning-30b-a3b": "nemotron-3.5-lightning-30b-a3b",
     "nemotron-3p5-lightning-free": "nemotron-3.5-lightning-free",
+    "nemotron-3p5-lightning-nvfp4": "nemotron-3.5-lightning-nvfp4",
     "nemotron-3p5-lightning:free": "nemotron-3.5-lightning:free",
     "nemotron-3p5-lightning:thinking": "nemotron-3.5-lightning:thinking",
     "nemotron-3p5-super-120b-a12b": "nemotron-3.5-super-120b-a12b",
     "nemotron-3p5-super-vl": "nemotron-3.5-super-vl",
     "nemotron-3p5-super-vl-120b-a12b": "nemotron-3.5-super-vl-120b-a12b",
     "nemotron-3p5-super-vl-free": "nemotron-3.5-super-vl-free",
+    "nemotron-3p5-super-vl-nvfp4": "nemotron-3.5-super-vl-nvfp4",
     "nemotron-3p5-super-vl:free": "nemotron-3.5-super-vl:free",
     "nemotron-cascade-2-30b-a3b-latest": "nemotron-cascade-2-30b-a3b",
     "nemotron-content-safety-reasoning-4b-latest": "nemotron-content-safety-reasoning-4b",
+    "nemotron-lightning-3-5-30b": "nemotron-lightning-3.5-30b",
     "nemotron-lightning-3-5-30b-a3b": "nemotron-lightning-3.5-30b-a3b",
     "nemotron-lightning-3.5-30b-a3b-latest": "nemotron-lightning-3.5-30b-a3b",
+    "nemotron-lightning-3.5-30b-latest": "nemotron-lightning-3.5-30b",
+    "nemotron-lightning-3p5-30b": "nemotron-lightning-3.5-30b",
     "nemotron-lightning-3p5-30b-a3b": "nemotron-lightning-3.5-30b-a3b",
     "nemotron-lightning-3p5-30b-a3b-latest": "nemotron-lightning-3p5-30b-a3b",
     "nemotron-mini-4b-instruct-latest": "nemotron-mini-4b-instruct",
@@ -237686,8 +240869,10 @@
     "qwen3-30b-a3b-2507-latest": "qwen3-30b-a3b-2507",
     "qwen3-30b-a3b-fp8-latest": "qwen3-30b-a3b-fp8",
     "qwen3-30b-a3b-instruct-2507-latest": "qwen3-30b-a3b-instruct-2507",
+    "qwen3-30b-a3b-instruct-latest": "qwen3-30b-a3b-instruct",
     "qwen3-30b-a3b-latest": "qwen3-30b-a3b",
     "qwen3-30b-a3b-thinking-2507-latest": "qwen3-30b-a3b-thinking-2507",
+    "qwen3-30b-latest": "qwen3-30b",
     "qwen3-32b-fp8-latest": "qwen3-32b-fp8",
     "qwen3-32b-latest": "qwen3-32b",
     "qwen3-32b-tee-latest": "qwen3-32b-tee",
@@ -237804,6 +240989,7 @@
     "qwen3-8-max-latest": "qwen3-8-max",
     "qwen3-8-max-preview": "qwen3.8-max-preview",
     "qwen3-8-max-prime": "qwen3.8-max-prime",
+    "qwen3-8-max-vl-thinking": "qwen3.8-max-vl-thinking",
     "qwen3-8-max:thinking": "qwen3.8-max:thinking",
     "qwen3-8-omni-flash-latest": "qwen3-8-omni-flash",
     "qwen3-80b-latest": "qwen3-80b",
@@ -237817,6 +241003,7 @@
     "qwen3-coder-480b-a35b-instruct-int4-mixed-ar-latest": "qwen3-coder-480b-a35b-instruct-int4-mixed-ar",
     "qwen3-coder-480b-a35b-instruct-latest": "qwen3-coder-480b-a35b-instruct",
     "qwen3-coder-480b-a35b-instruct-turbo-latest": "qwen3-coder-480b-a35b-instruct-turbo",
+    "qwen3-coder-480b-a35b-latest": "qwen3-coder-480b-a35b",
     "qwen3-coder-480b-latest": "qwen3-coder-480b",
     "qwen3-coder-flash-latest": "qwen3-coder-flash",
     "qwen3-coder-latest": "qwen3-coder",
@@ -237978,6 +241165,7 @@
     "qwen3.8-max-latest": "qwen3.8-max",
     "qwen3.8-max-preview-latest": "qwen3.8-max-preview",
     "qwen3.8-max-prime-latest": "qwen3.8-max-prime",
+    "qwen3.8-max-vl-thinking-latest": "qwen3.8-max-vl-thinking",
     "qwen3.8-max:thinking-latest": "qwen3.8-max:thinking",
     "qwen3.8-omni-flash-latest": "qwen3.8-omni-flash",
     "qwen35-122b-a10b-latest": "qwen35-122b-a10b",
@@ -238099,6 +241287,7 @@
     "qwen3p8-max-latest": "qwen3p8-max",
     "qwen3p8-max-preview": "qwen3.8-max-preview",
     "qwen3p8-max-prime": "qwen3.8-max-prime",
+    "qwen3p8-max-vl-thinking": "qwen3.8-max-vl-thinking",
     "qwen3p8-max:thinking": "qwen3.8-max:thinking",
     "qwen3p8-omni-flash": "qwen3.8-omni-flash",
     "qwen4-max-latest": "qwen4-max",
@@ -238143,6 +241332,7 @@
     "route-llm-latest": "route-llm",
     "sakana-namazu-latest": "sakana-namazu",
     "sap-abap-1-latest": "sap-abap-1",
+    "sarvam-105b-conversations-latest": "sarvam-105b-conversations",
     "sarvam-105b-latest": "sarvam-105b",
     "sarvam-30b-latest": "sarvam-30b",
     "sarvam-m-latest": "sarvam-m",
@@ -238510,10 +241700,13 @@
     "whisper-large-v3-latest": "whisper-large-v3",
     "whisper-large-v3-turbo-latest": "whisper-large-v3-turbo",
     "wizardlm-2-8x22b-latest": "wizardlm-2-8x22b",
+    "writer-palmyra-vision-7b": "writer.palmyra-vision-7b",
     "writer-palmyra-x4-v1": "writer.palmyra-x4-v1",
     "writer-palmyra-x5-v1": "writer.palmyra-x5-v1",
+    "writer.palmyra-vision-7b-latest": "writer.palmyra-vision-7b",
     "writer.palmyra-x4-v1-latest": "writer.palmyra-x4-v1",
     "writer.palmyra-x5-v1-latest": "writer.palmyra-x5-v1",
+    "writerppalmyra-vision-7b": "writer.palmyra-vision-7b",
     "writerppalmyra-x4-v1": "writer.palmyra-x4-v1",
     "writerppalmyra-x5-v1": "writer.palmyra-x5-v1",
     "x-preview-f-free-latest": "x-preview-f-free",
