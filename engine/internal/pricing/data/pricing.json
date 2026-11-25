@@ -21,7 +21,7 @@
     }
   },
   "schema": 2,
-  "updated": "2026-11-24",
+  "updated": "2026-11-25",
   "sources": [
     "https://models.dev/api.json"
   ],
@@ -9428,6 +9428,14 @@
           "out": 0.13596,
           "cache_read": 0.001442,
           "cache_write": 0.04532,
+          "source": "nano-gpt"
+        },
+        {
+          "from": "2026-11-25",
+          "in": 0.05,
+          "out": 0.16,
+          "cache_read": 0.013,
+          "cache_write": 0.05,
           "source": "nano-gpt"
         }
       ]
@@ -29931,6 +29939,14 @@
           "cache_read": 0.0042,
           "cache_write": 0.021,
           "source": "vercel"
+        },
+        {
+          "from": "2026-11-25",
+          "in": 0.06,
+          "out": 0.18,
+          "cache_read": 0.012,
+          "cache_write": 0.06,
+          "source": "deepinfra"
         }
       ]
     },
@@ -30054,6 +30070,14 @@
           "cache_read": 0.015,
           "cache_write": 0.075,
           "source": "vercel"
+        },
+        {
+          "from": "2026-11-25",
+          "in": 0.06,
+          "out": 0.18,
+          "cache_read": 0.012,
+          "cache_write": 0.06,
+          "source": "deepinfra"
         }
       ]
     },
@@ -32777,6 +32801,19 @@
         }
       ]
     },
+    "mimo-v2.6-flash-mopd": {
+      "id": "mimo-v2.6-flash-mopd",
+      "rates": [
+        {
+          "from": "2026-11-25",
+          "in": 0.15,
+          "out": 0.42,
+          "cache_read": 0.02,
+          "cache_write": 0.15,
+          "source": "kilo"
+        }
+      ]
+    },
     "mimo-v2.6-flash-rl": {
       "id": "mimo-v2.6-flash-rl",
       "rates": [
@@ -35104,6 +35141,14 @@
           "cache_read": 0.04232,
           "cache_write": 0.4232,
           "source": "aimlapi"
+        },
+        {
+          "from": "2026-11-25",
+          "in": 0.4,
+          "out": 2,
+          "cache_read": 0,
+          "cache_write": 0.4,
+          "source": "concentrate"
         }
       ]
     },
@@ -35179,6 +35224,14 @@
           "out": 2.42,
           "cache_read": 0.0484,
           "cache_write": 0.484,
+          "source": "edenai"
+        },
+        {
+          "from": "2026-11-25",
+          "in": 1.65,
+          "out": 8.25,
+          "cache_read": 0.165,
+          "cache_write": 1.65,
           "source": "edenai"
         }
       ]
@@ -37733,6 +37786,32 @@
       ],
       "first_party": true
     },
+    "nemotron3-nano-30b": {
+      "id": "nemotron3-nano-30b",
+      "rates": [
+        {
+          "from": "2026-11-25",
+          "in": 0.06,
+          "out": 0.23,
+          "cache_read": 0,
+          "cache_write": 0.06,
+          "source": "ovhcloud"
+        }
+      ]
+    },
+    "nemotron3-omni-30b": {
+      "id": "nemotron3-omni-30b",
+      "rates": [
+        {
+          "from": "2026-11-25",
+          "in": 0.19,
+          "out": 0.57,
+          "cache_read": 0,
+          "cache_write": 0.19,
+          "source": "ovhcloud"
+        }
+      ]
+    },
     "nemotron3-super": {
       "id": "nemotron3-super",
       "rates": [
@@ -38429,6 +38508,14 @@
           "cache_read": 0.15,
           "cache_write": 0.3,
           "source": "crusoe"
+        },
+        {
+          "from": "2026-11-25",
+          "in": 0.075,
+          "out": 0.4,
+          "cache_read": 0,
+          "cache_write": 0.075,
+          "source": "deepinfra"
         }
       ]
     },
@@ -38531,6 +38618,14 @@
           "cache_read": 0.12,
           "cache_write": 0.6,
           "source": "baseten"
+        },
+        {
+          "from": "2026-11-25",
+          "in": 0.5,
+          "out": 2.2,
+          "cache_read": 0.1,
+          "cache_write": 0.625,
+          "source": "deepinfra"
         }
       ]
     },
@@ -38586,6 +38681,19 @@
           "cache_read": 0.125,
           "cache_write": 0.625,
           "source": "doubleword"
+        }
+      ]
+    },
+    "nvidia-nemotron-3.5-lightning": {
+      "id": "nvidia-nemotron-3.5-lightning",
+      "rates": [
+        {
+          "from": "2026-11-25",
+          "in": 0.06,
+          "out": 0.16,
+          "cache_read": 0.03,
+          "cache_write": 0.06,
+          "source": "deepinfra"
         }
       ]
     },
@@ -39216,6 +39324,19 @@
           "cache_read": 0.035,
           "cache_write": 0.07,
           "source": "venice"
+        }
+      ]
+    },
+    "olala-v1.0-translate": {
+      "id": "olala-v1.0-translate",
+      "rates": [
+        {
+          "from": "2026-11-25",
+          "in": 0,
+          "out": 0,
+          "cache_read": 0,
+          "cache_write": 0,
+          "source": "ovhcloud"
         }
       ]
     },
@@ -42299,6 +42420,14 @@
           "out": 5.625,
           "cache_read": 0.09375,
           "cache_write": 2.34375,
+          "source": "venice"
+        },
+        {
+          "from": "2026-11-25",
+          "in": 1.875,
+          "out": 5.625,
+          "cache_read": 0.09375,
+          "cache_write": 1.875,
           "source": "venice"
         }
       ]
@@ -48123,6 +48252,19 @@
           "cache_read": 0.05,
           "cache_write": 0.25,
           "source": "requesty"
+        },
+        {
+          "from": "2026-11-25",
+          "in": 0.25,
+          "out": 2,
+          "cache_read": 0.05,
+          "cache_write": 0.25,
+          "tier_threshold": 128000,
+          "tier_in": 0.5,
+          "tier_out": 4,
+          "tier_cache_read": 0.1,
+          "tier_cache_write": 0.5,
+          "source": "deepinfra"
         }
       ]
     },
@@ -48574,6 +48716,19 @@
         }
       ]
     },
+    "solar-mini-4-5": {
+      "id": "solar-mini-4-5",
+      "rates": [
+        {
+          "from": "2026-11-25",
+          "in": 0.1,
+          "out": 0.4,
+          "cache_read": 0.01,
+          "cache_write": 0.1,
+          "source": "kilo"
+        }
+      ]
+    },
     "solar-mini4": {
       "id": "solar-mini4",
       "rates": [
@@ -48655,6 +48810,19 @@
           "cache_read": 0.015,
           "cache_write": 0.15,
           "source": "nano-gpt"
+        }
+      ]
+    },
+    "solar-pro-4-contributor": {
+      "id": "solar-pro-4-contributor",
+      "rates": [
+        {
+          "from": "2026-11-25",
+          "in": 0.3,
+          "out": 1.2,
+          "cache_read": 0.06,
+          "cache_write": 0.3,
+          "source": "kilo"
         }
       ]
     },
@@ -90973,6 +91141,19 @@
         }
       ]
     },
+    "deepinfra\u0000granite-4.2-8b": {
+      "id": "granite-4.2-8b",
+      "rates": [
+        {
+          "from": "2026-11-25",
+          "in": 0.06,
+          "out": 0.25,
+          "cache_read": 0.015,
+          "cache_write": 0.06,
+          "source": "deepinfra"
+        }
+      ]
+    },
     "deepinfra\u0000hy3": {
       "id": "hy3",
       "rates": [
@@ -91162,6 +91343,32 @@
           "out": 10,
           "cache_read": 0.2,
           "cache_write": 2,
+          "source": "deepinfra"
+        }
+      ]
+    },
+    "deepinfra\u0000ling-3.0-flash": {
+      "id": "ling-3.0-flash",
+      "rates": [
+        {
+          "from": "2026-11-25",
+          "in": 0.06,
+          "out": 0.18,
+          "cache_read": 0.012,
+          "cache_write": 0.06,
+          "source": "deepinfra"
+        }
+      ]
+    },
+    "deepinfra\u0000ling-3.0-flash-vl": {
+      "id": "ling-3.0-flash-vl",
+      "rates": [
+        {
+          "from": "2026-11-25",
+          "in": 0.06,
+          "out": 0.18,
+          "cache_read": 0.012,
+          "cache_write": 0.06,
           "source": "deepinfra"
         }
       ]
@@ -91390,6 +91597,19 @@
         }
       ]
     },
+    "deepinfra\u0000muse-glimmer-30b": {
+      "id": "muse-glimmer-30b",
+      "rates": [
+        {
+          "from": "2026-11-25",
+          "in": 0.3,
+          "out": 1.2,
+          "cache_read": 0.04,
+          "cache_write": 0.3,
+          "source": "deepinfra"
+        }
+      ]
+    },
     "deepinfra\u0000nemotron-3-nano-30b-a3b": {
       "id": "nemotron-3-nano-30b-a3b",
       "rates": [
@@ -91412,6 +91632,45 @@
           "out": 0.8,
           "cache_read": 0,
           "cache_write": 0.2,
+          "source": "deepinfra"
+        }
+      ]
+    },
+    "deepinfra\u0000nvidia-nemotron-3-super-120b-a12b": {
+      "id": "nvidia-nemotron-3-super-120b-a12b",
+      "rates": [
+        {
+          "from": "2026-11-25",
+          "in": 0.075,
+          "out": 0.4,
+          "cache_read": 0,
+          "cache_write": 0.075,
+          "source": "deepinfra"
+        }
+      ]
+    },
+    "deepinfra\u0000nvidia-nemotron-3-ultra-550b-a55b": {
+      "id": "nvidia-nemotron-3-ultra-550b-a55b",
+      "rates": [
+        {
+          "from": "2026-11-25",
+          "in": 0.5,
+          "out": 2.2,
+          "cache_read": 0.1,
+          "cache_write": 0.625,
+          "source": "deepinfra"
+        }
+      ]
+    },
+    "deepinfra\u0000nvidia-nemotron-3.5-lightning": {
+      "id": "nvidia-nemotron-3.5-lightning",
+      "rates": [
+        {
+          "from": "2026-11-25",
+          "in": 0.06,
+          "out": 0.16,
+          "cache_read": 0.03,
+          "cache_write": 0.06,
           "source": "deepinfra"
         }
       ]
@@ -91711,6 +91970,24 @@
           "out": 4.24,
           "cache_read": 0.071,
           "cache_write": 1.413,
+          "source": "deepinfra"
+        }
+      ]
+    },
+    "deepinfra\u0000seed-1.8": {
+      "id": "seed-1.8",
+      "rates": [
+        {
+          "from": "2026-11-25",
+          "in": 0.25,
+          "out": 2,
+          "cache_read": 0.05,
+          "cache_write": 0.25,
+          "tier_threshold": 128000,
+          "tier_in": 0.5,
+          "tier_out": 4,
+          "tier_cache_read": 0.1,
+          "tier_cache_write": 0.5,
           "source": "deepinfra"
         }
       ]
@@ -99166,6 +99443,14 @@
           "cache_read": 0.044,
           "cache_write": 0.44,
           "source": "edenai"
+        },
+        {
+          "from": "2026-11-25",
+          "in": 1.5,
+          "out": 7.5,
+          "cache_read": 0.15,
+          "cache_write": 1.5,
+          "source": "edenai"
         }
       ]
     },
@@ -99212,6 +99497,14 @@
           "out": 2.42,
           "cache_read": 0.0484,
           "cache_write": 0.484,
+          "source": "edenai"
+        },
+        {
+          "from": "2026-11-25",
+          "in": 1.65,
+          "out": 8.25,
+          "cache_read": 0.165,
+          "cache_write": 1.65,
           "source": "edenai"
         }
       ]
@@ -103914,6 +104207,19 @@
         }
       ]
     },
+    "fireworks\u0000hy4-flash": {
+      "id": "hy4-flash",
+      "rates": [
+        {
+          "from": "2026-11-25",
+          "in": 0.07,
+          "out": 0.281,
+          "cache_read": 0.003,
+          "cache_write": 0.07,
+          "source": "fireworks-ai"
+        }
+      ]
+    },
     "fireworks\u0000inkling": {
       "id": "inkling",
       "rates": [
@@ -104272,6 +104578,19 @@
           "out": 6,
           "cache_read": 0.25,
           "cache_write": 2,
+          "source": "fireworks-ai"
+        }
+      ]
+    },
+    "fireworks\u0000qwen4-max": {
+      "id": "qwen4-max",
+      "rates": [
+        {
+          "from": "2026-11-25",
+          "in": 1.5,
+          "out": 4.5,
+          "cache_read": 0.075,
+          "cache_write": 1.5,
           "source": "fireworks-ai"
         }
       ]
@@ -111774,6 +112093,14 @@
           "cache_read": 0,
           "cache_write": 0.27,
           "source": "huggingface"
+        },
+        {
+          "from": "2026-11-25",
+          "in": 1,
+          "out": 2.625,
+          "cache_read": 0,
+          "cache_write": 1,
+          "source": "huggingface"
         }
       ]
     },
@@ -111900,6 +112227,14 @@
           "cache_read": 0,
           "cache_write": 0.686174,
           "source": "huggingface"
+        },
+        {
+          "from": "2026-11-25",
+          "in": 0.888188,
+          "out": 1.5082,
+          "cache_read": 0,
+          "cache_write": 0.888188,
+          "source": "huggingface"
         }
       ]
     },
@@ -111962,6 +112297,14 @@
           "out": 0.1,
           "cache_read": 0,
           "cache_write": 0.04,
+          "source": "huggingface"
+        },
+        {
+          "from": "2026-11-25",
+          "in": 0.05,
+          "out": 0.3,
+          "cache_read": 0,
+          "cache_write": 0.05,
           "source": "huggingface"
         }
       ]
@@ -112392,6 +112735,19 @@
         }
       ]
     },
+    "huggingface\u0000hermes-4-405b": {
+      "id": "hermes-4-405b",
+      "rates": [
+        {
+          "from": "2026-11-25",
+          "in": 1,
+          "out": 3,
+          "cache_read": 0,
+          "cache_write": 1,
+          "source": "huggingface"
+        }
+      ]
+    },
     "huggingface\u0000hy3": {
       "id": "hy3",
       "rates": [
@@ -112422,6 +112778,14 @@
           "out": 2.501,
           "cache_read": 0,
           "cache_write": 0.834,
+          "source": "huggingface"
+        },
+        {
+          "from": "2026-11-25",
+          "in": 0.7089,
+          "out": 2.12585,
+          "cache_read": 0,
+          "cache_write": 0.7089,
           "source": "huggingface"
         }
       ]
@@ -113048,6 +113412,14 @@
           "cache_read": 0,
           "cache_write": 0.1,
           "source": "huggingface"
+        },
+        {
+          "from": "2026-11-25",
+          "in": 0.075,
+          "out": 0.3,
+          "cache_read": 0,
+          "cache_write": 0.075,
+          "source": "huggingface"
         }
       ]
     },
@@ -113233,6 +113605,14 @@
           "cache_read": 0,
           "cache_write": 0.15,
           "source": "huggingface"
+        },
+        {
+          "from": "2026-11-25",
+          "in": 0.09,
+          "out": 0.55,
+          "cache_read": 0,
+          "cache_write": 0.09,
+          "source": "huggingface"
         }
       ]
     },
@@ -113363,6 +113743,14 @@
           "out": 1.5,
           "cache_read": 0,
           "cache_write": 0.35,
+          "source": "huggingface"
+        },
+        {
+          "from": "2026-11-25",
+          "in": 0.3,
+          "out": 1,
+          "cache_read": 0,
+          "cache_write": 0.3,
           "source": "huggingface"
         }
       ]
@@ -113639,6 +114027,14 @@
           "cache_read": 0,
           "cache_write": 0.1,
           "source": "huggingface"
+        },
+        {
+          "from": "2026-11-25",
+          "in": 0.1,
+          "out": 0.9,
+          "cache_read": 0,
+          "cache_write": 0.1,
+          "source": "huggingface"
         }
       ]
     },
@@ -113680,6 +114076,19 @@
           "out": 1.35,
           "cache_read": 0,
           "cache_write": 0.04,
+          "source": "huggingface"
+        }
+      ]
+    },
+    "huggingface\u0000qwen3.8-flash-next": {
+      "id": "qwen3.8-flash-next",
+      "rates": [
+        {
+          "from": "2026-11-25",
+          "in": 0.15,
+          "out": 0.5,
+          "cache_read": 0,
+          "cache_write": 0.15,
           "source": "huggingface"
         }
       ]
@@ -124782,6 +125191,14 @@
           "cache_read": 0.035,
           "cache_write": 0.0456,
           "source": "kilo"
+        },
+        {
+          "from": "2026-11-25",
+          "in": 0.047,
+          "out": 0.3,
+          "cache_read": 0.035,
+          "cache_write": 0.047,
+          "source": "kilo"
         }
       ]
     },
@@ -124818,6 +125235,14 @@
           "out": 0.3,
           "cache_read": 0.035,
           "cache_write": 0.0456,
+          "source": "kilo"
+        },
+        {
+          "from": "2026-11-25",
+          "in": 0.047,
+          "out": 0.3,
+          "cache_read": 0.035,
+          "cache_write": 0.047,
           "source": "kilo"
         }
       ]
@@ -124966,6 +125391,14 @@
           "out": 0.2028,
           "cache_read": 0.001014,
           "cache_write": 0.0507,
+          "source": "kilo"
+        },
+        {
+          "from": "2026-11-25",
+          "in": 0.14,
+          "out": 0.42,
+          "cache_read": 0.0042,
+          "cache_write": 0.14,
           "source": "kilo"
         }
       ]
@@ -126146,6 +126579,14 @@
           "out": 0.169,
           "cache_read": 0.023,
           "cache_write": 0.047,
+          "source": "kilo"
+        },
+        {
+          "from": "2026-11-25",
+          "in": 0.045,
+          "out": 0.163,
+          "cache_read": 0.023,
+          "cache_write": 0.045,
           "source": "kilo"
         }
       ]
@@ -128857,14 +129298,6 @@
           "cache_read": 0.0085,
           "cache_write": 0.017,
           "source": "kilo"
-        },
-        {
-          "from": "2026-11-23",
-          "in": 0.0153,
-          "out": 0.0765,
-          "cache_read": 0.00765,
-          "cache_write": 0.0153,
-          "source": "kilo"
         }
       ]
     },
@@ -131386,6 +131819,19 @@
         }
       ]
     },
+    "kilo\u0000mimo-v2.6-flash-mopd": {
+      "id": "mimo-v2.6-flash-mopd",
+      "rates": [
+        {
+          "from": "2026-11-25",
+          "in": 0.15,
+          "out": 0.42,
+          "cache_read": 0.02,
+          "cache_write": 0.15,
+          "source": "kilo"
+        }
+      ]
+    },
     "kilo\u0000mimo-v2.6-pro": {
       "id": "mimo-v2.6-pro",
       "rates": [
@@ -131628,6 +132074,14 @@
           "cache_read": 0.03,
           "cache_write": 0.27,
           "source": "kilo"
+        },
+        {
+          "from": "2026-11-25",
+          "in": 0.3,
+          "out": 1.2,
+          "cache_read": 0.06,
+          "cache_write": 0.3,
+          "source": "kilo"
         }
       ]
     },
@@ -131780,6 +132234,14 @@
           "out": 0.4,
           "cache_read": 0.025,
           "cache_write": 0.1,
+          "source": "kilo"
+        },
+        {
+          "from": "2026-11-25",
+          "in": 0.075,
+          "out": 0.3,
+          "cache_read": 0.0075,
+          "cache_write": 0.075,
           "source": "kilo"
         }
       ]
@@ -134226,6 +134688,14 @@
           "cache_read": 0.025,
           "cache_write": 0.05,
           "source": "kilo"
+        },
+        {
+          "from": "2026-11-25",
+          "in": 0.1,
+          "out": 0.89,
+          "cache_read": 0.035,
+          "cache_write": 0.1,
+          "source": "kilo"
         }
       ]
     },
@@ -134815,6 +135285,19 @@
         }
       ]
     },
+    "kilo\u0000solar-mini-4-5": {
+      "id": "solar-mini-4-5",
+      "rates": [
+        {
+          "from": "2026-11-25",
+          "in": 0.1,
+          "out": 0.4,
+          "cache_read": 0.01,
+          "cache_write": 0.1,
+          "source": "kilo"
+        }
+      ]
+    },
     "kilo\u0000solar-mini4": {
       "id": "solar-mini4",
       "rates": [
@@ -134837,6 +135320,19 @@
           "out": 0.6,
           "cache_read": 0.015,
           "cache_write": 0.15,
+          "source": "kilo"
+        }
+      ]
+    },
+    "kilo\u0000solar-pro-4-contributor": {
+      "id": "solar-pro-4-contributor",
+      "rates": [
+        {
+          "from": "2026-11-25",
+          "in": 0.3,
+          "out": 1.2,
+          "cache_read": 0.06,
+          "cache_write": 0.3,
           "source": "kilo"
         }
       ]
@@ -138991,6 +139487,19 @@
         }
       ]
     },
+    "llmgateway\u0000inkling-2-mini": {
+      "id": "inkling-2-mini",
+      "rates": [
+        {
+          "from": "2026-11-25",
+          "in": 0.075,
+          "out": 0.3,
+          "cache_read": 0.015,
+          "cache_write": 0.075,
+          "source": "llmgateway"
+        }
+      ]
+    },
     "llmgateway\u0000inkling-small": {
       "id": "inkling-small",
       "rates": [
@@ -143017,6 +143526,19 @@
           "out": 4.05,
           "cache_read": 0.16,
           "cache_write": 0.95,
+          "source": "llmgateway-providers"
+        }
+      ]
+    },
+    "llmgateway-providers\u0000inkling-2-mini": {
+      "id": "inkling-2-mini",
+      "rates": [
+        {
+          "from": "2026-11-25",
+          "in": 0.075,
+          "out": 0.3,
+          "cache_read": 0.015,
+          "cache_write": 0.075,
           "source": "llmgateway-providers"
         }
       ]
@@ -155906,6 +156428,14 @@
           "cache_read": 0.001442,
           "cache_write": 0.04532,
           "source": "nano-gpt"
+        },
+        {
+          "from": "2026-11-25",
+          "in": 0.05,
+          "out": 0.16,
+          "cache_read": 0.013,
+          "cache_write": 0.05,
+          "source": "nano-gpt"
         }
       ]
     },
@@ -155958,6 +156488,14 @@
           "out": 0.13596,
           "cache_read": 0.001442,
           "cache_write": 0.04532,
+          "source": "nano-gpt"
+        },
+        {
+          "from": "2026-11-25",
+          "in": 0.05,
+          "out": 0.16,
+          "cache_read": 0.013,
+          "cache_write": 0.05,
           "source": "nano-gpt"
         }
       ]
@@ -162021,14 +162559,6 @@
           "cache_read": 0.042,
           "cache_write": 0.834,
           "source": "nano-gpt"
-        },
-        {
-          "from": "2026-11-24",
-          "in": 0.7506,
-          "out": 2.2509,
-          "cache_read": 0.0378,
-          "cache_write": 0.7506,
-          "source": "nano-gpt"
         }
       ]
     },
@@ -163846,6 +164376,19 @@
           "out": 1.5,
           "cache_read": 0.275,
           "cache_write": 0.5,
+          "source": "nano-gpt"
+        }
+      ]
+    },
+    "nano-gpt\u0000mimo-v2.6-flash-mopd": {
+      "id": "mimo-v2.6-flash-mopd",
+      "rates": [
+        {
+          "from": "2026-11-25",
+          "in": 0.1,
+          "out": 0.28,
+          "cache_read": 0.0028,
+          "cache_write": 0.1,
           "source": "nano-gpt"
         }
       ]
@@ -175791,6 +176334,14 @@
           "cache_read": 0.0325,
           "cache_write": 0.13,
           "source": "obscurify"
+        },
+        {
+          "from": "2026-11-25",
+          "in": 0.0975,
+          "out": 0.39,
+          "cache_read": 0.00975,
+          "cache_write": 0.0975,
+          "source": "obscurify"
         }
       ]
     },
@@ -184145,14 +184696,6 @@
           "cache_read": 0.01,
           "cache_write": 0.036,
           "source": "openrouter"
-        },
-        {
-          "from": "2026-11-23",
-          "in": 0.03,
-          "out": 0.2,
-          "cache_read": 0.001,
-          "cache_write": 0.03,
-          "source": "openrouter"
         }
       ]
     },
@@ -184977,6 +185520,14 @@
           "cache_read": 0.001442,
           "cache_write": 0.04532,
           "source": "openrouter"
+        },
+        {
+          "from": "2026-11-25",
+          "in": 0.047,
+          "out": 0.3,
+          "cache_read": 0.035,
+          "cache_write": 0.047,
+          "source": "openrouter"
         }
       ]
     },
@@ -185285,6 +185836,14 @@
           "out": 0.3,
           "cache_read": 0.035,
           "cache_write": 0.0456,
+          "source": "openrouter"
+        },
+        {
+          "from": "2026-11-25",
+          "in": 0.047,
+          "out": 0.3,
+          "cache_read": 0.035,
+          "cache_write": 0.047,
           "source": "openrouter"
         }
       ]
@@ -186042,6 +186601,14 @@
           "cache_read": 0.001014,
           "cache_write": 0.0507,
           "source": "openrouter"
+        },
+        {
+          "from": "2026-11-25",
+          "in": 0.14,
+          "out": 0.42,
+          "cache_read": 0.0042,
+          "cache_write": 0.14,
+          "source": "openrouter"
         }
       ]
     },
@@ -186078,14 +186645,6 @@
           "out": 0.6,
           "cache_read": 0.003,
           "cache_write": 0.15,
-          "source": "openrouter"
-        },
-        {
-          "from": "2026-11-23",
-          "in": 0.03,
-          "out": 0.2,
-          "cache_read": 0.001,
-          "cache_write": 0.03,
           "source": "openrouter"
         }
       ]
@@ -188223,6 +188782,14 @@
           "out": 0.5,
           "cache_read": 0.03,
           "cache_write": 0.15,
+          "source": "openrouter"
+        },
+        {
+          "from": "2026-11-25",
+          "in": 0.12,
+          "out": 0.38,
+          "cache_read": 0.02,
+          "cache_write": 0.12,
           "source": "openrouter"
         }
       ]
@@ -192379,6 +192946,19 @@
         }
       ]
     },
+    "openrouter\u0000mimo-v2.6-flash-mopd": {
+      "id": "mimo-v2.6-flash-mopd",
+      "rates": [
+        {
+          "from": "2026-11-25",
+          "in": 0.15,
+          "out": 0.42,
+          "cache_read": 0.02,
+          "cache_write": 0.15,
+          "source": "openrouter"
+        }
+      ]
+    },
     "openrouter\u0000mimo-v2.6-pro": {
       "id": "mimo-v2.6-pro",
       "rates": [
@@ -192576,6 +193156,14 @@
           "cache_read": 0.03,
           "cache_write": 0.27,
           "source": "openrouter"
+        },
+        {
+          "from": "2026-11-25",
+          "in": 0.3,
+          "out": 1.2,
+          "cache_read": 0.06,
+          "cache_write": 0.3,
+          "source": "openrouter"
         }
       ]
     },
@@ -192694,6 +193282,14 @@
           "out": 0.4,
           "cache_read": 0.025,
           "cache_write": 0.1,
+          "source": "openrouter"
+        },
+        {
+          "from": "2026-11-25",
+          "in": 0.075,
+          "out": 0.3,
+          "cache_read": 0.0075,
+          "cache_write": 0.075,
           "source": "openrouter"
         }
       ]
@@ -195195,6 +195791,14 @@
           "cache_read": 0.025,
           "cache_write": 0.05,
           "source": "openrouter"
+        },
+        {
+          "from": "2026-11-25",
+          "in": 0.1,
+          "out": 0.89,
+          "cache_read": 0.035,
+          "cache_write": 0.1,
+          "source": "openrouter"
         }
       ]
     },
@@ -195408,6 +196012,14 @@
           "out": 1.96,
           "cache_read": 0.059,
           "cache_write": 0.06,
+          "source": "openrouter"
+        },
+        {
+          "from": "2026-11-25",
+          "in": 0.035,
+          "out": 1.5,
+          "cache_read": 0.0175,
+          "cache_write": 0.035,
           "source": "openrouter"
         }
       ]
@@ -195811,6 +196423,19 @@
         }
       ]
     },
+    "openrouter\u0000solar-mini-4-5": {
+      "id": "solar-mini-4-5",
+      "rates": [
+        {
+          "from": "2026-11-25",
+          "in": 0.01,
+          "out": 0.04,
+          "cache_read": 0.001,
+          "cache_write": 0.01,
+          "source": "openrouter"
+        }
+      ]
+    },
     "openrouter\u0000solar-mini4": {
       "id": "solar-mini4",
       "rates": [
@@ -195833,6 +196458,19 @@
           "out": 0.6,
           "cache_read": 0.015,
           "cache_write": 0.15,
+          "source": "openrouter"
+        }
+      ]
+    },
+    "openrouter\u0000solar-pro-4-contributor": {
+      "id": "solar-pro-4-contributor",
+      "rates": [
+        {
+          "from": "2026-11-25",
+          "in": 0.09,
+          "out": 0.36,
+          "cache_read": 0.018,
+          "cache_write": 0.09,
           "source": "openrouter"
         }
       ]
@@ -199527,6 +200165,32 @@
         }
       ]
     },
+    "ovhcloud\u0000deepseek-v4.1-flash-1017": {
+      "id": "deepseek-v4.1-flash-1017",
+      "rates": [
+        {
+          "from": "2026-11-25",
+          "in": 0.31,
+          "out": 1.25,
+          "cache_read": 0,
+          "cache_write": 0.31,
+          "source": "ovhcloud"
+        }
+      ]
+    },
+    "ovhcloud\u0000gemma-4-26b-a4b": {
+      "id": "gemma-4-26b-a4b",
+      "rates": [
+        {
+          "from": "2026-11-25",
+          "in": 0.1,
+          "out": 0.41,
+          "cache_read": 0,
+          "cache_write": 0.1,
+          "source": "ovhcloud"
+        }
+      ]
+    },
     "ovhcloud\u0000gpt-oss-120b": {
       "id": "gpt-oss-120b",
       "rates": [
@@ -199549,6 +200213,19 @@
           "out": 0.18,
           "cache_read": 0,
           "cache_write": 0.05,
+          "source": "ovhcloud"
+        }
+      ]
+    },
+    "ovhcloud\u0000laguna-xs-2.1": {
+      "id": "laguna-xs-2.1",
+      "rates": [
+        {
+          "from": "2026-11-25",
+          "in": 0.06,
+          "out": 0.12,
+          "cache_read": 0,
+          "cache_write": 0.06,
           "source": "ovhcloud"
         }
       ]
@@ -199605,6 +200282,45 @@
         }
       ]
     },
+    "ovhcloud\u0000nemotron3-nano-30b": {
+      "id": "nemotron3-nano-30b",
+      "rates": [
+        {
+          "from": "2026-11-25",
+          "in": 0.06,
+          "out": 0.23,
+          "cache_read": 0,
+          "cache_write": 0.06,
+          "source": "ovhcloud"
+        }
+      ]
+    },
+    "ovhcloud\u0000nemotron3-omni-30b": {
+      "id": "nemotron3-omni-30b",
+      "rates": [
+        {
+          "from": "2026-11-25",
+          "in": 0.19,
+          "out": 0.57,
+          "cache_read": 0,
+          "cache_write": 0.19,
+          "source": "ovhcloud"
+        }
+      ]
+    },
+    "ovhcloud\u0000olala-v1.0-translate": {
+      "id": "olala-v1.0-translate",
+      "rates": [
+        {
+          "from": "2026-11-25",
+          "in": 0,
+          "out": 0,
+          "cache_read": 0,
+          "cache_write": 0,
+          "source": "ovhcloud"
+        }
+      ]
+    },
     "ovhcloud\u0000qwen2.5-vl-72b-instruct": {
       "id": "qwen2.5-vl-72b-instruct",
       "rates": [
@@ -199644,6 +200360,19 @@
         }
       ]
     },
+    "ovhcloud\u0000qwen3-vl-30b-a3b": {
+      "id": "qwen3-vl-30b-a3b",
+      "rates": [
+        {
+          "from": "2026-11-25",
+          "in": 0.15,
+          "out": 0.58,
+          "cache_read": 0,
+          "cache_write": 0.15,
+          "source": "ovhcloud"
+        }
+      ]
+    },
     "ovhcloud\u0000qwen3.5-397b-a17b": {
       "id": "qwen3.5-397b-a17b",
       "rates": [
@@ -199679,6 +200408,19 @@
           "out": 3.19,
           "cache_read": 0,
           "cache_write": 0.47,
+          "source": "ovhcloud"
+        }
+      ]
+    },
+    "ovhcloud\u0000qwen3.6-35b-a3b": {
+      "id": "qwen3.6-35b-a3b",
+      "rates": [
+        {
+          "from": "2026-11-25",
+          "in": 0.2,
+          "out": 1.33,
+          "cache_read": 0,
+          "cache_write": 0.2,
           "source": "ovhcloud"
         }
       ]
@@ -205324,6 +206066,19 @@
         }
       ]
     },
+    "prime\u0000gpt-6.1-sol-pro": {
+      "id": "gpt-6.1-sol-pro",
+      "rates": [
+        {
+          "from": "2026-11-25",
+          "in": 2,
+          "out": 10,
+          "cache_read": 0,
+          "cache_write": 2,
+          "source": "prime"
+        }
+      ]
+    },
     "prime\u0000gpt-6.2-astra": {
       "id": "gpt-6.2-astra",
       "rates": [
@@ -205614,6 +206369,19 @@
           "out": 3.2,
           "cache_read": 0.05,
           "cache_write": 0.45,
+          "source": "prime"
+        }
+      ]
+    },
+    "prime\u0000ripple-65b-preview": {
+      "id": "ripple-65b-preview",
+      "rates": [
+        {
+          "from": "2026-11-25",
+          "in": 0.1,
+          "out": 0.3,
+          "cache_read": 0.025,
+          "cache_write": 0.1,
           "source": "prime"
         }
       ]
@@ -222596,6 +223364,19 @@
         }
       ]
     },
+    "togetherai\u0000ripple-65b-preview": {
+      "id": "ripple-65b-preview",
+      "rates": [
+        {
+          "from": "2026-11-25",
+          "in": 0.2,
+          "out": 0.6,
+          "cache_read": 0.02,
+          "cache_write": 0.2,
+          "source": "togetherai"
+        }
+      ]
+    },
     "togetherai\u0000rnj-1-instruct": {
       "id": "rnj-1-instruct",
       "rates": [
@@ -226795,6 +227576,14 @@
           "out": 5.625,
           "cache_read": 0.09375,
           "cache_write": 2.34375,
+          "source": "venice"
+        },
+        {
+          "from": "2026-11-25",
+          "in": 1.875,
+          "out": 5.625,
+          "cache_read": 0.09375,
+          "cache_write": 1.875,
           "source": "venice"
         }
       ]
@@ -236057,6 +236846,14 @@
           "cache_read": 0.002,
           "cache_write": 0.13,
           "source": "wandb"
+        },
+        {
+          "from": "2026-11-25",
+          "in": 0.13,
+          "out": 0.59,
+          "cache_read": 0.002,
+          "cache_write": 0.13,
+          "source": "wandb"
         }
       ]
     },
@@ -244961,6 +245758,7 @@
     "mimo-v2-6-flash-abliterated": "mimo-v2.6-flash-abliterated",
     "mimo-v2-6-flash-free": "mimo-v2.6-flash-free",
     "mimo-v2-6-flash-latest": "mimo-v2-6-flash",
+    "mimo-v2-6-flash-mopd": "mimo-v2.6-flash-mopd",
     "mimo-v2-6-flash-rl": "mimo-v2.6-flash-rl",
     "mimo-v2-6-flash-uncensored": "mimo-v2.6-flash-uncensored",
     "mimo-v2-6-flash-uncensored:thinking": "mimo-v2.6-flash-uncensored:thinking",
@@ -244988,6 +245786,7 @@
     "mimo-v2.6-flash-abliterated-latest": "mimo-v2.6-flash-abliterated",
     "mimo-v2.6-flash-free-latest": "mimo-v2.6-flash-free",
     "mimo-v2.6-flash-latest": "mimo-v2.6-flash",
+    "mimo-v2.6-flash-mopd-latest": "mimo-v2.6-flash-mopd",
     "mimo-v2.6-flash-rl-latest": "mimo-v2.6-flash-rl",
     "mimo-v2.6-flash-uncensored-latest": "mimo-v2.6-flash-uncensored",
     "mimo-v2.6-flash-uncensored:thinking-latest": "mimo-v2.6-flash-uncensored:thinking",
@@ -245009,6 +245808,7 @@
     "mimo-v2p6-flash": "mimo-v2.6-flash",
     "mimo-v2p6-flash-abliterated": "mimo-v2.6-flash-abliterated",
     "mimo-v2p6-flash-free": "mimo-v2.6-flash-free",
+    "mimo-v2p6-flash-mopd": "mimo-v2.6-flash-mopd",
     "mimo-v2p6-flash-rl": "mimo-v2.6-flash-rl",
     "mimo-v2p6-flash-uncensored": "mimo-v2.6-flash-uncensored",
     "mimo-v2p6-flash-uncensored:thinking": "mimo-v2.6-flash-uncensored:thinking",
@@ -245439,6 +246239,8 @@
     "nemotron-nano-9b-v2-latest": "nemotron-nano-9b-v2",
     "nemotron-nano-v2-12b-latest": "nemotron-nano-v2-12b",
     "nemotron-voicechat-latest": "nemotron-voicechat",
+    "nemotron3-nano-30b-latest": "nemotron3-nano-30b",
+    "nemotron3-omni-30b-latest": "nemotron3-omni-30b",
     "nemotron3-super-latest": "nemotron3-super",
     "neosmith-intelligent-basic": "neosmith.intelligent-basic",
     "neosmith-intelligent-maestro": "neosmith.intelligent-maestro",
@@ -245491,6 +246293,7 @@
     "nvidia--llama-3-2-nv-embedqa-1b": "nvidia--llama-3.2-nv-embedqa-1b",
     "nvidia--llama-3.2-nv-embedqa-1b-latest": "nvidia--llama-3.2-nv-embedqa-1b",
     "nvidia--llama-3p2-nv-embedqa-1b": "nvidia--llama-3.2-nv-embedqa-1b",
+    "nvidia-nemotron-3-5-lightning": "nvidia-nemotron-3.5-lightning",
     "nvidia-nemotron-3-5-lightning-30b-a3b": "nvidia-nemotron-3.5-lightning-30b-a3b",
     "nvidia-nemotron-3-5-lightning-30b-a3b-bf16": "nvidia-nemotron-3.5-lightning-30b-a3b-bf16",
     "nvidia-nemotron-3-5-lightning-30b-a3b-bf16:peft:262144": "nvidia-nemotron-3.5-lightning-30b-a3b-bf16:peft:262144",
@@ -245516,11 +246319,13 @@
     "nvidia-nemotron-3.5-lightning-30b-a3b-bf16-latest": "nvidia-nemotron-3.5-lightning-30b-a3b-bf16",
     "nvidia-nemotron-3.5-lightning-30b-a3b-bf16:peft:262144-latest": "nvidia-nemotron-3.5-lightning-30b-a3b-bf16:peft:262144",
     "nvidia-nemotron-3.5-lightning-30b-a3b-latest": "nvidia-nemotron-3.5-lightning-30b-a3b",
+    "nvidia-nemotron-3.5-lightning-latest": "nvidia-nemotron-3.5-lightning",
     "nvidia-nemotron-3.5-super-vl-120b-a12b-bf16-latest": "nvidia-nemotron-3.5-super-vl-120b-a12b-bf16",
     "nvidia-nemotron-3.5-super-vl-120b-a12b-bf16:peft:262144-latest": "nvidia-nemotron-3.5-super-vl-120b-a12b-bf16:peft:262144",
     "nvidia-nemotron-3.5-super-vl-120b-a12b-latest": "nvidia-nemotron-3.5-super-vl-120b-a12b",
     "nvidia-nemotron-3.5-super-vl-120b-a12b-nvfp4-latest": "nvidia-nemotron-3.5-super-vl-120b-a12b-nvfp4",
     "nvidia-nemotron-3.5-super-vl-latest": "nvidia-nemotron-3.5-super-vl",
+    "nvidia-nemotron-3p5-lightning": "nvidia-nemotron-3.5-lightning",
     "nvidia-nemotron-3p5-lightning-30b-a3b": "nvidia-nemotron-3.5-lightning-30b-a3b",
     "nvidia-nemotron-3p5-lightning-30b-a3b-bf16": "nvidia-nemotron-3.5-lightning-30b-a3b-bf16",
     "nvidia-nemotron-3p5-lightning-30b-a3b-bf16:peft:262144": "nvidia-nemotron-3.5-lightning-30b-a3b-bf16:peft:262144",
@@ -245573,6 +246378,9 @@
     "olafangensan-glm-4-7-flash-heretic": "olafangensan-glm-4.7-flash-heretic",
     "olafangensan-glm-4.7-flash-heretic-latest": "olafangensan-glm-4.7-flash-heretic",
     "olafangensan-glm-4p7-flash-heretic": "olafangensan-glm-4.7-flash-heretic",
+    "olala-v1-0-translate": "olala-v1.0-translate",
+    "olala-v1.0-translate-latest": "olala-v1.0-translate",
+    "olala-v1p0-translate": "olala-v1.0-translate",
     "olmocr-2-7b-latest": "olmocr-2-7b",
     "omen-alpha-latest": "omen-alpha",
     "open-glm-5-3-latest": "open-glm-5-3",
@@ -246507,11 +247315,13 @@
     "solar-10-7b-instruct": "solar-10.7b-instruct",
     "solar-10.7b-instruct-latest": "solar-10.7b-instruct",
     "solar-10p7b-instruct": "solar-10.7b-instruct",
+    "solar-mini-4-5-latest": "solar-mini-4-5",
     "solar-mini-latest": "solar-mini",
     "solar-mini4-latest": "solar-mini4",
     "solar-mini4:free-latest": "solar-mini4:free",
     "solar-mini4:thinking-latest": "solar-mini4:thinking",
     "solar-pro-3-latest": "solar-pro-3",
+    "solar-pro-4-contributor-latest": "solar-pro-4-contributor",
     "solar-pro2-latest": "solar-pro2",
     "solar-pro3-latest": "solar-pro3",
     "solar-pro4-latest": "solar-pro4",
