@@ -85,8 +85,10 @@ func cursorSDKStorePaths(ctx context.Context, root string) ([]string, error) {
 	return paths, scanErr
 }
 
+// SDK 1.5 names the state dir sha256(workspaceRef) and renames older md5 dirs
+// into place on first use, so both lengths can exist on one machine.
 func cursorSDKStateHash(name string) bool {
-	if len(name) != 32 {
+	if len(name) != 32 && len(name) != 64 {
 		return false
 	}
 	for _, r := range name {
@@ -137,6 +139,11 @@ func scanCursorAgentSDKStore(ctx context.Context, path string, emit func(model.T
 			continue
 		}
 		if !rawUsage.Valid {
+			// the SDK leaves usage unset when a run ends before any turn
+			// reports it, which is normal for errored and cancelled runs
+			if status != "FINISHED" {
+				continue
+			}
 			scanErr = errors.Join(scanErr, fmt.Errorf("run %q: terminal SDK row has no usage_json", runID))
 			continue
 		}
@@ -149,11 +156,14 @@ func scanCursorAgentSDKStore(ctx context.Context, path string, emit func(model.T
 			continue
 		}
 
+		// the run row keeps only the selected model. Subagents in observed
+		// stores ran on the same model, so the run is priced at it as an
+		// aggregate, which uses base rates rather than a context tier.
 		id := modelID.String
-		reason := "Cursor SDK stores only the run-selected model; usage may include subagent calls with different models"
+		reason := ""
 		if id == "" {
 			id = "unknown"
-			reason = appendCursorAgentReason(reason, "Cursor SDK run has no model selection")
+			reason = "Cursor SDK run has no model selection"
 		}
 		rawTimestamp := cursorSDKTerminalTimestamp(status, updated, finished, cancelled, expired)
 		timestamp := parseTime(rawTimestamp)
@@ -185,22 +195,33 @@ func parseCursorSDKStoredUsage(raw string) (model.Usage, error) {
 	if stored.Reasoning != nil {
 		reasoning = *stored.Reasoning
 	}
-	for _, count := range []int64{*stored.Input, *stored.Output, *stored.Read, *stored.Write, *stored.Total, reasoning} {
+	return cursorSDKUsage(*stored.Input, *stored.Output, *stored.Read, *stored.Write, *stored.Total, reasoning)
+}
+
+// cursorSDKUsage reconciles one SDK TokenUsage into disjoint buckets.
+func cursorSDKUsage(input, output, read, write, total, reasoning int64) (model.Usage, error) {
+	for _, count := range []int64{input, output, read, write, total, reasoning} {
 		if count < 0 {
-			return model.Usage{}, errors.New("usage_json contains a negative token count")
+			return model.Usage{}, errors.New("usage contains a negative token count")
 		}
 	}
 	usage, ok := (model.Usage{
-		Input: *stored.Input, Output: *stored.Output,
-		CacheRead: *stored.Read, CacheWrite: *stored.Write, Reasoning: reasoning,
+		Input: input, Output: output, CacheRead: read, CacheWrite: write, Reasoning: reasoning,
 	}).SanitizeAggregate()
 	if !ok {
-		return model.Usage{}, errors.New("usage_json token count exceeds aggregate bound")
+		return model.Usage{}, errors.New("usage token count exceeds aggregate bound")
 	}
-	if usage.Total() != *stored.Total {
-		return model.Usage{}, fmt.Errorf("totalTokens %d does not equal the four disjoint token buckets %d", *stored.Total, usage.Total())
+	// SDK 1.0 wrote totalTokens as the sum of four disjoint buckets. From 1.4
+	// the runtime writes input+output and inputTokens includes the cached
+	// prompt, so the cache buckets come out of input to keep them disjoint.
+	switch cached := read + write; {
+	case usage.Total() == total:
+	case cached > 0 && input+output == total && input >= cached:
+		usage.Input -= cached
+	default:
+		return model.Usage{}, fmt.Errorf("totalTokens %d matches neither disjoint buckets %d nor gross input plus output %d", total, usage.Total(), input+output)
 	}
-	if reasoning > *stored.Output {
+	if reasoning > output {
 		return model.Usage{}, errors.New("reasoningTokens exceeds outputTokens")
 	}
 	return usage, nil

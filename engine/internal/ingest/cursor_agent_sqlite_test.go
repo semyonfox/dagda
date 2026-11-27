@@ -66,7 +66,7 @@ func insertCursorSDKTestRun(t *testing.T, db *sql.DB, runID, status, modelID, us
 func TestCursorSDKDiscoversTerminalUsageAndDeduplicatesCopiedStores(t *testing.T) {
 	projects := t.TempDir()
 	first, firstPath := newCursorSDKTestDB(t, projects, "[workspace]", "0123456789abcdef0123456789abcdef")
-	copyDB, copyPath := newCursorSDKTestDB(t, projects, "a-workspace", "fedcba9876543210fedcba9876543210")
+	copyDB, copyPath := newCursorSDKTestDB(t, projects, "a-workspace", strings.Repeat("fedcba9876543210", 4))
 	usage := `{"inputTokens":100,"outputTokens":50,"cacheReadTokens":700,"cacheWriteTokens":200,"totalTokens":1050,"reasoningTokens":20}`
 	for _, db := range []*sql.DB{first, copyDB} {
 		insertCursorSDKTestRun(t, db, "run-1", "FINISHED", "composer-2.5", usage, "2026-09-20T11:59:00Z", "2026-09-20T12:00:00Z")
@@ -93,8 +93,8 @@ func TestCursorSDKDiscoversTerminalUsageAndDeduplicatesCopiedStores(t *testing.T
 	if turn.Usage != (model.Usage{Input: 100, Output: 50, CacheRead: 700, CacheWrite: 200, Reasoning: 20}) {
 		t.Fatalf("disjoint cache buckets were changed: %+v", turn.Usage)
 	}
-	if turn.Model != "composer-2.5" || !turn.Aggregate || !strings.Contains(turn.UnpricedReason, "subagent") {
-		t.Fatalf("model attribution limitation missing: %+v", turn)
+	if turn.Model != "composer-2.5" || !turn.Aggregate || turn.UnpricedReason != "" {
+		t.Fatalf("run should be a priceable aggregate at its selected model: %+v", turn)
 	}
 	wantTime := time.Date(2026, 9, 20, 12, 0, 0, 0, time.UTC)
 	if !turn.Timestamp.Equal(wantTime) {
@@ -111,6 +111,9 @@ func TestCursorSDKRejectsInvalidUsageAndKeepsUndatedTerminalRuns(t *testing.T) {
 	insertCursorSDKTestRun(t, db, "missing-bucket", "FINISHED", "m", `{"inputTokens":1,"outputTokens":2,"cacheReadTokens":3,"totalTokens":6}`, "2026-09-20T12:00:00Z", "")
 	insertCursorSDKTestRun(t, db, "missing-usage", "FINISHED", "m", "", "2026-09-20T12:00:00Z", "")
 	insertCursorSDKTestRun(t, db, "bad-reasoning", "FINISHED", "m", `{"inputTokens":1,"outputTokens":2,"cacheReadTokens":3,"cacheWriteTokens":4,"totalTokens":10,"reasoningTokens":3}`, "2026-09-20T12:00:00Z", "")
+	insertCursorSDKTestRun(t, db, "neither-total", "FINISHED", "m", `{"inputTokens":10,"outputTokens":2,"cacheReadTokens":3,"cacheWriteTokens":0,"totalTokens":13}`, "2026-09-20T12:00:00Z", "")
+	insertCursorSDKTestRun(t, db, "cancelled-before-usage", "CANCELLED", "m", "", "2026-09-20T12:00:00Z", "")
+	insertCursorSDKTestRun(t, db, "errored-before-usage", "ERROR", "m", "", "2026-09-20T12:00:00Z", "")
 	insertCursorSDKTestRun(t, db, "oversized", "FINISHED", "m", `{"inputTokens":600000000000000000,"outputTokens":0,"cacheReadTokens":0,"cacheWriteTokens":0,"totalTokens":600000000000000000}`, "2026-09-20T12:00:00Z", "")
 
 	var turns []model.Turn
@@ -118,9 +121,15 @@ func TestCursorSDKRejectsInvalidUsageAndKeepsUndatedTerminalRuns(t *testing.T) {
 	if err == nil {
 		t.Fatal("invalid rows did not produce diagnostics")
 	}
-	for _, runID := range []string{"bad-time", "missing-bucket", "missing-usage", "bad-reasoning", "oversized"} {
+	for _, runID := range []string{"bad-time", "missing-bucket", "missing-usage", "bad-reasoning", "neither-total", "oversized"} {
 		if !strings.Contains(err.Error(), runID) {
 			t.Fatalf("diagnostic %q missing run %q", err, runID)
+		}
+	}
+	// the SDK records no usage for runs that end before a turn reports it
+	for _, runID := range []string{"cancelled-before-usage", "errored-before-usage"} {
+		if strings.Contains(err.Error(), runID) {
+			t.Fatalf("unmeasured failed run %q reported as invalid: %v", runID, err)
 		}
 	}
 	if len(turns) != 2 {
@@ -170,5 +179,31 @@ func TestCursorSDKDefaultDiscoveryAndSavedResultOverride(t *testing.T) {
 	turns := scan(t, saved)
 	if len(turns) != 1 || turns[0].Key != identityKey("cursor-agent", "saved-run") {
 		t.Fatalf("explicit saved import did not override native discovery: %+v", turns)
+	}
+}
+
+// SDK 1.4+ writes totalTokens as input+output with the cached prompt inside
+// inputTokens. Expected buckets: 1000-600-100=300 fresh input, 600 read, 100
+// written, 50 output, which still sums to the stored 1050.
+func TestCursorSDKSplitsGrossInputFromNewerSDKs(t *testing.T) {
+	projects := t.TempDir()
+	db, _ := newCursorSDKTestDB(t, projects, "workspace", strings.Repeat("0123456789abcdef", 4))
+	insertCursorSDKTestRun(t, db, "run-gross", "FINISHED", "grok-4.7", `{"inputTokens":1000,"outputTokens":50,"cacheReadTokens":600,"cacheWriteTokens":100,"totalTokens":1050,"reasoningTokens":10}`, "2026-11-27T10:00:00Z", "2026-11-27T10:00:00Z")
+	insertCursorSDKTestRun(t, db, "run-uncached", "FINISHED", "grok-4.7", `{"inputTokens":40,"outputTokens":5,"cacheReadTokens":0,"cacheWriteTokens":0,"totalTokens":45}`, "2026-11-27T11:00:00Z", "2026-11-27T11:00:00Z")
+	insertCursorSDKTestRun(t, db, "run-short", "FINISHED", "grok-4.7", `{"inputTokens":500,"outputTokens":50,"cacheReadTokens":600,"cacheWriteTokens":0,"totalTokens":550}`, "2026-11-27T12:00:00Z", "2026-11-27T12:00:00Z")
+
+	var turns []model.Turn
+	err := newCursorAgentSDKAt(projects).Scan(context.Background(), func(turn model.Turn) { turns = append(turns, turn) })
+	if err == nil || !strings.Contains(err.Error(), "run-short") {
+		t.Fatalf("gross input smaller than its cache buckets was accepted: %v", err)
+	}
+	if len(turns) != 2 {
+		t.Fatalf("turns=%d want=2: %+v", len(turns), turns)
+	}
+	if turns[0].Usage != (model.Usage{Input: 300, Output: 50, CacheRead: 600, CacheWrite: 100, Reasoning: 10}) || turns[0].Usage.Total() != 1050 {
+		t.Fatalf("gross input not split into disjoint buckets: %+v", turns[0].Usage)
+	}
+	if turns[1].Usage != (model.Usage{Input: 40, Output: 5}) {
+		t.Fatalf("uncached run changed: %+v", turns[1].Usage)
 	}
 }

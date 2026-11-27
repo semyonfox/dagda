@@ -91,7 +91,7 @@ var providers = []providerEntry{
 	scannerProvider(model.Agent("quickdesk"), NewQuickdesk, "Legacy local EMF metrics; unpriced; no current cloud history", providerLocal),
 	{agent: model.AgentAntigravity, newScanner: func() Scanner { return NewAntigravity() }, coverage: "Native CLI/IDE SQLite invocation counters; optional DAGDA_ANTIGRAVITY_DIR stream-json replacement", status: providerLocal, statusFor: importedAntigravity},
 	scannerProvider(model.Agent("vercel-gateway"), NewVercelGateway, "DAGDA_VERCEL_REPORT: single report snapshot; unpriced; may overlap native logs", providerImport),
-	{agent: model.Agent("cursor-agent"), newScanner: func() Scanner { return NewCursorAgent() }, coverage: "Automatic local SDK store discovery; optional DAGDA_CURSOR_AGENT_DIR saved results; no historical CLI reconstruction", status: providerLocal, statusFor: importedCursorAgent},
+	{agent: model.Agent("cursor-agent"), newScanner: func() Scanner { return NewCursorAgent() }, coverage: "Local SDK runs (T3 Code and other SDK hosts) priced at the run model; optional DAGDA_CURSOR_AGENT_DIR saved results; CLI and ACP transcripts carry no usage", status: providerLocal, statusFor: importedCursorAgent},
 	scannerProvider(model.AgentQwen, NewQwen, "", providerLocal),
 	scannerProvider(model.Agent("kimi"), NewKimi, "", providerLocal),
 	scannerProvider(model.Agent("kimicode"), NewKimiCode, "", providerLocal),

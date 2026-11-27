@@ -56,6 +56,7 @@ func TestCursorCSVThroughCLI(t *testing.T) {
 }
 
 func TestCLIRejectsOverlappingCursorImports(t *testing.T) {
+	t.Setenv("DAGDA_CURSOR_CSV", filepath.Join(t.TempDir(), "usage.csv"))
 	for _, args := range [][]string{
 		{"daily", "--agent", "cursor,cursor-agent", "--json"},
 		{"summary", "--agent", "CURSOR-AGENT", "--agent", "Cursor"},
@@ -64,6 +65,23 @@ func TestCLIRejectsOverlappingCursorImports(t *testing.T) {
 		if code != 2 || stdout != "" || !strings.Contains(stderr, "select --agent cursor or --agent cursor-agent separately") {
 			t.Fatalf("overlapping imports accepted: exit=%d stdout=%q stderr=%q", code, stdout, stderr)
 		}
+	}
+}
+
+// The IDE database and SDK stores use different id spaces and never hold the
+// same run, so they can be combined unless the dashboard CSV is configured.
+func TestCLICombinesCursorIDEAndSDKWithoutCSV(t *testing.T) {
+	root := t.TempDir()
+	for _, name := range []string{"HOME", "USERPROFILE", "XDG_CACHE_HOME", "XDG_CONFIG_HOME", "LOCALAPPDATA", "APPDATA", "T3CODE_HOME"} {
+		t.Setenv(name, root)
+	}
+	t.Setenv("DAGDA_OFFLINE", "1")
+	t.Setenv("DAGDA_CURSOR_CSV", "")
+	t.Setenv("DAGDA_PRICING_FILE", filepath.Join(root, "missing-pricing.json"))
+	t.Setenv("DAGDA_PLANS_FILE", filepath.Join(root, "missing-plans.json"))
+	code, _, stderr := runCapturedCLI(t, "daily", "--agent", "cursor,cursor-agent", "--json")
+	if code == 2 {
+		t.Fatalf("combined Cursor sources rejected without a CSV: %s", stderr)
 	}
 }
 

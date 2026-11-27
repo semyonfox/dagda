@@ -84,8 +84,8 @@ func parseReportOptions(cmd string, args []string) (reportOptions, error) {
 		cursorIDE = cursorIDE || strings.EqualFold(agent, "cursor")
 		cursorSDK = cursorSDK || strings.EqualFold(agent, "cursor-agent")
 	}
-	if cursorIDE && cursorSDK {
-		return opts, fmt.Errorf("cursor history and SDK results may contain the same usage without shared request IDs; select --agent cursor or --agent cursor-agent separately")
+	if cursorIDE && cursorSDK && ingest.CursorCSVConfigured() {
+		return opts, fmt.Errorf("the Cursor CSV export and SDK results may contain the same usage without shared request IDs; select --agent cursor or --agent cursor-agent separately")
 	}
 	opts.filter = report.Filter{
 		From: *since, To: *until,
