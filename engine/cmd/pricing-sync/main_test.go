@@ -35,6 +35,25 @@ func TestMissingOutputIsNotFree(t *testing.T) {
 	}
 }
 
+func TestOmittedAnthropicTierCacheReadFollowsInput(t *testing.T) {
+	in, out, cr := 3.0, 15.0, 0.3
+	ti, to, tw := 6.0, 22.5, 7.5
+	var tier mdTier
+	tier.Input, tier.Output, tier.CacheWrite = &ti, &to, &tw
+	tier.Tier.Type, tier.Tier.Size = "context", 200_000
+	cost := mdCost{Input: &in, Output: &out, CacheRead: &cr, Tiers: []mdTier{tier}}
+	when := pricing.MustParseDate("2026-10-22")
+
+	claude, ok := toRate(cost, "claude-sonnet-4-6-thinking", "302ai", when)
+	if !ok || claude.TierCacheRead != 0.6 {
+		t.Fatalf("claude tier cache read = %v ok=%v, want 0.6", claude.TierCacheRead, ok)
+	}
+	other, ok := toRate(cost, "grok-4-fast-non-reasoning", "edenai", when)
+	if !ok || other.TierCacheRead != 0 {
+		t.Fatalf("non-claude tier cache read = %v ok=%v, want omitted", other.TierCacheRead, ok)
+	}
+}
+
 func TestPaidToZeroRequiresReview(t *testing.T) {
 	date := pricing.MustParseDate("2026-09-07")
 	previous := &dataset{Models: map[string]*pricing.Model{"test": {ID: "test", Rates: []pricing.Rate{{From: date, In: 1, Out: 2}}}}}

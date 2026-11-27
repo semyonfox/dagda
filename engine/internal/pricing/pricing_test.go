@@ -98,6 +98,28 @@ func TestContextTierApplies(t *testing.T) {
 	}
 }
 
+// A shipped Claude card can publish the long-context input and cache write
+// and leave cache read blank. Blank is not free, and on a Claude card it
+// follows the same multiplier as the tier input.
+func TestOmittedTierCacheReadIsNotFree(t *testing.T) {
+	claude := Rate{
+		In: 3, Out: 15, CacheRead: 0.3, CacheWrite: 3.75, CacheWrite1h: 6,
+		TierThreshold: 200_000, TierIn: 6, TierOut: 22.5, TierCacheWrite: 7.5,
+	}
+	_, _, cr, cw := claude.ForContext(300_000)
+	if cr != 0.6 || cw != 7.5 {
+		t.Fatalf("claude long-context cache = %v/%v, want 0.6/7.5", cr, cw)
+	}
+	other := Rate{
+		In: 0.2, Out: 0.5, CacheRead: 0.05, CacheWrite: 0.2,
+		TierThreshold: 128_000, TierIn: 0.4, TierOut: 1, TierCacheWrite: 0.4,
+	}
+	_, _, cr, cw = other.ForContext(200_000)
+	if cr != 0.05 || cw != 0.4 {
+		t.Fatalf("non-claude omitted cache read = %v/%v, want base 0.05 and published write 0.4", cr, cw)
+	}
+}
+
 // An unknown model must resolve to nothing. The old table fell back to a
 // substring scan and then a $2/$10 default, which billed a free model $380.
 func TestUnknownModelIsUnpricedNotGuessed(t *testing.T) {
