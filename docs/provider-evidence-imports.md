@@ -51,14 +51,15 @@ are skipped quietly. A finished run without usage is still reported.
 The persisted `model` is the run's selected model. Subagent tool calls in the
 recorded stores used the same model as their parent run, so each run is priced
 at its selected model as an aggregate, at base rates with no long-context tier.
-A run with no model stays unpriced. Local stores contain no billed cost. Dagda
+A run with no model, or a routed `auto` or `default` selection whose real model
+the store never records, stays unpriced. Local stores contain no billed cost. Dagda
 does not call the authenticated SDK usage endpoint, read credentials or query
 Cursor's backend.
 
 The SDK store is part of default reports. The IDE database cannot hold the same
 runs: SDK agents and runs use `agent-<uuid>` and `run-<uuid>` ids from a separate
 in-process runtime, while IDE composers use plain UUIDs in `state.vscdb`. The
-dashboard CSV does bill SDK runs, so while `DAGDA_CURSOR_CSV` is configured the
+dashboard CSV does bill SDK runs, so while `DAGDA_CURSOR_CSV` points at a file the
 SDK source needs `--agent cursor-agent`, and combining it with `--agent cursor`
 is rejected.
 

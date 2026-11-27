@@ -45,7 +45,12 @@ func (*CursorAgent) Agent() model.Agent { return model.Agent("cursor-agent") }
 // separate local runtime.
 func (*CursorAgent) ExplicitOnly() bool { return CursorCSVConfigured() }
 
-func CursorCSVConfigured() bool { return os.Getenv("DAGDA_CURSOR_CSV") != "" }
+// CursorCSVConfigured needs the file to exist, so a stale variable does not
+// silently drop SDK runs from default reports.
+func CursorCSVConfigured() bool {
+	path := os.Getenv("DAGDA_CURSOR_CSV")
+	return path != "" && fileExists(path)
+}
 func (c *CursorAgent) Roots() []string {
 	if c.root != "" {
 		if existingDir(c.root) != "" {
@@ -134,12 +139,7 @@ func (c *CursorAgent) scanSavedRunResults(ctx context.Context, emit func(model.T
 		if u.IsZero() {
 			return nil
 		}
-		id := run.Model.ID
-		reason := ""
-		if id == "" {
-			id = "unknown"
-			reason = "Cursor SDK result has no resolved model"
-		}
+		id, reason := cursorSDKModel(run.Model.ID)
 		var ts time.Time
 		if run.Created > 0 {
 			ts = time.UnixMilli(run.Created)

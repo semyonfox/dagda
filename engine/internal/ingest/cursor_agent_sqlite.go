@@ -159,12 +159,7 @@ func scanCursorAgentSDKStore(ctx context.Context, path string, emit func(model.T
 		// the run row keeps only the selected model. Subagents in observed
 		// stores ran on the same model, so the run is priced at it as an
 		// aggregate, which uses base rates rather than a context tier.
-		id := modelID.String
-		reason := ""
-		if id == "" {
-			id = "unknown"
-			reason = "Cursor SDK run has no model selection"
-		}
+		id, reason := cursorSDKModel(modelID.String)
 		rawTimestamp := cursorSDKTerminalTimestamp(status, updated, finished, cancelled, expired)
 		timestamp := parseTime(rawTimestamp)
 		if timestamp.IsZero() {
@@ -211,9 +206,10 @@ func cursorSDKUsage(input, output, read, write, total, reasoning int64) (model.U
 	if !ok {
 		return model.Usage{}, errors.New("usage token count exceeds aggregate bound")
 	}
-	// SDK 1.0 wrote totalTokens as the sum of four disjoint buckets. From 1.4
-	// the runtime writes input+output and inputTokens includes the cached
-	// prompt, so the cache buckets come out of input to keep them disjoint.
+	// SDK 1.0.38 toTokenUsage wrote totalTokens as the sum of four disjoint
+	// buckets. In 1.4.2 and 1.5.0 it writes input+output and inputTokens
+	// includes the cached prompt, so the cache buckets come out of input to
+	// keep them disjoint. The store has no SDK version column to gate on.
 	switch cached := read + write; {
 	case usage.Total() == total:
 	case cached > 0 && input+output == total && input >= cached:
@@ -225,6 +221,18 @@ func cursorSDKUsage(input, output, read, write, total, reasoning int64) (model.U
 		return model.Usage{}, errors.New("reasoningTokens exceeds outputTokens")
 	}
 	return usage, nil
+}
+
+// cursorSDKModel keeps router selections unpriced. "auto" hands the run to a
+// model the store never records, and pricing.json's "auto" is Morph's card.
+func cursorSDKModel(id string) (string, string) {
+	switch strings.ToLower(strings.TrimSpace(id)) {
+	case "":
+		return "unknown", "Cursor SDK run has no model selection"
+	case "auto", "default":
+		return id, "Cursor SDK run used model routing; the routed model is not recorded"
+	}
+	return id, ""
 }
 
 func cursorSDKTerminalTimestamp(status, updated string, finished, cancelled, expired sql.NullString) string {

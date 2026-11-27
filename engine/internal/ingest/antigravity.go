@@ -59,12 +59,18 @@ func NewAntigravity() *Antigravity {
 		filepath.Join(home, ".gemini", "antigravity-backup"),
 		filepath.Join(home, ".config", "antigravity"),
 	}
-	candidates = append(candidates, t3AntigravityProfiles(home)...)
 	for _, root := range candidates {
 		if conversations := existingDir(filepath.Join(root, "conversations")); conversations != "" {
 			roots = append(roots, conversations)
 		} else if direct := existingDir(root); direct != "" {
 			roots = append(roots, direct)
+		}
+	}
+	// a T3 profile home also holds auth tokens and caches, so only its
+	// conversations dir is a root
+	for _, profile := range t3AntigravityProfiles(home) {
+		if conversations := existingDir(filepath.Join(profile, "conversations")); conversations != "" {
+			roots = append(roots, conversations)
 		}
 	}
 	return &Antigravity{roots: roots}

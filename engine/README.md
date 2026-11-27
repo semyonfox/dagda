@@ -178,7 +178,8 @@ is where T3 Code and other `@cursor/sdk` hosts record headless runs:
 
 This reads SDK runs, not ordinary Cursor CLI or ACP transcripts, which record
 no token counts. Each terminal run gives measured token buckets and is priced
-at its selected model as an aggregate, at base rates. SDK 1.4 and later write
+at its selected model as an aggregate, at base rates. Routed `auto` runs stay
+unpriced because the store does not record the model they ran on. SDK 1.4 and later write
 gross input that includes cached tokens, and the reader splits it back into
 disjoint buckets. Saved SDK results remain available through
 `DAGDA_CURSOR_AGENT_DIR`.

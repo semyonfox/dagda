@@ -26,7 +26,12 @@ func TestCursorSDKResultsReconcileAndDeduplicate(t *testing.T) {
 		t.Fatal("SDK runs should be in default reports, gateway snapshots should not")
 	}
 	// the dashboard CSV bills SDK runs too
-	t.Setenv("DAGDA_CURSOR_CSV", filepath.Join(root, "usage.csv"))
+	csv := filepath.Join(root, "usage.csv")
+	t.Setenv("DAGDA_CURSOR_CSV", csv)
+	if !Selected(&CursorAgent{}, nil) {
+		t.Fatal("a missing CSV must not hide SDK runs")
+	}
+	writeFile(t, csv, "Date,Model\n")
 	if Selected(&CursorAgent{}, nil) || !Selected(&CursorAgent{}, []string{"cursor-agent"}) {
 		t.Fatal("SDK runs must require selection while a Cursor CSV is configured")
 	}

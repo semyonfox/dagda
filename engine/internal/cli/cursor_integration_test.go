@@ -56,7 +56,11 @@ func TestCursorCSVThroughCLI(t *testing.T) {
 }
 
 func TestCLIRejectsOverlappingCursorImports(t *testing.T) {
-	t.Setenv("DAGDA_CURSOR_CSV", filepath.Join(t.TempDir(), "usage.csv"))
+	csv := filepath.Join(t.TempDir(), "usage.csv")
+	if err := os.WriteFile(csv, []byte("Date,Model\n"), 0o600); err != nil {
+		t.Fatal(err)
+	}
+	t.Setenv("DAGDA_CURSOR_CSV", csv)
 	for _, args := range [][]string{
 		{"daily", "--agent", "cursor,cursor-agent", "--json"},
 		{"summary", "--agent", "CURSOR-AGENT", "--agent", "Cursor"},
@@ -76,7 +80,9 @@ func TestCLICombinesCursorIDEAndSDKWithoutCSV(t *testing.T) {
 		t.Setenv(name, root)
 	}
 	t.Setenv("DAGDA_OFFLINE", "1")
-	t.Setenv("DAGDA_CURSOR_CSV", "")
+	for _, name := range []string{"DAGDA_CURSOR_CSV", "DAGDA_CURSOR_DB", "DAGDA_CURSOR_AGENT_DIR"} {
+		t.Setenv(name, "")
+	}
 	t.Setenv("DAGDA_PRICING_FILE", filepath.Join(root, "missing-pricing.json"))
 	t.Setenv("DAGDA_PLANS_FILE", filepath.Join(root, "missing-plans.json"))
 	code, _, stderr := runCapturedCLI(t, "daily", "--agent", "cursor,cursor-agent", "--json")

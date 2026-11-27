@@ -3,6 +3,7 @@ package ingest
 import (
 	"context"
 	"database/sql"
+	"math"
 	"os"
 	"path/filepath"
 	"slices"
@@ -10,7 +11,9 @@ import (
 	"testing"
 	"time"
 
+	"github.com/semyonfox/dagda/engine/internal/cost"
 	"github.com/semyonfox/dagda/engine/internal/model"
+	"github.com/semyonfox/dagda/engine/internal/pricing"
 )
 
 const cursorSDKTestSchema = `
@@ -190,6 +193,7 @@ func TestCursorSDKSplitsGrossInputFromNewerSDKs(t *testing.T) {
 	db, _ := newCursorSDKTestDB(t, projects, "workspace", strings.Repeat("0123456789abcdef", 4))
 	insertCursorSDKTestRun(t, db, "run-gross", "FINISHED", "grok-4.7", `{"inputTokens":1000,"outputTokens":50,"cacheReadTokens":600,"cacheWriteTokens":100,"totalTokens":1050,"reasoningTokens":10}`, "2026-11-27T10:00:00Z", "2026-11-27T10:00:00Z")
 	insertCursorSDKTestRun(t, db, "run-uncached", "FINISHED", "grok-4.7", `{"inputTokens":40,"outputTokens":5,"cacheReadTokens":0,"cacheWriteTokens":0,"totalTokens":45}`, "2026-11-27T11:00:00Z", "2026-11-27T11:00:00Z")
+	insertCursorSDKTestRun(t, db, "run-auto", "FINISHED", "auto", `{"inputTokens":40,"outputTokens":5,"cacheReadTokens":0,"cacheWriteTokens":0,"totalTokens":45}`, "2026-11-27T13:00:00Z", "2026-11-27T13:00:00Z")
 	insertCursorSDKTestRun(t, db, "run-short", "FINISHED", "grok-4.7", `{"inputTokens":500,"outputTokens":50,"cacheReadTokens":600,"cacheWriteTokens":0,"totalTokens":550}`, "2026-11-27T12:00:00Z", "2026-11-27T12:00:00Z")
 
 	var turns []model.Turn
@@ -197,13 +201,34 @@ func TestCursorSDKSplitsGrossInputFromNewerSDKs(t *testing.T) {
 	if err == nil || !strings.Contains(err.Error(), "run-short") {
 		t.Fatalf("gross input smaller than its cache buckets was accepted: %v", err)
 	}
-	if len(turns) != 2 {
-		t.Fatalf("turns=%d want=2: %+v", len(turns), turns)
+	if len(turns) != 3 {
+		t.Fatalf("turns=%d want=3: %+v", len(turns), turns)
 	}
-	if turns[0].Usage != (model.Usage{Input: 300, Output: 50, CacheRead: 600, CacheWrite: 100, Reasoning: 10}) || turns[0].Usage.Total() != 1050 {
-		t.Fatalf("gross input not split into disjoint buckets: %+v", turns[0].Usage)
+	byRun := map[string]model.Turn{}
+	for _, turn := range turns {
+		byRun[turn.Key] = turn
 	}
-	if turns[1].Usage != (model.Usage{Input: 40, Output: 5}) {
-		t.Fatalf("uncached run changed: %+v", turns[1].Usage)
+	gross, uncached, auto := byRun[identityKey("cursor-agent", "run-gross")], byRun[identityKey("cursor-agent", "run-uncached")], byRun[identityKey("cursor-agent", "run-auto")]
+	if gross.Usage != (model.Usage{Input: 300, Output: 50, CacheRead: 600, CacheWrite: 100, Reasoning: 10}) || gross.Usage.Total() != 1050 {
+		t.Fatalf("gross input not split into disjoint buckets: %+v", gross.Usage)
+	}
+	if uncached.Usage != (model.Usage{Input: 40, Output: 5}) {
+		t.Fatalf("uncached run changed: %+v", uncached.Usage)
+	}
+	// pricing.json has an unrelated "auto" card, so a routed run must not reach it
+	rate := func(in, out, read, write float64) *pricing.Model {
+		return &pricing.Model{Rates: []pricing.Rate{{From: pricing.MustParseDate("2026-01-01"), In: in, Out: out, CacheRead: read, CacheWrite: write}}}
+	}
+	tbl := &pricing.Table{
+		Models:     map[string]*pricing.Model{"auto": rate(0.85, 1.55, 0, 0.85), "grok-4.7": rate(2, 6, 0.5, 2)},
+		ByProvider: map[string]*pricing.Model{},
+		Aliases:    map[string]string{},
+	}
+	if c := cost.Of(auto, tbl); c.Priced() {
+		t.Fatalf("routed auto run was priced: %+v", c)
+	}
+	// 300 fresh at $2, 50 out at $6, 600 read at $0.5 and 100 written at $2 per million
+	if c := cost.Of(gross, tbl); !c.Priced() || math.Abs(c.USD-0.0014) > 1e-9 {
+		t.Fatalf("grok-4.7 run cost=%+v want $0.0014", c)
 	}
 }
