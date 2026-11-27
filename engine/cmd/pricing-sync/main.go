@@ -436,6 +436,11 @@ func toRate(c mdCost, modelID, provID string, effective pricing.Date) (pricing.R
 		r.TierIn, r.TierOut = ti, to
 		if v, ok := sane(t.CacheRead); ok {
 			r.TierCacheRead = v
+		} else if anthropicFamily && in > 0 && r.CacheRead > 0 && ti > 0 {
+			// Same gap as the 1-hour write rate: models.dev often publishes
+			// the long-context input and leaves cache reads blank. Claude's
+			// cache read is a fixed fraction of the input rate in force.
+			r.TierCacheRead = r.CacheRead * ti / in
 		}
 		if v, ok := sane(t.CacheWrite); ok {
 			r.TierCacheWrite = v

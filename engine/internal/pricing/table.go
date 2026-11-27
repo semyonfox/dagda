@@ -186,7 +186,21 @@ func (r Rate) atTime(t time.Time, schedules map[string]Schedule) Rate {
 // applying the long-context tier when one is configured and exceeded.
 func (r Rate) ForContext(ctx int64) (in, out, cacheRead, cacheWrite float64) {
 	if r.TierThreshold > 0 && ctx > r.TierThreshold {
-		return r.TierIn, r.TierOut, r.TierCacheRead, r.TierCacheWrite
+		in, out, cacheRead, cacheWrite = r.TierIn, r.TierOut, r.TierCacheRead, r.TierCacheWrite
+		// A blank tier cache field unmarshals as zero. That is an omission,
+		// not a free cache: the base card still has a price. Claude cards are
+		// the ones that carry a 1-hour write rate, and on those a blank tier
+		// cache read follows the multiplier already published on tier input.
+		if cacheRead == 0 && r.CacheRead > 0 {
+			cacheRead = r.CacheRead
+			if r.CacheWrite1h > 0 && r.In > 0 && r.TierIn > 0 {
+				cacheRead = r.CacheRead * r.TierIn / r.In
+			}
+		}
+		if cacheWrite == 0 {
+			cacheWrite = r.CacheWrite
+		}
+		return in, out, cacheRead, cacheWrite
 	}
 	return r.In, r.Out, r.CacheRead, r.CacheWrite
 }
