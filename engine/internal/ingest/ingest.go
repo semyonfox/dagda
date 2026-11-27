@@ -137,6 +137,13 @@ func run(ctx context.Context, scanners []Scanner, cacheDir string) (*Result, err
 					if moreCompleteUsage(t.Usage, res.Turns[kept].Usage) {
 						res.Turns[kept].Usage = t.Usage
 						res.Turns[kept].UnpricedReason = t.UnpricedReason
+						// The fuller snapshot is the one that knows the billing
+						// tier. An empty tier must not wipe a tier already seen.
+						if t.ServiceTier != "" {
+							res.Turns[kept].ServiceTier = t.ServiceTier
+						}
+					} else if res.Turns[kept].ServiceTier == "" && t.ServiceTier != "" {
+						res.Turns[kept].ServiceTier = t.ServiceTier
 					}
 					// a snapshot that knows the call ran in fast mode wins,
 					// whichever order the snapshots were written in

@@ -64,3 +64,24 @@ func TestClaudeFastModeSurvivesSnapshotOrder(t *testing.T) {
 		t.Fatalf("snapshots: %+v", res.Turns)
 	}
 }
+
+func TestClaudeBatchTierSurvivesSnapshotOrder(t *testing.T) {
+	root := t.TempDir()
+	early := `{"type":"assistant","timestamp":"2026-10-01T10:00:00Z","requestId":"req_1","sessionId":"s","message":{"id":"msg_1","model":"claude-opus-5","usage":{"input_tokens":5,"output_tokens":1}}}`
+	full := `{"type":"assistant","timestamp":"2026-10-01T10:00:02Z","requestId":"req_1","sessionId":"s","message":{"id":"msg_1","model":"claude-opus-5","usage":{"input_tokens":5,"output_tokens":90,"service_tier":"batch"}}}`
+	laterSmall := `{"type":"assistant","timestamp":"2026-10-01T10:00:03Z","requestId":"req_2","sessionId":"s","message":{"id":"msg_2","model":"claude-opus-5","usage":{"input_tokens":5,"output_tokens":1,"service_tier":"batch"}}}`
+	earlyLarge := `{"type":"assistant","timestamp":"2026-10-01T10:00:01Z","requestId":"req_2","sessionId":"s","message":{"id":"msg_2","model":"claude-opus-5","usage":{"input_tokens":5,"output_tokens":90}}}`
+	writeFile(t, filepath.Join(root, "projects", "-proj", "a.jsonl"), early, full, earlyLarge, laterSmall)
+	res, err := Run(context.Background(), []Scanner{newClaudeAt(root)})
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(res.Turns) != 2 {
+		t.Fatalf("turns: %+v", res.Turns)
+	}
+	for _, turn := range res.Turns {
+		if turn.ServiceTier != "batch" || turn.Usage.Output != 90 {
+			t.Fatalf("snapshot lost batch tier or usage: %+v", turn)
+		}
+	}
+}
