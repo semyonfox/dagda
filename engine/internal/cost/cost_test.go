@@ -214,3 +214,29 @@ func TestAggregateDoesNotInventLongContextTier(t *testing.T) {
 	turn.Aggregate = false
 	near(t, Of(turn, tbl).USD, 20)
 }
+
+// The 1-hour cache write rate is stored as 2x the base input. Above the
+// long-context threshold the input rate in force is the tier input, so a
+// million 1-hour tokens on this card cost 12 dollars, not 6.
+func TestLongContextScalesOneHourCacheWrite(t *testing.T) {
+	tbl := table()
+	rate := &tbl.Models["m1"].Rates[0]
+	rate.In = 3
+	rate.Out = 15
+	rate.CacheWrite = 3.75
+	rate.CacheWrite1h = 6
+	rate.TierThreshold = 200_000
+	rate.TierIn = 6
+	rate.TierOut = 22.5
+	rate.TierCacheWrite = 7.5
+	turn := model.Turn{
+		Model: "m1", Timestamp: at("2026-06-01"),
+		Usage: model.Usage{CacheWrite: 1_000_000, CacheWrite1h: 1_000_000, ContextTokens: 250_000},
+	}
+	near(t, Of(turn, tbl).USD, 12)
+	turn.Usage.ContextTokens = 100_000
+	near(t, Of(turn, tbl).USD, 6)
+	turn.Usage.ContextTokens = 250_000
+	turn.Aggregate = true
+	near(t, Of(turn, tbl).USD, 6)
+}

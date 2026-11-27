@@ -105,7 +105,14 @@ func Of(t model.Turn, tbl *pricing.Table) Cost {
 
 	write1h := min(u.CacheWrite1h, u.CacheWrite)
 	write5m := u.CacheWrite - write1h
+	// CacheWrite1h is stored as 2x the base input. The long-context card
+	// publishes a higher input rate but has no separate 1-hour field, so the
+	// same multiplier has to be applied here or those writes stay at the
+	// short-context price.
 	rate1h := rate.CacheWrite1h
+	if rate1h > 0 && rate.TierThreshold > 0 && ctx > rate.TierThreshold && rate.In > 0 && rate.TierIn > 0 {
+		rate1h *= rate.TierIn / rate.In
+	}
 	if rate1h == 0 {
 		rate1h = cacheWrite
 	}
