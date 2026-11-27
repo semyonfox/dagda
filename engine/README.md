@@ -169,20 +169,24 @@ snapshot, so rerunning a report does not accumulate earlier imports. Identical
 rows within one export remain separate requests. See the
 [CSV format and accounting limits](../docs/provider-evidence-next-cli.md#cursor-dashboard-csv).
 
-Local Cursor SDK stores are discovered under `~/.cursor/projects/` when selected:
+Local Cursor SDK stores under `~/.cursor/projects/` are read by default. This
+is where T3 Code and other `@cursor/sdk` hosts record headless runs:
 
 ```sh
 ./dist/dagda daily --agent cursor-agent --plain
 ```
 
-This reads SDK runs, not ordinary Cursor CLI transcripts. Terminal runs provide
-measured token buckets; their model selection cannot establish the historical
-model for every subagent call, so these aggregates stay unpriced. Saved SDK
-results remain available through `DAGDA_CURSOR_AGENT_DIR`.
+This reads SDK runs, not ordinary Cursor CLI or ACP transcripts, which record
+no token counts. Each terminal run gives measured token buckets and is priced
+at its selected model as an aggregate, at base rates. SDK 1.4 and later write
+gross input that includes cached tokens, and the reader splits it back into
+disjoint buckets. Saved SDK results remain available through
+`DAGDA_CURSOR_AGENT_DIR`.
 
-The SDK source requires explicit selection, and the CLI rejects selecting both `cursor`
-and `cursor-agent` in one report because the sources can overlap without shared
-request IDs. Neither importer fetches account data automatically.
+The IDE database and SDK stores never hold the same run, so they combine in one
+report. The dashboard CSV does bill SDK runs, so while `DAGDA_CURSOR_CSV` is set
+the SDK source needs `--agent cursor-agent` and the CLI rejects selecting both
+`cursor` and `cursor-agent`. Neither importer fetches account data automatically.
 
 ## Plan costs
 
@@ -369,8 +373,10 @@ signed-in plan access rather than an API key or custom endpoint.
 
 The Antigravity reader automatically scans recognized `.db` files below
 `~/.gemini/antigravity`, `~/.gemini/antigravity-cli`,
-`~/.gemini/antigravity-ide`, `~/.gemini/antigravity-backup`, and
-`~/.config/antigravity`, including nested conversation directories. It accepts
+`~/.gemini/antigravity-ide`, `~/.gemini/antigravity-backup`,
+`~/.config/antigravity` and T3 Code's per-instance profiles at
+`~/.t3/userdata/providers/antigravity/*/antigravity-acp` (or under
+`T3CODE_HOME`), including nested conversation directories. It accepts
 only the observed conversation database version, the required `gen_metadata`
 table, and, when present, a recognized `steps` table. It opens candidate files
 only to inspect their schema, then queries only those metadata tables. For each

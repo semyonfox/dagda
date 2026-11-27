@@ -97,7 +97,7 @@ off.
 The [provider inventory](docs/provider-inventory.md) lists all 43 audited
 adapters: 41 local readers and importers, plus documented source limitations
 for Crush and Grokbot. Coverage includes Copilot CLI and supported VS Code
-stores, Cursor local counters and CSV exports, Cline, Roo, Kilo, Qwen, Goose
+stores, Cursor local counters, SDK runs and CSV exports, Cline, Roo, Kilo, Qwen, Goose
 and Zed. Some sources provide only session totals or credits.
 
 Run `dagda agents` to see coverage and detected source paths.
@@ -195,8 +195,12 @@ Accuracy has limits:
   count once. Otherwise exact child history takes precedence over ambiguous
   parent aggregates, with a warning. Its subscription billing label is a
   normal-route default, not invoice attribution.
+- Cursor SDK runs, including headless runs driven by T3 Code, come from the
+  SDK's local stores under `~/.cursor/projects`. Each run is priced at its
+  selected model as an aggregate. Cursor CLI and ACP transcripts record no
+  token counts, so they are not read.
 - Antigravity reads recognised invocation metadata from schema-gated local
-  conversation databases. Unsupported database versions or layouts, malformed
+  conversation databases, including T3 Code's per-instance profiles. Unsupported database versions or layouts, malformed
   records and oversized metadata blobs are skipped, with no transcript-based
   token estimates. Numeric-only models remain visible but unpriced unless a
   pricing alias maps them. Its metadata has no endpoint or credential-mode

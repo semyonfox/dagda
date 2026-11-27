@@ -5,39 +5,69 @@ install hooks, read credentials, or request account data over the network.
 
 ## Cursor Agent SDK
 
-This local-store follow-up was checked on 20 September 2026.
+This local-store follow-up was checked on 20 September 2026 and updated on 27
+November 2026 against `@cursor/sdk` 1.0.38, 1.4.2 and 1.5.0 as bundled by T3
+Code, which drives Cursor through the SDK's local runtime.
 
-With `DAGDA_CURSOR_AGENT_DIR` unset, `--agent cursor-agent` discovers the SDK's
-default SQLite stores at
-`~/.cursor/projects/*/sdk-agent-store/<workspace-md5>/index.db`. It reads only
-terminal `runs` joined to `agents`, using `run_id`, `agent_id`, `status`,
-`model`, `usage_json`, `workspace_ref`, and terminal timestamps. The databases
-use WAL mode, so they are opened read-only without hiding the live WAL. A copied
-store is deduplicated by the native run ID. An ordinary Cursor project directory
-without an SDK `index.db` does not count as an installed source.
+With `DAGDA_CURSOR_AGENT_DIR` unset, dagda discovers the SDK's default SQLite
+stores at `~/.cursor/projects/<workspace-slug>/sdk-agent-store/<hash>/index.db`.
+The SDK resolves that path from the home directory on every platform, so it is
+`%USERPROFILE%\.cursor\projects` on Windows. SDK 1.5 names the state
+directory `sha256(workspaceRef)` (64 hex characters) and renames an older
+md5-named directory (32 characters) into place on first use. Both are accepted.
+It reads only terminal `runs` joined to `agents`, using `run_id`, `agent_id`,
+`status`, `model`, `usage_json`, `workspace_ref` and terminal timestamps. The
+databases use WAL mode, so they are opened read-only without hiding the live
+WAL. A copied store is deduplicated by the native run ID. An ordinary Cursor
+project directory without an SDK `index.db` does not count as an installed
+source.
 
-This contract was checked against Cursor's official
+The first contract check used the official
 [`@cursor/sdk` 1.0.31 npm artifact](https://registry.npmjs.org/@cursor/sdk/-/sdk-1.0.31.tgz)
 (npm integrity
 `sha512-0SdJQqp5oXn81oJqIVkLpgHih+CL6CAudK83pCsdJyA23AvInSWlMaGpLi+JlrK3efHoswiEhhASs9WpeEz3QQ==`,
 tarball SHA-256
 `6316337f3bf154406d704f00c939031ebaa388031ebfcabde843f74452c02a03`).
 Its bundled `cursor-sdk-local-runtime/dist/run-store/sqlite-agent-run-store.js`
-defines the path, schema, terminal statuses, WAL configuration, and persistence
-of `usage_json`. Cursor's [SDK token-usage contract](https://cursor.com/docs/sdk/typescript#token-usage)
-defines input, output, cache-read, and cache-write as four disjoint buckets;
-reasoning is a subset of output. The reader validates the recorded total and
-reasoning relationship, then emits one aggregate per run.
+defines the path, schema, terminal statuses, WAL configuration and persistence
+of `usage_json`.
 
-The persisted `model` is the run's selected model, while the aggregate can
-include subagent calls on other models. It is retained for display, but every
-native SDK aggregate is excluded from price calculation for that attribution
-reason. Local stores contain no billed cost. Dagda does not call the
-authenticated SDK usage endpoint, read credentials, or query Cursor's backend.
-This store belongs to SDK applications; it is not evidence that historical
-`cursor-agent` CLI sessions use the same database. A configured
-`JsonlLocalAgentStore` can live at an arbitrary application path and cannot be
-discovered safely.
+The token buckets changed shape after that. In 1.0.38 `toTokenUsage` writes
+`totalTokens` as input plus output plus both cache buckets. In 1.4.2 and 1.5.0
+it writes `totalTokens: inputTokens + outputTokens`, and `inputTokens` is the
+gross prompt including cached tokens. Cursor's
+[SDK token-usage page](https://cursor.com/docs/sdk/typescript#token-usage) still
+documents the older four-bucket total. Every run recorded on the maintainer's
+machine by 1.5.0 has `inputTokens >= cacheReadTokens + cacheWriteTokens` and
+`totalTokens == inputTokens + outputTokens`. The reader accepts either shape: a
+four-bucket total is used as is, and a gross total has the cache buckets
+subtracted from input so the four buckets stay disjoint. Anything else is
+reported as invalid. Reasoning stays a subset of output.
+
+Runs that end before any turn reports usage have no `usage_json`, which the SDK
+documents for cancelled runs. Errored, cancelled and expired rows without usage
+are skipped quietly. A finished run without usage is still reported.
+
+The persisted `model` is the run's selected model. Subagent tool calls in the
+recorded stores used the same model as their parent run, so each run is priced
+at its selected model as an aggregate, at base rates with no long-context tier.
+A run with no model stays unpriced. Local stores contain no billed cost. Dagda
+does not call the authenticated SDK usage endpoint, read credentials or query
+Cursor's backend.
+
+The SDK store is part of default reports. The IDE database cannot hold the same
+runs: SDK agents and runs use `agent-<uuid>` and `run-<uuid>` ids from a separate
+in-process runtime, while IDE composers use plain UUIDs in `state.vscdb`. The
+dashboard CSV does bill SDK runs, so while `DAGDA_CURSOR_CSV` is configured the
+SDK source needs `--agent cursor-agent`, and combining it with `--agent cursor`
+is rejected.
+
+The other headless stores under `~/.cursor` carry no usage. `chats/*/store.db`
+(CLI) and `acp-sessions/*/store.db` (`agent acp`) are content-addressed message
+blobs with no token fields outside message text, `ai-tracking` counts code
+lines, and `agent-cli-state.json` holds UI flags. This store belongs to SDK
+applications. A configured `JsonlLocalAgentStore` can live at an arbitrary
+application path and cannot be discovered safely.
 
 Setting `DAGDA_CURSOR_AGENT_DIR` overrides automatic discovery and retains the
 older importer for caller-saved native SDK `RunResult` JSON files. Bare results
@@ -91,7 +121,11 @@ not a guarantee of current Quick cloud coverage.
 ## Antigravity
 
 By default the reader discovers native version-1 conversation databases below
-the Antigravity CLI, IDE, backup and configuration roots. It reads only
+the Antigravity CLI, IDE, backup and configuration roots, plus the per-instance
+profiles T3 Code creates at
+`<T3CODE_HOME or ~/.t3>/userdata/providers/antigravity/<sha256>/antigravity-acp`.
+T3 runs never write to `~/.gemini`, and the two sets of conversation ids are
+disjoint. It reads only
 `gen_metadata.data` and timestamp linkage from `steps.metadata`. Metadata is
 bounded at 64 MiB and protobuf parsing retains only the direct usage, model,
 response identity and timestamp field paths. Numeric private model IDs remain
