@@ -52,13 +52,15 @@ func NewAntigravity() *Antigravity {
 	}
 
 	var roots []string
-	for _, root := range []string{
+	candidates := []string{
 		filepath.Join(home, ".gemini", "antigravity"),
 		filepath.Join(home, ".gemini", "antigravity-cli"),
 		filepath.Join(home, ".gemini", "antigravity-ide"),
 		filepath.Join(home, ".gemini", "antigravity-backup"),
 		filepath.Join(home, ".config", "antigravity"),
-	} {
+	}
+	candidates = append(candidates, t3AntigravityProfiles(home)...)
+	for _, root := range candidates {
 		if conversations := existingDir(filepath.Join(root, "conversations")); conversations != "" {
 			roots = append(roots, conversations)
 		} else if direct := existingDir(root); direct != "" {
@@ -66,6 +68,27 @@ func NewAntigravity() *Antigravity {
 		}
 	}
 	return &Antigravity{roots: roots}
+}
+
+// t3AntigravityProfiles lists the per-instance Antigravity homes T3 Code
+// creates at <T3CODE_HOME>/userdata/providers/antigravity/<sha256>/antigravity-acp.
+// Runs there never touch ~/.gemini, so they are invisible without this.
+func t3AntigravityProfiles(home string) []string {
+	base := strings.TrimSpace(os.Getenv("T3CODE_HOME"))
+	if base == "" {
+		base = filepath.Join(home, ".t3")
+	}
+	profiles, err := os.ReadDir(filepath.Join(base, "userdata", "providers", "antigravity"))
+	if err != nil {
+		return nil
+	}
+	var roots []string
+	for _, profile := range profiles {
+		if profile.IsDir() {
+			roots = append(roots, filepath.Join(base, "userdata", "providers", "antigravity", profile.Name(), "antigravity-acp"))
+		}
+	}
+	return roots
 }
 
 func (a *Antigravity) Agent() model.Agent { return model.AgentAntigravity }

@@ -579,12 +579,15 @@ func TestAntigravityDiscoversAllConversationRoots(t *testing.T) {
 	t.Setenv("HOME", home)
 	t.Setenv("USERPROFILE", home)
 	t.Setenv("DAGDA_ANTIGRAVITY_DIR", "")
+	t.Setenv("T3CODE_HOME", "")
 	roots := []string{
 		filepath.Join(home, ".gemini", "antigravity", "conversations"),
 		filepath.Join(home, ".gemini", "antigravity-cli", "conversations"),
 		filepath.Join(home, ".gemini", "antigravity-ide", "conversations"),
 		filepath.Join(home, ".gemini", "antigravity-backup", "conversations"),
 		filepath.Join(home, ".config", "antigravity"), // direct database root is valid too.
+		// T3 Code gives each Antigravity instance its own profile home
+		filepath.Join(home, ".t3", "userdata", "providers", "antigravity", "profile-a", "antigravity-acp", "conversations"),
 	}
 	for _, root := range roots {
 		if err := os.MkdirAll(root, 0o755); err != nil {
@@ -593,6 +596,23 @@ func TestAntigravityDiscoversAllConversationRoots(t *testing.T) {
 	}
 	if got := NewAntigravity().Roots(); !reflect.DeepEqual(got, roots) {
 		t.Fatalf("roots = %#v, want %#v", got, roots)
+	}
+}
+
+func TestAntigravityFollowsT3CodeHome(t *testing.T) {
+	home, base := t.TempDir(), t.TempDir()
+	t.Setenv("HOME", home)
+	t.Setenv("USERPROFILE", home)
+	t.Setenv("DAGDA_ANTIGRAVITY_DIR", "")
+	t.Setenv("T3CODE_HOME", base)
+	conversations := filepath.Join(base, "userdata", "providers", "antigravity", "profile-b", "antigravity-acp", "conversations")
+	writeAntigravityDB(t, conversations, "t3-session", antigravityTestBlob(antigravityTestRecord{
+		model: "Gemini 3.6 Flash (High)", responseID: "response-t3",
+		seconds: 1_800_000_000, input: 10, output: 2,
+	}))
+	turns := scan(t, NewAntigravity())
+	if len(turns) != 1 || turns[0].SessionID != "t3-session" || turns[0].Usage.Input != 10 || turns[0].Usage.Output != 2 {
+		t.Fatalf("T3 Code profile conversation not read: %+v", turns)
 	}
 }
 
