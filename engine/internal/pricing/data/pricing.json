@@ -4988,6 +4988,20 @@
           "tier_out": 22.5,
           "tier_cache_write": 7.5,
           "source": "302ai"
+        },
+        {
+          "from": "2026-11-27",
+          "in": 3,
+          "out": 15,
+          "cache_read": 0.3,
+          "cache_write": 3.75,
+          "cache_write_1h": 6,
+          "tier_threshold": 200000,
+          "tier_in": 6,
+          "tier_out": 22.5,
+          "tier_cache_read": 0.6,
+          "tier_cache_write": 7.5,
+          "source": "302ai"
         }
       ]
     },
@@ -5123,6 +5137,20 @@
           "tier_threshold": 200000,
           "tier_in": 6,
           "tier_out": 22.5,
+          "tier_cache_write": 7.5,
+          "source": "302ai"
+        },
+        {
+          "from": "2026-11-27",
+          "in": 3,
+          "out": 15,
+          "cache_read": 0.3,
+          "cache_write": 3.75,
+          "cache_write_1h": 6,
+          "tier_threshold": 200000,
+          "tier_in": 6,
+          "tier_out": 22.5,
+          "tier_cache_read": 0.6,
           "tier_cache_write": 7.5,
           "source": "302ai"
         }
@@ -9509,10 +9537,10 @@
         },
         {
           "from": "2026-11-27",
-          "in": 0.05,
-          "out": 0.16,
-          "cache_read": 0.013,
-          "cache_write": 0.05,
+          "in": 0.04532,
+          "out": 0.13596,
+          "cache_read": 0.001442,
+          "cache_write": 0.04532,
           "source": "nano-gpt"
         }
       ]
@@ -10400,6 +10428,20 @@
           "source": "nano-gpt"
         }
       ]
+    },
+    "deepseek-v4.1-flash-1017-maas": {
+      "id": "deepseek-v4.1-flash-1017-maas",
+      "rates": [
+        {
+          "from": "2026-11-27",
+          "in": 0.3,
+          "out": 1.2,
+          "cache_read": 0.006,
+          "cache_write": 0.3,
+          "source": "google-vertex"
+        }
+      ],
+      "first_party": true
     },
     "deepseek-v4.1-flash-1017-thinking": {
       "id": "deepseek-v4.1-flash-1017-thinking",
@@ -16444,6 +16486,14 @@
           "out": 0.4,
           "cache_read": 0,
           "cache_write": 0.13,
+          "source": "concentrate"
+        },
+        {
+          "from": "2026-11-27",
+          "in": 0.1,
+          "out": 0.34,
+          "cache_read": 0,
+          "cache_write": 0.1,
           "source": "concentrate"
         }
       ]
@@ -30735,6 +30785,19 @@
         }
       ]
     },
+    "ling-3.2-flash": {
+      "id": "ling-3.2-flash",
+      "rates": [
+        {
+          "from": "2026-11-27",
+          "in": 0.3,
+          "out": 0.9,
+          "cache_read": 0.06,
+          "cache_write": 0.3,
+          "source": "kilo"
+        }
+      ]
+    },
     "ling-3.2-flash:free": {
       "id": "ling-3.2-flash:free",
       "rates": [
@@ -32169,8 +32232,17 @@
           "cache_read": 0.044,
           "cache_write": 0.2475,
           "source": "novita-ai"
+        },
+        {
+          "from": "2026-11-27",
+          "in": 0.45,
+          "out": 2.6,
+          "cache_read": 0.08,
+          "cache_write": 0.08,
+          "source": "alibaba"
         }
-      ]
+      ],
+      "first_party": true
     },
     "macaron-v1-venti": {
       "id": "macaron-v1-venti",
@@ -32184,6 +32256,48 @@
           "source": "novita-ai"
         }
       ]
+    },
+    "macaron-v1.1-coding-venti": {
+      "id": "macaron-v1.1-coding-venti",
+      "rates": [
+        {
+          "from": "2026-11-27",
+          "in": 1.19,
+          "out": 3.74,
+          "cache_read": 0.22,
+          "cache_write": 0.22,
+          "source": "alibaba"
+        }
+      ],
+      "first_party": true
+    },
+    "macaron-v1.1-venti": {
+      "id": "macaron-v1.1-venti",
+      "rates": [
+        {
+          "from": "2026-11-27",
+          "in": 1.19,
+          "out": 3.74,
+          "cache_read": 0.22,
+          "cache_write": 0.22,
+          "source": "alibaba"
+        }
+      ],
+      "first_party": true
+    },
+    "macaron-v1.1-venti-pro": {
+      "id": "macaron-v1.1-venti-pro",
+      "rates": [
+        {
+          "from": "2026-11-27",
+          "in": 2,
+          "out": 10,
+          "cache_read": 0.1,
+          "cache_write": 0.1,
+          "source": "alibaba"
+        }
+      ],
+      "first_party": true
     },
     "magibu-11b-v8": {
       "id": "magibu-11b-v8",
@@ -33688,6 +33802,14 @@
           "cache_read": 0.03,
           "cache_write": 0.375,
           "source": "concentrate"
+        },
+        {
+          "from": "2026-11-27",
+          "in": 0.3,
+          "out": 1.2,
+          "cache_read": 0,
+          "cache_write": 0.3,
+          "source": "concentrate"
         }
       ]
     },
@@ -33722,6 +33844,14 @@
           "cache_read": 0.03,
           "cache_write": 0.375,
           "source": "concentrate"
+        },
+        {
+          "from": "2026-11-27",
+          "in": 0.3,
+          "out": 1.2,
+          "cache_read": 0.03,
+          "cache_write": 0.3,
+          "source": "frogbot"
         }
       ]
     },
@@ -34851,6 +34981,14 @@
           "out": 0.439,
           "cache_read": 0,
           "cache_write": 0.32925,
+          "source": "edenai"
+        },
+        {
+          "from": "2026-11-27",
+          "in": 0.32871,
+          "out": 0.43828,
+          "cache_read": 0,
+          "cache_write": 0.32871,
           "source": "edenai"
         }
       ]
@@ -46105,6 +46243,14 @@
           "cache_read": 0.13,
           "cache_write": 0.26,
           "source": "nano-gpt"
+        },
+        {
+          "from": "2026-11-27",
+          "in": 0.4,
+          "out": 3.2,
+          "cache_read": 0.2,
+          "cache_write": 0.4,
+          "source": "nano-gpt"
         }
       ]
     },
@@ -53506,6 +53652,20 @@
           "tier_out": 22.5,
           "tier_cache_write": 7.5,
           "source": "302ai"
+        },
+        {
+          "from": "2026-11-27",
+          "in": 3,
+          "out": 15,
+          "cache_read": 0.3,
+          "cache_write": 3.75,
+          "cache_write_1h": 6,
+          "tier_threshold": 200000,
+          "tier_in": 6,
+          "tier_out": 22.5,
+          "tier_cache_read": 0.6,
+          "tier_cache_write": 7.5,
+          "source": "302ai"
         }
       ]
     },
@@ -53531,6 +53691,20 @@
           "tier_threshold": 200000,
           "tier_in": 6,
           "tier_out": 22.5,
+          "tier_cache_write": 7.5,
+          "source": "302ai"
+        },
+        {
+          "from": "2026-11-27",
+          "in": 3,
+          "out": 15,
+          "cache_read": 0.3,
+          "cache_write": 3.75,
+          "cache_write_1h": 6,
+          "tier_threshold": 200000,
+          "tier_in": 6,
+          "tier_out": 22.5,
+          "tier_cache_read": 0.6,
           "tier_cache_write": 7.5,
           "source": "302ai"
         }
@@ -53560,6 +53734,20 @@
           "tier_out": 22.5,
           "tier_cache_write": 7.5,
           "source": "302ai"
+        },
+        {
+          "from": "2026-11-27",
+          "in": 3,
+          "out": 15,
+          "cache_read": 0.3,
+          "cache_write": 3.75,
+          "cache_write_1h": 6,
+          "tier_threshold": 200000,
+          "tier_in": 6,
+          "tier_out": 22.5,
+          "tier_cache_read": 0.6,
+          "tier_cache_write": 7.5,
+          "source": "302ai"
         }
       ]
     },
@@ -53585,6 +53773,20 @@
           "tier_threshold": 200000,
           "tier_in": 6,
           "tier_out": 22.5,
+          "tier_cache_write": 7.5,
+          "source": "302ai"
+        },
+        {
+          "from": "2026-11-27",
+          "in": 3,
+          "out": 15,
+          "cache_read": 0.3,
+          "cache_write": 3.75,
+          "cache_write_1h": 6,
+          "tier_threshold": 200000,
+          "tier_in": 6,
+          "tier_out": 22.5,
+          "tier_cache_read": 0.6,
           "tier_cache_write": 7.5,
           "source": "302ai"
         }
@@ -65924,6 +66126,58 @@
           "out": 20,
           "cache_read": 0.2,
           "cache_write": 4,
+          "source": "alibaba"
+        }
+      ]
+    },
+    "alibaba\u0000macaron-v1-tall": {
+      "id": "macaron-v1-tall",
+      "rates": [
+        {
+          "from": "2026-11-27",
+          "in": 0.45,
+          "out": 2.6,
+          "cache_read": 0.08,
+          "cache_write": 0.08,
+          "source": "alibaba"
+        }
+      ]
+    },
+    "alibaba\u0000macaron-v1.1-coding-venti": {
+      "id": "macaron-v1.1-coding-venti",
+      "rates": [
+        {
+          "from": "2026-11-27",
+          "in": 1.19,
+          "out": 3.74,
+          "cache_read": 0.22,
+          "cache_write": 0.22,
+          "source": "alibaba"
+        }
+      ]
+    },
+    "alibaba\u0000macaron-v1.1-venti": {
+      "id": "macaron-v1.1-venti",
+      "rates": [
+        {
+          "from": "2026-11-27",
+          "in": 1.19,
+          "out": 3.74,
+          "cache_read": 0.22,
+          "cache_write": 0.22,
+          "source": "alibaba"
+        }
+      ]
+    },
+    "alibaba\u0000macaron-v1.1-venti-pro": {
+      "id": "macaron-v1.1-venti-pro",
+      "rates": [
+        {
+          "from": "2026-11-27",
+          "in": 2,
+          "out": 10,
+          "cache_read": 0.1,
+          "cache_write": 0.1,
           "source": "alibaba"
         }
       ]
@@ -84596,6 +84850,14 @@
           "cache_read": 0.35,
           "cache_write": 0.7,
           "source": "concentrate"
+        },
+        {
+          "from": "2026-11-27",
+          "in": 0.5,
+          "out": 2.15,
+          "cache_read": 0.35,
+          "cache_write": 0.5,
+          "source": "concentrate"
         }
       ]
     },
@@ -84912,6 +85174,14 @@
           "out": 0.4,
           "cache_read": 0,
           "cache_write": 0.13,
+          "source": "concentrate"
+        },
+        {
+          "from": "2026-11-27",
+          "in": 0.1,
+          "out": 0.34,
+          "cache_read": 0,
+          "cache_write": 0.1,
           "source": "concentrate"
         }
       ]
@@ -85732,6 +86002,14 @@
           "cache_read": 0.03,
           "cache_write": 0.375,
           "source": "concentrate"
+        },
+        {
+          "from": "2026-11-27",
+          "in": 0.3,
+          "out": 1.2,
+          "cache_read": 0,
+          "cache_write": 0.3,
+          "source": "concentrate"
         }
       ]
     },
@@ -85744,6 +86022,14 @@
           "out": 1.2,
           "cache_read": 0.03,
           "cache_write": 0.375,
+          "source": "concentrate"
+        },
+        {
+          "from": "2026-11-27",
+          "in": 0.3,
+          "out": 1.2,
+          "cache_read": 0,
+          "cache_write": 0.3,
           "source": "concentrate"
         }
       ]
@@ -85809,6 +86095,14 @@
           "out": 2.4,
           "cache_read": 0.07,
           "cache_write": 0.375,
+          "source": "concentrate"
+        },
+        {
+          "from": "2026-11-27",
+          "in": 0.38,
+          "out": 1.7,
+          "cache_read": 0.07,
+          "cache_write": 0.38,
           "source": "concentrate"
         }
       ]
@@ -86390,6 +86684,14 @@
           "out": 3.6,
           "cache_read": 0.22,
           "cache_write": 0.6,
+          "source": "concentrate"
+        },
+        {
+          "from": "2026-11-27",
+          "in": 0.45,
+          "out": 3,
+          "cache_read": 0.22,
+          "cache_write": 0.45,
           "source": "concentrate"
         }
       ]
@@ -88936,6 +89238,14 @@
           "out": 0.598,
           "cache_read": 0.018,
           "cache_write": 0.199,
+          "source": "cortecs"
+        },
+        {
+          "from": "2026-11-27",
+          "in": 0.836,
+          "out": 2.507,
+          "cache_read": 0.018,
+          "cache_write": 0.836,
           "source": "cortecs"
         }
       ]
@@ -100064,6 +100374,14 @@
           "cache_read": 0,
           "cache_write": 0.6585,
           "source": "edenai"
+        },
+        {
+          "from": "2026-11-27",
+          "in": 0.65742,
+          "out": 3.287098,
+          "cache_read": 0,
+          "cache_write": 0.65742,
+          "source": "edenai"
         }
       ]
     },
@@ -101365,6 +101683,14 @@
           "out": 0.439,
           "cache_read": 0,
           "cache_write": 0.32925,
+          "source": "edenai"
+        },
+        {
+          "from": "2026-11-27",
+          "in": 0.32871,
+          "out": 0.43828,
+          "cache_read": 0,
+          "cache_write": 0.32871,
           "source": "edenai"
         }
       ]
@@ -103060,6 +103386,14 @@
           "out": 0.878,
           "cache_read": 0,
           "cache_write": 0.164625,
+          "source": "edenai"
+        },
+        {
+          "from": "2026-11-27",
+          "in": 0.164355,
+          "out": 0.87656,
+          "cache_read": 0,
+          "cache_write": 0.164355,
           "source": "edenai"
         }
       ]
@@ -110985,6 +111319,19 @@
         }
       ]
     },
+    "google-vertex\u0000deepseek-v4.1-flash-1017-maas": {
+      "id": "deepseek-v4.1-flash-1017-maas",
+      "rates": [
+        {
+          "from": "2026-11-27",
+          "in": 0.3,
+          "out": 1.2,
+          "cache_read": 0.006,
+          "cache_write": 0.3,
+          "source": "google-vertex"
+        }
+      ]
+    },
     "google-vertex\u0000gemini-2.5-flash": {
       "id": "gemini-2.5-flash",
       "rates": [
@@ -114999,10 +115346,10 @@
         },
         {
           "from": "2026-11-27",
-          "in": 0.888188,
-          "out": 1.5082,
+          "in": 0.71501,
+          "out": 1.5228,
           "cache_read": 0,
-          "cache_write": 0.888188,
+          "cache_write": 0.71501,
           "source": "huggingface"
         }
       ]
@@ -115189,14 +115536,6 @@
           "out": 0.1,
           "cache_read": 0,
           "cache_write": 0.34,
-          "source": "huggingface"
-        },
-        {
-          "from": "2026-11-26",
-          "in": 0.164,
-          "out": 0.275,
-          "cache_read": 0,
-          "cache_write": 0.164,
           "source": "huggingface"
         }
       ]
@@ -115606,6 +115945,14 @@
           "cache_read": 0,
           "cache_write": 0.834,
           "source": "huggingface"
+        },
+        {
+          "from": "2026-11-27",
+          "in": 1.0425,
+          "out": 3.12625,
+          "cache_read": 0,
+          "cache_write": 1.0425,
+          "source": "huggingface"
         }
       ]
     },
@@ -115631,6 +115978,14 @@
           "out": 0.3,
           "cache_read": 0,
           "cache_write": 0.075,
+          "source": "huggingface"
+        },
+        {
+          "from": "2026-11-27",
+          "in": 0.06,
+          "out": 0.24,
+          "cache_read": 0,
+          "cache_write": 0.06,
           "source": "huggingface"
         }
       ]
@@ -116484,14 +116839,6 @@
           "cache_read": 0,
           "cache_write": 0.15,
           "source": "huggingface"
-        },
-        {
-          "from": "2026-11-26",
-          "in": 0.09,
-          "out": 0.55,
-          "cache_read": 0,
-          "cache_write": 0.09,
-          "source": "huggingface"
         }
       ]
     },
@@ -116702,10 +117049,10 @@
         },
         {
           "from": "2026-11-27",
-          "in": 0.1,
+          "in": 0.09,
           "out": 1.1,
           "cache_read": 0,
-          "cache_write": 0.1,
+          "cache_write": 0.09,
           "source": "huggingface"
         }
       ]
@@ -119745,6 +120092,14 @@
           "cache_read": 0.04,
           "cache_write": 0,
           "source": "inceptron"
+        },
+        {
+          "from": "2026-11-27",
+          "in": 0.15,
+          "out": 0.3,
+          "cache_read": 0.03,
+          "cache_write": 0,
+          "source": "inceptron"
         }
       ]
     },
@@ -119937,8 +120292,8 @@
         },
         {
           "from": "2026-11-27",
-          "in": 0.5655,
-          "out": 3.42,
+          "in": 0.6045,
+          "out": 3.384,
           "cache_read": 0.15,
           "cache_write": 0,
           "source": "inceptron"
@@ -128155,10 +128510,10 @@
         },
         {
           "from": "2026-11-27",
-          "in": 0.047,
+          "in": 0.0456,
           "out": 0.3,
           "cache_read": 0.035,
-          "cache_write": 0.047,
+          "cache_write": 0.0456,
           "source": "kilo"
         }
       ]
@@ -128200,10 +128555,10 @@
         },
         {
           "from": "2026-11-27",
-          "in": 0.047,
+          "in": 0.0456,
           "out": 0.3,
           "cache_read": 0.035,
-          "cache_write": 0.047,
+          "cache_write": 0.0456,
           "source": "kilo"
         }
       ]
@@ -128298,10 +128653,10 @@
         },
         {
           "from": "2026-11-27",
-          "in": 0.888188,
-          "out": 1.5082,
-          "cache_read": 0.2,
-          "cache_write": 0.888188,
+          "in": 0.70487,
+          "out": 1.5228,
+          "cache_read": 0.21,
+          "cache_write": 0.70487,
           "source": "kilo"
         }
       ]
@@ -128380,10 +128735,10 @@
         },
         {
           "from": "2026-11-27",
-          "in": 0.14,
-          "out": 0.42,
-          "cache_read": 0.0042,
-          "cache_write": 0.14,
+          "in": 0.0507,
+          "out": 0.2028,
+          "cache_read": 0.001014,
+          "cache_write": 0.0507,
           "source": "kilo"
         }
       ]
@@ -129556,6 +129911,14 @@
           "out": 0.18,
           "cache_read": 0.025,
           "cache_write": 0.05,
+          "source": "kilo"
+        },
+        {
+          "from": "2026-11-27",
+          "in": 0.044,
+          "out": 0.158,
+          "cache_read": 0.022,
+          "cache_write": 0.044,
           "source": "kilo"
         }
       ]
@@ -132291,14 +132654,6 @@
           "cache_read": 0.0085,
           "cache_write": 0.017,
           "source": "kilo"
-        },
-        {
-          "from": "2026-11-26",
-          "in": 0.0153,
-          "out": 0.0765,
-          "cache_read": 0.00765,
-          "cache_write": 0.0153,
-          "source": "kilo"
         }
       ]
     },
@@ -134263,6 +134618,19 @@
           "out": 0,
           "cache_read": 0,
           "cache_write": 0,
+          "source": "kilo"
+        }
+      ]
+    },
+    "kilo\u0000ling-3.2-flash": {
+      "id": "ling-3.2-flash",
+      "rates": [
+        {
+          "from": "2026-11-27",
+          "in": 0.3,
+          "out": 0.9,
+          "cache_read": 0.06,
+          "cache_write": 0.3,
           "source": "kilo"
         }
       ]
@@ -137658,6 +138026,14 @@
           "out": 0.12,
           "cache_read": 0,
           "cache_write": 0.08,
+          "source": "kilo"
+        },
+        {
+          "from": "2026-11-27",
+          "in": 0.038,
+          "out": 0.057,
+          "cache_read": 0.035,
+          "cache_write": 0.038,
           "source": "kilo"
         }
       ]
@@ -145447,6 +145823,14 @@
           "out": 0.4,
           "cache_read": 0,
           "cache_write": 0.13,
+          "source": "llmgateway-providers"
+        },
+        {
+          "from": "2026-11-27",
+          "in": 0.06499,
+          "out": 0.2813,
+          "cache_read": 0.0097,
+          "cache_write": 0.06499,
           "source": "llmgateway-providers"
         }
       ]
@@ -159610,10 +159994,10 @@
         },
         {
           "from": "2026-11-27",
-          "in": 0.05,
-          "out": 0.16,
-          "cache_read": 0.013,
-          "cache_write": 0.05,
+          "in": 0.04532,
+          "out": 0.13596,
+          "cache_read": 0.001442,
+          "cache_write": 0.04532,
           "source": "nano-gpt"
         }
       ]
@@ -159671,10 +160055,10 @@
         },
         {
           "from": "2026-11-27",
-          "in": 0.05,
-          "out": 0.16,
-          "cache_read": 0.013,
-          "cache_write": 0.05,
+          "in": 0.04532,
+          "out": 0.13596,
+          "cache_read": 0.001442,
+          "cache_write": 0.04532,
           "source": "nano-gpt"
         }
       ]
@@ -165759,6 +166143,14 @@
           "cache_read": 0.042,
           "cache_write": 0.834,
           "source": "nano-gpt"
+        },
+        {
+          "from": "2026-11-27",
+          "in": 0.7506,
+          "out": 2.2509,
+          "cache_read": 0.0378,
+          "cache_write": 0.7506,
+          "source": "nano-gpt"
         }
       ]
     },
@@ -166953,6 +167345,32 @@
           "out": 0.22,
           "cache_read": 0.015,
           "cache_write": 0.075,
+          "source": "nano-gpt"
+        }
+      ]
+    },
+    "nano-gpt\u0000ling-3.2-flash": {
+      "id": "ling-3.2-flash",
+      "rates": [
+        {
+          "from": "2026-11-27",
+          "in": 0.3,
+          "out": 0.9,
+          "cache_read": 0.06,
+          "cache_write": 0.3,
+          "source": "nano-gpt"
+        }
+      ]
+    },
+    "nano-gpt\u0000lingsante-3.1-air-vl": {
+      "id": "lingsante-3.1-air-vl",
+      "rates": [
+        {
+          "from": "2026-11-27",
+          "in": 0.06,
+          "out": 0.18,
+          "cache_read": 0.012,
+          "cache_write": 0.06,
           "source": "nano-gpt"
         }
       ]
@@ -170235,6 +170653,14 @@
           "cache_read": 0.13,
           "cache_write": 0.26,
           "source": "nano-gpt"
+        },
+        {
+          "from": "2026-11-27",
+          "in": 0.4,
+          "out": 3.2,
+          "cache_read": 0.2,
+          "cache_write": 0.4,
+          "source": "nano-gpt"
         }
       ]
     },
@@ -170263,6 +170689,14 @@
           "out": 2.08,
           "cache_read": 0.13,
           "cache_write": 0.26,
+          "source": "nano-gpt"
+        },
+        {
+          "from": "2026-11-27",
+          "in": 0.4,
+          "out": 3.2,
+          "cache_read": 0.2,
+          "cache_write": 0.4,
           "source": "nano-gpt"
         }
       ]
@@ -179558,6 +179992,14 @@
           "cache_read": 0,
           "cache_write": 0.1105,
           "source": "obscurify"
+        },
+        {
+          "from": "2026-11-27",
+          "in": 0.0975,
+          "out": 0.325,
+          "cache_read": 0,
+          "cache_write": 0.0975,
+          "source": "obscurify"
         }
       ]
     },
@@ -179659,6 +180101,14 @@
           "out": 0.39,
           "cache_read": 0.00975,
           "cache_write": 0.0975,
+          "source": "obscurify"
+        },
+        {
+          "from": "2026-11-27",
+          "in": 0.16575,
+          "out": 0.663,
+          "cache_read": 0.016575,
+          "cache_write": 0.16575,
           "source": "obscurify"
         }
       ]
@@ -188965,10 +189415,10 @@
         },
         {
           "from": "2026-11-27",
-          "in": 0.047,
-          "out": 0.3,
-          "cache_read": 0.035,
-          "cache_write": 0.047,
+          "in": 0.04532,
+          "out": 0.13596,
+          "cache_read": 0.001442,
+          "cache_write": 0.04532,
           "source": "openrouter"
         }
       ]
@@ -189282,10 +189732,10 @@
         },
         {
           "from": "2026-11-27",
-          "in": 0.047,
+          "in": 0.0456,
           "out": 0.3,
           "cache_read": 0.035,
-          "cache_write": 0.047,
+          "cache_write": 0.0456,
           "source": "openrouter"
         }
       ]
@@ -189612,10 +190062,10 @@
         },
         {
           "from": "2026-11-27",
-          "in": 0.888188,
-          "out": 1.5082,
-          "cache_read": 0.2,
-          "cache_write": 0.888188,
+          "in": 0.70487,
+          "out": 1.544,
+          "cache_read": 0.21,
+          "cache_write": 0.70487,
           "source": "openrouter"
         }
       ]
@@ -190070,10 +190520,10 @@
         },
         {
           "from": "2026-11-27",
-          "in": 0.14,
-          "out": 0.42,
-          "cache_read": 0.0042,
-          "cache_write": 0.14,
+          "in": 0.0507,
+          "out": 0.2028,
+          "cache_read": 0.001014,
+          "cache_write": 0.0507,
           "source": "openrouter"
         }
       ]
@@ -194484,6 +194934,14 @@
           "cache_read": 0.015,
           "cache_write": 0.075,
           "source": "openrouter"
+        },
+        {
+          "from": "2026-11-27",
+          "in": 0.06,
+          "out": 0.24,
+          "cache_read": 0.012,
+          "cache_write": 0.06,
+          "source": "openrouter"
         }
       ]
     },
@@ -195919,6 +196377,19 @@
           "out": 0.225,
           "cache_read": 0.015,
           "cache_write": 0.075,
+          "source": "openrouter"
+        }
+      ]
+    },
+    "openrouter\u0000ling-3.2-flash": {
+      "id": "ling-3.2-flash",
+      "rates": [
+        {
+          "from": "2026-11-27",
+          "in": 0.3,
+          "out": 0.9,
+          "cache_read": 0.06,
+          "cache_write": 0.3,
           "source": "openrouter"
         }
       ]
@@ -220705,6 +221176,20 @@
           "tier_threshold": 100000,
           "tier_in": 0.5,
           "tier_out": 2.5,
+          "tier_cache_write": 0.625,
+          "source": "sparrowcodes"
+        },
+        {
+          "from": "2026-11-27",
+          "in": 0.1,
+          "out": 0.5,
+          "cache_read": 0.01,
+          "cache_write": 0.125,
+          "cache_write_1h": 0.2,
+          "tier_threshold": 100000,
+          "tier_in": 0.5,
+          "tier_out": 2.5,
+          "tier_cache_read": 0.049999999999999996,
           "tier_cache_write": 0.625,
           "source": "sparrowcodes"
         }
@@ -246877,6 +247362,7 @@
     "deepseek-v4-1-flash-1017-heretic": "deepseek-v4.1-flash-1017-heretic",
     "deepseek-v4-1-flash-1017-heretic:thinking": "deepseek-v4.1-flash-1017-heretic:thinking",
     "deepseek-v4-1-flash-1017-latest": "deepseek-v4-1-flash-1017",
+    "deepseek-v4-1-flash-1017-maas": "deepseek-v4.1-flash-1017-maas",
     "deepseek-v4-1-flash-1017-thinking": "deepseek-v4.1-flash-1017-thinking",
     "deepseek-v4-1-flash-1017-tl5": "deepseek-v4.1-flash-1017-tl5",
     "deepseek-v4-1-flash-1017-ultrafast-latest": "deepseek-v4-1-flash-1017-ultrafast",
@@ -246961,6 +247447,7 @@
     "deepseek-v4.1-flash-1017-heretic-latest": "deepseek-v4.1-flash-1017-heretic",
     "deepseek-v4.1-flash-1017-heretic:thinking-latest": "deepseek-v4.1-flash-1017-heretic:thinking",
     "deepseek-v4.1-flash-1017-latest": "deepseek-v4.1-flash-1017",
+    "deepseek-v4.1-flash-1017-maas-latest": "deepseek-v4.1-flash-1017-maas",
     "deepseek-v4.1-flash-1017-thinking-latest": "deepseek-v4.1-flash-1017-thinking",
     "deepseek-v4.1-flash-1017-tl5-latest": "deepseek-v4.1-flash-1017-tl5",
     "deepseek-v4.1-flash-1017-ultrafast-latest": "deepseek-v4.1-flash-1017-ultrafast",
@@ -247004,6 +247491,7 @@
     "deepseek-v4p1-flash-1017-heretic": "deepseek-v4.1-flash-1017-heretic",
     "deepseek-v4p1-flash-1017-heretic:thinking": "deepseek-v4.1-flash-1017-heretic:thinking",
     "deepseek-v4p1-flash-1017-latest": "deepseek-v4p1-flash-1017",
+    "deepseek-v4p1-flash-1017-maas": "deepseek-v4.1-flash-1017-maas",
     "deepseek-v4p1-flash-1017-spot-latest": "deepseek-v4p1-flash-1017-spot",
     "deepseek-v4p1-flash-1017-thinking": "deepseek-v4.1-flash-1017-thinking",
     "deepseek-v4p1-flash-1017-tl5": "deepseek-v4.1-flash-1017-tl5",
@@ -249128,6 +249616,7 @@
     "ling-3-1-flash-1019-free": "ling-3.1-flash-1019-free",
     "ling-3-1-flash-free": "ling-3.1-flash-free",
     "ling-3-1-flash:free": "ling-3.1-flash:free",
+    "ling-3-2-flash": "ling-3.2-flash",
     "ling-3-2-flash:free": "ling-3.2-flash:free",
     "ling-3.0-flash-fin-free-latest": "ling-3.0-flash-fin-free",
     "ling-3.0-flash-fin-latest": "ling-3.0-flash-fin",
@@ -249147,6 +249636,7 @@
     "ling-3.1-flash-free-latest": "ling-3.1-flash-free",
     "ling-3.1-flash-latest": "ling-3.1-flash",
     "ling-3.1-flash:free-latest": "ling-3.1-flash:free",
+    "ling-3.2-flash-latest": "ling-3.2-flash",
     "ling-3.2-flash:free-latest": "ling-3.2-flash:free",
     "ling-3p0-flash": "ling-3.0-flash",
     "ling-3p0-flash-fin": "ling-3.0-flash-fin",
@@ -249166,6 +249656,7 @@
     "ling-3p1-flash-1019-free": "ling-3.1-flash-1019-free",
     "ling-3p1-flash-free": "ling-3.1-flash-free",
     "ling-3p1-flash:free": "ling-3.1-flash:free",
+    "ling-3p2-flash": "ling-3.2-flash",
     "ling-3p2-flash:free": "ling-3.2-flash:free",
     "ling-flash-2-0": "ling-flash-2.0",
     "ling-flash-2.0-latest": "ling-flash-2.0",
@@ -249357,8 +249848,17 @@
     "m3-latest": "m3",
     "m3.1-flash-latest": "m3.1-flash",
     "m3p1-flash": "m3.1-flash",
+    "macaron-v1-1-coding-venti": "macaron-v1.1-coding-venti",
+    "macaron-v1-1-venti": "macaron-v1.1-venti",
+    "macaron-v1-1-venti-pro": "macaron-v1.1-venti-pro",
     "macaron-v1-tall-latest": "macaron-v1-tall",
     "macaron-v1-venti-latest": "macaron-v1-venti",
+    "macaron-v1.1-coding-venti-latest": "macaron-v1.1-coding-venti",
+    "macaron-v1.1-venti-latest": "macaron-v1.1-venti",
+    "macaron-v1.1-venti-pro-latest": "macaron-v1.1-venti-pro",
+    "macaron-v1p1-coding-venti": "macaron-v1.1-coding-venti",
+    "macaron-v1p1-venti": "macaron-v1.1-venti",
+    "macaron-v1p1-venti-pro": "macaron-v1.1-venti-pro",
     "magibu-11b-v8-latest": "magibu-11b-v8",
     "magidonia-24b-v4-3": "magidonia-24b-v4.3",
     "magidonia-24b-v4.3-latest": "magidonia-24b-v4.3",
