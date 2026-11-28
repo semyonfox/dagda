@@ -223,6 +223,11 @@ take priority. Updates preserve recorded rate history, and newly observed
 changes take effect on the sync date. Paid-to-zero changes are retained at
 their previous rates for review.
 
+Codex calls run at the priority ("fast") or ultrafast tier are priced from
+OpenAI's own cards for those tiers. models.dev doesn't publish them, so the
+sync takes them from LiteLLM's list. Anthropic's priority tier is negotiated
+per account, so those calls stay at standard rates.
+
 ## Build from source
 
 Requires Go 1.26 or newer.

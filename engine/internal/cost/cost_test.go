@@ -73,6 +73,37 @@ func TestBatchTierHalvesCost(t *testing.T) {
 	near(t, batch.USD, 50)
 }
 
+// A priority call is priced from the vendor's own priority card, which is not
+// a flat multiple of standard. Without a card, priority stays at standard.
+func TestPriorityTierUsesItsOwnCard(t *testing.T) {
+	tbl := table()
+	tbl.Models["fast"] = &pricing.Model{ID: "fast", Rates: []pricing.Rate{{
+		From: pricing.MustParseDate("2026-01-01"),
+		In:   2, Out: 10, CacheRead: 0.2, CacheWrite: 2.5,
+		TierThreshold: 272_000, TierIn: 4, TierOut: 15, TierCacheRead: 0.4, TierCacheWrite: 5,
+		Priority: &pricing.SpeedRate{In: 4, Out: 25, CacheRead: 0.4, TierIn: 8},
+	}}}
+	call := model.Turn{Model: "fast", Timestamp: at("2026-06-01"), ServiceTier: "priority",
+		Usage: model.Usage{Input: 100_000, Output: 100_000, CacheRead: 100_000, CacheWrite: 50_000}}
+	// a 250k prompt, under the threshold: 0.4 + 2.5 + 0.04, and the blank
+	// cache write scales with input, 2.5 * 4/2 = 5 per million, so 0.25
+	near(t, Of(call, tbl).USD, 3.19)
+
+	// a 3M prompt: tier input 8 is published, tier output scales with output
+	// (15 * 25/10), tier cache read and write with input (0.4 * 2, 5 * 2)
+	long := call
+	long.Usage = model.Usage{Input: 1_000_000, Output: 1_000_000, CacheRead: 1_000_000, CacheWrite: 1_000_000}
+	near(t, Of(long, tbl).USD, 8+37.5+0.8+10)
+
+	std := call
+	std.ServiceTier = ""
+	// 0.2 + 1 + 0.02 + 0.125
+	near(t, Of(std, tbl).USD, 1.345)
+
+	noCard := model.Turn{Model: "m1", Timestamp: at("2026-06-01"), ServiceTier: "priority", Usage: model.Usage{Output: 1_000_000}}
+	near(t, Of(noCard, tbl).USD, 100)
+}
+
 // Subscription-backed traffic is still priced at list. Zeroing it is what made
 // the old headline total incomparable across agents.
 func TestSubscriptionIsLabelledNotZeroed(t *testing.T) {

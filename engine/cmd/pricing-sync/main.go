@@ -169,6 +169,7 @@ func main() {
 		asOf      = flag.String("as-of", "", "effective date to stamp new rates with (default: today)")
 		dryRun    = flag.Bool("dry-run", false, "report what would change without writing")
 		backfillF = flag.String("backfill", "", "schema-1 pricing_data.json to date-stamp existing rates from (implies -as-of, skips the network)")
+		speedSrc  = flag.String("speed-source", liteLLMURL, "LiteLLM price list for OpenAI priority and ultrafast cards, a local path, or empty to keep the published ones")
 	)
 	flag.Parse()
 
@@ -205,7 +206,25 @@ func main() {
 	if len(next.Models) == 0 {
 		fatal("transformed dataset is empty; refusing to overwrite the dataset")
 	}
-	changes := sync(readExisting(*out), next, effective)
+	prev := readExisting(*out)
+	speedRaw, err := []byte(nil), error(nil)
+	if *speedSrc != "" {
+		speedRaw, err = fetch(*speedSrc)
+	}
+	attached := 0
+	if *speedSrc != "" && err == nil {
+		attached, err = attachSpeedRates(next, speedRaw)
+		if err == nil {
+			next.Sources = append(next.Sources, liteLLMURL)
+		}
+	}
+	if *speedSrc == "" || err != nil {
+		if err != nil {
+			warnf("speed cards: %v; keeping the published ones", err)
+		}
+		carrySpeedRates(prev, next)
+	}
+	changes := sync(prev, next, effective)
 
 	report(changes)
 	if *dryRun {
@@ -215,8 +234,8 @@ func main() {
 	if err := write(*out, next); err != nil {
 		fatal("write %s: %v", *out, err)
 	}
-	fmt.Printf("\nWrote %s — %d models, %d provider-keyed, %d aliases (effective %s)\n",
-		*out, len(next.Models), len(next.ByProvider), len(next.Aliases), effective)
+	fmt.Printf("\nWrote %s — %d models, %d provider-keyed, %d aliases, %d speed cards (effective %s)\n",
+		*out, len(next.Models), len(next.ByProvider), len(next.Aliases), attached, effective)
 }
 
 // sync folds the previous dataset and firstparty.json into next, the dataset
@@ -760,9 +779,28 @@ func mergeRates(prev, next *pricing.Model, effective pricing.Date) bool {
 			return true
 		}
 	}
+	// a faster tier's card turning up on an unchanged standard card is the
+	// same kind of correction: those prices applied all along
+	if (latest.Priority == nil && fresh.Priority != nil) || (latest.Ultrafast == nil && fresh.Ultrafast != nil) {
+		filled := latest
+		filled.Priority = cmpOr(latest.Priority, fresh.Priority)
+		filled.Ultrafast = cmpOr(latest.Ultrafast, fresh.Ultrafast)
+		if sameRate(filled, fresh) {
+			next.Rates = append([]pricing.Rate{}, prev.Rates...)
+			next.Rates[len(next.Rates)-1] = filled
+			return true
+		}
+	}
 	fresh.From = effective
 	next.Rates = append(append([]pricing.Rate{}, prev.Rates...), fresh)
 	return true
+}
+
+func cmpOr(a, b *pricing.SpeedRate) *pricing.SpeedRate {
+	if a != nil {
+		return a
+	}
+	return b
 }
 
 func sameRate(a, b pricing.Rate) bool {
@@ -770,7 +808,8 @@ func sameRate(a, b pricing.Rate) bool {
 		a.CacheRead == b.CacheRead && a.CacheWrite == b.CacheWrite &&
 		a.CacheWrite1h == b.CacheWrite1h &&
 		a.TierThreshold == b.TierThreshold && a.TierIn == b.TierIn && a.TierOut == b.TierOut &&
-		a.TierCacheRead == b.TierCacheRead && a.TierCacheWrite == b.TierCacheWrite
+		a.TierCacheRead == b.TierCacheRead && a.TierCacheWrite == b.TierCacheWrite &&
+		sameSpeed(a.Priority, b.Priority) && sameSpeed(a.Ultrafast, b.Ultrafast)
 }
 
 func report(changes []change) {

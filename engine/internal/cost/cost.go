@@ -101,6 +101,7 @@ func Of(t model.Turn, tbl *pricing.Table) Cost {
 		// explicitly approximate value rather than inventing a context tier.
 		ctx = 0
 	}
+	rate = rate.ForService(t.ServiceTier)
 	in, out, cacheRead, cacheWrite := rate.ForContext(ctx)
 
 	write1h := min(u.CacheWrite1h, u.CacheWrite)
@@ -130,8 +131,10 @@ func Of(t model.Turn, tbl *pricing.Table) Cost {
 //
 // Batch is the only tier with a rate published uniformly enough to apply
 // blind: OpenAI, Anthropic and Google all bill asynchronous batch traffic at
-// half the synchronous rate. Priority/scale tiers carry negotiated premiums
-// that vary per account, so they are left at list rather than guessed at.
+// half the synchronous rate. Priority tiers are priced from the vendor's own
+// card by Rate.ForService instead, because the premium differs per model,
+// and where no card is published (Anthropic negotiates it per account) the
+// call stays at list rather than guessed at.
 func tierMultiplier(tier string) float64 {
 	switch tier {
 	case "batch":
