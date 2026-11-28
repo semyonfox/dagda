@@ -199,3 +199,41 @@ func TestCodexArchivedRolloutKeepsUsageAcrossMove(t *testing.T) {
 	}
 	total("archived")
 }
+
+func codexSettings(ts, tier string) string {
+	return `{"timestamp":"` + ts + `","type":"event_msg","payload":{"type":"thread_settings_applied","thread_id":"t","thread_settings":{"model":"example","service_tier":"` + tier + `"}}}`
+}
+
+func TestCodexCallsCarryTheServiceTierInForce(t *testing.T) {
+	root := t.TempDir()
+	u := codexUsage{Input: 100, Output: 10}
+	writeFile(t, filepath.Join(root, "sessions", "rollout-structured.jsonl"),
+		codexMeta("s", "", "user", "example"),
+		codexContextWithID("turn-a", "example"),
+		structuredLine("s", "turn-a", "before", "2026-09-01T12:00:00Z", u),
+		codexSettings("2026-09-01T12:00:01Z", "priority"),
+		structuredLine("s", "turn-a", "priority", "2026-09-01T12:00:02Z", u),
+		codexSettings("2026-09-01T12:00:03Z", "default"),
+		structuredLine("s", "turn-a", "after", "2026-09-01T12:00:04Z", u),
+	)
+	// older rollouts only have token_count snapshots, and codex's ui name
+	// for priority is fast
+	writeFile(t, filepath.Join(root, "sessions", "rollout-legacy.jsonl"),
+		codexMeta("l", "", "user", "example"),
+		codexSettings("2026-09-02T12:00:00Z", "fast"),
+		codexTokens("2026-09-02T12:00:01Z", 100, 0, 10),
+	)
+	tiers := map[string]string{}
+	for _, turn := range codexAccounted(t, root) {
+		tiers[turn.SessionID+"@"+turn.Timestamp.UTC().Format("15:04:05")] = turn.ServiceTier
+	}
+	want := map[string]string{"s@12:00:00": "", "s@12:00:02": "priority", "s@12:00:04": "", "l@12:00:01": "priority"}
+	if len(tiers) != len(want) {
+		t.Fatalf("tiers = %v", tiers)
+	}
+	for k, v := range want {
+		if tiers[k] != v {
+			t.Fatalf("tiers = %v, want %v", tiers, want)
+		}
+	}
+}

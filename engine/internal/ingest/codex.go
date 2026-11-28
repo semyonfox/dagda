@@ -81,6 +81,11 @@ type codexRecord struct {
 		Arguments string `json:"arguments"`
 		Input     string `json:"input"`
 
+		// event_msg/thread_settings_applied
+		ThreadSettings *struct {
+			ServiceTier string `json:"service_tier"`
+		} `json:"thread_settings"`
+
 		// event_msg/token_count
 		Info *struct {
 			Total   *codexUsage `json:"total_token_usage"`
@@ -96,6 +101,10 @@ type codexRecord struct {
 	// commandDir is where the tool calls of the response this usage record
 	// closes explicitly worked, if anywhere.
 	commandDir string
+
+	// tier is the service tier the thread settings had applied when this
+	// usage record was written.
+	tier string
 }
 
 func (c *Codex) Scan(ctx context.Context, emit func(model.Turn)) error {
@@ -140,7 +149,7 @@ func (c *Codex) Scan(ctx context.Context, emit func(model.Turn)) error {
 	}
 	sort.Strings(paths)
 	for _, t := range mapFiles(ctx, paths, func(path string) []model.Turn {
-		return cachedParsedFile(ctx, path, "codex-rollout-v1", func() []model.Turn { return c.scanFile(path) })
+		return cachedParsedFile(ctx, path, "codex-rollout-v2", func() []model.Turn { return c.scanFile(path) })
 	}) {
 		emit(t)
 	}
@@ -164,6 +173,9 @@ func (c *Codex) scanFile(path string) []model.Turn {
 	// a response's tool calls come before its token_usage_record and its
 	// token_count, so each kind takes the location once and then clears it
 	var forRecord, forCount string
+	// thread settings apply to every call after them until changed. A rollout
+	// written before codex logged them leaves calls at the standard tier
+	var tier string
 	var records []codexRecord
 	for line := range jsonLines(f) {
 		if !codexWanted(line) {
@@ -182,6 +194,7 @@ func (c *Codex) scanFile(path string) []model.Turn {
 			}
 		case "token_usage_record":
 			r.commandDir, forRecord = forRecord, ""
+			r.tier = tier
 			records = append(records, r)
 		case "session_meta", "turn_context":
 			records = append(records, r)
@@ -189,7 +202,12 @@ func (c *Codex) scanFile(path string) []model.Turn {
 			switch r.Payload.Type {
 			case "token_count":
 				r.commandDir, forCount = forCount, ""
+				r.tier = tier
 				records = append(records, r)
+			case "thread_settings_applied":
+				if r.Payload.ThreadSettings != nil {
+					tier = codexServiceTier(r.Payload.ThreadSettings.ServiceTier)
+				}
 			case "task_started", "turn_started":
 				records = append(records, r)
 			}
@@ -208,7 +226,20 @@ func (c *Codex) scanFile(path string) []model.Turn {
 var codexMarkers = [][]byte{
 	[]byte(`"session_meta"`), []byte(`"turn_context"`), []byte(`"token_usage_record"`),
 	[]byte(`"token_count"`), []byte(`"task_started"`), []byte(`"turn_started"`),
-	[]byte(`"function_call"`), []byte(`"custom_tool_call"`),
+	[]byte(`"function_call"`), []byte(`"custom_tool_call"`), []byte(`"thread_settings_applied"`),
+}
+
+// codexServiceTier maps codex's service_tier setting onto the billing tier
+// names pricing uses. Codex calls priority processing "fast" in its ui.
+func codexServiceTier(setting string) string {
+	switch setting {
+	case "priority", "fast":
+		return "priority"
+	case "ultrafast":
+		return "ultrafast"
+	default:
+		return ""
+	}
 }
 
 func codexWanted(line []byte) bool {
@@ -327,6 +358,7 @@ func scanCodexLegacy(records []codexRecord) []model.Turn {
 			Usage:           usage,
 			Subagent:        subagent,
 			ReplayHeuristic: forked,
+			ServiceTier:     r.tier,
 		}, repeat: repeat}
 
 		if !forked || burstResolved {
