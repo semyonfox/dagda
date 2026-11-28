@@ -1,10 +1,8 @@
 package ingest
 
 import (
-	"bytes"
 	"context"
 	"crypto/sha256"
-	"encoding/gob"
 	"encoding/hex"
 	"errors"
 	"fmt"
@@ -22,7 +20,7 @@ import (
 )
 
 const (
-	scanCacheVersion = 2
+	scanCacheVersion = 3
 	maxScanCacheSize = 256 << 20
 )
 
@@ -238,10 +236,12 @@ func loadScanCache(path, namespace, fingerprint string) ([]model.Turn, bool) {
 	if err != nil || !info.Mode().IsRegular() || info.Size() < 0 || info.Size() > maxScanCacheSize {
 		return nil, false
 	}
-	var record scanCacheRecord
-	dec := gob.NewDecoder(io.LimitReader(f, maxScanCacheSize+1))
-	if dec.Decode(&record) != nil ||
-		record.Version != scanCacheVersion || record.Namespace != namespace || record.Fingerprint != fingerprint {
+	raw := make([]byte, info.Size())
+	if _, err := io.ReadFull(f, raw); err != nil {
+		return nil, false
+	}
+	record, err := decodeCacheRecord(raw)
+	if err != nil || record.Version != scanCacheVersion || record.Namespace != namespace || record.Fingerprint != fingerprint {
 		return nil, false
 	}
 	return record.Turns, true
@@ -255,11 +255,7 @@ func writeScanCache(path, namespace, fingerprint string, turns []model.Turn) err
 		return err
 	}
 	record := scanCacheRecord{Version: scanCacheVersion, Namespace: namespace, Fingerprint: fingerprint, Turns: turns}
-	// gob decodes these records about four times faster than JSON and at
-	// roughly half the size, and the cache is only ever read by this binary
-	var buf bytes.Buffer
-	err := gob.NewEncoder(&buf).Encode(record)
-	raw := buf.Bytes()
+	raw, err := encodeCacheRecord(record)
 	if err != nil || len(raw) > maxScanCacheSize {
 		if err != nil {
 			return err
@@ -280,10 +276,8 @@ func writeScanCache(path, namespace, fingerprint string, turns []model.Turn) err
 		tmp.Close()
 		return err
 	}
-	if err := tmp.Sync(); err != nil {
-		tmp.Close()
-		return err
-	}
+	// no fsync: the cache is rebuilt from the logs, and a record torn by a
+	// crash fails the codec's length and trailer checks and is read again
 	if err := tmp.Close(); err != nil {
 		return err
 	}

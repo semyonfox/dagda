@@ -184,8 +184,10 @@ SQLite WAL changes. Sources changed during a scan are not saved as a stable
 result. Missing, corrupt or unwritable cache files fall back to a fresh scan.
 Parsed results are keyed on the parser code itself, so rebuilding or
 reinstalling the same parsers keeps the cache and any parser change drops it.
-Records are stored with Go's `gob` encoding. Use `--no-cache` after a manual edit
-that preserves both file size and modification time.
+Records are stored in a compact binary layout that keeps each repeated string
+once per file. Only the build that wrote a cache file reads it, so the layout
+can change freely. Use `--no-cache` after a manual edit that preserves both
+file size and modification time.
 
 ## Cursor usage
 

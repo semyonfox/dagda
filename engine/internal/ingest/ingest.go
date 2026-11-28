@@ -119,8 +119,12 @@ func run(ctx context.Context, scanners []Scanner, cacheDir string) (*Result, err
 		return nil, err
 	}
 
-	res := &Result{Errors: sourceWarnings}
-	seen := make(map[string]int, 1<<16)
+	total := 0
+	for _, b := range out {
+		total += len(b.turns)
+	}
+	res := &Result{Errors: sourceWarnings, Turns: make([]model.Turn, 0, total)}
+	seen := make(map[string]int, total)
 	for _, b := range out {
 		if b.hit {
 			res.CacheHits++
