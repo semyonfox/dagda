@@ -3,6 +3,7 @@ package ingest
 import (
 	"context"
 	"errors"
+	"fmt"
 	"os"
 	"path/filepath"
 	"reflect"
@@ -447,5 +448,66 @@ func TestWriteScanCacheReplacesVersionOneJSON(t *testing.T) {
 	}
 	if _, ok := loadScanCache(path, "ns", "other"); ok {
 		t.Fatal("a different fingerprint must miss")
+	}
+}
+
+// Sets every Turn field, so a field added to Turn but not to the cache codec
+// comes back zero and fails here instead of silently dropping from reports.
+func TestCacheCodecRoundTripsEveryTurnField(t *testing.T) {
+	var turn model.Turn
+	n := 0
+	fill(t, reflect.ValueOf(&turn).Elem(), &n)
+	shared := turn
+	shared.Key = "second"
+	record := scanCacheRecord{Version: scanCacheVersion, Namespace: "ns", Fingerprint: "fp", Turns: []model.Turn{turn, shared, {}}}
+	raw, err := encodeCacheRecord(record)
+	if err != nil {
+		t.Fatal(err)
+	}
+	got, err := decodeCacheRecord(raw)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if !reflect.DeepEqual(got.Turns, record.Turns) || got.Namespace != "ns" || got.Fingerprint != "fp" || got.Version != scanCacheVersion {
+		t.Fatalf("round trip changed the record:\n got %+v\nwant %+v", got, record)
+	}
+	for n := range raw {
+		if _, err := decodeCacheRecord(raw[:n]); err == nil {
+			t.Fatalf("accepted a record cut to %d of %d bytes", n, len(raw))
+		}
+	}
+}
+
+// fill gives every field a distinct value, so two fields swapped in the codec
+// also fail the comparison
+func fill(t *testing.T, v reflect.Value, n *int) {
+	t.Helper()
+	switch v.Kind() {
+	case reflect.Struct:
+		if v.Type() == reflect.TypeOf(time.Time{}) {
+			v.Set(reflect.ValueOf(time.Date(2026, 11, 28, 17, 0, 0, 123, time.FixedZone("", 3600))))
+			return
+		}
+		for i := range v.NumField() {
+			fill(t, v.Field(i), n)
+		}
+		return
+	case reflect.Pointer:
+		v.Set(reflect.New(v.Type().Elem()))
+		fill(t, v.Elem(), n)
+		return
+	}
+	*n++
+	switch v.Kind() {
+	case reflect.String:
+		v.SetString(fmt.Sprintf("value-%d", *n))
+	case reflect.Int64:
+		v.SetInt(int64(*n))
+	case reflect.Bool:
+		v.SetBool(true)
+	case reflect.Float64:
+		v.SetFloat(float64(*n) + 0.5)
+	default:
+		t.Fatalf("fill does not handle %s; extend it and the cache codec", v.Type())
 	}
 }

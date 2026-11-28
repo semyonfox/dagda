@@ -7,7 +7,6 @@ import (
 	"os"
 	"path/filepath"
 	"regexp"
-	"runtime"
 	"strconv"
 	"strings"
 	"time"
@@ -39,43 +38,6 @@ func (c *Cline) Roots() []string { return append([]string(nil), c.roots...) }
 
 func (c *Cline) Scan(ctx context.Context, emit func(model.Turn)) error {
 	return scanLegacyClineTasks(ctx, c.roots, model.AgentCline, false, emit)
-}
-
-func vscodeGlobalStorageRoots(extensionID string) []string {
-	home := homeDir()
-	if home == "" {
-		return nil
-	}
-	var parents []string
-	switch runtime.GOOS {
-	case "darwin":
-		parents = []string{
-			filepath.Join(home, "Library", "Application Support", "Code", "User", "globalStorage"),
-			filepath.Join(home, "Library", "Application Support", "Code - Insiders", "User", "globalStorage"),
-			filepath.Join(home, "Library", "Application Support", "VSCodium", "User", "globalStorage"),
-		}
-	case "windows":
-		roaming := os.Getenv("APPDATA")
-		if roaming == "" {
-			roaming = filepath.Join(home, "AppData", "Roaming")
-		}
-		parents = []string{
-			filepath.Join(roaming, "Code", "User", "globalStorage"),
-			filepath.Join(roaming, "Code - Insiders", "User", "globalStorage"),
-			filepath.Join(roaming, "VSCodium", "User", "globalStorage"),
-		}
-	default:
-		parents = []string{
-			filepath.Join(home, ".config", "Code", "User", "globalStorage"),
-			filepath.Join(home, ".config", "Code - Insiders", "User", "globalStorage"),
-			filepath.Join(home, ".config", "VSCodium", "User", "globalStorage"),
-		}
-	}
-	roots := make([]string, 0, len(parents))
-	for _, parent := range parents {
-		roots = append(roots, filepath.Join(parent, extensionID))
-	}
-	return roots
 }
 
 func existingTaskRoots(candidates []string) []string {

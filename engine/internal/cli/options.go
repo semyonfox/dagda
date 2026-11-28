@@ -21,6 +21,8 @@ type reportOptions struct {
 	verbose     bool
 	noCache     bool
 	compact     bool
+	// imports are record files from dagda export on other machines
+	imports pathList
 	// summary fell back to its 30-day window, worth saying on screen
 	defaultWindow bool
 }
@@ -49,6 +51,7 @@ func parseReportOptions(cmd string, args []string) (reportOptions, error) {
 	fs.Var(&models, "model", "")
 	fs.Var(&projects, "project", "")
 	fs.Var(&sessions, "session", "")
+	fs.Var(&opts.imports, "import", "")
 	positional, err := parseFlags(fs, args)
 	if err != nil {
 		return opts, err
@@ -62,6 +65,15 @@ func parseReportOptions(cmd string, args []string) (reportOptions, error) {
 		if err := named.Set(name); err != nil {
 			return opts, err
 		}
+	}
+	stdin := 0
+	for _, path := range opts.imports {
+		if path == "-" {
+			stdin++
+		}
+	}
+	if stdin > 1 {
+		return opts, fmt.Errorf("--import - reads stdin, so it can only be given once")
 	}
 	if opts.limit < 0 {
 		return opts, fmt.Errorf("--limit must not be negative")
@@ -178,6 +190,19 @@ func (s *stringList) Set(v string) error {
 			*s = append(*s, part)
 		}
 	}
+	return nil
+}
+
+// pathList is a repeatable flag whose values are taken whole, since a path
+// may contain a comma.
+type pathList []string
+
+func (p *pathList) String() string { return strings.Join(*p, ",") }
+func (p *pathList) Set(v string) error {
+	if v == "" {
+		return fmt.Errorf("--import needs a file path")
+	}
+	*p = append(*p, v)
 	return nil
 }
 

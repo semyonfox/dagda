@@ -16,6 +16,7 @@ model                   usage by model
 project                 usage by project
 agents [NAME ...]       provider coverage and detected source paths
 price MODEL [MODEL ...] effective-dated API list rates
+export                  usage records for --import on another machine
 version                 build version
 ```
 
@@ -68,6 +69,7 @@ exposes the same command.
 --compact               abbreviated counts in detailed tables
 --verbose               scan, cache and deduplication diagnostics
 --no-cache               read source logs without using or updating the scan cache
+--import FILE           merge records from dagda export on another machine; repeatable
 --json                  machine-readable output
 --limit N               cap on displayed rows; 0 means no cap
 --no-color              disable colour; also honours NO_COLOR
@@ -118,6 +120,48 @@ recorded CWDs in `project_paths`.
 ./dist/dagda session --project dagda --limit 10
 ```
 
+## Combining machines
+
+Each machine only sees its own logs, and adding two machines' totals counts any
+session copied between them twice, such as a T3 thread moved to another
+environment. Export the records on one machine and merge them into a report on
+the other:
+
+```sh
+ssh laptop dagda export | dagda -a --import -
+dagda export --output laptop.dagda   # then copy it over
+dagda -a --import laptop.dagda --import desktop.dagda
+```
+
+On Windows PowerShell use `--output`. PowerShell's `>` and `|` re-encode
+program output as text, which corrupts the compressed records.
+
+`export` writes the machine's deduplicated call records: identities,
+timestamps, models, project paths and token counts, never transcripts or
+prices. It covers all history and takes only `--agent` and `--no-cache`. The
+file is gzipped gob, which copes with another dagda version, because JSON was about 9 times the
+size and 4 times slower to read. 618k records come to 30MB and read in about
+2 seconds.
+
+`--import` runs imported records through the same identity dedupe as local
+ones, so a copied call counts once and keeps the local session and project.
+The importing machine applies its own prices, filters and project grouping.
+JSON reports `imported_duplicates_dropped`, and `--verbose` shows it.
+
+Identities that name a source file use its place under the home directory, so
+a store copied from `/home/me` on Linux to `/Users/me` on macOS still matches.
+On Windows and macOS, whose file systems ignore case by default, the path is
+compared without case.
+Identities that are only a file and a line number, such as LingTai ledger rows
+without a call id or Cursor dashboard CSV rows, can't be trusted across
+machines and are exported without one. Records with no identity are added and
+counted in `imported_unkeyed`, with a warning. Point `DAGDA_CURSOR_CSV` at the
+account's export on one machine only, since it already covers them all.
+
+Both machines should run the same dagda version. Reports warn when an export
+came from different reader code, because an identity that changed between
+versions won't match.
+
 ## Scan cache
 
 Reports cache parsed usage under the operating system's user cache directory,
@@ -140,8 +184,10 @@ SQLite WAL changes. Sources changed during a scan are not saved as a stable
 result. Missing, corrupt or unwritable cache files fall back to a fresh scan.
 Parsed results are keyed on the parser code itself, so rebuilding or
 reinstalling the same parsers keeps the cache and any parser change drops it.
-Records are stored with Go's `gob` encoding. Use `--no-cache` after a manual edit
-that preserves both file size and modification time.
+Records are stored in a compact binary layout that keeps each repeated string
+once per file. Only the build that wrote a cache file reads it, so the layout
+can change freely. Use `--no-cache` after a manual edit that preserves both
+file size and modification time.
 
 ## Cursor usage
 
@@ -301,6 +347,25 @@ VS Code copy is excluded. The scanner never enables OpenTelemetry or reads
 debug logs.
 VS Code session storage includes chat payloads, but the scanner neither retains
 nor reports prompt/response text and never uses those fields for accounting.
+
+## VS Code extensions and remote servers
+
+Copilot Chat, Cline and Roo Code keep their data in a VS Code style `User`
+directory. Dagda checks every place one lives:
+
+- the desktop config dir for Code, Insiders, Code - OSS and VSCodium, which is
+  `~/.config` (or `XDG_CONFIG_HOME`) on Linux, `~/Library/Application Support`
+  on macOS and `%APPDATA%` on Windows
+- Flatpak installs under `~/.var/app`
+- the remote server an editor installs over SSH, WSL or a container:
+  `~/.vscode-server`, `~/.vscode-server-insiders`, `~/.vscodium-server`,
+  and `~/.vscode-remote` for Codespaces and dev containers. Extensions running
+  remotely store their data there, so run dagda on the remote machine.
+
+Cline and Roo also run in Cursor, Windsurf and Trae, so their stores are read
+from those editors and their servers (`~/.cursor-server` and so on) too.
+Copilot Chat is read only from VS Code builds, because the forks replace VS
+Code's chat with their own.
 
 Valid CLI request rows remain authoritative. Cumulative shutdown snapshots
 become interval deltas. The reader subtracts request rows at or before the

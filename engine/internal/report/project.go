@@ -297,7 +297,10 @@ func projectPathWithin(projectPath, ancestor string) bool {
 	if right == "/" {
 		return strings.HasPrefix(left, "/")
 	}
-	return strings.HasPrefix(left, strings.TrimSuffix(right, "/")+"/")
+	// compared in place: this runs for every path against every worktree
+	// record, and building right+"/" each time was most of a report's garbage
+	right = strings.TrimSuffix(right, "/")
+	return len(left) > len(right) && left[len(right)] == '/' && strings.HasPrefix(left, right)
 }
 
 func (c *projectCatalog) label(key string) string {

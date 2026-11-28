@@ -47,6 +47,11 @@ type Result struct {
 	// Duplicates counts calls dropped because an identical call had already
 	// been seen — replayed history from resumed and forked transcripts.
 	Duplicates int
+	// ImportedDuplicates counts imported records already present locally or
+	// in an earlier import. ImportedUnkeyed counts imported records with no
+	// identity, which are added because nothing can match them.
+	ImportedDuplicates int
+	ImportedUnkeyed    int
 	// Errors collects per-agent failures. A broken scanner degrades that one
 	// agent's numbers; it never fails the whole run, because a user with one
 	// unreadable log directory still deserves the rest of their data.
@@ -114,8 +119,12 @@ func run(ctx context.Context, scanners []Scanner, cacheDir string) (*Result, err
 		return nil, err
 	}
 
-	res := &Result{Errors: sourceWarnings}
-	seen := make(map[string]int, 1<<16)
+	total := 0
+	for _, b := range out {
+		total += len(b.turns)
+	}
+	res := &Result{Errors: sourceWarnings, Turns: make([]model.Turn, 0, total)}
+	seen := make(map[string]int, total)
 	for _, b := range out {
 		if b.hit {
 			res.CacheHits++
@@ -130,29 +139,7 @@ func run(ctx context.Context, scanners []Scanner, cacheDir string) (*Result, err
 			if t.Key != "" {
 				if kept, dup := seen[t.Key]; dup {
 					res.Duplicates++
-					// Claude Code can write several cumulative streaming snapshots
-					// for one request. Keep the largest usage block, but retain the
-					// first record's session, project and subagent attribution. A
-					// copied transcript must not steal ownership of the original call.
-					if moreCompleteUsage(t.Usage, res.Turns[kept].Usage) {
-						res.Turns[kept].Usage = t.Usage
-						res.Turns[kept].UnpricedReason = t.UnpricedReason
-						// The fuller snapshot is the one that knows the billing
-						// tier. An empty tier must not wipe a tier already seen.
-						if t.ServiceTier != "" {
-							res.Turns[kept].ServiceTier = t.ServiceTier
-						}
-					} else if res.Turns[kept].ServiceTier == "" && t.ServiceTier != "" {
-						res.Turns[kept].ServiceTier = t.ServiceTier
-					}
-					// a snapshot that knows the call ran in fast mode wins,
-					// whichever order the snapshots were written in
-					if t.Model == res.Turns[kept].Model+"-fast" {
-						res.Turns[kept].Model = t.Model
-					}
-					if t.Credits != nil && (res.Turns[kept].Credits == nil || *t.Credits > *res.Turns[kept].Credits) {
-						res.Turns[kept].Credits = t.Credits
-					}
+					mergeDuplicate(&res.Turns[kept], t)
 					continue
 				}
 				seen[t.Key] = len(res.Turns)
@@ -161,10 +148,68 @@ func run(ctx context.Context, scanners []Scanner, cacheDir string) (*Result, err
 		}
 	}
 	markRuntimeOverlaps(res.Turns)
-	sort.Slice(res.Turns, func(i, j int) bool {
-		return res.Turns[i].Timestamp.Before(res.Turns[j].Timestamp)
-	})
+	sortTurns(res.Turns)
 	return res, nil
+}
+
+// mergeDuplicate folds a repeat of an already kept call into it.
+//
+// Claude Code can write several cumulative streaming snapshots for one
+// request. Keep the largest usage block, but retain the first record's
+// session, project and subagent attribution. A copied transcript must not
+// steal ownership of the original call.
+func mergeDuplicate(kept *model.Turn, t model.Turn) {
+	if moreCompleteUsage(t.Usage, kept.Usage) {
+		kept.Usage = t.Usage
+		kept.UnpricedReason = t.UnpricedReason
+		// The fuller snapshot is the one that knows the billing
+		// tier. An empty tier must not wipe a tier already seen.
+		if t.ServiceTier != "" {
+			kept.ServiceTier = t.ServiceTier
+		}
+	} else if kept.ServiceTier == "" && t.ServiceTier != "" {
+		kept.ServiceTier = t.ServiceTier
+	}
+	// a snapshot that knows the call ran in fast mode wins,
+	// whichever order the snapshots were written in
+	if t.Model == kept.Model+"-fast" {
+		kept.Model = t.Model
+	}
+	if t.Credits != nil && (kept.Credits == nil || *t.Credits > *kept.Credits) {
+		kept.Credits = t.Credits
+	}
+}
+
+// Import adds records exported on another machine to a completed scan. They
+// go through the same keyed dedupe as local records, so a session copied
+// between machines counts once and the local copy keeps its attribution.
+func (r *Result) Import(turns []model.Turn) {
+	seen := make(map[string]int, len(r.Turns)+len(turns))
+	for i, t := range r.Turns {
+		if t.Key != "" {
+			seen[t.Key] = i
+		}
+	}
+	for _, t := range turns {
+		if t.Key == "" {
+			r.ImportedUnkeyed++
+		} else if kept, dup := seen[t.Key]; dup {
+			r.ImportedDuplicates++
+			mergeDuplicate(&r.Turns[kept], t)
+			continue
+		} else {
+			seen[t.Key] = len(r.Turns)
+		}
+		r.Turns = append(r.Turns, t)
+	}
+	markRuntimeOverlaps(r.Turns)
+	sortTurns(r.Turns)
+}
+
+func sortTurns(turns []model.Turn) {
+	sort.Slice(turns, func(i, j int) bool {
+		return turns[i].Timestamp.Before(turns[j].Timestamp)
+	})
 }
 
 func scanScanner(ctx context.Context, scanner Scanner, cacheDir string) scanBatch {

@@ -141,7 +141,7 @@ func (c *Cursor) Scan(ctx context.Context, emit func(model.Turn)) error {
 		if session == "" {
 			session = "cursor-csv"
 		}
-		emit(model.Turn{Key: identityKey("cursor-csv", filepath.Clean(c.path), strconv.Itoa(rowNum)), SessionID: session, Agent: model.Agent("cursor"), Timestamp: ts, Model: modelID, Provider: "cursor", Usage: u, Aggregate: false, UnpricedReason: reason})
+		emit(model.Turn{Key: localKey("cursor-csv", filepath.Clean(c.path), strconv.Itoa(rowNum)), SessionID: session, Agent: model.Agent("cursor"), Timestamp: ts, Model: modelID, Provider: "cursor", Usage: u, Aggregate: false, UnpricedReason: reason})
 	}
 	return scanErr
 }

@@ -389,6 +389,9 @@ func summary(w io.Writer, th theme, rep *report.Report, truncated int, verbose b
 	if truncated > 0 {
 		note(th.dim, "·", th.dim(fmt.Sprintf("%s more rows — raise --limit", humanInt(truncated))))
 	}
+	if rep.ImportedUnkeyed > 0 {
+		note(th.warn, "!", fmt.Sprintf("%s imported records have no identity, so a copy also counted here can't be dropped", humanInt(rep.ImportedUnkeyed)))
+	}
 	note(th.dim, "·", th.dim(ratesLine(rep)))
 
 	// Diagnostics: true, but never actionable. They belong behind a flag rather
@@ -396,6 +399,9 @@ func summary(w io.Writer, th theme, rep *report.Report, truncated int, verbose b
 	if verbose {
 		if rep.Duplicates > 0 {
 			note(th.dim, "·", th.dim(fmt.Sprintf("%s replayed calls dropped as duplicates", humanInt(rep.Duplicates))))
+		}
+		if rep.ImportedDuplicates > 0 {
+			note(th.dim, "·", th.dim(fmt.Sprintf("%s imported calls dropped as already counted", humanInt(rep.ImportedDuplicates))))
 		}
 		note(th.dim, "·", th.dim(fmt.Sprintf("%s turns scanned, %s matched the filters",
 			humanInt(rep.ScannedTurns), humanInt(rep.MatchedTurns))))
