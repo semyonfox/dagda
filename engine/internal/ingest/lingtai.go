@@ -176,7 +176,7 @@ func scanLingTaiLedger(source lingTaiSource, emit func(model.Turn)) error {
 		if r.APICallID != "" {
 			key = identityKey("lingtai-api-call", r.APICallID)
 		} else {
-			key = identityKey("lingtai-ledger", filepath.Clean(source.path), strconv.Itoa(lineNo))
+			key = localKey("lingtai-ledger", filepath.Clean(source.path), strconv.Itoa(lineNo))
 		}
 		emit(model.Turn{Key: key, SessionID: session, Agent: model.Agent("lingtai-tui"), Timestamp: parseFlexibleTime(r.TS), Model: modelID, Endpoint: r.Endpoint, Project: source.project, Usage: usage, Subagent: r.Source == "daemon" || r.EmID != "" || r.RunID != "", UnpricedReason: unpriced})
 	}

@@ -22,6 +22,7 @@ var commands = []commandSpec{
 	{name: "model", aliases: []string{"models"}, description: "usage by model", report: true},
 	{name: "project", aliases: []string{"projects"}, description: "usage by project", report: true},
 	{name: "agents", aliases: []string{"providers"}, description: "provider coverage and detected source paths"},
+	{name: "export", description: "write usage records for --import on another machine"},
 	{name: "price", description: "effective-dated rates for one or more models"},
 	{name: "statusline", description: "Claude Code status line hook; records plan windows", hook: true},
 	{name: "version", aliases: []string{"--version", "-v"}, description: "build version"},
@@ -58,9 +59,13 @@ REPORTS
 		fmt.Print("  Timeline and session rows nest by model; model and project stay flat.\n")
 		fmt.Print("\nLOOKUP\n")
 		for _, command := range commands {
-			if !command.report && !command.hook && command.name != "version" {
+			if !command.report && !command.hook && command.name != "version" && command.name != "export" {
 				fmt.Printf("  %-10s %s\n", command.name, command.description)
 			}
+		}
+		fmt.Print("\nMACHINES\n")
+		if command, ok := findCommand("export"); ok {
+			fmt.Printf("  %-10s %s\n", command.name, command.description)
 		}
 		fmt.Print("\nHOOKS\n")
 		for _, command := range commands {
@@ -167,6 +172,30 @@ EXAMPLES
   dagda agents cursor copilot
   dagda providers --json kimi kimicode
 `)
+	case "export":
+		fmt.Print(`USAGE
+  dagda export --output FILE
+  dagda export | dagda --import -
+
+Writes this machine's deduplicated usage records, compressed, for a report on
+another machine to merge with --import FILE, or --import - from a pipe.
+Records are unpriced and cover all history. The other machine applies its own
+prices, filters and project grouping, and drops any call it already has, such
+as a session copied between machines. Records hold session ids and project
+paths, never transcripts. Use the same dagda version on both machines.
+
+FLAGS
+  --output, -o FILE   write the records to FILE; use this on Windows
+                      PowerShell, whose > and | re-encode binary output
+  --agent NAME        repeatable or comma-separated; default is every agent
+  --no-cache          read source logs without reading or updating the cache
+  --help, -h          show this help
+
+EXAMPLES
+  ssh laptop dagda export | dagda -a --import -
+  dagda export -o laptop.dagda
+  dagda -a --import laptop.dagda --import desktop.dagda
+`)
 	case "price":
 		fmt.Print(`USAGE
   dagda price MODEL [MODEL ...] [flags]
@@ -212,6 +241,9 @@ OUTPUT
   --help, -h          show this command's help
 
 SCANNING
+  --import FILE       merge records from dagda export on another machine;
+                      repeatable, - reads stdin, and calls already counted
+                      here are dropped
   --no-cache          read source logs without reading or updating the cache
   --verbose           show scan, cache and duplicate diagnostics
 

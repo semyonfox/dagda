@@ -62,6 +62,8 @@ func Main(args []string) int {
 	switch command.name {
 	case "agents":
 		return cmdAgents(rest)
+	case "export":
+		return cmdExport(rest)
 	case "price":
 		return cmdPrice(rest)
 	case "statusline":

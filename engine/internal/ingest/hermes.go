@@ -139,7 +139,8 @@ func (h *Hermes) scanDB(ctx context.Context, path string) ([]model.Turn, error) 
 	}
 	defer rows.Close()
 
-	scope := sha256.Sum256([]byte(filepath.Clean(path)))
+	source := portablePath(path)
+	scope := sha256.Sum256([]byte(source))
 	var aggregates []hermesAggregate
 	for rows.Next() {
 		var (
@@ -167,7 +168,7 @@ func (h *Hermes) scanDB(ctx context.Context, path string) ([]model.Turn, error) 
 			codexThread = ""
 		}
 		aggregates = append(aggregates, hermesAggregate{session: sessionID, task: task, calls: calls, turn: model.Turn{
-			Key:              identityKey("hermes-aggregate", path, sessionID, modelID, provider, endpoint, billingMode, task),
+			Key:              identityKey("hermes-aggregate", source, sessionID, modelID, provider, endpoint, billingMode, task),
 			SessionID:        fmt.Sprintf("%s@%x", sessionID, scope),
 			Agent:            model.AgentHermes,
 			Timestamp:        unixFloat(seenAt),

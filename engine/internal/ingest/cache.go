@@ -301,17 +301,27 @@ func sanitizeCachedTurns(turns []model.Turn) ([]model.Turn, bool) {
 		if out[i].Endpoint == "" {
 			continue
 		}
-		u, err := url.Parse(out[i].Endpoint)
-		if err != nil || u.Scheme == "" || u.Host == "" || u.Hostname() == "" || u.User != nil {
+		origin, ok := endpointOrigin(out[i].Endpoint)
+		if !ok {
 			return nil, false
 		}
-		scheme := strings.ToLower(u.Scheme)
-		if scheme != "http" && scheme != "https" {
-			return nil, false
-		}
-		out[i].Endpoint = (&url.URL{Scheme: scheme, Host: strings.ToLower(u.Host)}).String()
+		out[i].Endpoint = origin
 	}
 	return out, true
+}
+
+// endpointOrigin keeps only an endpoint's scheme and host, which is all billing
+// classification reads. Paths, queries and credentials never leave the parser.
+func endpointOrigin(raw string) (string, bool) {
+	u, err := url.Parse(raw)
+	if err != nil || u.Scheme == "" || u.Host == "" || u.Hostname() == "" || u.User != nil {
+		return "", false
+	}
+	scheme := strings.ToLower(u.Scheme)
+	if scheme != "http" && scheme != "https" {
+		return "", false
+	}
+	return (&url.URL{Scheme: scheme, Host: strings.ToLower(u.Host)}).String(), true
 }
 
 func withFileCache(ctx context.Context, cacheDir, namespace string, agent model.Agent) context.Context {

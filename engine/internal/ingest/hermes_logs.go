@@ -161,7 +161,7 @@ func reconcileHermesLogs(ctx context.Context, dbPath string, aggregates []hermes
 		}
 		for _, c := range calls {
 			call := t
-			call.Key = identityKey("hermes-call", dbPath, c.key)
+			call.Key = identityKey("hermes-call", portablePath(dbPath), c.key)
 			call.Timestamp = c.timestamp
 			call.Usage = c.usage
 			call.Aggregate = false

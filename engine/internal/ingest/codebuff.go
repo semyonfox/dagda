@@ -166,7 +166,7 @@ func scanCodebuffChat(root, fallbackProject, dir string) []model.Turn {
 		if id != "" {
 			key = identityKey("codebuff-message", id)
 		} else {
-			key = identityKey("codebuff-message", filepath.Clean(dir), strconv.Itoa(i))
+			key = identityKey("codebuff-message", portablePath(dir), strconv.Itoa(i))
 		}
 		stamp := parseTime(msg.Timestamp)
 		if stamp.IsZero() {

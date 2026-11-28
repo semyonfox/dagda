@@ -182,11 +182,15 @@ type Report struct {
 	// so a loose match is never silent.
 	FilterMatches []FilterMatch `json:"filter_matches,omitempty"`
 
-	Granularity  Granularity  `json:"granularity"`
-	PricingDate  pricing.Date `json:"pricing_updated"`
-	Duplicates   int          `json:"duplicates_dropped"`
-	MatchedTurns int          `json:"matched_turns"`
-	ScannedTurns int          `json:"scanned_turns"`
+	Granularity Granularity  `json:"granularity"`
+	PricingDate pricing.Date `json:"pricing_updated"`
+	Duplicates  int          `json:"duplicates_dropped"`
+	// Imports are set by the caller when records from other machines were
+	// merged in. They are counted apart from replays within one machine.
+	ImportedDuplicates int `json:"imported_duplicates_dropped,omitempty"`
+	ImportedUnkeyed    int `json:"imported_unkeyed,omitempty"`
+	MatchedTurns       int `json:"matched_turns"`
+	ScannedTurns       int `json:"scanned_turns"`
 }
 
 // ExcludedOverlap exposes accounting evidence only, without transport endpoints

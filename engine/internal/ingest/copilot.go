@@ -424,7 +424,7 @@ func copilotUsageKey(sourceID string, row copilotUsageRow) string {
 }
 
 func copilotSourceID(dbPath string) string {
-	sum := sha256.Sum256([]byte(filepath.Clean(dbPath)))
+	sum := sha256.Sum256([]byte(portablePath(dbPath)))
 	return fmt.Sprintf("%x", sum[:])
 }
 
