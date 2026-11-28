@@ -1,5 +1,33 @@
 # Changelog
 
+## 0.4.0 (2026-11-28)
+
+- Count Cursor Agent SDK runs, such as those T3 Code starts for Grok.
+  `@cursor/sdk` 1.4 and later count cached input inside input, and 1.5 names
+  its store folders with a sha256 hash. Both were rejected before. Each run is priced at its selected model, and `cursor-agent` now
+  appears in default reports. Runs routed through `auto` stay unpriced
+  because the routed model isn't recorded. While `DAGDA_CURSOR_CSV` points
+  at a dashboard export, which bills the same runs, it still needs
+  `--agent cursor-agent`.
+- Read the Antigravity conversations of T3 Code's per-instance profiles.
+- Follow the Claude and Codex homes T3 Code instances run under, from their
+  `homePath` setting or their own `CLAUDE_CONFIG_DIR` or `CODEX_HOME`. An
+  override in your own environment still means exactly that directory.
+- Count Claude advisor steps as their own calls at the advisor's model, as
+  compaction steps already were.
+- Price Codex calls run at the priority ("fast") or ultrafast tier from
+  OpenAI's own cards for those tiers, taken from LiteLLM's list because
+  models.dev doesn't publish them. Anthropic's priority tier is negotiated
+  per account, so those calls stay at standard rates.
+- Keep the batch tier when a later Claude snapshot of the same call leaves it
+  out, scale long-context 1-hour cache writes with the long-context input
+  rate, and bill a blank long-context cache-read price at the base rate
+  instead of as free.
+- Scan about 64% less CPU on a cold run. Codex rollouts are filtered by each
+  line's record type instead of searching whole lines, which skips
+  multi-megabyte tool output, and the command-location patterns only run on
+  input that contains their literal text.
+
 ## 0.3.0 (2026-11-14)
 
 - Read Codex rollouts in `~/.codex/archived_sessions` as well as
