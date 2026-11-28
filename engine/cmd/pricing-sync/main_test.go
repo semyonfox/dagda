@@ -288,3 +288,58 @@ func TestSavedAliasYieldsToNewFirstPartyRate(t *testing.T) {
 		t.Fatalf("first-party %s still aliased to %s", id, got)
 	}
 }
+
+func TestSpeedCardsComeFromOpenAIsOwnListing(t *testing.T) {
+	first := pricing.MustParseDate("2026-09-07")
+	std := pricing.Rate{From: first, In: 10, Out: 50, CacheRead: 1, CacheWrite: 10, TierThreshold: 272_000, TierIn: 20, TierOut: 75, Source: "openai"}
+	reseller := std
+	reseller.Source = "abacus"
+	next := &dataset{
+		Models: map[string]*pricing.Model{
+			"gpt-x":     {ID: "gpt-x", Rates: []pricing.Rate{std}},
+			"gpt-cheap": {ID: "gpt-cheap", Rates: []pricing.Rate{std}},
+			"resold":    {ID: "resold", Rates: []pricing.Rate{reseller}},
+		},
+		ByProvider: map[string]*pricing.Model{providerLookupKey("openai", "gpt-x"): {ID: "gpt-x", Rates: []pricing.Rate{std}}},
+	}
+	litellm := `{
+		"gpt-x": {"litellm_provider":"openai","input_cost_per_token":1e-05,"output_cost_per_token":5e-05,
+			"input_cost_per_token_priority":2e-05,"output_cost_per_token_priority":0.0001,"cache_read_input_token_cost_priority":2e-06,
+			"input_cost_per_token_above_272k_tokens_priority":4e-05,"output_cost_per_token_above_272k_tokens_priority":0.00015},
+		"azure/gpt-x": {"litellm_provider":"azure","input_cost_per_token_priority":9e-05,"output_cost_per_token_priority":0.0009},
+		"gpt-cheap": {"litellm_provider":"openai","input_cost_per_token_priority":5e-06,"output_cost_per_token_priority":0.0001},
+		"resold": {"litellm_provider":"openai","input_cost_per_token_priority":2e-05,"output_cost_per_token_priority":0.0001}
+	}`
+	n, err := attachSpeedRates(next, []byte(litellm))
+	if err != nil || n != 1 {
+		t.Fatalf("attached %d, err %v", n, err)
+	}
+	want := pricing.SpeedRate{In: 20, Out: 100, CacheRead: 2, TierIn: 40, TierOut: 150}
+	if got := next.Models["gpt-x"].Rates[0].Priority; got == nil || *got != want {
+		t.Fatalf("priority = %+v, want %+v", got, want)
+	}
+	if next.ByProvider[providerLookupKey("openai", "gpt-x")].Rates[0].Priority == nil {
+		t.Fatal("openai's provider-keyed rate lost the card")
+	}
+	// cheaper than standard is a mapping bug, and a reseller rate gets no card
+	if next.Models["gpt-cheap"].Rates[0].Priority != nil || next.Models["resold"].Rates[0].Priority != nil {
+		t.Fatalf("unexpected cards: %+v %+v", next.Models["gpt-cheap"].Rates[0], next.Models["resold"].Rates[0])
+	}
+
+	// a card arriving on an unchanged standard rate keeps the rate's date,
+	// so calls made before today get priced at it too
+	prev := &dataset{Models: map[string]*pricing.Model{"gpt-x": {ID: "gpt-x", Rates: []pricing.Rate{std}}}}
+	merge(prev, next, pricing.MustParseDate("2026-11-28"))
+	rates := next.Models["gpt-x"].Rates
+	if len(rates) != 1 || rates[0].From != first || rates[0].Priority == nil {
+		t.Fatalf("rates = %+v", rates)
+	}
+
+	// an unreachable list keeps the published cards instead of withdrawing them
+	later := &dataset{Models: map[string]*pricing.Model{"gpt-x": {ID: "gpt-x", Rates: []pricing.Rate{std}}}}
+	carrySpeedRates(next, later)
+	merge(next, later, pricing.MustParseDate("2026-11-29"))
+	if rates := later.Models["gpt-x"].Rates; len(rates) != 1 || rates[0].Priority == nil {
+		t.Fatalf("outage changed the history: %+v", rates)
+	}
+}

@@ -88,6 +88,65 @@ type Rate struct {
 	Schedule string `json:"schedule,omitempty"`
 	// OffPeak holds the rates in force outside Schedule's windows.
 	OffPeak *OffPeakRate `json:"off_peak,omitempty"`
+
+	// Priority and Ultrafast are the vendor's published cards for its faster
+	// processing tiers, used when a call records that tier. Only OpenAI
+	// publishes them as list prices. Anthropic's priority tier is negotiated
+	// per account, so its calls stay at the standard card.
+	Priority  *SpeedRate `json:"priority,omitempty"`
+	Ultrafast *SpeedRate `json:"ultrafast,omitempty"`
+}
+
+// SpeedRate is a faster tier's card. It shares the standard card's long-context
+// threshold. A blank tier field means the vendor scales that field like input.
+type SpeedRate struct {
+	In             float64 `json:"in"`
+	Out            float64 `json:"out"`
+	CacheRead      float64 `json:"cache_read,omitempty"`
+	CacheWrite     float64 `json:"cache_write,omitempty"`
+	TierIn         float64 `json:"tier_in,omitempty"`
+	TierOut        float64 `json:"tier_out,omitempty"`
+	TierCacheRead  float64 `json:"tier_cache_read,omitempty"`
+	TierCacheWrite float64 `json:"tier_cache_write,omitempty"`
+}
+
+// ForService returns the card for a call's service tier: "priority" (which
+// Codex also calls fast) or "ultrafast". Any other tier, or a tier the model
+// has no published card for, keeps the standard card.
+func (r Rate) ForService(tier string) Rate {
+	var s *SpeedRate
+	switch tier {
+	case "priority":
+		s = r.Priority
+	case "ultrafast":
+		s = r.Ultrafast
+	}
+	if s == nil || s.In <= 0 || s.Out <= 0 || r.In <= 0 || r.Out <= 0 {
+		return r
+	}
+	scale := s.In / r.In
+	pick := func(v, standard float64) float64 {
+		if v > 0 {
+			return v
+		}
+		return standard * scale
+	}
+	fast := r
+	fast.In, fast.Out = s.In, s.Out
+	fast.CacheRead = pick(s.CacheRead, r.CacheRead)
+	fast.CacheWrite = pick(s.CacheWrite, r.CacheWrite)
+	fast.CacheWrite1h = r.CacheWrite1h * scale
+	if r.TierThreshold > 0 {
+		fast.TierIn = pick(s.TierIn, r.TierIn)
+		fast.TierOut = s.TierOut
+		if fast.TierOut <= 0 {
+			fast.TierOut = r.TierOut * s.Out / r.Out
+		}
+		fast.TierCacheRead = pick(s.TierCacheRead, r.TierCacheRead)
+		fast.TierCacheWrite = pick(s.TierCacheWrite, r.TierCacheWrite)
+	}
+	fast.Priority, fast.Ultrafast = nil, nil
+	return fast
 }
 
 // OffPeakRate is the discounted side of a Rate that carries a Schedule.
