@@ -108,7 +108,7 @@ func TestScannerSelectionPreservesCaseInsensitiveAgentFilters(t *testing.T) {
 	if !Selected(&Claude{}, []string{"CLAUDE"}) || Selected(&Codex{}, []string{"CLAUDE"}) {
 		t.Fatal("scanner filtering disagrees with report agent filtering")
 	}
-	if Selected(&CursorAgent{}, nil) || !Selected(&CursorAgent{}, []string{"CURSOR-AGENT"}) {
+	if Selected(&VercelGateway{}, nil) || !Selected(&VercelGateway{}, []string{"VERCEL-GATEWAY"}) {
 		t.Fatal("explicit importer selection ignored")
 	}
 	if SourceLimitation("GROKBOT") == "" {

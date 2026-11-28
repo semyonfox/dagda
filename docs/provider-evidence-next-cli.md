@@ -66,8 +66,9 @@ recorded counters, not complete historical usage on every Cursor version.
 
 Configuring `DAGDA_CURSOR_CSV` replaces the local database source entirely. A bad
 configured CSV reports an error instead of silently falling back to a different
-source. The CLI rejects combining `cursor` and `cursor-agent`, which cannot be
-reconciled through shared request identities.
+source. While a CSV is configured, the CLI rejects combining `cursor` and
+`cursor-agent`, which cannot be reconciled through shared request identities.
+The local IDE database and SDK stores never hold the same run, so they combine.
 
 ## Cursor dashboard CSV
 

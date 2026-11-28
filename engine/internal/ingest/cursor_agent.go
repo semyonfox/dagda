@@ -6,7 +6,6 @@ import (
 	"errors"
 	"fmt"
 	"io/fs"
-	"math"
 	"os"
 	"path/filepath"
 	"time"
@@ -14,7 +13,8 @@ import (
 	"github.com/semyonfox/dagda/engine/internal/model"
 )
 
-// CursorAgent reads the Cursor SDK's native local store. An explicit
+// CursorAgent reads the Cursor SDK's native local store, which T3 Code and
+// other SDK hosts write for headless runs. An explicit
 // DAGDA_CURSOR_AGENT_DIR retains support for caller-saved SDK RunResult objects.
 // Legacy CLI transcripts do not expose this accounting contract and are not
 // estimated.
@@ -38,7 +38,19 @@ func newCursorAgentSDKAt(projects string) *CursorAgent {
 }
 
 func (*CursorAgent) Agent() model.Agent { return model.Agent("cursor-agent") }
-func (*CursorAgent) ExplicitOnly() bool { return true }
+
+// ExplicitOnly keeps SDK runs out of default reports only when a Cursor
+// dashboard CSV is configured, because that export bills the same runs. The
+// IDE database never holds SDK runs: they use agent- and run- ids from a
+// separate local runtime.
+func (*CursorAgent) ExplicitOnly() bool { return CursorCSVConfigured() }
+
+// CursorCSVConfigured needs the file to exist, so a stale variable does not
+// silently drop SDK runs from default reports.
+func CursorCSVConfigured() bool {
+	path := os.Getenv("DAGDA_CURSOR_CSV")
+	return path != "" && fileExists(path)
+}
 func (c *CursorAgent) Roots() []string {
 	if c.root != "" {
 		if existingDir(c.root) != "" {
@@ -119,26 +131,15 @@ func (c *CursorAgent) scanSavedRunResults(ctx context.Context, emit func(model.T
 			return nil
 		}
 		r := run.Usage
-		for _, count := range []int64{r.Input, r.Output, r.Read, r.Write, r.Reasoning} {
-			if count < 0 || count > math.MaxInt64/8 {
-				errs = append(errs, fmt.Errorf("cursor-agent: invalid token count in %s", path))
-				return nil
-			}
-		}
-		u := model.Usage{Input: r.Input, Output: r.Output, CacheRead: r.Read, CacheWrite: r.Write, Reasoning: r.Reasoning}
-		if u.Total() != r.Total || r.Reasoning > r.Output {
-			errs = append(errs, fmt.Errorf("cursor-agent: SDK token total does not reconcile in %s", path))
+		u, e := cursorSDKUsage(r.Input, r.Output, r.Read, r.Write, r.Total, r.Reasoning)
+		if e != nil {
+			errs = append(errs, fmt.Errorf("cursor-agent: SDK result %s: %w", path, e))
 			return nil
 		}
 		if u.IsZero() {
 			return nil
 		}
-		id := run.Model.ID
-		reason := ""
-		if id == "" {
-			id = "unknown"
-			reason = "Cursor SDK result has no resolved model"
-		}
+		id, reason := cursorSDKModel(run.Model.ID)
 		var ts time.Time
 		if run.Created > 0 {
 			ts = time.UnixMilli(run.Created)

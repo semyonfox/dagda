@@ -10,7 +10,7 @@ Use these numbers or identifiers to prioritize deeper coverage. Entries marked *
 
 | # | Adapter | CLI identifier | Implementation | Supported data and limits |
 | --- | --- | --- | --- | --- |
-| 1 | Antigravity | `antigravity` | Local or import | Native CLI/IDE SQLite invocation counters; optional cumulative stream-json replacement. [Evidence](provider-evidence-imports.md). |
+| 1 | Antigravity | `antigravity` | Local or import | Native CLI/IDE and T3 Code profile SQLite invocation counters; optional cumulative stream-json replacement. [Evidence](provider-evidence-imports.md). |
 | 2 | Claude Code | `claude` | Local | Multiple config roots, nested archives and native request deduplication. [Evidence](provider-evidence-imports.md). |
 | 3 | Cline | `cline` | Local | Legacy IDE request metrics; latest task model cannot establish historical cost. [Evidence](provider-evidence-json.md). |
 | 4 | Cline CLI | `cline-cli` | Local | Native v1 sessions, per-message usage and bounded aggregate fallback. [Evidence](provider-evidence-json.md). |
@@ -20,7 +20,7 @@ Use these numbers or identifiers to prioritize deeper coverage. Entries marked *
 | 8 | GitHub Copilot | `copilot` | Local | CLI per-request SQLite and shutdown reconciliation, measured VS Code chat totals, and optional OTel fallback; no account totals. [Evidence](provider-evidence-next-cli.md). |
 | 9 | Crush | `crush` | Source-limited | Latest context counters are not cumulative usage; no fabricated token reader. [Evidence](provider-evidence-sqlite.md). |
 | 10 | Cursor | `cursor` | Local or import | Automatic IDE SQLite discovery; measured counters only, missing usage disclosed. Optional CSV replaces local history. [Evidence](provider-evidence-next-cli.md). |
-| 11 | Cursor Agent | `cursor-agent` | Local or import | Automatic SDK SQLite discovery with explicit selection; saved SDK results also supported. Historical CLI transcript usage unavailable. [Evidence](provider-evidence-imports.md). |
+| 11 | Cursor Agent | `cursor-agent` | Local or import | Automatic SDK SQLite discovery, including T3 Code runs, priced at the run model. Saved SDK results also supported. CLI and ACP transcripts carry no usage. [Evidence](provider-evidence-imports.md). |
 | 12 | DeepSeek Harness | `dsh` | Local | Versioned JSONL and bounded compressed session journals. [Evidence](provider-evidence-warp-dsh.md). |
 | 13 | Devin | `devin` | Local | Local CLI ATIF step/generation metrics; no cloud account totals. [Evidence](provider-evidence-tail.md). |
 | 14 | Droid | `droid` | Local aggregate | Session totals; historical model attribution unavailable. [Evidence](provider-evidence-json.md). |
@@ -69,7 +69,7 @@ DAGDA_ANTIGRAVITY_DIR=/path/to/captures dagda daily --agent antigravity --plain
 DAGDA_VERCEL_REPORT=/path/to/report.json dagda daily --agent vercel-gateway --plain
 ```
 
-Replace Cursor CSV and Vercel report snapshots when refreshing them. Do not append overlapping exports. Cursor Agent and Vercel Gateway require explicit `--agent` selection because they can overlap Cursor billing exports or native agent logs. The CLI rejects selecting both `cursor` and `cursor-agent` in one report because the exports do not share native request identities. Selecting Vercel Gateway with overlapping native sources can still double count.
+Replace Cursor CSV and Vercel report snapshots when refreshing them. Do not append overlapping exports. Vercel Gateway requires explicit `--agent` selection because it can overlap native agent logs. Cursor Agent joins default reports, but needs explicit selection while `DAGDA_CURSOR_CSV` is configured, because the dashboard export bills the same SDK runs without shared request identities. The CLI then rejects selecting both `cursor` and `cursor-agent` in one report. Selecting Vercel Gateway with overlapping native sources can still double count.
 
 `summary` defaults to the last 30 days. Undated SDK results, Antigravity captures and model-grouped Vercel reports need `summary --all-time` or an all-history command such as `daily` or `model`. Dates and models absent from the source are not invented. Importers do not obtain credentials, make account requests or install capture hooks.
 
