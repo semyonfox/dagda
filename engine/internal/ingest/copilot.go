@@ -37,7 +37,7 @@ type Copilot struct {
 func NewCopilot() *Copilot {
 	return &Copilot{
 		root:        envDir("COPILOT_HOME", ".copilot"),
-		vscodeRoots: copilotVSCodeUserRoots(),
+		vscodeRoots: vscodeUserDirs(false),
 		otelPath:    copilotOTelExporterPath(),
 	}
 }
@@ -72,22 +72,6 @@ func (c *Copilot) Roots() []string {
 	}
 	if c.otelPath != "" && fileExists(c.otelPath) {
 		add(c.otelPath)
-	}
-	return roots
-}
-
-// copilotVSCodeUserRoots returns product data roots, not extension logs. The
-// user config directory is platform-aware and honours XDG_CONFIG_HOME.
-func copilotVSCodeUserRoots() []string {
-	config, err := os.UserConfigDir()
-	if err != nil {
-		return nil
-	}
-	var roots []string
-	for _, product := range []string{"Code", "Code - Insiders", "Code - OSS", "VSCodium"} {
-		if root := existingDir(filepath.Join(config, product, "User")); root != "" {
-			roots = append(roots, root)
-		}
 	}
 	return roots
 }

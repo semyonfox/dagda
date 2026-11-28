@@ -74,3 +74,30 @@ func TestLegacyClineDedupsSameTaskAcrossEditorStores(t *testing.T) {
 		t.Fatalf("duplicate task copy counted: %+v", result)
 	}
 }
+
+// Extensions running over Remote SSH, WSL or a container keep their data under
+// the editor's server on the remote side, and forks keep it under their own
+// name. Copilot only reads VS Code builds, whose chat store is Copilot's.
+func TestVSCodeExtensionStoresAreFoundInServersAndForks(t *testing.T) {
+	home := t.TempDir()
+	for _, name := range []string{"HOME", "USERPROFILE", "XDG_CONFIG_HOME", "APPDATA"} {
+		t.Setenv(name, filepath.Join(home, "unused-"+name))
+	}
+	t.Setenv("HOME", home)
+	t.Setenv("USERPROFILE", home)
+	t.Setenv("CLINE_DATA_DIR", filepath.Join(home, "no-cline-cli"))
+	remote := filepath.Join(home, ".vscode-server", "data", "User")
+	fork := filepath.Join(home, ".cursor-server", "data", "User")
+	for _, user := range []string{remote, fork} {
+		writeFile(t, filepath.Join(user, "globalStorage", clineExtensionID, "tasks", "t", "ui_messages.json"), "[]")
+		writeFile(t, filepath.Join(user, "workspaceStorage", "w", "chatSessions", "s.json"), "{}")
+	}
+	got := NewCline().Roots()
+	want := []string{filepath.Join(remote, "globalStorage", clineExtensionID), filepath.Join(fork, "globalStorage", clineExtensionID)}
+	if strings.Join(got, "\n") != strings.Join(want, "\n") {
+		t.Fatalf("cline roots = %q, want %q", got, want)
+	}
+	if got := NewCopilot().Roots(); len(got) != 1 || got[0] != remote {
+		t.Fatalf("copilot roots = %q, want only %q", got, remote)
+	}
+}

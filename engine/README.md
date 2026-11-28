@@ -346,6 +346,25 @@ debug logs.
 VS Code session storage includes chat payloads, but the scanner neither retains
 nor reports prompt/response text and never uses those fields for accounting.
 
+## VS Code extensions and remote servers
+
+Copilot Chat, Cline and Roo Code keep their data in a VS Code style `User`
+directory. Dagda checks every place one lives:
+
+- the desktop config dir for Code, Insiders, Code - OSS and VSCodium, which is
+  `~/.config` (or `XDG_CONFIG_HOME`) on Linux, `~/Library/Application Support`
+  on macOS and `%APPDATA%` on Windows
+- Flatpak installs under `~/.var/app`
+- the remote server an editor installs over SSH, WSL or a container:
+  `~/.vscode-server`, `~/.vscode-server-insiders`, `~/.vscodium-server`,
+  and `~/.vscode-remote` for Codespaces and dev containers. Extensions running
+  remotely store their data there, so run dagda on the remote machine.
+
+Cline and Roo also run in Cursor, Windsurf and Trae, so their stores are read
+from those editors and their servers (`~/.cursor-server` and so on) too.
+Copilot Chat is read only from VS Code builds, because the forks replace VS
+Code's chat with their own.
+
 Valid CLI request rows remain authoritative. Cumulative shutdown snapshots
 become interval deltas. The reader subtracts request rows at or before the
 shutdown only when every token bucket reconciles, then adds the uncovered
