@@ -237,3 +237,20 @@ func TestCodexCallsCarryTheServiceTierInForce(t *testing.T) {
 		}
 	}
 }
+
+// the fast path reads a line's header, so a line laid out another way has to
+// fall back to the marker search rather than be dropped
+func TestCodexReadsRecordsWhateverTheirKeyOrder(t *testing.T) {
+	root := t.TempDir()
+	usage := `{"input_tokens":100,"cached_input_tokens":0,"cache_write_input_tokens":0,"output_tokens":10,"reasoning_output_tokens":0,"total_tokens":110}`
+	writeFile(t, filepath.Join(root, "sessions", "rollout-a.jsonl"),
+		`{"timestamp":"2026-09-01T12:00:00Z","ordinal":0,"type":"session_meta","payload":{"id":"a","cwd":"/proj","model_provider":"openai","model":"example"}}`,
+		`{"timestamp":"2026-09-01T12:00:01Z","ordinal":1,"type":"event_msg","payload":{"type":"token_count","info":{"total_token_usage":`+usage+`,"last_token_usage":`+usage+`}}}`,
+		`{"payload":{"info":{"total_token_usage":{"input_tokens":200,"cached_input_tokens":0,"cache_write_input_tokens":0,"output_tokens":20,"reasoning_output_tokens":0,"total_tokens":220},"last_token_usage":`+usage+`},"type":"token_count"},"type":"event_msg","timestamp":"2026-09-01T12:00:02Z"}`,
+		`{"timestamp":"2026-09-01T12:00:03Z","ordinal":3,"type":"response_item","payload":{"type":"custom_tool_call_output","output":"\"token_count\" \"token_usage_record\""}}`,
+	)
+	turns := codexAccounted(t, root)
+	if len(turns) != 2 || sumUsage(turns).Output != 20 {
+		t.Fatalf("turns = %+v", turns)
+	}
+}
