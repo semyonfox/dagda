@@ -87,3 +87,41 @@ func TestClaudeFollowsT3CodeInstanceHomes(t *testing.T) {
 		t.Fatalf("explicit override picked up t3 homes: %v", roots)
 	}
 }
+
+func TestCodexFollowsT3CodeInstanceHomes(t *testing.T) {
+	home := t.TempDir()
+	t3 := filepath.Join(home, "t3")
+	t.Setenv("HOME", home)
+	t.Setenv("USERPROFILE", home)
+	t.Setenv("CODEX_HOME", "")
+	t.Setenv("T3CODE_HOME", t3)
+	work := filepath.Join(home, "codex-work")
+	viaEnv := filepath.Join(home, "codex-env")
+	managed := filepath.Join(home, "codex-managed-env")
+	writeFile(t, filepath.Join(t3, "userdata", "settings.json"), `{"providerInstances":{
+		"codex":{"driver":"codex","config":{"homePath":"~/codex-work","shadowHomePath":"~/codex-shadow"}},
+		"codexEnv":{"driver":"codex","config":{},"environment":[{"name":"CODEX_HOME","value":"`+filepath.ToSlash(viaEnv)+`"}]},
+		"codexManaged":{"driver":"codex","config":{"setupMode":"managed"},"environment":[{"name":"CODEX_HOME","value":"`+filepath.ToSlash(managed)+`"}]},
+		"claudeAgent":{"driver":"claudeAgent","config":{"homePath":"~/.codex"}}}}`)
+	for _, dir := range []string{
+		filepath.Join(home, ".codex", "sessions"),
+		filepath.Join(work, "sessions"),
+		filepath.Join(work, "archived_sessions"),
+		filepath.Join(viaEnv, "sessions"),
+		filepath.Join(managed, "sessions"),
+		filepath.Join(home, "codex-shadow", "sessions"),
+	} {
+		if err := os.MkdirAll(dir, 0o755); err != nil {
+			t.Fatal(err)
+		}
+	}
+	// the default home, both of the first instance's dirs and the env home.
+	// the managed instance ignores its CODEX_HOME and the shadow is skipped
+	if roots := NewCodex().Roots(); len(roots) != 4 {
+		t.Fatalf("roots = %v", roots)
+	}
+	t.Setenv("CODEX_HOME", filepath.Join(home, ".codex"))
+	if roots := NewCodex().Roots(); len(roots) != 1 {
+		t.Fatalf("explicit CODEX_HOME picked up t3 homes: %v", roots)
+	}
+}

@@ -80,10 +80,7 @@ func NewAntigravity() *Antigravity {
 // creates at <T3CODE_HOME>/userdata/providers/antigravity/<sha256>/antigravity-acp.
 // Runs there never touch ~/.gemini, so they are invisible without this.
 func t3AntigravityProfiles(home string) []string {
-	base := strings.TrimSpace(os.Getenv("T3CODE_HOME"))
-	if base == "" {
-		base = filepath.Join(home, ".t3")
-	}
+	base := t3Base(home)
 	profiles, err := os.ReadDir(filepath.Join(base, "userdata", "providers", "antigravity"))
 	if err != nil {
 		return nil

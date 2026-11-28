@@ -25,23 +25,43 @@ const replayGap = time.Second
 // when available. Older turns retain a separately labelled token_count fallback.
 type Codex struct {
 	root string
+	// extra holds the shared homes of T3 Code codex instances
+	extra []string
 }
 
 func NewCodex() *Codex {
-	return &Codex{root: envDir("CODEX_HOME", ".codex")}
+	c := &Codex{root: envDir("CODEX_HOME", ".codex")}
+	// an explicit CODEX_HOME means exactly that home, as it does for codex
+	if os.Getenv("CODEX_HOME") == "" {
+		if home := homeDir(); home != "" {
+			c.extra = t3CodexHomes(home)
+		}
+	}
+	return c
 }
 
 func (c *Codex) Agent() model.Agent { return model.AgentCodex }
 
 func (c *Codex) Roots() []string {
-	if c.root == "" {
-		return nil
-	}
 	// T3 Code and the Codex app move finished rollouts into archived_sessions,
 	// so reading only sessions loses their usage after the fact
 	var roots []string
-	for _, name := range []string{"sessions", "archived_sessions"} {
-		if d := existingDir(filepath.Join(c.root, name)); d != "" {
+	seen := make(map[string]bool)
+	for _, home := range append([]string{c.root}, c.extra...) {
+		if home == "" {
+			continue
+		}
+		for _, name := range []string{"sessions", "archived_sessions"} {
+			d := existingDir(filepath.Join(home, name))
+			if d == "" {
+				continue
+			}
+			if resolved, err := filepath.EvalSymlinks(d); err == nil {
+				if seen[resolved] {
+					continue
+				}
+				seen[resolved] = true
+			}
 			roots = append(roots, d)
 		}
 	}
