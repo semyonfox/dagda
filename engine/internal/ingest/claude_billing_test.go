@@ -51,6 +51,29 @@ func TestClaudeCountsCompactionOnlyCall(t *testing.T) {
 	}
 }
 
+func TestClaudeCountsAdvisorStepsAtTheirOwnModel(t *testing.T) {
+	root := t.TempDir()
+	call := `{"type":"assistant","timestamp":"2026-10-01T10:00:00Z","requestId":"req_1","sessionId":"s","message":{"id":"msg_1","model":"claude-sonnet-5","usage":{"input_tokens":400,"output_tokens":50,"iterations":[{"type":"message","input_tokens":300,"output_tokens":20},{"type":"advisor_message","model":"claude-opus-5","input_tokens":1200,"cache_read_input_tokens":800,"output_tokens":90},{"type":"advisor_message","model":"<synthetic>","input_tokens":7,"output_tokens":7},{"type":"message","input_tokens":100,"output_tokens":30}]}}}`
+	writeFile(t, filepath.Join(root, "projects", "-proj", "a.jsonl"), call)
+	// a resumed transcript replays the advisor step too
+	writeFile(t, filepath.Join(root, "projects", "-proj", "b.jsonl"), call)
+	res, err := Run(context.Background(), []Scanner{newClaudeAt(root)})
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(res.Turns) != 2 || res.Duplicates != 2 {
+		t.Fatalf("want executor and advisor turns once each, got %+v (dups %d)", res.Turns, res.Duplicates)
+	}
+	byModel := map[string]int64{}
+	for _, turn := range res.Turns {
+		byModel[turn.Model] += turn.Usage.Input + turn.Usage.CacheRead + turn.Usage.Output
+	}
+	// executor 400 + 50, advisor 1200 + 800 + 90
+	if byModel["claude-sonnet-5"] != 450 || byModel["claude-opus-5"] != 2090 {
+		t.Fatalf("usage by model: %v", byModel)
+	}
+}
+
 func TestClaudeFastModeSurvivesSnapshotOrder(t *testing.T) {
 	root := t.TempDir()
 	early := `{"type":"assistant","timestamp":"2026-10-01T10:00:00Z","requestId":"req_1","sessionId":"s","message":{"id":"msg_1","model":"claude-opus-5","usage":{"input_tokens":5,"output_tokens":1}}}`
