@@ -1,5 +1,25 @@
 # Changelog
 
+## 0.5.0 (2026-11-28)
+
+- Combine machines without counting copied sessions twice. `dagda export`
+  writes a machine's call records and `--import FILE`, or `--import -` from a
+  pipe, merges them into a report through the same dedupe as local logs, so
+  `ssh laptop dagda export | dagda -a --import -` gives one lifetime total.
+  JSON reports `imported_duplicates_dropped`. On Windows PowerShell use
+  `export --output FILE`, because its pipes corrupt binary output. Use the
+  same dagda version on every machine.
+- Find Cline, Roo and Copilot Chat over Remote SSH, WSL, Codespaces and dev
+  containers, where their data sits under `~/.vscode-server` and similar on
+  the remote machine. Cline and Roo are also read from Cursor, Windsurf and
+  Trae, and all three from Flatpak VS Code.
+- A warm report uses about a quarter less CPU and memory, and the scan cache
+  takes about 40% less disk. The cache format changed, so the first report
+  after updating rebuilds it.
+- Copilot, Hermes and Codebuff sessions keep their identity when the store
+  moves to another home dir, and Windows and macOS paths compare without
+  case. Their cached records are read again once.
+
 ## 0.4.0 (2026-11-28)
 
 - Count Cursor Agent SDK runs, such as those T3 Code starts for Grok.
