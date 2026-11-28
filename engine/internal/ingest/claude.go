@@ -9,6 +9,7 @@ import (
 	"io/fs"
 	"os"
 	"path/filepath"
+	"slices"
 	"strconv"
 	"strings"
 	"time"
@@ -52,6 +53,7 @@ func NewClaude() *Claude {
 				xdg = filepath.Join(home, ".config")
 			}
 			candidates = []string{filepath.Join(xdg, "claude"), filepath.Join(home, ".claude")}
+			candidates = append(candidates, t3ClaudeHomes(home)...)
 		}
 	}
 	c := &Claude{}
@@ -87,6 +89,57 @@ func NewClaude() *Claude {
 		c.roots = append(c.roots, resolved)
 	}
 	return c
+}
+
+// t3ClaudeHomes lists the Claude config dirs T3 Code instances run under. T3
+// passes an instance's homePath, or its own CLAUDE_CONFIG_DIR variable, to the
+// agent sdk as CLAUDE_CONFIG_DIR, so those transcripts never reach ~/.claude
+// and the shell running dagda has no way to know about them. Only the two
+// path fields are decoded because the settings file also holds credentials.
+func t3ClaudeHomes(home string) []string {
+	base := strings.TrimSpace(os.Getenv("T3CODE_HOME"))
+	if base == "" {
+		base = filepath.Join(home, ".t3")
+	}
+	data, err := os.ReadFile(filepath.Join(base, "userdata", "settings.json"))
+	if err != nil {
+		return nil
+	}
+	var settings struct {
+		ProviderInstances map[string]struct {
+			Driver string `json:"driver"`
+			Config struct {
+				HomePath string `json:"homePath"`
+			} `json:"config"`
+			Environment []struct {
+				Name  string `json:"name"`
+				Value string `json:"value"`
+			} `json:"environment"`
+		} `json:"providerInstances"`
+	}
+	if json.Unmarshal(data, &settings) != nil {
+		return nil
+	}
+	var homes []string
+	for _, instance := range settings.ProviderInstances {
+		if instance.Driver != "claudeAgent" {
+			continue
+		}
+		dir := strings.TrimSpace(instance.Config.HomePath)
+		if dir == "" {
+			// t3 uses the last definition when a variable repeats
+			for _, variable := range instance.Environment {
+				if variable.Name == "CLAUDE_CONFIG_DIR" {
+					dir = strings.TrimSpace(variable.Value)
+				}
+			}
+		}
+		if dir != "" {
+			homes = append(homes, dir)
+		}
+	}
+	slices.Sort(homes)
+	return homes
 }
 
 func (c *Claude) Agent() model.Agent { return model.AgentClaude }

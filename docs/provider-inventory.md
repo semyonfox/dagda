@@ -11,7 +11,7 @@ Use these numbers or identifiers to prioritize deeper coverage. Entries marked *
 | # | Adapter | CLI identifier | Implementation | Supported data and limits |
 | --- | --- | --- | --- | --- |
 | 1 | Antigravity | `antigravity` | Local or import | Native CLI/IDE and T3 Code profile SQLite invocation counters; optional cumulative stream-json replacement. [Evidence](provider-evidence-imports.md). |
-| 2 | Claude Code | `claude` | Local | Multiple config roots, nested archives and native request deduplication. [Evidence](provider-evidence-imports.md). |
+| 2 | Claude Code | `claude` | Local | Multiple config roots (including T3 Code instance homes), nested archives and native request deduplication. [Evidence](provider-evidence-imports.md). |
 | 3 | Cline | `cline` | Local | Legacy IDE request metrics; latest task model cannot establish historical cost. [Evidence](provider-evidence-json.md). |
 | 4 | Cline CLI | `cline-cli` | Local | Native v1 sessions, per-message usage and bounded aggregate fallback. [Evidence](provider-evidence-json.md). |
 | 5 | Codebuff | `codebuff` | Local | Generation usage or reported credits; cumulative nested snapshots excluded. [Evidence](provider-evidence-tail.md). |
