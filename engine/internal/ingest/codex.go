@@ -263,12 +263,89 @@ func codexServiceTier(setting string) string {
 }
 
 func codexWanted(line []byte) bool {
+	if keep, known := codexHeaderWanted(line); known {
+		return keep
+	}
 	for _, marker := range codexMarkers {
 		if bytes.Contains(line, marker) {
 			return true
 		}
 	}
 	return false
+}
+
+// codexWantedTypes are the record and payload types scanFile acts on, keyed by
+// record type. A nil set means every payload of that record type is kept.
+var codexWantedTypes = map[string]map[string]bool{
+	"session_meta":       nil,
+	"turn_context":       nil,
+	"token_usage_record": nil,
+	"event_msg":          {"token_count": true, "task_started": true, "turn_started": true, "thread_settings_applied": true},
+	"response_item":      {"function_call": true, "custom_tool_call": true},
+}
+
+// codexHeaderWanted decides from the start of a line alone. Codex writes the
+// record type, then the payload with its own type first, so the decision
+// needs about a hundred bytes. Tool output lines run to megabytes, and
+// searching all of each one for every marker was most of a cold scan. known
+// is false for a line laid out any other way, which falls back to markers.
+func codexHeaderWanted(line []byte) (keep, known bool) {
+	head := line[:min(len(line), 256)]
+	top, rest, ok := codexTypeValue(head)
+	if !ok {
+		return false, false
+	}
+	body, ok := codexPayloadHead(rest)
+	if !ok {
+		return false, false
+	}
+	payloads, listed := codexWantedTypes[string(top)]
+	if !listed {
+		return false, true
+	}
+	if payloads == nil {
+		return true, true
+	}
+	payloadType, _, ok := codexLeadingType(body)
+	if !ok {
+		return false, false
+	}
+	return payloads[string(payloadType)], true
+}
+
+var (
+	codexTypeKey    = []byte(`"type":"`)
+	codexPayloadKey = []byte(`"payload":{`)
+)
+
+// codexTypeValue returns the first "type" value in b and what follows it.
+func codexTypeValue(b []byte) (value, rest []byte, ok bool) {
+	i := bytes.Index(b, codexTypeKey)
+	if i < 0 {
+		return nil, nil, false
+	}
+	b = b[i+len(codexTypeKey):]
+	end := bytes.IndexByte(b, '"')
+	if end < 0 {
+		return nil, nil, false
+	}
+	return b[:end], b[end+1:], true
+}
+
+// codexPayloadHead expects the payload object right after the record type.
+func codexPayloadHead(b []byte) (body []byte, ok bool) {
+	if len(b) == 0 || b[0] != ',' || !bytes.HasPrefix(b[1:], codexPayloadKey) {
+		return nil, false
+	}
+	return b[1+len(codexPayloadKey):], true
+}
+
+// codexLeadingType reads a "type" key only when it opens the object.
+func codexLeadingType(b []byte) (value, rest []byte, ok bool) {
+	if !bytes.HasPrefix(b, codexTypeKey) {
+		return nil, nil, false
+	}
+	return codexTypeValue(b)
 }
 
 func scanCodexLegacy(records []codexRecord) []model.Turn {

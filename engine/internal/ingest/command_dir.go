@@ -13,14 +13,29 @@ import (
 // because reading a file elsewhere is not working there. Only absolute and
 // home-relative paths qualify, since a relative one already lives under the
 // session's cwd.
+//
+// Each pattern names a literal every match contains. Go's regexp has no
+// literal prefix to skip ahead with here, so it tries every offset of the
+// input, and patch inputs run to megabytes. Checking the literal first skips
+// almost all of them without changing what matches.
 var commandDirPatterns = []struct {
-	re   *regexp.Regexp
-	file bool
+	re      *regexp.Regexp
+	file    bool
+	needles []string
 }{
-	{re: regexp.MustCompile("(?:^|[\\s;&|(\"'`])cd\\s+[\"']?((?:/|~/)[^\\s\"';&|)`\\\\]*)")},
-	{re: regexp.MustCompile("\\bgit\\s+-C\\s+[\"']?((?:/|~/)[^\\s\"';&|)`\\\\]*)")},
-	{re: regexp.MustCompile("\\b(?:make|pnpm|npm)\\s+(?:-C|--dir|--prefix)\\s+[\"']?((?:/|~/)[^\\s\"';&|)`\\\\]*)")},
-	{re: regexp.MustCompile(`\*\*\* (?:Add|Update|Delete) File:\s*((?:/|~/)[^\s\\]+)`), file: true},
+	{re: regexp.MustCompile("(?:^|[\\s;&|(\"'`])cd\\s+[\"']?((?:/|~/)[^\\s\"';&|)`\\\\]*)"), needles: []string{"cd"}},
+	{re: regexp.MustCompile("\\bgit\\s+-C\\s+[\"']?((?:/|~/)[^\\s\"';&|)`\\\\]*)"), needles: []string{"-C"}},
+	{re: regexp.MustCompile("\\b(?:make|pnpm|npm)\\s+(?:-C|--dir|--prefix)\\s+[\"']?((?:/|~/)[^\\s\"';&|)`\\\\]*)"), needles: []string{"-C", "--dir", "--prefix"}},
+	{re: regexp.MustCompile(`\*\*\* (?:Add|Update|Delete) File:\s*((?:/|~/)[^\s\\]+)`), file: true, needles: []string{"*** "}},
+}
+
+func containsAny(text string, needles []string) bool {
+	for _, needle := range needles {
+		if strings.Contains(text, needle) {
+			return true
+		}
+	}
+	return false
 }
 
 // workdirPattern finds a shell's starting directory written inline, as Codex's
@@ -52,6 +67,9 @@ func commandDir(input, home string) string {
 	}
 	if dir := locationIn(input, home); dir != "" {
 		return dir
+	}
+	if !strings.Contains(input, "workdir") {
+		return ""
 	}
 	if m := workdirPattern.FindAllStringSubmatch(input, -1); len(m) > 0 {
 		return expandHomeDir(m[len(m)-1][1], home)
@@ -89,6 +107,9 @@ func commandLocation(raw json.RawMessage, home string) string {
 func locationIn(text, home string) string {
 	best, bestAt := "", -1
 	for _, p := range commandDirPatterns {
+		if !containsAny(text, p.needles) {
+			continue
+		}
 		for _, m := range p.re.FindAllStringSubmatchIndex(text, -1) {
 			if m[2] < bestAt {
 				continue
