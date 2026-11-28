@@ -52,6 +52,7 @@ func NewClaude() *Claude {
 				xdg = filepath.Join(home, ".config")
 			}
 			candidates = []string{filepath.Join(xdg, "claude"), filepath.Join(home, ".claude")}
+			candidates = append(candidates, t3ClaudeHomes(home)...)
 		}
 	}
 	c := &Claude{}
@@ -133,9 +134,11 @@ type claudeRecord struct {
 }
 
 // claudeIteration is one sampling step of a call. The top-level usage covers
-// only the message steps, so a compaction step is extra billed usage.
+// only the executor's message steps, so compaction and advisor steps are extra
+// billed usage. An advisor step names the model that answered it.
 type claudeIteration struct {
 	Type          string `json:"type"`
+	Model         string `json:"model"`
 	Input         int64  `json:"input_tokens"`
 	Output        int64  `json:"output_tokens"`
 	CacheRead     int64  `json:"cache_read_input_tokens"`
@@ -321,13 +324,17 @@ func (c *Claude) scanFile(path string, subagent bool) []model.Turn {
 	return turns
 }
 
-// claudeCompactions returns the compaction steps of a call as their own turns.
-// Anthropic leaves them out of the top-level usage, which only sums the message
-// steps, so they are billed on top. Each is priced at its own prompt size.
+// claudeCompactions returns the compaction and advisor steps of a call as
+// their own turns. Anthropic leaves them out of the top-level usage, which
+// only sums the message steps, so they are billed on top. Each is priced at
+// its own prompt size, and an advisor step at its own model.
 func claudeCompactions(call model.Turn, iterations []claudeIteration) []model.Turn {
 	var turns []model.Turn
 	for i, it := range iterations {
-		if it.Type != "compaction" {
+		if it.Type != "compaction" && it.Type != "advisor_message" {
+			continue
+		}
+		if it.Type == "advisor_message" && (it.Model == "" || it.Model == "<synthetic>") {
 			continue
 		}
 		usage, ok := (model.Usage{
@@ -342,8 +349,13 @@ func claudeCompactions(call model.Turn, iterations []claudeIteration) []model.Tu
 		}
 		turn := call
 		turn.Usage = usage
+		kind := "compaction"
+		if it.Type == "advisor_message" {
+			kind = "advisor"
+			turn.Model = it.Model
+		}
 		if call.Key != "" {
-			turn.Key = call.Key + "|compaction|" + strconv.Itoa(i)
+			turn.Key = call.Key + "|" + kind + "|" + strconv.Itoa(i)
 		}
 		turns = append(turns, turn)
 	}

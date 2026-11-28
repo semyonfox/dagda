@@ -11,12 +11,12 @@ Use these numbers or identifiers to prioritize deeper coverage. Entries marked *
 | # | Adapter | CLI identifier | Implementation | Supported data and limits |
 | --- | --- | --- | --- | --- |
 | 1 | Antigravity | `antigravity` | Local or import | Native CLI/IDE and T3 Code profile SQLite invocation counters; optional cumulative stream-json replacement. [Evidence](provider-evidence-imports.md). |
-| 2 | Claude Code | `claude` | Local | Multiple config roots, nested archives and native request deduplication. [Evidence](provider-evidence-imports.md). |
+| 2 | Claude Code | `claude` | Local | Multiple config roots (including T3 Code instance homes), nested archives and native request deduplication. [Evidence](provider-evidence-imports.md). |
 | 3 | Cline | `cline` | Local | Legacy IDE request metrics; latest task model cannot establish historical cost. [Evidence](provider-evidence-json.md). |
 | 4 | Cline CLI | `cline-cli` | Local | Native v1 sessions, per-message usage and bounded aggregate fallback. [Evidence](provider-evidence-json.md). |
 | 5 | Codebuff | `codebuff` | Local | Generation usage or reported credits; cumulative nested snapshots excluded. [Evidence](provider-evidence-tail.md). |
 | 6 | CodeWhale | `codewhale` | Local aggregate | Measured session total, unclassified/unpriced. [Evidence](provider-evidence-next-cli.md). |
-| 7 | Codex | `codex` | Existing | Native JSONL and replay reconciliation; compressed rollouts excluded. |
+| 7 | Codex | `codex` | Existing | Native JSONL and replay reconciliation, including archived sessions and T3 Code instance homes; compressed rollouts excluded. |
 | 8 | GitHub Copilot | `copilot` | Local | CLI per-request SQLite and shutdown reconciliation, measured VS Code chat totals, and optional OTel fallback; no account totals. [Evidence](provider-evidence-next-cli.md). |
 | 9 | Crush | `crush` | Source-limited | Latest context counters are not cumulative usage; no fabricated token reader. [Evidence](provider-evidence-sqlite.md). |
 | 10 | Cursor | `cursor` | Local or import | Automatic IDE SQLite discovery; measured counters only, missing usage disclosed. Optional CSV replaces local history. [Evidence](provider-evidence-next-cli.md). |
