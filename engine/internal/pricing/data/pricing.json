@@ -696,6 +696,14 @@
           "cache_read": 0,
           "cache_write": 0,
           "source": "vercel"
+        },
+        {
+          "from": "2026-11-28",
+          "in": 1,
+          "out": 5.2,
+          "cache_read": 0.2,
+          "cache_write": 1,
+          "source": "vercel"
         }
       ]
     },
@@ -39399,6 +39407,19 @@
           "cache_read": 0,
           "cache_write": 0.07,
           "source": "sap-ai-core"
+        }
+      ]
+    },
+    "nvidia-nemotron-3-5-lightning-30b-a3b": {
+      "id": "nvidia-nemotron-3-5-lightning-30b-a3b",
+      "rates": [
+        {
+          "from": "2026-11-28",
+          "in": 0.075,
+          "out": 0.3,
+          "cache_read": 0,
+          "cache_write": 0.075,
+          "source": "venice"
         }
       ]
     },
@@ -115628,10 +115649,10 @@
         },
         {
           "from": "2026-11-28",
-          "in": 0.53249,
-          "out": 1.5651,
+          "in": 0.32969,
+          "out": 1.5086,
           "cache_read": 0,
-          "cache_write": 0.53249,
+          "cache_write": 0.32969,
           "source": "huggingface"
         }
       ]
@@ -116060,10 +116081,10 @@
         },
         {
           "from": "2026-11-28",
-          "in": 0.042,
-          "out": 0.184,
+          "in": 0.0356,
+          "out": 0.0815,
           "cache_read": 0,
-          "cache_write": 0.042,
+          "cache_write": 0.0356,
           "source": "huggingface"
         }
       ]
@@ -116645,22 +116666,6 @@
           "out": 0.32,
           "cache_read": 0,
           "cache_write": 0.1,
-          "source": "huggingface"
-        },
-        {
-          "from": "2026-11-26",
-          "in": 0.1,
-          "out": 0.32,
-          "cache_read": 0,
-          "cache_write": 0.1,
-          "source": "huggingface"
-        },
-        {
-          "from": "2026-11-28",
-          "in": 0.22,
-          "out": 0.5,
-          "cache_read": 0,
-          "cache_write": 0.22,
           "source": "huggingface"
         }
       ]
@@ -117532,6 +117537,14 @@
           "out": 0.125,
           "cache_read": 0,
           "cache_write": 0.085,
+          "source": "huggingface"
+        },
+        {
+          "from": "2026-11-28",
+          "in": 0.075,
+          "out": 0.11,
+          "cache_read": 0,
+          "cache_write": 0.075,
           "source": "huggingface"
         }
       ]
@@ -126683,6 +126696,14 @@
           "cache_read": 0,
           "cache_write": 0,
           "source": "kilo"
+        },
+        {
+          "from": "2026-11-28",
+          "in": 1,
+          "out": 5.2,
+          "cache_read": 0.2,
+          "cache_write": 1,
+          "source": "kilo"
         }
       ]
     },
@@ -128967,10 +128988,10 @@
         },
         {
           "from": "2026-11-28",
-          "in": 0.51221,
-          "out": 1.5651,
-          "cache_read": 0.22,
-          "cache_write": 0.51221,
+          "in": 0.30941,
+          "out": 1.5358,
+          "cache_read": 0.24,
+          "cache_write": 0.30941,
           "source": "kilo"
         }
       ]
@@ -166499,14 +166520,6 @@
           "cache_read": 0.042,
           "cache_write": 0.834,
           "source": "nano-gpt"
-        },
-        {
-          "from": "2026-11-27",
-          "in": 0.7506,
-          "out": 2.2509,
-          "cache_read": 0.0378,
-          "cache_write": 0.7506,
-          "source": "nano-gpt"
         }
       ]
     },
@@ -190683,10 +190696,10 @@
         },
         {
           "from": "2026-11-28",
-          "in": 0.51221,
-          "out": 1.5651,
-          "cache_read": 0.22,
-          "cache_write": 0.51221,
+          "in": 0.30941,
+          "out": 1.5358,
+          "cache_read": 0.24,
+          "cache_write": 0.30941,
           "source": "openrouter"
         }
       ]
@@ -196104,6 +196117,14 @@
           "cache_read": 0.18,
           "cache_write": 0.1824,
           "source": "openrouter"
+        },
+        {
+          "from": "2026-11-28",
+          "in": 0.1824,
+          "out": 12.2894,
+          "cache_read": 0.18,
+          "cache_write": 0.1824,
+          "source": "openrouter"
         }
       ]
     },
@@ -198753,6 +198774,14 @@
           "out": 0.2,
           "cache_read": 0.04,
           "cache_write": 0.07,
+          "source": "openrouter"
+        },
+        {
+          "from": "2026-11-28",
+          "in": 0.05,
+          "out": 0.2,
+          "cache_read": 0.01,
+          "cache_write": 0.05,
           "source": "openrouter"
         }
       ]
@@ -210257,6 +210286,19 @@
           "out": 10,
           "cache_read": 0,
           "cache_write": 2,
+          "source": "prime"
+        }
+      ]
+    },
+    "prime\u0000gemini-4-hydrogen": {
+      "id": "gemini-4-hydrogen",
+      "rates": [
+        {
+          "from": "2026-11-28",
+          "in": 1.5,
+          "out": 7.5,
+          "cache_read": 0,
+          "cache_write": 1.5,
           "source": "prime"
         }
       ]
@@ -231406,6 +231448,19 @@
         }
       ]
     },
+    "venice\u0000nvidia-nemotron-3-5-lightning-30b-a3b": {
+      "id": "nvidia-nemotron-3-5-lightning-30b-a3b",
+      "rates": [
+        {
+          "from": "2026-11-28",
+          "in": 0.075,
+          "out": 0.3,
+          "cache_read": 0,
+          "cache_write": 0.075,
+          "source": "venice"
+        }
+      ]
+    },
     "venice\u0000nvidia-nemotron-3-5-super-vl-120b-a12b": {
       "id": "nvidia-nemotron-3-5-super-vl-120b-a12b",
       "rates": [
@@ -232795,6 +232850,14 @@
           "out": 0,
           "cache_read": 0,
           "cache_write": 0,
+          "source": "vercel"
+        },
+        {
+          "from": "2026-11-28",
+          "in": 1,
+          "out": 5.2,
+          "cache_read": 0.2,
+          "cache_write": 1,
           "source": "vercel"
         }
       ]
@@ -251212,6 +251275,7 @@
     "nvidia-nemotron-3-5-lightning-30b-a3b": "nvidia-nemotron-3.5-lightning-30b-a3b",
     "nvidia-nemotron-3-5-lightning-30b-a3b-bf16": "nvidia-nemotron-3.5-lightning-30b-a3b-bf16",
     "nvidia-nemotron-3-5-lightning-30b-a3b-bf16:peft:262144": "nvidia-nemotron-3.5-lightning-30b-a3b-bf16:peft:262144",
+    "nvidia-nemotron-3-5-lightning-30b-a3b-latest": "nvidia-nemotron-3-5-lightning-30b-a3b",
     "nvidia-nemotron-3-5-super-vl": "nvidia-nemotron-3.5-super-vl",
     "nvidia-nemotron-3-5-super-vl-120b-a12b-bf16": "nvidia-nemotron-3.5-super-vl-120b-a12b-bf16",
     "nvidia-nemotron-3-5-super-vl-120b-a12b-bf16:peft:262144": "nvidia-nemotron-3.5-super-vl-120b-a12b-bf16:peft:262144",
